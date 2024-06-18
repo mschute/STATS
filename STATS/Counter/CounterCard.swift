@@ -1,18 +1,19 @@
-//
-//  CounterCard.swift
-//  STATS
-//
-//  Created by Staff on 16/06/2024.
-//
-
 import SwiftUI
 
 struct CounterCard: View {
+    var stat: CounterStat
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //TODO: Opps, I may have added a navigation to detail view twice
+        NavigationLink {
+            CounterDetail(stat: stat)
+        } label: {
+            Text("\(stat.name) Detail")
+        }
     }
 }
 
 #Preview {
-    CounterCard()
+    CounterCard(stat: CounterStat(name: "Smoking Count", created: Date()))
 }

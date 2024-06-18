@@ -1,13 +1,13 @@
-//
-//  StatContainer.swift
-//  STATS
-//
-//  Created by Staff on 12/06/2024.
-//
-
 import Foundation
+import SwiftData
+import SwiftUI
 
 protocol Stat {
-    var title: String { get }
-    var desc: String { get }
+    var name: String { get }
+    var created: Date { get }
+    
+    func Delete(modelContext: ModelContext);
+    
+    //https://developer.apple.com/documentation/swiftui/anyview
+    func detailView() -> AnyView
 }

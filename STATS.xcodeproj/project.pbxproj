@@ -9,12 +9,31 @@
 /* Begin PBXBuildFile section */
 		0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38216C2C171366004F26E3 /* STATSApp.swift */; };
 		0B38216F2C171366004F26E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38216E2C171366004F26E3 /* ContentView.swift */; };
-		0B3821712C171366004F26E3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821702C171366004F26E3 /* Item.swift */; };
 		0B3821732C171367004F26E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3821722C171367004F26E3 /* Assets.xcassets */; };
 		0B3821762C171367004F26E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3821752C171367004F26E3 /* Preview Assets.xcassets */; };
 		0B3821802C171367004F26E3 /* STATSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38217F2C171367004F26E3 /* STATSTests.swift */; };
 		0B38218A2C171367004F26E3 /* STATSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821892C171367004F26E3 /* STATSUITests.swift */; };
 		0B38218C2C171367004F26E3 /* STATSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */; };
+		0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821982C1836DB004F26E3 /* CounterStat.swift */; };
+		0B38219C2C1845D5004F26E3 /* ReminderFrequencyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38219B2C1845D5004F26E3 /* ReminderFrequencyEnum.swift */; };
+		0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38219E2C184621004F26E3 /* DaysOfWeek.swift */; };
+		0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A02C184638004F26E3 /* CounterEntry.swift */; };
+		0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A82C186D69004F26E3 /* CounterForm.swift */; };
+		0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AA2C199D9E004F26E3 /* StatList.swift */; };
+		0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */; };
+		0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */; };
+		0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */; };
+		0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B22C19E14A004F26E3 /* Stat.swift */; };
+		0B3821B52C1B2F27004F26E3 /* EditDecimalStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B42C1B2F27004F26E3 /* EditDecimalStat.swift */; };
+		0B3821B72C1B2F95004F26E3 /* NewDecimalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B62C1B2F95004F26E3 /* NewDecimalEntry.swift */; };
+		0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B92C1C2510004F26E3 /* AnyStat.swift */; };
+		0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822002C1F0F68004F26E3 /* Entry.swift */; };
+		0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822022C1F59EA004F26E3 /* CounterCard.swift */; };
+		0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */; };
+		0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */; };
+		0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822082C1F6B93004F26E3 /* StatUtility.swift */; };
+		0B38220B2C203FAC004F26E3 /* AddForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38220A2C203FAC004F26E3 /* AddForm.swift */; };
+		0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38220D2C2056DD004F26E3 /* ModelContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +57,6 @@
 		0B3821692C171366004F26E3 /* STATS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STATS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B38216C2C171366004F26E3 /* STATSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSApp.swift; sourceTree = "<group>"; };
 		0B38216E2C171366004F26E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0B3821702C171366004F26E3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0B3821722C171367004F26E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B3821752C171367004F26E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0B38217B2C171367004F26E3 /* STATSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STATSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +64,26 @@
 		0B3821852C171367004F26E3 /* STATSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STATSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B3821892C171367004F26E3 /* STATSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITests.swift; sourceTree = "<group>"; };
 		0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0B3821982C1836DB004F26E3 /* CounterStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterStat.swift; sourceTree = "<group>"; };
+		0B38219B2C1845D5004F26E3 /* ReminderFrequencyEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderFrequencyEnum.swift; sourceTree = "<group>"; };
+		0B38219E2C184621004F26E3 /* DaysOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeek.swift; sourceTree = "<group>"; };
+		0B3821A02C184638004F26E3 /* CounterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntry.swift; sourceTree = "<group>"; };
+		0B3821A82C186D69004F26E3 /* CounterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterForm.swift; sourceTree = "<group>"; };
+		0B3821AA2C199D9E004F26E3 /* StatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatList.swift; sourceTree = "<group>"; };
+		0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryForm.swift; sourceTree = "<group>"; };
+		0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalStat.swift; sourceTree = "<group>"; };
+		0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntry.swift; sourceTree = "<group>"; };
+		0B3821B22C19E14A004F26E3 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
+		0B3821B42C1B2F27004F26E3 /* EditDecimalStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDecimalStat.swift; sourceTree = "<group>"; };
+		0B3821B62C1B2F95004F26E3 /* NewDecimalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDecimalEntry.swift; sourceTree = "<group>"; };
+		0B3821B92C1C2510004F26E3 /* AnyStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStat.swift; sourceTree = "<group>"; };
+		0B3822002C1F0F68004F26E3 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		0B3822022C1F59EA004F26E3 /* CounterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterCard.swift; sourceTree = "<group>"; };
+		0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetail.swift; sourceTree = "<group>"; };
+		0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDetail.swift; sourceTree = "<group>"; };
+		0B3822082C1F6B93004F26E3 /* StatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatUtility.swift; sourceTree = "<group>"; };
+		0B38220A2C203FAC004F26E3 /* AddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddForm.swift; sourceTree = "<group>"; };
+		0B38220D2C2056DD004F26E3 /* ModelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +134,13 @@
 		0B38216B2C171366004F26E3 /* STATS */ = {
 			isa = PBXGroup;
 			children = (
+				0B38220C2C2056CB004F26E3 /* Extensions */,
+				0B3821FD2C1EF9AC004F26E3 /* Stat */,
+				0B3821FE2C1EF9BB004F26E3 /* Counter */,
+				0B3821FF2C1EFA0F004F26E3 /* Decimal */,
+				0B38219D2C1845D9004F26E3 /* Enum */,
 				0B38216C2C171366004F26E3 /* STATSApp.swift */,
 				0B38216E2C171366004F26E3 /* ContentView.swift */,
-				0B3821702C171366004F26E3 /* Item.swift */,
 				0B3821722C171367004F26E3 /* Assets.xcassets */,
 				0B3821742C171367004F26E3 /* Preview Content */,
 			);
@@ -128,6 +170,61 @@
 				0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */,
 			);
 			path = STATSUITests;
+			sourceTree = "<group>";
+		};
+		0B38219D2C1845D9004F26E3 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				0B38219B2C1845D5004F26E3 /* ReminderFrequencyEnum.swift */,
+				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
+				0B38220A2C203FAC004F26E3 /* AddForm.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		0B3821FD2C1EF9AC004F26E3 /* Stat */ = {
+			isa = PBXGroup;
+			children = (
+				0B3821B22C19E14A004F26E3 /* Stat.swift */,
+				0B3822002C1F0F68004F26E3 /* Entry.swift */,
+				0B3821B92C1C2510004F26E3 /* AnyStat.swift */,
+				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
+				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
+			);
+			path = Stat;
+			sourceTree = "<group>";
+		};
+		0B3821FE2C1EF9BB004F26E3 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				0B3822022C1F59EA004F26E3 /* CounterCard.swift */,
+				0B3821982C1836DB004F26E3 /* CounterStat.swift */,
+				0B3821A02C184638004F26E3 /* CounterEntry.swift */,
+				0B3821A82C186D69004F26E3 /* CounterForm.swift */,
+				0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */,
+				0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */,
+			);
+			path = Counter;
+			sourceTree = "<group>";
+		};
+		0B3821FF2C1EFA0F004F26E3 /* Decimal */ = {
+			isa = PBXGroup;
+			children = (
+				0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */,
+				0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */,
+				0B3821B42C1B2F27004F26E3 /* EditDecimalStat.swift */,
+				0B3821B62C1B2F95004F26E3 /* NewDecimalEntry.swift */,
+				0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */,
+			);
+			path = Decimal;
+			sourceTree = "<group>";
+		};
+		0B38220C2C2056CB004F26E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B38220D2C2056DD004F26E3 /* ModelContext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +358,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
-				0B3821712C171366004F26E3 /* Item.swift in Sources */,
+				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
+				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
+				0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */,
+				0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */,
+				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
+				0B3821B72C1B2F95004F26E3 /* NewDecimalEntry.swift in Sources */,
+				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
+				0B3821B52C1B2F27004F26E3 /* EditDecimalStat.swift in Sources */,
+				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
+				0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */,
+				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
+				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
+				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
+				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,
+				0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */,
+				0B38219C2C1845D5004F26E3 /* ReminderFrequencyEnum.swift in Sources */,
+				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
+				0B38220B2C203FAC004F26E3 /* AddForm.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
+				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
+				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +548,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,8 +576,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

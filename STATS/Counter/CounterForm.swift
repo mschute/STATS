@@ -1,59 +1,61 @@
-//
-//  AddStat.swift
-//  STATS
-//
-//  Created by Staff on 11/06/2024.
-//
-
 import SwiftUI
 import SwiftData
 
+//TODO: Need to add remaining fields to form
 struct CounterForm: View {
-    @Bindable var counterStat: CounterStat
-    @State private var newCounterEntry = ""
+    @Environment(\.modelContext) var modelContext
+    @Environment (\.dismiss) var dismiss
+    
+    @State private var name = ""
+    @State private var created = Date()
     
     var body: some View {
+        
+        Button("Cancel"){
+            dismiss()
+        }
+        
+        Text("Add Counter")
+            .font(.largeTitle)
+
+        
         Form {
-            TextField("Title", text: $counterStat.name)
+            TextField("Title", text: $name)
             
-            Section("Entries"){
-                ForEach(counterStat.statCounterEntry) { entry in
-                    Text("Value: \(entry.value)")
-                    
-                }
-                
-                HStack {
-                    TextField("Add a new entry in \(counterStat.name)", text: $newCounterEntry)
-                    
-                    Button("Add", action: addEntry)
-                }
-            }
         }
-        .navigationTitle("Edit Counter Stat")
+        //TODO: Nav title isn't working because this isn't part of a navigation stack
+        .navigationTitle("Add Counter Stat")
         .navigationBarTitleDisplayMode(.inline)
-    }
         
+        Button("Add Counter"){
+            addCounter()
+        }
+        //TODO: Need to adjust the title to Add / Edit depending whether the Counter has already been added.
+    }
+
+    func addCounter() {
+        let counter = CounterStat(name: "test name", created: created)
+        modelContext.insert(counter)
+        try? modelContext.save()
+        //TODO: This returns an array of stats meant for ContentView but I dont know how to update that in response to this being called.
+        //StatUtility.fetchStats(modelContext: modelContext)
+        print(modelContext.sqliteCommand)
+        dismiss()
         
-        func addEntry() {
-            guard newCounterEntry.isEmpty == false else { return }
-            
-            withAnimation{
-                let entry = CounterEntry(value: 1, counterEntryID: UUID(), timestamp: Date())
-                counterStat.statCounterEntry.append(entry)
-                newCounterEntry = ""
-            }
-        }
     }
-    
-    #Preview {
-        do {
-            let config = ModelConfiguration(isStoredInMemoryOnly: true)
-            let container = try ModelContainer(for: CounterStat.self, configurations: config)
-            let example = CounterStat(name: "Weight", created: Date())
-            
-            return CounterForm(counterStat: example)
-                .modelContainer(container)
-        } catch {
-            fatalError("Failed to create error")
-        }
+}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: false)
+        let container = try ModelContainer(for: CounterStat.self, configurations: config)
+        _ = CounterStat(name: "Weight", created: Date())
+        
+        return CounterForm()
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create error")
     }
+}
+
+

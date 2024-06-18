@@ -7,10 +7,15 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
-class Decimal: Stat, Identifiable {
+class DecimalStat: Stat, Identifiable {
     @Attribute(.unique) var name: String
+    
+    func Remove(modelContext: ModelContext) {
+        modelContext.delete(self)
+    }
     
     var created: Date
     var unitName: String
@@ -22,5 +27,13 @@ class Decimal: Stat, Identifiable {
         self.created = date
         self.unitName = unitName
         self.statDecimalEntry = statDecimalEntry
+    }
+    
+    func Delete(modelContext: ModelContext) {
+        var temp = "temp code"
+    }
+    
+    func detailView() -> AnyView {
+        AnyView(DecimalDetail(stat: self))
     }
 }

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct DecimalDetail: View {
+    var stat: DecimalStat
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Item at \(stat.name)")
+    }
+    
+    init(stat: DecimalStat) {
+        self.stat = stat
     }
 }
 
 #Preview {
-    DecimalDetail()
+    DecimalDetail(stat: DecimalStat(name: "Weight", date: Date(), unitName: "KG"))
 }

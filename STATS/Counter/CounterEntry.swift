@@ -1,28 +1,18 @@
-//
-//  CounterEntry.swift
-//  STATS
-//
-//  Created by Staff on 11/06/2024.
-//
-
 import Foundation
 import SwiftData
 
 @Model
-//does this need to conform to Identifiable?
-class CounterEntry {
-    var counterCounter: String
-    //var counterEntryID: UUID
-//    var timestamp: Date
-//    var notes: String
+
+//TODO: does this need to conform to Identifiable?
+//TODO: Should I set this to have a relationship with DecimalStat?
+class CounterEntry: Identifiable {
+    var value: Int
+    var counterEntryID: UUID
+    var timestamp: Date
     
-//    init(counterEntryID: UUID, timestamp: Date = .now, notes: String = "") {
-//        self.counterEntryID = counterEntryID
-//        self.timestamp = timestamp
-//        self.notes = notes
-//    }
-    
-    init(counterCounter: String) {
-        self.counterCounter = counterCounter
+    init(value: Int, counterEntryID: UUID, timestamp: Date) {
+        self.value = value
+        self.counterEntryID = counterEntryID
+        self.timestamp = timestamp
     }
 }

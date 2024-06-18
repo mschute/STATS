@@ -7,10 +7,10 @@
 
 import Foundation
 
-class StatWrapper: Identifiable {
-    var stat: StatisticType
+class AnyStat: Identifiable {
+    var stat: Stat
     
-    init(stat: StatisticType) {
+    init(stat: Stat) {
         self.stat = stat
     }
 }

@@ -9,21 +9,18 @@ import Foundation
 import SwiftData
 
 @Model
-//does this need to conform to Identifiable?
-class DecimalEntry {
+//TODO: Should I set this to have a relationship with DecimalStat?
+//TODO: Reorganize order of attributes
+class DecimalEntry: Identifiable {
+    var decimalStat: DecimalStat
     var value: Double
-//    var decimalEntryID: UUID
-//    var timestamp: Date
-//    var notes: String
+    var decimalEntryID: UUID
+    var timestamp: Date
     
-//    init(counterEntryID: UUID, timestamp: Date = .now, value: Double = 0.0, notes: String = "") {
-//        self.counterEntryID = counterEntryID
-//        self.timestamp = timestamp
-//        self.value = value
-//        self.notes = notes
-//    }
-    
-    init(value: Double) {
+    init(decimalStat: DecimalStat, value: Double, decimalEntryID: UUID, timestamp: Date) {
+        self.decimalStat = decimalStat
         self.value = value
+        self.decimalEntryID = decimalEntryID
+        self.timestamp = timestamp
     }
 }
