@@ -20,5 +20,5 @@ struct DecimalDetail: View {
 }
 
 #Preview {
-    DecimalDetail(stat: DecimalStat(name: "Weight", date: Date(), unitName: "KG"))
+    DecimalDetail(stat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"))
 }

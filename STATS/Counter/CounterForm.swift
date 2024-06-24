@@ -3,59 +3,59 @@ import SwiftData
 
 //TODO: Need to add remaining fields to form
 struct CounterForm: View {
+    
     @Environment(\.modelContext) var modelContext
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
+
+    @Binding var selectedTab: Int
     
     @State private var name = ""
     @State private var created = Date()
     
     var body: some View {
-        
-        Button("Cancel"){
-            dismiss()
-        }
-        
-        Text("Add Counter")
-            .font(.largeTitle)
+            Text("Add Counter")
+                .font(.largeTitle)
 
-        
-        Form {
-            TextField("Title", text: $name)
             
-        }
-        //TODO: Nav title isn't working because this isn't part of a navigation stack
-        .navigationTitle("Add Counter Stat")
-        .navigationBarTitleDisplayMode(.inline)
-        
-        Button("Add Counter"){
-            addCounter()
-        }
-        //TODO: Need to adjust the title to Add / Edit depending whether the Counter has already been added.
-    }
+            Form {
+                TextField("Title", text: $name)
+                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            
+            Button("Add Counter"){
+               addCounter(name: name, created: created)
+            }
+            .padding()
+            .buttonStyle(.plain)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
+            
+            Spacer()
 
-    func addCounter() {
-        let counter = CounterStat(name: "test name", created: created)
+            //TODO: Need to adjust the title to Add / Edit depending whether the Counter has already been added.
+    }
+    
+    func addCounter(name: String, created: Date) {
+        let counter = CounterStat(name: name, created: created)
         modelContext.insert(counter)
-        try? modelContext.save()
-        //TODO: This returns an array of stats meant for ContentView but I dont know how to update that in response to this being called.
-        //StatUtility.fetchStats(modelContext: modelContext)
-        print(modelContext.sqliteCommand)
         dismiss()
-        
+        selectedTab = 1
     }
 }
 
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: false)
-        let container = try ModelContainer(for: CounterStat.self, configurations: config)
-        _ = CounterStat(name: "Weight", created: Date())
-        
-        return CounterForm()
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create error")
-    }
-}
+//#Preview {
+//    do {
+//        let config = ModelConfiguration(isStoredInMemoryOnly: false)
+//        let container = try ModelContainer(for: CounterStat.self, configurations: config)
+//        _ = CounterStat(name: "Weight", created: Date())
+//        
+//        return CounterForm(statsDataStore: StatsDataStore(modelContext: ModelContext(ModelContainer)), name: "", created: Date)
+//            .modelContainer(container)
+//    } catch {
+//        fatalError("Failed to create error")
+//    }
+//}
 
 

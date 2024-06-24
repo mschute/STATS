@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 
 //https://www.hackingwithswift.com/quick-start/swiftdata/how-to-read-the-contents-of-a-swiftdata-database-store
+//Extension to aid in seeing what values are in the database. Can be deleted later
 
 extension ModelContext {
     var sqliteCommand: String {

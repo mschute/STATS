@@ -11,29 +11,24 @@ import SwiftUI
 
 @Model
 class DecimalStat: Stat, Identifiable {
-    @Attribute(.unique) var name: String
-    
-    func Remove(modelContext: ModelContext) {
-        modelContext.delete(self)
-    }
-    
+    var name: String
     var created: Date
     var unitName: String
 
     @Relationship(deleteRule: .cascade) var statDecimalEntry = [DecimalEntry]()
     
-    init(name: String, date: Date, unitName: String, statDecimalEntry: [DecimalEntry] = [DecimalEntry]()) {
+    init(name: String, created: Date, unitName: String, statDecimalEntry: [DecimalEntry] = [DecimalEntry]()) {
         self.name = name
-        self.created = date
+        self.created = created
         self.unitName = unitName
         self.statDecimalEntry = statDecimalEntry
     }
     
-    func Delete(modelContext: ModelContext) {
-        var temp = "temp code"
-    }
-    
-    func detailView() -> AnyView {
-        AnyView(DecimalDetail(stat: self))
-    }
+//    func Delete(modelContext: ModelContext) {
+//        var temp = "temp code"
+//    }
+//    
+//    func detailView() -> AnyView {
+//        AnyView(DecimalDetail(stat: self))
+//    }
 }
