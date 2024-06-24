@@ -9,18 +9,17 @@ import Foundation
 import SwiftData
 
 @Model
-//TODO: Should I set this to have a relationship with DecimalStat?
-//TODO: Reorganize order of attributes
+//TODO: Should I set DecimalStat to @Relationship?
 class DecimalEntry: Identifiable {
-    var decimalStat: DecimalStat
-    var value: Double
     var decimalEntryID: UUID
+    var decimalStat: DecimalStat
     var timestamp: Date
+    var value: Double
     
-    init(decimalStat: DecimalStat, value: Double, decimalEntryID: UUID, timestamp: Date) {
+    init(decimalStat: DecimalStat, decimalEntryID: UUID, timestamp: Date, value: Double) {
         self.decimalStat = decimalStat
-        self.value = value
         self.decimalEntryID = decimalEntryID
         self.timestamp = timestamp
+        self.value = value
     }
 }

@@ -30,21 +30,28 @@ class StatUtility {
         statItems.remove(atOffsets: offsets)
     }
     
-    static func fetchStats(modelContext: ModelContext) -> [AnyStat] {
-        var stats: [AnyStat] = []
-        let counters = FetchDescriptor<CounterStat>()
-        let decimals = FetchDescriptor<DecimalStat>()
-        
-        stats.append(AnyStat(stat: counters as! Stat))
-        stats.append(AnyStat(stat: decimals as! Stat))
-    
-        return stats
-    }
+//    static func fetchStats() {
+//        stats = []
+//        
+//        let fetchedCounters = FetchDescriptor<CounterStat>()
+//        let fetchedDecimals = FetchDescriptor<DecimalStat>()
+//        
+//        do{
+//            let counters = try modelContext.fetch(fetchedCounters)
+//            let decimals = try modelContext.fetch(fetchedDecimals)
+//            
+//            stats += counters.map { AnyStat(stat: $0) }
+//            stats += decimals.map { AnyStat(stat: $0) }
+//            
+//        } catch {
+//            print("Add a stat!")
+//        }
+//    }
     
     static func Card(stat: Stat) -> some View {
-//        if (stat is DecimalStat) {
-//            return AnyView(DecimalCard(stat: stat as! DecimalStat))
-//        }
+        if (stat is DecimalStat) {
+            return AnyView(DecimalCard(stat: stat as! DecimalStat))
+        }
         
         if (stat is CounterStat) {
             return AnyView(CounterCard(stat: stat as! CounterStat))

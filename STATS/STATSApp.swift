@@ -1,17 +1,10 @@
-//
-//  STATSApp.swift
-//  STATS
-//
-//  Created by Staff on 10/06/2024.
-//
-
 import SwiftData
 import SwiftUI
 
 
 @main
 struct STATSApp: App {
-    var sharedModelContainer: ModelContainer = {
+    public var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             DecimalStat.self, CounterStat.self
         ])
@@ -26,7 +19,7 @@ struct STATSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Navbar()
         }
         .modelContainer(sharedModelContainer)
     }

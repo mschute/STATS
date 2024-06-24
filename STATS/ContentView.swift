@@ -3,75 +3,34 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @State private var path = NavigationPath()
     
     @Query private var decimals: [DecimalStat]
     @Query private var counters: [CounterStat]
     
-    @State private var name = ""
-    @State private var date = Date()
-    @State private var created = Date()
-    @State private var unitName = ""
-    @State private var value = ""
-    
-    //https://www.hackingwithswift.com/quick-start/swiftui/how-to-present-a-new-view-using-sheets
-    @State private var addForm = false
-    
     @State private var stats: [AnyStat] = []
     
-    init() {
-        // Aggregate arrays https://bugfender.com/blog/swiftui-lists/
-        decimals.forEach { stat in stats.append(AnyStat(stat: stat)) }
-        counters.forEach { stat in stats.append(AnyStat(stat: stat)) }
-    }
     
     var body: some View {
-        //TODO: Should our stat cards be part of a navigation stack? Need to solve applying path to wrapper class
-        NavigationStack(path: $path) {
-            List {
-                ForEach(stats) { item in
-                    NavigationLink(destination: item.stat.detailView){
-                        StatUtility.Card(stat: item.stat)
-                    }
-                    
-
-                }
-                .onDelete(perform: deleteItems)
+        List {
+            ForEach(stats) { item in
+                StatUtility.Card(stat: item.stat)
             }
-            .navigationTitle("Stat List")
-            .toolbar {
-                //TODO: Move plus button to the bottom navbar?
-                ToolbarItem{
-                    Menu(content: {
-                        Button("Add Counter", systemImage: "arrow.counterclockwise") {
-                            addForm.toggle()
-                        }
-                        Button(action: addDecimal) {
-                            Label("Add Decimal", systemImage: "number")
-                        }
-                    }, label: {
-                        Label("Add Stat", systemImage: "plus")
-                    })
+            .onDelete(perform: deleteItems)
+            
+        }
+        .navigationTitle("Stat List")
+        .task {
+            fetchStats()
+        }
+        .toolbar {
+            ToolbarItem{
+                Menu {
+                    //TODO: Need to implement sort
+                } label: {
+                    Label("Sort", systemImage: "arrow.up.arrow.down")
                 }
-                
-                ToolbarItem{
-                    Menu {
-                        //TODO: Need to implement sort
-                    } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
-                    }
-                    //TODO: Implement filter?
-                }
-                
-//                ToolbarItem{
-//                    Button("Add counter") {
-//                        addCounter()
-//                    }
-//                }
+                //TODO: Implement filter?
             }
-            .sheet(isPresented: $addForm, content: {
-                CounterForm()
-            })
         }
     }
     
@@ -83,23 +42,44 @@ struct ContentView: View {
         }
     }
     
+    //TODO: Need to move this to Decimal Form
     func addDecimal() {
-        let decimal = DecimalStat(name: name, date: date, unitName: unitName)
-        modelContext.insert(decimal)
-        path.append(decimal)
+        return
+        //        let decimal = DecimalStat(name: name, date: date, unitName: unitName)
+        //        modelContext.insert(decimal)
+        //        path.append(decimal)
     }
-
-//    func addCounter() {
-//        let counter = CounterStat(name: "test counter", created: Date())
-//        modelContext.insert(counter)
-//        print(modelContext.sqliteCommand)
-//    }
+    
+    //TODO: Can this be moved to StatUtility
+    //TODO: Is there another solution other than .map? Need reference
+    func fetchStats() {
+        stats = []
+        
+        let fetchedCounters = FetchDescriptor<CounterStat>()
+        let fetchedDecimals = FetchDescriptor<DecimalStat>()
+        
+        do{
+            let counters = try modelContext.fetch(fetchedCounters)
+            let decimals = try modelContext.fetch(fetchedDecimals)
+            
+            stats += counters.map { AnyStat(stat: $0) }
+            stats += decimals.map { AnyStat(stat: $0) }
+            
+        } catch {
+            print("Add a stat!")
+        }
+    }
 }
 
-
+//TODO: Do I dare fix this preview?
 #Preview {
-    MainActor.assumeIsolated {
-        ContentView()
-            .modelContainer(for: CounterStat.self)
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: CounterStat.self, DecimalStat.self, configurations: config)
+        
+        return ContentView()
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
     }
 }

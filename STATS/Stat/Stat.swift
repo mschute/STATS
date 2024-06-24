@@ -6,8 +6,8 @@ protocol Stat {
     var name: String { get }
     var created: Date { get }
     
-    func Delete(modelContext: ModelContext);
-    
-    //https://developer.apple.com/documentation/swiftui/anyview
-    func detailView() -> AnyView
+//    func Delete(modelContext: ModelContext);
+//    
+//    //https://developer.apple.com/documentation/swiftui/anyview
+//    func detailView() -> AnyView
 }

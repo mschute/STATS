@@ -3,8 +3,7 @@ import SwiftData
 
 @Model
 
-//TODO: does this need to conform to Identifiable?
-//TODO: Should I set this to have a relationship with DecimalStat?
+//TODO: Should I set this to have a relationship with CounterStat?
 class CounterEntry: Identifiable {
     var value: Int
     var counterEntryID: UUID
