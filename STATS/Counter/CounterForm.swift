@@ -3,45 +3,65 @@ import SwiftData
 
 //TODO: Need to add remaining fields to form
 struct CounterForm: View {
-    
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
+    @State var counterStat: CounterStat?
+    
+    @State var tempCounterStat: CounterStat = CounterStat(name: "", created: Date())
+    
+    var isEditMode: Bool
+    
     @Binding var selectedTab: Int
     
-    @State private var name = ""
-    @State private var created = Date()
-    
     var body: some View {
-            Text("Add Counter")
+        Text(isEditMode ? "" : "Add Counter Stat")
                 .font(.largeTitle)
 
-            
             Form {
-                TextField("Title", text: $name)
+                TextField("Name", text: $tempCounterStat.name )
                 
             }
-            .navigationBarTitleDisplayMode(.inline)
-            
-            Button("Add Counter"){
-               addCounter(name: name, created: created)
+            .onAppear {
+                if let counterStat = counterStat {
+                    tempCounterStat = counterStat
+                }
             }
-            .padding()
-            .buttonStyle(.plain)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(10)
-            
+            .navigationBarTitleDisplayMode(.inline)
+        
+        if isEditMode {
+            Button("Update") {
+                    editCounter(name: tempCounterStat.name)
+                }
+                .padding()
+                .buttonStyle(.plain)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+        } else {
+            Button("Add Counter") {
+                addCounter(name: tempCounterStat.name, created: Date())
+                }
+                .padding()
+                .buttonStyle(.plain)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+        }
             Spacer()
 
-            //TODO: Need to adjust the title to Add / Edit depending whether the Counter has already been added.
     }
     
-    func addCounter(name: String, created: Date) {
+    private func addCounter(name: String, created: Date) {
         let counter = CounterStat(name: name, created: created)
         modelContext.insert(counter)
         dismiss()
         selectedTab = 1
+    }
+    
+    private func editCounter(name: String) {
+        counterStat?.name = name
+        dismiss()
     }
 }
 
