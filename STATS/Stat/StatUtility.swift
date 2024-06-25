@@ -57,6 +57,43 @@ class StatUtility {
             return AnyView(CounterCard(stat: stat as! CounterStat))
         }
         
-        return AnyView(Text("No item available"))
+        return AnyView(Text("No stat available"))
     }
+    
+//    static func StatForm(stat: Stat) -> some View {
+//        if (stat is DecimalStat) {
+//            return AnyView(DecimalForm(decimalStat: stat as! DecimalStat, selectedTab: 1))
+//        }
+//        
+//        if (stat is CounterStat) {
+//            return AnyView(CounterForm(stat: stat as! CounterStat))
+//        }
+//        
+//        return AnyView(Text("No stat available"))
+//    }
+    
+    static func EntryForm(stat: Stat) -> some View {
+        if (stat is DecimalStat) {
+            return AnyView(DecimalEntryForm(decimalStat: stat as! DecimalStat))
+        }
+        
+        if (stat is CounterStat) {
+            return AnyView(CounterEntryForm(counterStat: stat as! CounterStat))
+        }
+        
+        return AnyView(Text("No stat available"))
+    }
+    
+    static func Report(stat: Stat) -> some View {
+        if (stat is DecimalStat) {
+            return AnyView(DecimalReport())
+        }
+        
+        if (stat is CounterStat) {
+            return AnyView(CounterReport())
+        }
+        
+        return AnyView(Text("No stat available"))
+    }
+    
 }

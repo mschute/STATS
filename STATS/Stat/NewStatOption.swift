@@ -16,7 +16,7 @@ struct NewStatOption: View {
                 .font(.largeTitle)
             
             NavigationLink {
-                CounterForm(selectedTab: $selectedTab)
+                CounterForm(isEditMode: false, selectedTab: $selectedTab)
             } label: {
                   Text("Add Counter")
                     .padding()

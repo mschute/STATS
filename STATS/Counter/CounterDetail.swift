@@ -8,8 +8,9 @@ struct CounterDetail: View {
     var body: some View {
         Text("\(stat.name) Stat Detail")
             .font(.largeTitle)
+        StatDetailTabs(stat: stat as Stat)
         //TODO: This needs to be turned into an Edit page rather than add
-        CounterEntryForm(counterStat: stat, value: "1", timestamp: Date())
+        //CounterEntryForm(counterStat: stat, value: "1", timestamp: Date())
     }
 }
 
