@@ -3,14 +3,12 @@ import SwiftUI
 struct CounterEntryForm: View {
     @Bindable var counterStat: CounterStat
     
-    @State var value: String
-    @State var timestamp: Date
+    @State var value = ""
+    @State var timestamp = Date.now
     
     @State private var newCounterEntry = ""
     
     var body: some View {
-        Text("\(counterStat.name) Entry Form")
-            .font(.largeTitle)
         Form(content: {
             HStack{
                 Text("Value ")
