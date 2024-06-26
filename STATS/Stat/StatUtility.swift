@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Need to add picture stat to these functions
 class StatUtility {
     static func Remove(stat: Stat, modelContext: ModelContext) {
         if (stat is DecimalStat) {
@@ -14,7 +15,7 @@ class StatUtility {
         }
     }
     
-    // TODO: Need to check out these functions
+    // TODO: Need to check out these functions, offset, IndexSet and inout
     
     static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
         Remove(stat: statItems[index].stat, modelContext: modelContext)
@@ -60,17 +61,19 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
-//    static func StatForm(stat: Stat) -> some View {
-//        if (stat is DecimalStat) {
-//            return AnyView(DecimalForm(decimalStat: stat as! DecimalStat, selectedTab: 1))
-//        }
-//        
-//        if (stat is CounterStat) {
-//            return AnyView(CounterForm(stat: stat as! CounterStat))
-//        }
-//        
-//        return AnyView(Text("No stat available"))
-//    }
+    static func StatForm(stat: Stat, selectedTab: Binding<Int>, isEditMode: Bool) -> some View {
+        if (stat is DecimalStat) {
+            return AnyView(DecimalForm(selectedTab: selectedTab))
+        }
+        
+        if (stat is CounterStat) {
+            return AnyView(CounterForm(counterStat: stat as? CounterStat, isEditMode: isEditMode, selectedTab: selectedTab))
+        }
+        
+        return AnyView(Text("No stat available"))
+    }
+    
+    //TODO: Create function for AddStatForm
     
     static func EntryForm(stat: Stat) -> some View {
         if (stat is DecimalStat) {
@@ -95,5 +98,7 @@ class StatUtility {
         
         return AnyView(Text("No stat available"))
     }
+    
+    //TODO: Create function for History form? Unsure
     
 }

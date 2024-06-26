@@ -6,16 +6,8 @@
 //
 
 import SwiftUI
-//
-//struct Tab {
-//    var icon: Image?
-//    var title: String
-//}
 
 struct StatDetailTabs: View {
-    //var fixed = true
-    //var tabs: [Tab]
-    //var geoWidth: CGFloat
     var stat: Stat
     @State var selectedDetailTab = 0
     @State private var selectedTab = 1
@@ -33,8 +25,7 @@ struct StatDetailTabs: View {
         Group{
             switch selectedDetailTab {
             case 0:
-                //TODO: Need to create switch statement for Form
-                CounterForm(counterStat: stat as? CounterStat, isEditMode: true, selectedTab: $selectedTab)
+                StatUtility.StatForm(stat: stat, selectedTab: $selectedTab, isEditMode: true)
             case 1:
                 StatUtility.EntryForm(stat: stat)
             case 2:
