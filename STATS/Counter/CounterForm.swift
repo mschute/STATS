@@ -19,7 +19,7 @@ struct CounterForm: View {
                 .font(.largeTitle)
 
             Form {
-                TextField("Name", text: $tempCounterStat.name )
+                TextField("Name", text: $tempCounterStat.name)
                 
             }
             .onAppear {
