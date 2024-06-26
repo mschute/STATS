@@ -63,7 +63,7 @@ class StatUtility {
     
     static func StatForm(stat: Stat, selectedTab: Binding<Int>, isEditMode: Bool) -> some View {
         if (stat is DecimalStat) {
-            return AnyView(DecimalForm(selectedTab: selectedTab))
+            return AnyView(DecimalForm(decimalStat: stat as? DecimalStat, isEditMode: isEditMode, selectedTab: selectedTab))
         }
         
         if (stat is CounterStat) {

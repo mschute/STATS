@@ -27,7 +27,7 @@ struct NewStatOption: View {
             }
             
             NavigationLink {
-                DecimalForm(selectedTab: $selectedTab)
+                DecimalForm(isEditMode: false, selectedTab: $selectedTab)
             } label: {
                   Text("Add Decimal")
                     .padding()

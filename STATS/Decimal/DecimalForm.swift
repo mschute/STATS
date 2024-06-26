@@ -1,51 +1,65 @@
-//
-//  EditDecimalStat.swift
-//  STATS
-//
-//  Created by Staff on 13/06/2024.
-//
-
+//TODO: Need to add reamining fields to form
 import SwiftUI
 import SwiftData
 
-//TODO: Should this be a separate form to Add? Delete this?
 struct DecimalForm: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
+    @State var decimalStat: DecimalStat?
+    @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), unitName: "")
+    
+    var isEditMode: Bool
+    
     @Binding var selectedTab: Int
     
-    @State private var name = ""
-    @State private var unitName = ""
-    @State private var created = Date()
-    
     var body: some View {
-        Text("Add Decimal Stat")
+        Text(isEditMode ? "" : "Add Decimal Stat")
             .font(.largeTitle)
         
         Form {
-            TextField("Title", text: $name)
-            TextField("Unit name", text: $unitName)
+            TextField("Title", text: $tempDecimalStat.name)
+            TextField("Unit name", text: $tempDecimalStat.unitName)
+        }
+        .onAppear {
+            if let decimalStat = decimalStat {
+                tempDecimalStat = decimalStat
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         
-        Button("Add Decimal"){
-            addDecimal(name: name, created: created, unitName: unitName)
+        if isEditMode {
+            Button("Update"){
+                editDecimal(name: tempDecimalStat.name, unitName: tempDecimalStat.unitName)
+            }
+            .padding()
+            .buttonStyle(.plain)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
+        } else {
+            Button("Add Decimal"){
+                addDecimal(name: tempDecimalStat.name, created: Date(), unitName: tempDecimalStat.unitName)
+            }
+            .padding()
+            .buttonStyle(.plain)
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .cornerRadius(10)
         }
-        .padding()
-        .buttonStyle(.plain)
-        .foregroundColor(.white)
-        .background(Color.blue)
-        .cornerRadius(10)
-        
-        Spacer()
     }
     
-    func addDecimal(name: String, created: Date, unitName: String) {
+    private func addDecimal(name: String, created: Date, unitName: String) {
         let decimal = DecimalStat(name: name, created: created, unitName: unitName)
         modelContext.insert(decimal)
         dismiss()
         selectedTab = 1
+    }
+    
+    private func editDecimal(name: String, unitName: String) {
+        decimalStat?.name = name
+        decimalStat?.unitName = unitName
+        dismiss()
     }
 }
 

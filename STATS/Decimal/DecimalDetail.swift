@@ -11,11 +11,10 @@ struct DecimalDetail: View {
     var stat: DecimalStat
     
     var body: some View {
-        Text("Item at \(stat.name)")
-    }
-    
-    init(stat: DecimalStat) {
-        self.stat = stat
+        Text("\(stat.name)")
+            .font(.largeTitle)
+        
+        StatDetailTabs(stat: stat as Stat)
     }
 }
 
