@@ -6,10 +6,6 @@ struct CounterDetail: View {
     var body: some View {
         Text("\(stat.name) Stat Detail")
             .font(.largeTitle)
-        StatDetailTabs(stat: stat as Stat)
+        StatDetailTabs(stat: stat as any Stat)
     }
-}
-
-#Preview {
-    CounterDetail(stat: CounterStat(name: "Smoking Count", created: Date()))
 }
