@@ -1,22 +1,8 @@
-//
-//  StatDetailTabs.swift
-//  STATS
-//
-//  Created by Staff on 24/06/2024.
-//
-
 import SwiftUI
-//
-//struct Tab {
-//    var icon: Image?
-//    var title: String
-//}
 
 struct StatDetailTabs: View {
-    //var fixed = true
-    //var tabs: [Tab]
-    //var geoWidth: CGFloat
-    var stat: Stat
+    var stat: any Stat
+    //TODO: Does this need to be an observed object? Environment object?
     @State var selectedDetailTab = 0
     @State private var selectedTab = 1
     
@@ -33,22 +19,17 @@ struct StatDetailTabs: View {
         Group{
             switch selectedDetailTab {
             case 0:
-                //TODO: Need to create switch statement for Form
-                CounterForm(counterStat: stat as? CounterStat, isEditMode: true, selectedTab: $selectedTab)
+                StatUtility.StatForm(stat: stat, selectedTab: $selectedTab, isEditMode: true)
             case 1:
                 StatUtility.EntryForm(stat: stat)
             case 2:
                 StatUtility.Report(stat: stat)
             case 3:
-                History()
+                History(stat: stat)
             default:
                 Text("Page does not exist")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-}
-
-#Preview {
-    StatDetailTabs(stat: CounterStat(name: "Weight", created: Date.now))
 }

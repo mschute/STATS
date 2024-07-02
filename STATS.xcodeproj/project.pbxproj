@@ -34,14 +34,19 @@
 		0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822082C1F6B93004F26E3 /* StatUtility.swift */; };
 		0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38220D2C2056DD004F26E3 /* ModelContext.swift */; };
 		0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822112C22E4B9004F26E3 /* Navbar.swift */; };
-		0B3822142C22E7A9004F26E3 /* NewStatOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822132C22E7A9004F26E3 /* NewStatOption.swift */; };
+		0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822132C22E7A9004F26E3 /* NewStatType.swift */; };
 		0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822152C22E8FE004F26E3 /* Settings.swift */; };
 		0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38221B2C2488E7004F26E3 /* DecimalCard.swift */; };
 		0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705A92C297986004D1DDB /* StatDetailTabs.swift */; };
 		0B4705AC2C297CA6004D1DDB /* CounterReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AB2C297CA6004D1DDB /* CounterReport.swift */; };
-		0B4705AE2C297CBF004D1DDB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AD2C297CBF004D1DDB /* History.swift */; };
 		0B4705B02C29C9A8004D1DDB /* DecimalReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */; };
 		0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B12C2AAFA1004D1DDB /* TabButton.swift */; };
+		0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */; };
+		0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */; };
+		0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705BD2C316777004D1DDB /* CounterEntryList.swift */; };
+		0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705BF2C316814004D1DDB /* AnyEntry.swift */; };
+		0B4705C22C32DD30004D1DDB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C12C32DD30004D1DDB /* History.swift */; };
+		0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,14 +97,19 @@
 		0B3822082C1F6B93004F26E3 /* StatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatUtility.swift; sourceTree = "<group>"; };
 		0B38220D2C2056DD004F26E3 /* ModelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContext.swift; sourceTree = "<group>"; };
 		0B3822112C22E4B9004F26E3 /* Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navbar.swift; sourceTree = "<group>"; };
-		0B3822132C22E7A9004F26E3 /* NewStatOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStatOption.swift; sourceTree = "<group>"; };
+		0B3822132C22E7A9004F26E3 /* NewStatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStatType.swift; sourceTree = "<group>"; };
 		0B3822152C22E8FE004F26E3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0B38221B2C2488E7004F26E3 /* DecimalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCard.swift; sourceTree = "<group>"; };
 		0B4705A92C297986004D1DDB /* StatDetailTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailTabs.swift; sourceTree = "<group>"; };
 		0B4705AB2C297CA6004D1DDB /* CounterReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReport.swift; sourceTree = "<group>"; };
-		0B4705AD2C297CBF004D1DDB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReport.swift; sourceTree = "<group>"; };
 		0B4705B12C2AAFA1004D1DDB /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryCard.swift; sourceTree = "<group>"; };
+		0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryCard.swift; sourceTree = "<group>"; };
+		0B4705BD2C316777004D1DDB /* CounterEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryList.swift; sourceTree = "<group>"; };
+		0B4705BF2C316814004D1DDB /* AnyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEntry.swift; sourceTree = "<group>"; };
+		0B4705C12C32DD30004D1DDB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +166,8 @@
 				0B3821FF2C1EFA0F004F26E3 /* Decimal */,
 				0B38219D2C1845D9004F26E3 /* Enum */,
 				0B38216E2C171366004F26E3 /* ContentView.swift */,
-				0B4705AD2C297CBF004D1DDB /* History.swift */,
 				0B3822112C22E4B9004F26E3 /* Navbar.swift */,
 				0B3822152C22E8FE004F26E3 /* Settings.swift */,
-				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 				0B38216C2C171366004F26E3 /* STATSApp.swift */,
 				0B4705B12C2AAFA1004D1DDB /* TabButton.swift */,
 				0B3821722C171367004F26E3 /* Assets.xcassets */,
@@ -205,12 +213,15 @@
 		0B3821FD2C1EF9AC004F26E3 /* Stat */ = {
 			isa = PBXGroup;
 			children = (
-				0B3821B22C19E14A004F26E3 /* Stat.swift */,
-				0B3822002C1F0F68004F26E3 /* Entry.swift */,
+				0B4705BF2C316814004D1DDB /* AnyEntry.swift */,
 				0B3821B92C1C2510004F26E3 /* AnyStat.swift */,
+				0B3822002C1F0F68004F26E3 /* Entry.swift */,
+				0B4705C12C32DD30004D1DDB /* History.swift */,
+				0B3822132C22E7A9004F26E3 /* NewStatType.swift */,
+				0B3821B22C19E14A004F26E3 /* Stat.swift */,
+				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
-				0B3822132C22E7A9004F26E3 /* NewStatOption.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -221,7 +232,9 @@
 				0B3822022C1F59EA004F26E3 /* CounterCard.swift */,
 				0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */,
 				0B3821A02C184638004F26E3 /* CounterEntry.swift */,
+				0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */,
 				0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */,
+				0B4705BD2C316777004D1DDB /* CounterEntryList.swift */,
 				0B3821A82C186D69004F26E3 /* CounterForm.swift */,
 				0B3821982C1836DB004F26E3 /* CounterStat.swift */,
 				0B4705AB2C297CA6004D1DDB /* CounterReport.swift */,
@@ -235,7 +248,9 @@
 				0B38221B2C2488E7004F26E3 /* DecimalCard.swift */,
 				0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */,
 				0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */,
+				0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */,
 				0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */,
+				0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */,
 				0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */,
 				0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */,
 				0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */,
@@ -383,7 +398,7 @@
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
-				0B4705AE2C297CBF004D1DDB /* History.swift in Sources */,
+				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
@@ -393,22 +408,27 @@
 				0B4705AC2C297CA6004D1DDB /* CounterReport.swift in Sources */,
 				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
+				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
 				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
 				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
 				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
+				0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */,
 				0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */,
+				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
+				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
 				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
 				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,
 				0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */,
 				0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */,
+				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
 				0B38219C2C1845D5004F26E3 /* ReminderFrequencyEnum.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
 				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
-				0B3822142C22E7A9004F26E3 /* NewStatOption.swift in Sources */,
+				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 			);

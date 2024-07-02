@@ -1,10 +1,4 @@
-////
-////  StatListingView.swift
-////  STATS
-////
-////  Created by Staff on 12/06/2024.
-////
-//
+//TODO: Need to extract List from the Main Page view - Need to decide what to do with this code
 //import SwiftData
 //import SwiftUI
 //
@@ -13,9 +7,6 @@
 //    private var stats: [AnyStat] = []
 //    @Query var counters: [CounterStat] = []
 //    @Query var decimals: [DecimalStat] = []
-//    //Need to fetch Counters and Decimals and then append it to stat type
-//
-//    //@Query(sort: \StatsCounter.title, order: .reverse) var counter: [StatsCounter]
 //    
 //    init() {
 //        decimals.forEach { stat in stats.append(AnyStat(stat: stat)) }
@@ -36,28 +27,27 @@
 //        }
 //    }
 //    
-////    init(sort: SortDescriptor<StatsCounter>) {
-////        _counter = Query(sort: [sort])
-////        
-////    }
+//    init(sort: SortDescriptor<StatsCounter>) {
+//        _counter = Query(sort: [sort])
+//    }
 //    
-////    init(sort: SortDescriptor<StatsCounter>) {
-////        _counter = Query(filter: #Predicate {
-////            $0.desc != ""
-////        }, sort: [sort])
-////    }
+//    init(sort: SortDescriptor<StatsCounter>) {
+//        _counter = Query(filter: #Predicate {
+//            $0.desc != ""
+//        }, sort: [sort])
+//    }
 //    
-////    init(sort: SortDescriptor<any StatisticType>, searchString: String) {
-////        //statsCounters = fetchCounterStats()
-////        //statsDecimals = fetchDecimalStats()
-////        _allStats = Query(filter: #Predicate {
-////            if searchString.isEmpty {
-////                return true
-////            } else {
-////                return $0.title.localizedStandardContains(searchString)
-////            }
-////        }, sort: [sort])
-////    }
+//    init(sort: SortDescriptor<any StatisticType>, searchString: String) {
+//        statsCounters = fetchCounterStats()
+//        statsDecimals = fetchDecimalStats()
+//        _allStats = Query(filter: #Predicate {
+//            if searchString.isEmpty {
+//                return true
+//            } else {
+//                return $0.title.localizedStandardContains(searchString)
+//            }
+//        }, sort: [sort])
+//    }
 //    
 //    func deleteCounterStat(_ indexSet: IndexSet) {
 //        for index in indexSet {
@@ -94,17 +84,4 @@
 //        return decimalArray
 //    }
 //}
-//
-////struct AnyStat: StatisticType {
-////    
-////    private var _stat: any StatisticType
-////    
-////    init(_stat: any StatisticType) {
-////        self._stat = _stat
-////    }
-////}
-//
-////#Preview {
-////    StatListingView()
-////}
 

@@ -2,16 +2,16 @@ import Foundation
 import SwiftData
 
 @Model
-
-//TODO: Should I set this to have a relationship with CounterStat?
-class CounterEntry: Identifiable {
+class CounterEntry: Entry, Identifiable {
+    @Relationship var counterStat: CounterStat
+    var entryId: UUID
     var value: Int
-    var counterEntryID: UUID
     var timestamp: Date
     
-    init(value: Int, counterEntryID: UUID, timestamp: Date) {
+    init(counterStat: CounterStat, entryId: UUID, value: Int, timestamp: Date) {
+        self.counterStat = counterStat
+        self.entryId = entryId
         self.value = value
-        self.counterEntryID = counterEntryID
         self.timestamp = timestamp
     }
 }

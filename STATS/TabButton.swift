@@ -1,12 +1,6 @@
-//
-//  TabButton.swift
-//  STATS
-//
-//  Created by Staff on 25/06/2024.
-//
-
 import SwiftUI
 
+//TODO: Where should this file be moved?
 struct TabButton: View {
     let title: String
     let icon: String
@@ -25,7 +19,6 @@ struct TabButton: View {
                 Text(title)
                     .foregroundColor(selectedDetailTab == tag ? .blue : .black)
             }
-            
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)

@@ -2,8 +2,7 @@ import SwiftUI
 
 struct Navbar: View {
     @State private var selectedTab = 1
-    
-    // TODO: Link for custom nav bar https://mobileappsacademy.medium.com/custom-bottom-tab-bar-swiftui-17749b6a0a5b
+
     var body: some View {
         TabView(selection: $selectedTab) {
             
@@ -17,7 +16,7 @@ struct Navbar: View {
             .tag(1)
             
             NavigationStack {
-                NewStatOption(selectedTab: $selectedTab)
+                NewStatType(selectedTab: $selectedTab)
             }
             .tabItem{
                 Image(systemName: "plus.circle.fill")
@@ -37,7 +36,3 @@ struct Navbar: View {
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
-
-//#Preview {
-//    Navbar()
-//}

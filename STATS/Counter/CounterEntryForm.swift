@@ -6,31 +6,29 @@ struct CounterEntryForm: View {
     @State var value = ""
     @State var timestamp = Date.now
     
-    @State private var newCounterEntry = ""
-    
     var body: some View {
         Form(content: {
             HStack{
                 Text("Value ")
                 TextField("Value", text: $value)
+                    .keyboardType(.numberPad)
             }
             
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Add", action: addEntry)
-        
         })
-        
     }
     
     func addEntry() {
-        guard newCounterEntry.isEmpty == false else { return }
+        guard !value.isEmpty else { return }
         
-        withAnimation{
-            let entry = CounterEntry(value: 1, counterEntryID: UUID(), timestamp: Date())
-            counterStat.statCounterEntry.append(entry)
-            newCounterEntry = ""
-        }
+        let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), value: Int(value) ?? 1, timestamp: timestamp)
+        counterStat.statEntry.append(entry)
+        
+        value = ""
+        timestamp = Date.now
+        //TODO: Navigate to the History tab after adding
     }
 }
 

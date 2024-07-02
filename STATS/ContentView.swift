@@ -11,6 +11,7 @@ struct ContentView: View {
     
     
     var body: some View {
+        //TODO: Need the list extracted from the ContentView
         List {
             ForEach(stats) { item in
                 StatUtility.Card(stat: item.stat)
@@ -25,7 +26,7 @@ struct ContentView: View {
         .toolbar {
             ToolbarItem{
                 Menu {
-                    //TODO: Need to implement sort
+                    //TODO: Implement sort
                 } label: {
                     Label("Sort", systemImage: "arrow.up.arrow.down")
                 }
@@ -34,6 +35,7 @@ struct ContentView: View {
         }
     }
     
+    //TODO: Where should delete function be held?
     func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
@@ -42,26 +44,20 @@ struct ContentView: View {
         }
     }
     
-    //TODO: Need to move this to Decimal Form
-    func addDecimal() {
-        return
-        //        let decimal = DecimalStat(name: name, date: date, unitName: unitName)
-        //        modelContext.insert(decimal)
-        //        path.append(decimal)
-    }
-    
     //TODO: Can this be moved to StatUtility
-    //TODO: Is there another solution other than .map? Need reference
+    //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
+    //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
     func fetchStats() {
         stats = []
         
         let fetchedCounters = FetchDescriptor<CounterStat>()
         let fetchedDecimals = FetchDescriptor<DecimalStat>()
         
-        do{
+        do {
             let counters = try modelContext.fetch(fetchedCounters)
             let decimals = try modelContext.fetch(fetchedDecimals)
             
+            //Takes each stat and transforms it to an AnyStat object (with the decimal or counter stat assigned to the stat attribute) and appends it to the stats array
             stats += counters.map { AnyStat(stat: $0) }
             stats += decimals.map { AnyStat(stat: $0) }
             
@@ -71,15 +67,14 @@ struct ContentView: View {
     }
 }
 
-//TODO: Do I dare fix this preview?
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: CounterStat.self, DecimalStat.self, configurations: config)
-        
-        return ContentView()
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
-}
+//#Preview {
+//    do {
+//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//        let container = try ModelContainer(for: CounterStat.self, DecimalStat.self, configurations: config)
+//        
+//        return ContentView()
+//            .modelContainer(container)
+//    } catch {
+//        fatalError("Failed to create model container.")
+//    }
+//}

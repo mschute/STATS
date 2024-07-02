@@ -2,10 +2,12 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Need to add picture stat to these functions
 class StatUtility {
-    static func Remove(stat: Stat, modelContext: ModelContext) {
+    static func Remove(stat: any Stat, modelContext: ModelContext) {
         if (stat is DecimalStat) {
             // as! https://stackoverflow.com/questions/28723625/how-to-convert-cast-from-a-protocol-to-a-class-in-swift
+            //TODO: Remove force unwrapping?
             modelContext.delete(stat as! DecimalStat)
         }
         
@@ -14,7 +16,7 @@ class StatUtility {
         }
     }
     
-    // TODO: Need to check out these functions
+    // TODO: Need to check out these functions, offset, IndexSet and inout
     
     static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
         Remove(stat: statItems[index].stat, modelContext: modelContext)
@@ -30,6 +32,7 @@ class StatUtility {
         statItems.remove(atOffsets: offsets)
     }
     
+//TODO: Need to decide what to do with this code
 //    static func fetchStats() {
 //        stats = []
 //        
@@ -48,7 +51,7 @@ class StatUtility {
 //        }
 //    }
     
-    static func Card(stat: Stat) -> some View {
+    static func Card(stat: any Stat) -> some View {
         if (stat is DecimalStat) {
             return AnyView(DecimalCard(stat: stat as! DecimalStat))
         }
@@ -60,40 +63,55 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
-//    static func StatForm(stat: Stat) -> some View {
-//        if (stat is DecimalStat) {
-//            return AnyView(DecimalForm(decimalStat: stat as! DecimalStat, selectedTab: 1))
-//        }
-//        
-//        if (stat is CounterStat) {
-//            return AnyView(CounterForm(stat: stat as! CounterStat))
-//        }
-//        
-//        return AnyView(Text("No stat available"))
-//    }
-    
-    static func EntryForm(stat: Stat) -> some View {
-        if (stat is DecimalStat) {
-            return AnyView(DecimalEntryForm(decimalStat: stat as! DecimalStat))
+    //TODO: https://forums.developer.apple.com/forums/thread/120034
+    static func StatForm(stat: any Stat, selectedTab: Binding<Int>, isEditMode: Bool) -> some View {
+        if (stat is CounterStat) {
+            return AnyView(CounterForm(counterStat: stat as? CounterStat, isEditMode: isEditMode, selectedTab: selectedTab))
         }
         
+        if (stat is DecimalStat) {
+            return AnyView(DecimalForm(decimalStat: stat as? DecimalStat, isEditMode: isEditMode, selectedTab: selectedTab))
+        }
+        
+        return AnyView(Text("No stat available"))
+    }
+    
+    static func EntryForm(stat: any Stat) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterEntryForm(counterStat: stat as! CounterStat))
         }
         
+        if (stat is DecimalStat) {
+            return AnyView(DecimalEntryForm(decimalStat: stat as! DecimalStat))
+        }
+        
         return AnyView(Text("No stat available"))
     }
     
-    static func Report(stat: Stat) -> some View {
-        if (stat is DecimalStat) {
-            return AnyView(DecimalReport())
-        }
-        
+    static func Report(stat: any Stat) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterReport())
         }
         
+        if (stat is DecimalStat) {
+            return AnyView(DecimalReport())
+        }
+        
         return AnyView(Text("No stat available"))
     }
     
+    static func EntryList(stat: any Stat, startDate: Binding<Date>, endDate: Binding<Date>) -> some View {
+        let id = stat.persistentModelID
+        
+        if (stat is CounterStat) {
+            return AnyView(CounterEntryList(id: id, startDate: startDate, endDate: endDate))
+        }
+        
+        if (stat is DecimalStat) {
+            return AnyView(DecimalEntryList(id: id, startDate: startDate, endDate: endDate))
+        }
+        
+        return AnyView(Text("No stat available"))
+        
+    }
 }
