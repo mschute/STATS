@@ -7,7 +7,6 @@ struct CounterForm: View {
     @Environment(\.dismiss) var dismiss
 
     @State var counterStat: CounterStat?
-    
     @State var tempCounterStat: CounterStat = CounterStat(name: "", created: Date())
     
     var isEditMode: Bool
@@ -40,7 +39,7 @@ struct CounterForm: View {
                 .cornerRadius(10)
         } else {
             Button("Add Counter") {
-                addCounter(name: tempCounterStat.name, created: Date())
+                addCounter()
                 }
                 .padding()
                 .buttonStyle(.plain)
@@ -52,9 +51,8 @@ struct CounterForm: View {
 
     }
     
-    private func addCounter(name: String, created: Date) {
-        let counter = CounterStat(name: name, created: created)
-        modelContext.insert(counter)
+    private func addCounter() {
+        modelContext.insert(tempCounterStat)
         dismiss()
         selectedTab = 1
     }

@@ -1,7 +1,7 @@
-//TODO: Need to add reamining fields to form
 import SwiftUI
 import SwiftData
 
+//TODO: Need to add reamining fields to form
 struct DecimalForm: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -19,6 +19,7 @@ struct DecimalForm: View {
         
         Form {
             TextField("Title", text: $tempDecimalStat.name)
+            
             TextField("Unit name", text: $tempDecimalStat.unitName)
         }
         .onAppear {
@@ -39,7 +40,7 @@ struct DecimalForm: View {
             .cornerRadius(10)
         } else {
             Button("Add Decimal"){
-                addDecimal(name: tempDecimalStat.name, created: Date(), unitName: tempDecimalStat.unitName)
+                addDecimal()
             }
             .padding()
             .buttonStyle(.plain)
@@ -48,10 +49,9 @@ struct DecimalForm: View {
             .cornerRadius(10)
         }
     }
-    
-    private func addDecimal(name: String, created: Date, unitName: String) {
-        let decimal = DecimalStat(name: name, created: created, unitName: unitName)
-        modelContext.insert(decimal)
+
+    private func addDecimal() {
+        modelContext.insert(tempDecimalStat)
         dismiss()
         selectedTab = 1
     }
