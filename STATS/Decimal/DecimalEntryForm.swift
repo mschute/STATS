@@ -6,31 +6,30 @@ struct DecimalEntryForm: View {
     @State var value = ""
     @State var timestamp = Date.now
     
-    @State private var newDecimalEntry = ""
-    
     var body: some View {
         Form(content: {
             HStack{
                 Text("\(decimalStat.unitName) ")
                 TextField("Value", text: $value)
+                    .keyboardType(.decimalPad)
             }
             
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Add", action: addEntry)
-        
         })
         
     }
     
     func addEntry() {
-        guard newDecimalEntry.isEmpty == false else { return }
+        guard !value.isEmpty else { return }
         
-        withAnimation{
-            let entry = DecimalEntry(decimalStat: decimalStat, decimalEntryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0)
-            decimalStat.statDecimalEntry.append(entry)
-            newDecimalEntry = ""
-        }
+        let entry = DecimalEntry(decimalStat: decimalStat, entryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0)
+        decimalStat.statEntry.append(entry)
+        
+        value = ""
+        timestamp = Date.now
+        //TODO: Navigate to history page
     }
 }
 
