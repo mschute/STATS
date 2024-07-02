@@ -4,7 +4,6 @@ struct DecimalCard: View {
     var stat: DecimalStat
     
     var body: some View {
-        //TODO: Opps, I may have added a navigation to detail view twice
         NavigationLink {
             DecimalDetail(stat: stat)
         } label: {

@@ -1,10 +1,3 @@
-//
-//  DecimalDetail.swift
-//  STATS
-//
-//  Created by Staff on 16/06/2024.
-//
-
 import SwiftUI
 
 struct DecimalDetail: View {
@@ -14,10 +7,6 @@ struct DecimalDetail: View {
         Text("\(stat.name)")
             .font(.largeTitle)
         
-        StatDetailTabs(stat: stat as Stat)
+        StatDetailTabs(stat: stat as any Stat)
     }
-}
-
-#Preview {
-    DecimalDetail(stat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"))
 }

@@ -1,14 +1,8 @@
-//
-//  StatDetailTabs.swift
-//  STATS
-//
-//  Created by Staff on 24/06/2024.
-//
-
 import SwiftUI
 
 struct StatDetailTabs: View {
-    var stat: Stat
+    var stat: any Stat
+    //TODO: Does this need to be an observed object? Environment object?
     @State var selectedDetailTab = 0
     @State private var selectedTab = 1
     
@@ -31,15 +25,11 @@ struct StatDetailTabs: View {
             case 2:
                 StatUtility.Report(stat: stat)
             case 3:
-                History()
+                History(stat: stat)
             default:
                 Text("Page does not exist")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-}
-
-#Preview {
-    StatDetailTabs(stat: CounterStat(name: "Weight", created: Date.now))
 }

@@ -1,13 +1,6 @@
-//
-//  NewStatOption.swift
-//  STATS
-//
-//  Created by Staff on 19/06/2024.
-//
-
 import SwiftUI
 
-struct NewStatOption: View {
+struct NewStatType: View {
     @Binding var selectedTab: Int
     
     var body: some View {
@@ -36,10 +29,8 @@ struct NewStatOption: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }
+            
+            //TODO: Add Picture Type
         }
     }
 }
-
-//#Preview {
-//    NewStatOption(selectedTab: 1)
-//}
