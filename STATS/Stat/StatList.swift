@@ -1,87 +1,65 @@
-//TODO: Need to extract List from the Main Page view - Need to decide what to do with this code
-//import SwiftData
-//import SwiftUI
-//
-//struct StatList: View {
-//    @Environment(\.modelContext) var modelContext
-//    private var stats: [AnyStat] = []
-//    @Query var counters: [CounterStat] = []
-//    @Query var decimals: [DecimalStat] = []
-//    
-//    init() {
-//        decimals.forEach { stat in stats.append(AnyStat(stat: stat)) }
-//        counters.forEach { stat in stats.append(AnyStat(stat: stat)) }
-//    }
-//    
-//    var body: some View {
-//        List {
-//            ForEach(stats) { stat in
-//                NavigationLink(value: stat) {
-//                    LazyVStack(alignment: .leading) {
-//                        Text(stat.name)
-//                            .font(.headline)
-//                    }
-//                }
-//            }
-//            .onDelete(perform: deleteCounterStat)
-//        }
-//    }
-//    
-//    init(sort: SortDescriptor<StatsCounter>) {
-//        _counter = Query(sort: [sort])
-//    }
-//    
-//    init(sort: SortDescriptor<StatsCounter>) {
-//        _counter = Query(filter: #Predicate {
-//            $0.desc != ""
-//        }, sort: [sort])
-//    }
-//    
-//    init(sort: SortDescriptor<any StatisticType>, searchString: String) {
-//        statsCounters = fetchCounterStats()
-//        statsDecimals = fetchDecimalStats()
-//        _allStats = Query(filter: #Predicate {
-//            if searchString.isEmpty {
-//                return true
-//            } else {
-//                return $0.title.localizedStandardContains(searchString)
-//            }
-//        }, sort: [sort])
-//    }
-//    
-//    func deleteCounterStat(_ indexSet: IndexSet) {
-//        for index in indexSet {
-//            let counter = counter[index]
-//            modelContext.delete(counter)
-//        }
-//    }
-//    
-//    func fetchCounterStats() -> [CounterStat] {
-//        var countersArray: [CounterStat] = []
-//        let fetchedCounters = FetchDescriptor<CounterStat>()
-//        
-//        do {
-//            let results = try modelContext.fetch(fetchedCounters)
-//            countersArray.append(contentsOf: results)
-//        } catch {
-//            print(error)
-//        }
-//        
-//        return countersArray
-//    }
-//    
-//    func fetchDecimalStats() -> [DecimalStat] {
-//        var decimalArray: [DecimalStat] = []
-//        let fetchedDecimal = FetchDescriptor<DecimalStat>()
-//        
-//        do {
-//            let results = try modelContext.fetch(fetchedDecimal)
-//            decimalArray.append(contentsOf: results)
-//        } catch {
-//            print(error)
-//        }
-//        
-//        return decimalArray
-//    }
-//}
+import SwiftData
+import SwiftUI
 
+struct StatList: View {
+    @Environment(\.modelContext) private var modelContext
+    
+    @Binding var stats: [AnyStat]
+    
+    @State private var isCreatedAscending = false
+    @State private var isNameAscending = false
+    
+    var body: some View {
+        List {
+            ForEach(stats) { item in
+                StatUtility.Card(stat: item.stat)
+            }
+            .onDelete(perform: deleteItems)
+            
+        }
+        .navigationTitle("Stat List")
+        .toolbar {
+            ToolbarItem{
+                Menu {
+                    Button(action: { sortStats(sortType: .created) } ) {
+                        Label("Sort by Date", systemImage: "calendar")
+                    }
+                    
+                    Button(action: { sortStats(sortType: .name) } ) {
+                        Label("Sort by Name", systemImage: "abc")
+                    }
+                } label: {
+                    Label("", systemImage: "arrow.up.arrow.down")
+                }
+                //TODO: Implement filter?
+            }
+        }
+    }
+    
+    func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            // Uses IndexSet to remove from [AnyStat] and ModelContext
+            // '&' means its passed by reference
+            StatUtility.Remove(offsets: offsets, statItems: &stats, modelContext: modelContext)
+        }
+    }
+    
+    func sortStats(sortType: SortType){
+        
+        switch sortType {
+        
+        case .created where isCreatedAscending == false:
+            stats.sort { $0.stat.created < $1.stat.created}
+            isCreatedAscending = true
+        case .created:
+            stats.sort { $0.stat.created > $1.stat.created }
+            isCreatedAscending = false
+        case .name where isNameAscending == false:
+            stats.sort { $0.stat.name < $1.stat.name }
+            isNameAscending = true
+        case .name:
+            stats.sort { $0.stat.name > $1.stat.name }
+            isNameAscending = false
+        }
+    }
+}

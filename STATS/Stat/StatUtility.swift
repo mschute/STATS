@@ -16,13 +16,11 @@ class StatUtility {
         }
     }
     
-    // TODO: Need to check out these functions, offset, IndexSet and inout
-    
-    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
-        Remove(stat: statItems[index].stat, modelContext: modelContext)
-        
-        statItems.remove(at: index)
-    }
+//    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
+//        Remove(stat: statItems[index].stat, modelContext: modelContext)
+//        
+//        statItems.remove(at: index)
+//    }
     
     static func Remove(offsets: IndexSet, statItems: inout[AnyStat], modelContext: ModelContext) {
         for index in offsets {
@@ -76,6 +74,7 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
+    //TODO: Potentially remove the force unwrap
     static func EntryForm(stat: any Stat) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterEntryForm(counterStat: stat as! CounterStat))

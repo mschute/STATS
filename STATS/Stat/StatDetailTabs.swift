@@ -3,6 +3,7 @@ import SwiftUI
 struct StatDetailTabs: View {
     var stat: any Stat
     //TODO: Does this need to be an observed object? Environment object?
+    //TODO: Change the number for selectedDetailTab to an enum
     @State var selectedDetailTab = 0
     @State private var selectedTab = 1
     
