@@ -64,7 +64,6 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
-    //TODO: Potentially remove the force unwrap
     static func EntryForm(stat: any Stat) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterEntryForm(counterStat: stat as! CounterStat))
