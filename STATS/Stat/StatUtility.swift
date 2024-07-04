@@ -2,12 +2,11 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-//TODO: Need to add picture stat to these functions
 class StatUtility {
+    // as! https://stackoverflow.com/questions/28723625/how-to-convert-cast-from-a-protocol-to-a-class-in-swift
     static func Remove(stat: any Stat, modelContext: ModelContext) {
         if (stat is DecimalStat) {
-            // as! https://stackoverflow.com/questions/28723625/how-to-convert-cast-from-a-protocol-to-a-class-in-swift
-            //TODO: Remove force unwrapping?
+            
             modelContext.delete(stat as! DecimalStat)
         }
         
@@ -16,11 +15,21 @@ class StatUtility {
         }
     }
     
-//    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
-//        Remove(stat: statItems[index].stat, modelContext: modelContext)
+//    static func Remove(stat: any Stat, modelContext: ModelContext) {
+//        if let decimalStat = stat as? DecimalStat {
+//            modelContext.delete(decimalStat)
+//        }
 //        
-//        statItems.remove(at: index)
+//        if let counterStat = stat as? CounterStat {
+//            modelContext.delete(counterStat)
+//        }
 //    }
+    
+    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
+        Remove(stat: statItems[index].stat, modelContext: modelContext)
+        
+        statItems.remove(at: index)
+    }
     
     static func Remove(offsets: IndexSet, statItems: inout[AnyStat], modelContext: ModelContext) {
         for index in offsets {
@@ -29,25 +38,6 @@ class StatUtility {
         
         statItems.remove(atOffsets: offsets)
     }
-    
-//TODO: Need to decide what to do with this code
-//    static func fetchStats() {
-//        stats = []
-//        
-//        let fetchedCounters = FetchDescriptor<CounterStat>()
-//        let fetchedDecimals = FetchDescriptor<DecimalStat>()
-//        
-//        do{
-//            let counters = try modelContext.fetch(fetchedCounters)
-//            let decimals = try modelContext.fetch(fetchedDecimals)
-//            
-//            stats += counters.map { AnyStat(stat: $0) }
-//            stats += decimals.map { AnyStat(stat: $0) }
-//            
-//        } catch {
-//            print("Add a stat!")
-//        }
-//    }
     
     static func Card(stat: any Stat) -> some View {
         if (stat is DecimalStat) {
@@ -62,7 +52,7 @@ class StatUtility {
     }
     
     //TODO: https://forums.developer.apple.com/forums/thread/120034
-    static func StatForm(stat: any Stat, selectedTab: Binding<Int>, isEditMode: Bool) -> some View {
+    static func StatForm(stat: any Stat, selectedTab: Binding<Tab>, isEditMode: Bool) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterForm(counterStat: stat as? CounterStat, isEditMode: isEditMode, selectedTab: selectedTab))
         }
