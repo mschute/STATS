@@ -4,9 +4,9 @@ import SwiftUI
 struct TabButton: View {
     let title: String
     let icon: String
-    let tag: Int
-    @Binding var selectedDetailTab: Int
-    var selectedTab = 1
+    let tag: DetailTab
+    @Binding var selectedDetailTab: DetailTab
+    var selectedTab: Tab = .StatList
     
     var body: some View {
         Button(action: {
@@ -26,5 +26,5 @@ struct TabButton: View {
 }
 
 #Preview {
-    TabButton(title: "Edit", icon: "square.and.pencil", tag: 1, selectedDetailTab: .constant(1), selectedTab: 1)
+    TabButton(title: "Edit", icon: "square.and.pencil", tag: .EditStat, selectedDetailTab: .constant(.EditStat), selectedTab: .StatList)
 }

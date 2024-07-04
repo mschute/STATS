@@ -48,6 +48,8 @@
 		0B4705C22C32DD30004D1DDB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C12C32DD30004D1DDB /* History.swift */; };
 		0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */; };
 		0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC34E2C35B51400636AAA /* SortType.swift */; };
+		0B6AC3512C369CF400636AAA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3502C369CF400636AAA /* Tab.swift */; };
+		0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3522C369CFE00636AAA /* DetailTab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		0B4705C12C32DD30004D1DDB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryList.swift; sourceTree = "<group>"; };
 		0B6AC34E2C35B51400636AAA /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
+		0B6AC3502C369CF400636AAA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		0B6AC3522C369CFE00636AAA /* DetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,8 @@
 				0B38219B2C1845D5004F26E3 /* ReminderFrequencyEnum.swift */,
 				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
 				0B6AC34E2C35B51400636AAA /* SortType.swift */,
+				0B6AC3502C369CF400636AAA /* Tab.swift */,
+				0B6AC3522C369CFE00636AAA /* DetailTab.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
+				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
 				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
 				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
@@ -434,6 +441,7 @@
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
 				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
+				0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ struct DecimalForm: View {
     
     var isEditMode: Bool
     
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: Tab
     
     var body: some View {
         Text(isEditMode ? "" : "Add Decimal Stat")
@@ -53,7 +53,7 @@ struct DecimalForm: View {
     private func addDecimal() {
         modelContext.insert(tempDecimalStat)
         dismiss()
-        selectedTab = 1
+        selectedTab = .StatList
     }
     
     private func editDecimal(name: String, unitName: String) {

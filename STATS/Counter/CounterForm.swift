@@ -11,7 +11,7 @@ struct CounterForm: View {
     
     var isEditMode: Bool
     
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: Tab
     
     var body: some View {
         Text(isEditMode ? "" : "Add Counter Stat")
@@ -53,7 +53,7 @@ struct CounterForm: View {
     
     private func addCounter() {
         modelContext.insert(tempCounterStat)
-        selectedTab = 1
+        selectedTab = .StatList
         dismiss()
     }
     

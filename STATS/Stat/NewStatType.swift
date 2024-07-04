@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NewStatType: View {
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: Tab
     
     var body: some View {
         VStack{
@@ -29,8 +29,6 @@ struct NewStatType: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }
-            
-            //TODO: Add Picture Type
         }
     }
 }
