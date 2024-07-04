@@ -2,7 +2,8 @@ import SwiftUI
 
 struct Navbar: View {
     @State private var selectedTab = 1
-
+    //TODO: Can the .tag() take an enum instead of an int?
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             
@@ -24,14 +25,12 @@ struct Navbar: View {
             }
             .tag(2)
             
-            
             Settings()
                 .tabItem {
                     Image(systemName: "gearshape.circle.fill")
                     Text("Settings")
                 }
                 .tag(3)
-            
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
