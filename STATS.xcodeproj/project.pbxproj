@@ -47,6 +47,7 @@
 		0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705BF2C316814004D1DDB /* AnyEntry.swift */; };
 		0B4705C22C32DD30004D1DDB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C12C32DD30004D1DDB /* History.swift */; };
 		0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */; };
+		0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC34E2C35B51400636AAA /* SortType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		0B4705BF2C316814004D1DDB /* AnyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEntry.swift; sourceTree = "<group>"; };
 		0B4705C12C32DD30004D1DDB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryList.swift; sourceTree = "<group>"; };
+		0B6AC34E2C35B51400636AAA /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			children = (
 				0B38219B2C1845D5004F26E3 /* ReminderFrequencyEnum.swift */,
 				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
+				0B6AC34E2C35B51400636AAA /* SortType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				0B38219C2C1845D5004F26E3 /* ReminderFrequencyEnum.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
 				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
+				0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
 				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,

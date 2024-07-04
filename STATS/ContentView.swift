@@ -4,47 +4,16 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     
-    @Query private var decimals: [DecimalStat]
-    @Query private var counters: [CounterStat]
-    
     @State private var stats: [AnyStat] = []
     
     
     var body: some View {
-        //TODO: Need the list extracted from the ContentView
-        List {
-            ForEach(stats) { item in
-                StatUtility.Card(stat: item.stat)
+        StatList(stats: $stats)
+            .task {
+                fetchStats()
             }
-            .onDelete(perform: deleteItems)
-            
-        }
-        .navigationTitle("Stat List")
-        .task {
-            fetchStats()
-        }
-        .toolbar {
-            ToolbarItem{
-                Menu {
-                    //TODO: Implement sort
-                } label: {
-                    Label("Sort", systemImage: "arrow.up.arrow.down")
-                }
-                //TODO: Implement filter?
-            }
-        }
     }
-    
-    //TODO: Where should delete function be held?
-    func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            // Uses IndexSet to remove from [AnyStat] and ModelContext
-            //TODO: Research this more
-            StatUtility.Remove(offsets: offsets, statItems: &stats, modelContext: modelContext)
-        }
-    }
-    
-    //TODO: Can this be moved to StatUtility
+
     //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
     //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
     func fetchStats() {
@@ -61,9 +30,15 @@ struct ContentView: View {
             stats += counters.map { AnyStat(stat: $0) }
             stats += decimals.map { AnyStat(stat: $0) }
             
+            sortStats()
+            
         } catch {
             print("Add a stat!")
         }
+    }
+    
+    func sortStats(){
+        stats.sort { $0.stat.created > $1.stat.created}
     }
 }
 
