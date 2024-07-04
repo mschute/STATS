@@ -1,10 +1,3 @@
-//
-//  CounterEntryCard.swift
-//  STATS
-//
-//  Created by Staff on 26/06/2024.
-//
-
 import SwiftUI
 
 struct CounterEntryCard: View {
