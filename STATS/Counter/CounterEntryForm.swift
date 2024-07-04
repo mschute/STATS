@@ -3,6 +3,7 @@ import SwiftUI
 struct CounterEntryForm: View {
     @Bindable var counterStat: CounterStat
     
+    //TODO: To clean this up, create the temp object with blank values rather than individual properties
     @State var value = ""
     @State var timestamp = Date.now
     
@@ -21,6 +22,8 @@ struct CounterEntryForm: View {
     }
     
     func addEntry() {
+        //TODO: Will need to add additional guards if each required field is empty
+        //TODO: Add alert that a field is empty if they try to submit with an empty field
         guard !value.isEmpty else { return }
         
         let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), value: Int(value) ?? 1, timestamp: timestamp)
