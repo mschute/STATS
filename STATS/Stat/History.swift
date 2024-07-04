@@ -31,7 +31,6 @@ struct History: View {
             .padding()
         
         StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
-
     }
 }
 

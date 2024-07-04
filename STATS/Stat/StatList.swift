@@ -31,7 +31,7 @@ struct StatList: View {
                 } label: {
                     Label("", systemImage: "arrow.up.arrow.down")
                 }
-                //TODO: Implement filter?
+                //TODO: Implement filter? After adding tag to Model properties
             }
         }
     }
