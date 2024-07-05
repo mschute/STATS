@@ -1,6 +1,6 @@
 import Foundation
 
-enum DaysOfWeek: String, Codable {
+enum DaysOfWeek: String {
     case Monday = "Monday"
     case Tuesday = "Tuesday"
     case Wednesday = "Wednesday"

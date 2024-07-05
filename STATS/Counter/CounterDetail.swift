@@ -7,5 +7,6 @@ struct CounterDetail: View {
         Text("\(stat.name) Stat Detail")
             .font(.largeTitle)
         StatDetailTabs(stat: stat as any Stat)
+        Spacer()
     }
 }
