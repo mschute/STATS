@@ -1,5 +1,5 @@
 import Foundation
 
-enum SortType: String, Codable {
+enum SortType {
     case created, name
 }

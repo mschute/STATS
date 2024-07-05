@@ -1,6 +1,6 @@
 import Foundation
 
-enum Frequency: String, Codable {
+enum Frequency: String {
     case multipleDaily = "Multiple times per day"
     case daily = "Daily"
     case everyOtherDay = "Every other day"

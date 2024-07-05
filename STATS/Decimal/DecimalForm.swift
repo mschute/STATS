@@ -5,13 +5,12 @@ import SwiftData
 struct DecimalForm: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var selectedTab: NavbarTabs
     
     @State var decimalStat: DecimalStat?
     @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), unitName: "")
     
     var isEditMode: Bool
-    
-    @Binding var selectedTab: Tab
     
     var body: some View {
         Text(isEditMode ? "" : "Add Decimal Stat")
@@ -52,8 +51,8 @@ struct DecimalForm: View {
 
     private func addDecimal() {
         modelContext.insert(tempDecimalStat)
+        selectedTab.selectedTab = .statList
         dismiss()
-        selectedTab = .StatList
     }
     
     private func editDecimal(name: String, unitName: String) {

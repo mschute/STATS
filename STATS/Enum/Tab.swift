@@ -1,5 +1,5 @@
-import Foundation
+import SwiftUI
 
-enum Tab: String, Codable {
-    case StatList, AddStat, Settings
+enum Tab{
+    case statList, addStat, settings
 }

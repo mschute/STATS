@@ -1,10 +1,11 @@
 import SwiftUI
 
 struct Navbar: View {
-    @State private var selectedTab: Tab = .StatList
+    @EnvironmentObject var selectedTab: NavbarTabs
+    @EnvironmentObject var selectedDetailTab: StatTabs
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $selectedTab.selectedTab) {
             
             NavigationStack {
                 ContentView()
@@ -13,23 +14,23 @@ struct Navbar: View {
                 Image(systemName: "list.bullet.circle.fill")
                 Text("Stat List")
             }
-            .tag(Tab.StatList)
+            .tag(Tab.statList)
             
             NavigationStack {
-                NewStatType(selectedTab: $selectedTab)
+                NewStatType()
             }
             .tabItem{
                 Image(systemName: "plus.circle.fill")
                 Text("New Stat")
             }
-            .tag(Tab.AddStat)
+            .tag(Tab.addStat)
             
             Settings()
                 .tabItem {
                     Image(systemName: "gearshape.circle.fill")
                     Text("Settings")
                 }
-                .tag(Tab.Settings)
+                .tag(Tab.settings)
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }

@@ -1,5 +1,5 @@
 import Foundation
 
-enum DetailTab: String, Codable {
-    case EditStat, AddEntry, Report, History
+enum DetailTab {
+    case editStat, addEntry, report, history
 }

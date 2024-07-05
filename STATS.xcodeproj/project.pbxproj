@@ -50,6 +50,9 @@
 		0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC34E2C35B51400636AAA /* SortType.swift */; };
 		0B6AC3512C369CF400636AAA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3502C369CF400636AAA /* Tab.swift */; };
 		0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3522C369CFE00636AAA /* DetailTab.swift */; };
+		0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */; };
+		0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */; };
+		0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3582C37F49100636AAA /* StatTabs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,9 @@
 		0B6AC34E2C35B51400636AAA /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		0B6AC3502C369CF400636AAA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		0B6AC3522C369CFE00636AAA /* DetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTab.swift; sourceTree = "<group>"; };
+		0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryFormEdit.swift; sourceTree = "<group>"; };
+		0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarTabs.swift; sourceTree = "<group>"; };
+		0B6AC3582C37F49100636AAA /* StatTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTabs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,8 @@
 				0B38219D2C1845D9004F26E3 /* Enum */,
 				0B38216E2C171366004F26E3 /* ContentView.swift */,
 				0B3822112C22E4B9004F26E3 /* Navbar.swift */,
+				0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */,
+				0B6AC3582C37F49100636AAA /* StatTabs.swift */,
 				0B3822152C22E8FE004F26E3 /* Settings.swift */,
 				0B38216C2C171366004F26E3 /* STATSApp.swift */,
 				0B4705B12C2AAFA1004D1DDB /* TabButton.swift */,
@@ -243,6 +251,7 @@
 				0B3821A02C184638004F26E3 /* CounterEntry.swift */,
 				0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */,
 				0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */,
+				0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */,
 				0B4705BD2C316777004D1DDB /* CounterEntryList.swift */,
 				0B3821A82C186D69004F26E3 /* CounterForm.swift */,
 				0B3821982C1836DB004F26E3 /* CounterStat.swift */,
@@ -410,6 +419,7 @@
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
+				0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */,
 				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
 				0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */,
 				0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */,
@@ -421,6 +431,7 @@
 				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
 				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
+				0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */,
 				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
 				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
 				0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */,
@@ -428,6 +439,7 @@
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
+				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
 				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
 				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,

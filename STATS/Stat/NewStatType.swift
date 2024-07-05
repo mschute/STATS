@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct NewStatType: View {
-    @Binding var selectedTab: Tab
     
     var body: some View {
         VStack{
@@ -9,7 +8,7 @@ struct NewStatType: View {
                 .font(.largeTitle)
             
             NavigationLink {
-                CounterForm(isEditMode: false, selectedTab: $selectedTab)
+                CounterForm(isEditMode: false)
             } label: {
                   Text("Add Counter")
                     .padding()
@@ -20,7 +19,7 @@ struct NewStatType: View {
             }
             
             NavigationLink {
-                DecimalForm(isEditMode: false, selectedTab: $selectedTab)
+                DecimalForm(isEditMode: false)
             } label: {
                   Text("Add Decimal")
                     .padding()

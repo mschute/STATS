@@ -5,13 +5,12 @@ import SwiftData
 struct CounterForm: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var selectedTab: NavbarTabs
     
     @State var counterStat: CounterStat?
     @State var tempCounterStat: CounterStat = CounterStat(name: "", created: Date())
     
     var isEditMode: Bool
-    
-    @Binding var selectedTab: Tab
     
     var body: some View {
         Text(isEditMode ? "" : "Add Counter Stat")
@@ -53,9 +52,12 @@ struct CounterForm: View {
     
     private func addCounter() {
         modelContext.insert(tempCounterStat)
-        selectedTab = .StatList
+        selectedTab.selectedTab = .statList
         dismiss()
     }
+        
+    
+        
     
     private func editCounter(name: String) {
         //TODO: After attributes added, just save temp counter onto the counterStat rather than each individual property

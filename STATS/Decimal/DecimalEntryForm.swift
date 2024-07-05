@@ -2,6 +2,9 @@ import SwiftUI
 
 struct DecimalEntryForm: View {
     @Bindable var decimalStat: DecimalStat
+    //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
+    
+    @EnvironmentObject var selectedDetailTab: StatTabs
     
     @State var value = ""
     @State var timestamp = Date.now
@@ -29,7 +32,7 @@ struct DecimalEntryForm: View {
         
         value = ""
         timestamp = Date.now
-        //TODO: Navigate to history page
+        selectedDetailTab.selectedDetailTab = .history
     }
 }
 

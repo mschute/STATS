@@ -4,6 +4,10 @@ import SwiftUI
 
 @main
 struct STATSApp: App {
+    //https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-environmentobject-to-share-data-between-views
+    @StateObject private var selectedTab = NavbarTabs()
+    @StateObject private var selectedDetailTab = StatTabs()
+    
     public var sharedModelContainer: ModelContainer = {
         //TODO: Need to add schema for Picture type
         let schema = Schema([
@@ -21,6 +25,8 @@ struct STATSApp: App {
     var body: some Scene {
         WindowGroup {
             Navbar()
+                .environmentObject(selectedTab)
+                .environmentObject(selectedDetailTab)
         }
         .modelContainer(sharedModelContainer)
     }
