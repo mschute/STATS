@@ -28,7 +28,7 @@ struct History: View {
         
         DatePicker("End Date", selection: $endDate, displayedComponents: .date)
             .datePickerStyle(.compact)
-            .padding()
+            .padding(.horizontal)
         
         StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
     }
