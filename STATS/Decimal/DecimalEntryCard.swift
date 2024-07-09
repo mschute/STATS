@@ -1,11 +1,21 @@
 import SwiftUI
 
 struct DecimalEntryCard: View {
+    var decimalEntry: DecimalEntry
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink {
+            DecimalEntryFormEdit(decimalEntry: decimalEntry)
+        } label: {
+            VStack {
+                Text("Value: \(decimalEntry.value) \(decimalEntry.decimalStat.unitName)")
+                Text("Timestamp: \(decimalEntry.timestamp)")
+            }
+            .frame(alignment: .leading)
+        }
     }
 }
 
 #Preview {
-    DecimalEntryCard()
+    DecimalEntryCard(decimalEntry: DecimalEntry(decimalStat: DecimalStat(name: "Weight", created: Date.now, unitName: "KG"), entryId: UUID(), timestamp: Date.now, value: 55.0))
 }

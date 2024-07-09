@@ -53,6 +53,7 @@
 		0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */; };
 		0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */; };
 		0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3582C37F49100636AAA /* StatTabs.swift */; };
+		0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC35A2C3D53A300636AAA /* DecimalEntryFormEdit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryFormEdit.swift; sourceTree = "<group>"; };
 		0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarTabs.swift; sourceTree = "<group>"; };
 		0B6AC3582C37F49100636AAA /* StatTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTabs.swift; sourceTree = "<group>"; };
+		0B6AC35A2C3D53A300636AAA /* DecimalEntryFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryFormEdit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */,
 				0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */,
 				0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */,
+				0B6AC35A2C3D53A300636AAA /* DecimalEntryFormEdit.swift */,
 				0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */,
 				0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */,
 				0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */,
@@ -440,6 +443,7 @@
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
+				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
 				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
 				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,

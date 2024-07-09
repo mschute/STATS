@@ -20,12 +20,7 @@ struct DecimalEntryList: View {
     var body: some View {
         List {
             ForEach(entries) { entry in
-                VStack(alignment: .leading) {
-                    Text("\(entry.value)")
-                        .font(.headline)
-                    
-                    Text("\(entry.timestamp)")
-                }
+                DecimalEntryCard(decimalEntry: entry)
             }
         }
     }
