@@ -174,18 +174,15 @@
 		0B38216B2C171366004F26E3 /* STATS */ = {
 			isa = PBXGroup;
 			children = (
-				0B38220C2C2056CB004F26E3 /* Extensions */,
-				0B3821FD2C1EF9AC004F26E3 /* Stat */,
 				0B3821FE2C1EF9BB004F26E3 /* Counter */,
 				0B3821FF2C1EFA0F004F26E3 /* Decimal */,
 				0B38219D2C1845D9004F26E3 /* Enum */,
+				0B38220C2C2056CB004F26E3 /* Extensions */,
+				0B6AC35C2C3D624600636AAA /* Navigation */,
+				0B3821FD2C1EF9AC004F26E3 /* Stat */,
 				0B38216E2C171366004F26E3 /* ContentView.swift */,
-				0B3822112C22E4B9004F26E3 /* Navbar.swift */,
-				0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */,
-				0B6AC3582C37F49100636AAA /* StatTabs.swift */,
 				0B3822152C22E8FE004F26E3 /* Settings.swift */,
 				0B38216C2C171366004F26E3 /* STATSApp.swift */,
-				0B4705B12C2AAFA1004D1DDB /* TabButton.swift */,
 				0B3821722C171367004F26E3 /* Assets.xcassets */,
 				0B3821742C171367004F26E3 /* Preview Content */,
 			);
@@ -285,6 +282,17 @@
 				0B38220D2C2056DD004F26E3 /* ModelContext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0B6AC35C2C3D624600636AAA /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0B3822112C22E4B9004F26E3 /* Navbar.swift */,
+				0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */,
+				0B6AC3582C37F49100636AAA /* StatTabs.swift */,
+				0B4705B12C2AAFA1004D1DDB /* TabButton.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
