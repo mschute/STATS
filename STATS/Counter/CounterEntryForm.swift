@@ -1,11 +1,19 @@
+import SwiftData
 import SwiftUI
 
 struct CounterEntryForm: View {
     @Bindable var counterStat: CounterStat
+    //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
     
-    //TODO: To clean this up, create the temp object with blank values rather than individual properties
+    @Environment(\.dismiss) var dismiss
+    
+    @EnvironmentObject var selectedDetailTab: StatTabs
+    
+    
+    //TODO: Create the temp object with blank values rather than individual properties?
     @State var value = ""
     @State var timestamp = Date.now
+    
     
     var body: some View {
         Form(content: {
@@ -21,6 +29,7 @@ struct CounterEntryForm: View {
         })
     }
     
+    //TODO: Do I need to update the model context?
     func addEntry() {
         //TODO: Will need to add additional guards if each required field is empty
         //TODO: Add alert that a field is empty if they try to submit with an empty field
@@ -31,7 +40,9 @@ struct CounterEntryForm: View {
         
         value = ""
         timestamp = Date.now
-        //TODO: Navigate to the History tab after adding
+        dismiss()
+        selectedDetailTab.selectedDetailTab = .history
+        
     }
 }
 

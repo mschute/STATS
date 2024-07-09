@@ -1,18 +1,21 @@
 import SwiftUI
 
 struct CounterEntryCard: View {
+    var counterEntry: CounterEntry
 
     var body: some View {
         NavigationLink {
-            //TODO: Navigate to separate edit form
-            //TODO: Need to create separate edit form (Need to do the same Add/Edit switch on the form. Navigate back to history after edit)
+            CounterEntryFormEdit(counterEntry: counterEntry)
         } label: {
-            Text("Counter Name")
+            VStack {
+                Text("Value: \(counterEntry.value)")
+                Text("Timestamp: \(counterEntry.timestamp)")
+            }
+            .frame(alignment: .leading)
         }
-        Text("Counter Entry Card")
     }
 }
 
 #Preview {
-    CounterEntryCard()
+    CounterEntryCard(counterEntry: CounterEntry(counterStat: CounterStat(name: "Weight", created: Date.now), entryId: UUID(), value: 1, timestamp: Date.now))
 }

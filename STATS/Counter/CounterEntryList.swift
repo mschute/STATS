@@ -15,17 +15,11 @@ struct CounterEntryList: View {
         //https://developer.apple.com/documentation/swiftui/binding/wrappedvalue
         _entries = Query(filter: CounterEntryList.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp, order: .reverse)])
     }
-    
-    //TODO: Need Entry Card here
+
     var body: some View {
         List {
             ForEach(entries) { entry in
-                VStack(alignment: .leading) {
-                    Text("\(entry.value)")
-                        .font(.headline)
-                    
-                    Text("\(entry.timestamp)")
-                }
+                CounterEntryCard(counterEntry: entry)
             }
         }
     }
