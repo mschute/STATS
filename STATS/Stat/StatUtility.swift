@@ -52,7 +52,6 @@ class StatUtility {
     }
     
     //TODO: https://forums.developer.apple.com/forums/thread/120034
-    //static func StatForm(stat: any Stat, selectedTab: Binding<Tab>, isEditMode: Bool) -> some View {
     static func StatForm(stat: any Stat, isEditMode: Bool) -> some View {
         if (stat is CounterStat) {
             return AnyView(CounterForm(counterStat: stat as? CounterStat, isEditMode: isEditMode))
