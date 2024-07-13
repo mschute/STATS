@@ -6,14 +6,11 @@ struct CounterEntryForm: View {
     //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
     
     @Environment(\.dismiss) var dismiss
-    
     @EnvironmentObject var selectedDetailTab: StatTabs
-    
     
     //TODO: Create the temp object with blank values rather than individual properties?
     @State var value = ""
     @State var timestamp = Date.now
-    
     
     var body: some View {
         Form(content: {
@@ -29,7 +26,6 @@ struct CounterEntryForm: View {
         })
     }
     
-    //TODO: Do I need to update the model context?
     func addEntry() {
         //TODO: Will need to add additional guards if each required field is empty
         //TODO: Add alert that a field is empty if they try to submit with an empty field
@@ -46,6 +42,6 @@ struct CounterEntryForm: View {
     }
 }
 
-#Preview {
-    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
-}
+//#Preview {
+//    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
+//}
