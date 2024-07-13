@@ -9,6 +9,7 @@ class CounterEntry: Entry, Identifiable {
     //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
     @Relationship var counterStat: CounterStat
     var entryId: UUID
+    //TODO: delete value?
     var value: Int
     var timestamp: Date
     
