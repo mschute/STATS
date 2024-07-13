@@ -25,6 +25,7 @@ struct ContentView: View {
         do {
             let counters = try modelContext.fetch(fetchedCounters)
             let decimals = try modelContext.fetch(fetchedDecimals)
+            print(modelContext.sqliteCommand)
             
             //Takes each stat and transforms it to an AnyStat object (with the decimal or counter stat assigned to the stat attribute) and appends it to the stats array
             stats += counters.map { AnyStat(stat: $0) }
