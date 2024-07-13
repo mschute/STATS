@@ -12,6 +12,6 @@ struct DecimalCard: View {
     }
 }
 
-#Preview {
-    CounterCard(stat: CounterStat(name: "Smoking Count", created: Date()))
-}
+//#Preview {
+//    CounterCard(stat: CounterStat(name: "Smoking Count", created: Date()))
+//}
