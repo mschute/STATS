@@ -37,6 +37,6 @@ struct CounterEntryFormEdit: View {
     }
 }
 
-#Preview {
-    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
-}
+//#Preview {
+//    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
+//}
