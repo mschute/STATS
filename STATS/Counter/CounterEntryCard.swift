@@ -8,8 +8,6 @@ struct CounterEntryCard: View {
             CounterEntryFormEdit(counterEntry: counterEntry)
         } label: {
             VStack {
-                //TODO: delete value?
-                Text("Value: \(counterEntry.value)")
                 Text("Timestamp: \(counterEntry.timestamp)")
             }
             .frame(alignment: .leading)
