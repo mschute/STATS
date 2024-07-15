@@ -1,5 +1,5 @@
 import SwiftData
-import SymbolPicker
+
 import SwiftUI
 
 struct CounterForm: View {
@@ -50,58 +50,16 @@ struct CounterForm: View {
         Form {
             Section(header: Text("Basic Information")) {
                 TextField("Name", text: $tempCounterStat.name)
+                
                 if isAdvanced {
                     TextField("Description", text: $tempCounterStat.desc)
                 }
                 
-                HStack {
-                    Text("Icon")
-                    Button {
-                        iconPickerPresented = true
-                    } label: {
-                        HStack {
-                            Image(systemName: icon)
-                            Image(systemName: "chevron.right")
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .foregroundColor(.black)
-                    }
-                    .sheet(isPresented: $iconPickerPresented) {
-                        SymbolPicker(symbol: $icon)
-                    }
-                }
+                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon)
             }
             
-//            Section(header: Text("Reminder")) {
-//                Toggle("Reminder", isOn: $hasReminder)
-//                
-//                if hasReminder {
-//                    HStack {
-//                        Text("Every")
-//                        
-//                        TextField("Value", text: $interval)
-//                            .keyboardType(.numberPad)
-//                        //Dismiss keyboard tips: https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
-//                        Text("Day(s)")
-//                    }
-//                    
-//                    List {
-//                        ForEach(reminders, id: \.self) { reminder in
-//                            Text(reminder, style: .time)
-//                        }
-//                        .onDelete(perform: deleteReminder)
-//                    }
-//                    
-//                    DatePicker(reminders.isEmpty ? "At" : "And", selection: $newReminder, displayedComponents: [.hourAndMinute])
-//                    
-//                    Button("Add reminder time") {
-//                        addReminder()
-//                    }
-//                }
-//            }
+            FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
             
-
-            ReminderSection(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
                 //TODO: Needs to either select a tag from a dropdown menu or create new tag
                 //TODO: Create custom multiple picker with SwiftUI https://www.fline.dev/multi-selector-in-swiftui/
                 //Optional picker: https://www.hackingwithswift.com/forums/swiftui/correct-use-of-swiftdata-in-a-picker/25107
@@ -175,24 +133,10 @@ struct CounterForm: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     
-//    private func addReminder() {
-//        reminders.append(newReminder)
-//        sortReminders()
-//    }
-//    
-//    private func deleteReminder(at offsets: IndexSet) {
-//        reminders.remove(atOffsets: offsets)
-//        sortReminders()
-//    }
-//    
-//    private func sortReminders() {
-//        reminders.sort(by: { $0 < $1 } )
-//    }
-    
     private func addCounter() {
         tempCounterStat.icon = icon
         
-        var newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempCounterStat.reminder = newReminder
         
         //TODO: Need to add category
