@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ReminderSection: View {
+struct FormReminder: View {
     @Binding var hasReminder: Bool
     @Binding var reminders: [Date]
     @Binding var newReminder: Date
