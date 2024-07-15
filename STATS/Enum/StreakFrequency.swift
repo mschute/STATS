@@ -3,6 +3,7 @@ import SwiftUI
 
 //Picker for Enum: https://forums.developer.apple.com/forums/thread/126706
 //Enum with SwiftData needs to be Codable: https://www.hackingwithswift.com/quick-start/swiftdata/using-structs-and-enums-in-swiftdata-models
+//TODO: Delete this as we are no longer doing Streak Frequency
 enum StreakFrequency: String, CaseIterable, Codable, Equatable  {
     case multipleDaily = "Multiple times per day"
     case daily = "Daily"
