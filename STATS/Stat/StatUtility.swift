@@ -78,7 +78,7 @@ class StatUtility {
     
     static func Report(stat: any Stat) -> some View {
         if (stat is CounterStat) {
-            return AnyView(CounterReport())
+            return AnyView(CounterReport(counterStat: stat as! CounterStat))
         }
         
         if (stat is DecimalStat) {
