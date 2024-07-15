@@ -50,6 +50,7 @@ struct CounterReport: View {
                 }
                 .padding()
                 
+                //TODO: If time, add option to view coubt by week and count by month
                 Chart {
                     ForEach(data) { entry in
                             BarMark(
@@ -72,9 +73,6 @@ struct CounterReport: View {
                 .padding(.horizontal)
             }
         }
-        
-        //for the bar chart have it span the time range, we need to bar time range to be either a day, a week or a month. Should this automatically adjust based on the total time frame?
-        //TODO: Bar chart, count per day, per week, per month, add count next to the chart
     }
     
     private func updateCalcs() {

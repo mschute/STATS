@@ -64,6 +64,7 @@
 		0B6AC36F2C43D40C00636AAA /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC36E2C43D40C00636AAA /* TimeOfDay.swift */; };
 		0B6AC3712C44405A00636AAA /* ReportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3702C44405A00636AAA /* ReportUtility.swift */; };
 		0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3732C4512CC00636AAA /* CountDayData.swift */; };
+		0B6AC3762C45313200636AAA /* CountWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3752C45313200636AAA /* CountWeekData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		0B6AC36E2C43D40C00636AAA /* TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		0B6AC3702C44405A00636AAA /* ReportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUtility.swift; sourceTree = "<group>"; };
 		0B6AC3732C4512CC00636AAA /* CountDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDayData.swift; sourceTree = "<group>"; };
+		0B6AC3752C45313200636AAA /* CountWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWeekData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6AC3732C4512CC00636AAA /* CountDayData.swift */,
+				0B6AC3752C45313200636AAA /* CountWeekData.swift */,
 			);
 			path = ChartData;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
+				0B6AC3762C45313200636AAA /* CountWeekData.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
