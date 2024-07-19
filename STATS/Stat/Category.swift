@@ -3,7 +3,6 @@ import SwiftData
 
 @Model 
 class Category: Identifiable {
-
     var id: UUID
     var name: String
 
