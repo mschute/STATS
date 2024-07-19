@@ -10,6 +10,7 @@ struct DecimalEntryForm: View {
     @State var value = ""
     @State var timestamp = Date.now
     
+    //TODO: Need to add note field to DecimalEntry
     var body: some View {
         Form(content: {
             HStack{

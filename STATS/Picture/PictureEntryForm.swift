@@ -1,8 +1,8 @@
-import SwiftData
 import SwiftUI
 
-struct CounterEntryForm: View {
-    @Bindable var counterStat: CounterStat
+//TODO: Need to Add picture functionality
+struct PictureEntryForm: View {
+    @Bindable var pictureStat: PictureStat
     //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
     
     @Environment(\.dismiss) var dismiss
@@ -10,12 +10,13 @@ struct CounterEntryForm: View {
     
     //TODO: Create the temp object with blank values rather than individual properties?
     @State var timestamp = Date.now
+    @State var note = ""
     
-    //TODO: Need to add note field to CounterEntry
     var body: some View {
         Form(content: {
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
+            TextField("Note", text: $note)
             Button("Add", action: addEntry)
         })
     }
@@ -24,16 +25,15 @@ struct CounterEntryForm: View {
         //TODO: Will need to add additional guards if each required field is empty
         //TODO: Add alert that a field is empty if they try to submit with an empty field
         
-        let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), timestamp: timestamp)
-        counterStat.statEntry.append(entry)
+        let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note)
+        pictureStat.statEntry.append(entry)
         
         timestamp = Date.now
         dismiss()
         selectedDetailTab.selectedDetailTab = .history
-        
     }
 }
 
 //#Preview {
-//    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
+//    PictureEntryForm()
 //}

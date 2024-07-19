@@ -23,13 +23,6 @@ struct History: View {
             .font(.largeTitle)
         
         DateRangePicker(startDate: $startDate, endDate: $endDate)
-//            DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-//                .datePickerStyle(.compact)
-//                .padding(.horizontal)
-//            
-//            DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-//                .datePickerStyle(.compact)
-//                .padding(.horizontal)
         
         StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
     }

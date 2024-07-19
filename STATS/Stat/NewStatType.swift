@@ -10,7 +10,7 @@ struct NewStatType: View {
             NavigationLink {
                 CounterForm(isEditMode: false)
             } label: {
-                  Text("Add Counter")
+                  Text("Add Counter Stat")
                     .padding()
                     .buttonStyle(.plain)
                     .foregroundColor(.white)
@@ -21,7 +21,18 @@ struct NewStatType: View {
             NavigationLink {
                 DecimalForm(isEditMode: false)
             } label: {
-                  Text("Add Decimal")
+                  Text("Add Decimal Stat")
+                    .padding()
+                    .buttonStyle(.plain)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }
+            
+            NavigationLink {
+                PictureForm(isEditMode: false)
+            } label: {
+                  Text("Add Picture Stat")
                     .padding()
                     .buttonStyle(.plain)
                     .foregroundColor(.white)

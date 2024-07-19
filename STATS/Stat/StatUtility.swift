@@ -9,7 +9,7 @@ class StatUtility {
         if (stat is DecimalStat) {
             do {
                 modelContext.delete(stat as! DecimalStat)
-                
+
                 try modelContext.save()
             } catch {
                     print("Error deleting stat")
@@ -19,6 +19,16 @@ class StatUtility {
         if (stat is CounterStat){
             do {
                 modelContext.delete(stat as! CounterStat)
+                
+                try modelContext.save()
+            } catch {
+                    print("Error deleting stat")
+                }
+            }
+        
+        if (stat is PictureStat){
+            do {
+                modelContext.delete(stat as! PictureStat)
                 
                 try modelContext.save()
             } catch {
@@ -49,6 +59,10 @@ class StatUtility {
             return AnyView(CounterCard(stat: stat as! CounterStat))
         }
         
+        if (stat is PictureStat) {
+            return AnyView(PictureCard(stat: stat as! PictureStat))
+        }
+        
         return AnyView(Text("No stat available"))
     }
     
@@ -60,6 +74,10 @@ class StatUtility {
         
         if (stat is DecimalStat) {
             return AnyView(DecimalForm(decimalStat: stat as? DecimalStat, isEditMode: isEditMode))
+        }
+        
+        if (stat is PictureStat) {
+            return AnyView(PictureForm(pictureStat: stat as? PictureStat, isEditMode: isEditMode))
         }
         
         return AnyView(Text("No stat available"))
@@ -74,6 +92,10 @@ class StatUtility {
             return AnyView(DecimalEntryForm(decimalStat: stat as! DecimalStat))
         }
         
+        if (stat is PictureStat) {
+            return AnyView(PictureEntryForm(pictureStat: stat as! PictureStat))
+        }
+        
         return AnyView(Text("No stat available"))
     }
     
@@ -83,7 +105,11 @@ class StatUtility {
         }
         
         if (stat is DecimalStat) {
-            return AnyView(DecimalReport())
+            return AnyView(DecimalReport(decimalStat: stat as! DecimalStat))
+        }
+        
+        if (stat is PictureStat) {
+            return AnyView(PictureReport(pictureStat: stat as! PictureStat))
         }
         
         return AnyView(Text("No stat available"))
@@ -98,6 +124,10 @@ class StatUtility {
         
         if (stat is DecimalStat) {
             return AnyView(DecimalEntryList(id: id, startDate: startDate, endDate: endDate))
+        }
+        
+        if (stat is PictureStat) {
+            return AnyView(PictureEntryList(id: id, startDate: startDate, endDate: endDate))
         }
         
         return AnyView(Text("No stat available"))

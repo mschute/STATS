@@ -6,6 +6,7 @@ struct ContentView: View {
     
     @Query(animation: .easeInOut) var counterStats: [CounterStat]
     @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
+    @Query(animation: .easeInOut) var pictureStats: [PictureStat]
     
     @State private var stats: [AnyStat] = []
     
@@ -26,6 +27,13 @@ struct ContentView: View {
         return decimalStats
     }
     
+    var filteredPictureStats: [PictureStat] {
+        if let filter = filter {
+            return pictureStats.filter { $0.category?.name == filter }
+        }
+        return pictureStats
+    }
+    
     var body: some View {
         StatList(stats: $stats, filter: $filter)
             .task {
@@ -35,6 +43,9 @@ struct ContentView: View {
                 combineStats()
             }
             .onChange(of: decimalStats){
+                combineStats()
+            }
+            .onChange(of: pictureStats){
                 combineStats()
             }
             .onChange(of: filter){
@@ -49,6 +60,7 @@ struct ContentView: View {
         
         stats += filteredCounterStats.map { AnyStat(stat: $0) }
         stats += filteredDecimalStats.map { AnyStat(stat: $0) }
+        stats += filteredPictureStats.map { AnyStat(stat: $0) }
 
         sortStats()
     }
