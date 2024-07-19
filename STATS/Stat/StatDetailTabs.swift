@@ -5,7 +5,6 @@ struct StatDetailTabs: View {
     
     @EnvironmentObject var selectedDetailTab: StatTabs
     
-    
     var body: some View {
         HStack{
             TabButton(title: "Edit", icon: "square.and.pencil", tag: .editStat)

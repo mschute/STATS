@@ -1,5 +1,6 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
+
 
 struct CounterEntryList: View {
     @Environment(\.modelContext) var modelContext
