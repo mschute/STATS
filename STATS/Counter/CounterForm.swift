@@ -8,13 +8,13 @@ struct CounterForm: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedTab: NavbarTabs
     
-    @Query(sort: \Category.name) var category: [Category]
+    @Query(sort: \Category.name) var categories: [Category]
     
     @State var counterStat: CounterStat?
-    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, categories: nil)
+    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, category: nil)
     
     @State private var newCategory: String = ""
-    @State private var chosenCategory: [String]? = nil
+    @State private var chosenCategory: Category? = nil
     @State private var addNewCategory: Bool = false
     
     @State var hasReminder: Bool = false
@@ -60,39 +60,9 @@ struct CounterForm: View {
             
             FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
             
-                //TODO: Needs to either select a tag from a dropdown menu or create new tag
-                //TODO: Create custom multiple picker with SwiftUI https://www.fline.dev/multi-selector-in-swiftui/
-                //Optional picker: https://www.hackingwithswift.com/forums/swiftui/correct-use-of-swiftdata-in-a-picker/25107
+
             if isAdvanced {
-                Section(header: Text("Category")) {
-                    Picker("Select a tag", selection: $chosenCategory) {
-                        ForEach(category) {
-                            option in Text(option.name)
-                                .tag(Optional(option))
-                        }
-                    }
-                    
-                    if !addNewCategory {
-                        Button("Add new tag") {
-                            addNewCategory = true
-                        }
-                    }
-                    
-                    if addNewCategory {
-                        TextField("Add new tag", text: $newCategory)
-                        HStack{
-                            Button("Add") {
-                                addCategory(newCategory: newCategory)
-                                newCategory = ""
-                                addNewCategory = false
-                            }
-                            Button("Cancel") {
-                                newCategory = ""
-                                addNewCategory = false
-                            }
-                        }
-                    }
-                }
+                FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
             }
                 
             if isEditMode {
@@ -120,6 +90,7 @@ struct CounterForm: View {
                 if let counterStat = counterStat {
                     tempCounterStat = counterStat
                     icon = tempCounterStat.icon
+                    chosenCategory = tempCounterStat.category
                     
                     if let reminder = tempCounterStat.reminder {
                         reminders = reminder.reminderTime
@@ -138,8 +109,7 @@ struct CounterForm: View {
         
         let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempCounterStat.reminder = newReminder
-        
-        //TODO: Need to add category
+        tempCounterStat.category = chosenCategory
         
         modelContext.insert(tempCounterStat)
         selectedTab.selectedTab = .statList
@@ -151,21 +121,14 @@ struct CounterForm: View {
             stat.name = tempCounterStat.name
             stat.desc = tempCounterStat.desc
             stat.icon = icon
+            stat.category = chosenCategory
             
             if let reminder = stat.reminder {
                 reminder.interval = Int(interval) ?? 0
                 reminder.reminderTime = reminders
             }
-            //TODO: Need to add category
         }
         dismiss()
-    }
-    
-    //TODO: How do they delete a category?
-    //TODO: May need to extract this out to the StatUtility and remove private, make it switchable? (maybe thats not necessary)
-    private func addCategory(newCategory: String){
-        modelContext.insert(Category(name: newCategory))
-        //TODO: Do I need a State Variable to check whether this button was clicked so it will expand a textfield with another button where they can add it? Probably
     }
 }
 
