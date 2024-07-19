@@ -7,6 +7,7 @@ import SwiftUI
 protocol Stat {
     var name: String { get }
     var created: Date { get }
+    var category: Category? { get }
     associatedtype EntryType: Entry
     var statEntry: [EntryType] { get }
     var persistentModelID: PersistentIdentifier { get }

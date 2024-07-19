@@ -5,6 +5,7 @@ import SwiftUI
 @Model
 class DecimalStat: Stat, Identifiable {
     var name: String
+    var category: Category?
     var created: Date
     var unitName: String
     @Relationship(deleteRule: .cascade) var statEntry = [DecimalEntry]()
