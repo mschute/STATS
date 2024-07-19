@@ -13,6 +13,13 @@ struct Settings: View {
         //TODO: Is Haptics easy?
         //TODO: Notifications
         //TODO: Sign In / Sign Out?
+        //TODO: Rate - inactive
+        //TODO: Share - inactive
+        //TODO: Feedback - inactive
+        //TODO: Export to CSV: inactive
+        //TODO: Widget - inactive
+        //TODO: Sync with Apple Health - inactive
+        //TODO: Sync with iCloud - inactive
     }
 }
 
