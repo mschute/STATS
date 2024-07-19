@@ -11,6 +11,7 @@ struct CounterEntryForm: View {
     //TODO: Create the temp object with blank values rather than individual properties?
     @State var timestamp = Date.now
     
+    //TODO: Need to add note field to CounterEntry
     var body: some View {
         Form(content: {
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])

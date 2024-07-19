@@ -5,6 +5,7 @@ import SwiftData
 class DecimalEntry: Entry, Identifiable {
     typealias T = DecimalStat
     
+    //TODO: Need to add note field to DecimalEntry
     @Relationship var decimalStat: DecimalStat
     var entryId: UUID
     var timestamp: Date
