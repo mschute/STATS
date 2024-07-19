@@ -65,6 +65,7 @@
 		0B6AC3712C44405A00636AAA /* ReportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3702C44405A00636AAA /* ReportUtility.swift */; };
 		0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3732C4512CC00636AAA /* CountDayData.swift */; };
 		0B6AC3762C45313200636AAA /* CountWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3752C45313200636AAA /* CountWeekData.swift */; };
+		0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		0B6AC3702C44405A00636AAA /* ReportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUtility.swift; sourceTree = "<group>"; };
 		0B6AC3732C4512CC00636AAA /* CountDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDayData.swift; sourceTree = "<group>"; };
 		0B6AC3752C45313200636AAA /* CountWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWeekData.swift; sourceTree = "<group>"; };
+		0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCategoryPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				0B6AC35D2C3E967100636AAA /* Category.swift */,
 				0B6AC36A2C42F72700636AAA /* DateRangePicker.swift */,
 				0B3822002C1F0F68004F26E3 /* Entry.swift */,
+				0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */,
 				0B6AC3682C42F02200636AAA /* FormIconPicker.swift */,
 				0B6AC3662C42E54C00636AAA /* FormReminder.swift */,
 				0B4705C12C32DD30004D1DDB /* History.swift */,
@@ -486,6 +489,7 @@
 				0B6AC3632C418C9600636AAA /* Reminder.swift in Sources */,
 				0B6AC3712C44405A00636AAA /* ReportUtility.swift in Sources */,
 				0B4705AC2C297CA6004D1DDB /* CounterReport.swift in Sources */,
+				0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */,
 				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
