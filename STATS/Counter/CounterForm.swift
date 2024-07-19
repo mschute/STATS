@@ -6,6 +6,7 @@ struct CounterForm: View {
     @Environment(\.modelContext) var modelContext
     
     @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var selectedTab: NavbarTabs
     
     @Query(sort: \Category.name) var categories: [Category]
@@ -60,11 +61,11 @@ struct CounterForm: View {
             
             FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
             
-
+            
             if isAdvanced {
                 FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
             }
-                
+            
             if isEditMode {
                 Button("Update") {
                     editCounter()
@@ -84,25 +85,28 @@ struct CounterForm: View {
                 .background(Color.blue)
                 .cornerRadius(10)
             }
-                
-            }
-            .onAppear {
-                if let counterStat = counterStat {
-                    tempCounterStat = counterStat
-                    icon = tempCounterStat.icon
-                    chosenCategory = tempCounterStat.category
-                    
-                    if let reminder = tempCounterStat.reminder {
-                        reminders = reminder.reminderTime
-                        interval = String(reminder.interval)
-                        hasReminder = true
-                    } else {
-                        reminders = []
-                    }
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
+            
         }
+        .onAppear {
+            if let counterStat = counterStat {
+                tempCounterStat = counterStat
+                icon = tempCounterStat.icon
+                chosenCategory = tempCounterStat.category
+                
+                if let reminder = tempCounterStat.reminder {
+                    reminders = reminder.reminderTime
+                    interval = String(reminder.interval)
+                    hasReminder = true
+                } else {
+                    reminders = []
+                }
+                //Needs to reset the counter stat here, otherwise it remembers the state from previous session
+            } else {
+                tempCounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, category: nil)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
     
     private func addCounter() {
         tempCounterStat.icon = icon
@@ -112,8 +116,15 @@ struct CounterForm: View {
         tempCounterStat.category = chosenCategory
         
         modelContext.insert(tempCounterStat)
-        selectedTab.selectedTab = .statList
+        
+        //TODO: If time, polish, there is a delay in the dismiss
+        
         dismiss()
+        
+        //Delaying the call https://www.hackingwithswift.com/example-code/system/how-to-run-code-after-a-delay-using-asyncafter-and-perform
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            selectedTab.selectedTab = .statList
+        }
     }
     
     private func editCounter() {
