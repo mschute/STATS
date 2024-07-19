@@ -24,7 +24,6 @@ struct DecimalEntryFormEdit: View {
                     .keyboardType(.numberPad)
                 Text("\(unitName)")
             }
-            
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Update", action: saveEntry)
@@ -40,6 +39,6 @@ struct DecimalEntryFormEdit: View {
     }
 }
 
-#Preview {
-    DecimalEntryForm(decimalStat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"), value: "0.0", timestamp: Date())
-}
+//#Preview {
+//    DecimalEntryForm(decimalStat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"), value: "0.0", timestamp: Date())
+//}

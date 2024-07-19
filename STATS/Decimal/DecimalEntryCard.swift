@@ -16,6 +16,6 @@ struct DecimalEntryCard: View {
     }
 }
 
-#Preview {
-    DecimalEntryCard(decimalEntry: DecimalEntry(decimalStat: DecimalStat(name: "Weight", created: Date.now, unitName: "KG"), entryId: UUID(), timestamp: Date.now, value: 55.0))
-}
+//#Preview {
+//    DecimalEntryCard(decimalEntry: DecimalEntry(decimalStat: DecimalStat(name: "Weight", created: Date.now, unitName: "KG"), entryId: UUID(), timestamp: Date.now, value: 55.0))
+//}
