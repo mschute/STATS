@@ -71,4 +71,6 @@ class ReportUtility {
         
         return dateCounts.map{ CountDayData(day: $0.key, count: $0.value) }
     }
+    
+    //TODO: If time, create count data by week and by month
 }
