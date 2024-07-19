@@ -50,7 +50,7 @@ struct CounterReport: View {
                 }
                 .padding()
                 
-                //TODO: If time, add option to view coubt by week and count by month
+                //TODO: If time, add option to view count by week and count by month
                 Chart {
                     ForEach(data) { entry in
                             BarMark(

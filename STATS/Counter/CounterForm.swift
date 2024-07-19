@@ -1,12 +1,10 @@
 import SwiftData
-
 import SwiftUI
 
 struct CounterForm: View {
     @Environment(\.modelContext) var modelContext
-    
+    //TODO: Should I add presentationMode?
     @Environment(\.dismiss) var dismiss
-    
     @EnvironmentObject var selectedTab: NavbarTabs
     
     @Query(sort: \Category.name) var categories: [Category]
@@ -25,7 +23,7 @@ struct CounterForm: View {
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
-    @State private var icon = "network"
+    @State private var icon: String = "network"
     
     var isEditMode: Bool
     @State var isAdvanced: Bool = false
@@ -35,6 +33,7 @@ struct CounterForm: View {
             Text(isEditMode ? "" : "Add Counter Stat")
                 .font(.largeTitle)
             
+            //TODO: Should I abstract this out?
             if !isAdvanced {
                 Button("Advanced Form") {
                     isAdvanced = true
@@ -85,7 +84,6 @@ struct CounterForm: View {
                 .background(Color.blue)
                 .cornerRadius(10)
             }
-            
         }
         .onAppear {
             if let counterStat = counterStat {
@@ -116,8 +114,6 @@ struct CounterForm: View {
         tempCounterStat.category = chosenCategory
         
         modelContext.insert(tempCounterStat)
-        
-        //TODO: If time, polish, there is a delay in the dismiss
         
         dismiss()
         
