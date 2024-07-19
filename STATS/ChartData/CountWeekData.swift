@@ -1,5 +1,6 @@
 import Foundation
 
+//TODO: Potentially delete this if no time.
 struct CountWeekData: Identifiable {
     var id: UUID
     var weekStart: Date
