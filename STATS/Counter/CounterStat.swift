@@ -4,11 +4,10 @@ import SwiftUI
 
 @Model
 class CounterStat: Stat, Identifiable {
-
     var name: String
+    var created: Date
     var desc: String
     var icon: String
-    var created: Date
     var reminder: Reminder?
     //var categories: [String]?
     var category: Category?

@@ -14,7 +14,6 @@ struct CounterEntryFormEdit: View {
     
     var body: some View {
         Form(content: {
-            
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Update", action: saveEntry)
