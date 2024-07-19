@@ -56,7 +56,6 @@ struct ContentView: View {
     func sortStats() {
         stats.sort { $0.stat.created > $1.stat.created}
     }
-    
 }
 
 //#Preview {
