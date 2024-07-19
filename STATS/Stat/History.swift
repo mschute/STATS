@@ -3,8 +3,8 @@ import SwiftUI
 
 // https://www.youtube.com/watch?v=Saw_sZWa4aQ
 struct History: View {
-    @State var startDate: Date
-    @State var endDate: Date
+    @State var startDate: Date = Date()
+    @State var endDate: Date = Date()
     
     private var stat: any Stat
     
@@ -22,13 +22,14 @@ struct History: View {
         Text("History")
             .font(.largeTitle)
         
-        DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-            .datePickerStyle(.compact)
-            .padding(.horizontal)
-        
-        DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-            .datePickerStyle(.compact)
-            .padding(.horizontal)
+        DateRangePicker(startDate: $startDate, endDate: $endDate)
+//            DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+//                .datePickerStyle(.compact)
+//                .padding(.horizontal)
+//            
+//            DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+//                .datePickerStyle(.compact)
+//                .padding(.horizontal)
         
         StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
     }

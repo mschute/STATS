@@ -1,67 +1,133 @@
-import SwiftUI
 import SwiftData
 
-//TODO: Need to add remaining fields to form
+import SwiftUI
+
 struct CounterForm: View {
     @Environment(\.modelContext) var modelContext
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedTab: NavbarTabs
     
+    @Query(sort: \Category.name) var categories: [Category]
+    
     @State var counterStat: CounterStat?
-    @State var tempCounterStat: CounterStat = CounterStat(name: "", created: Date())
+    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, category: nil)
+    
+    @State private var newCategory: String = ""
+    @State private var chosenCategory: Category? = nil
+    @State private var addNewCategory: Bool = false
+    
+    @State var hasReminder: Bool = false
+    @State private var reminders: [Date] = []
+    @State private var newReminder: Date = Date()
+    
+    @State private var interval: String = ""
+    
+    @State private var iconPickerPresented: Bool = false
+    @State private var icon = "network"
     
     var isEditMode: Bool
+    @State var isAdvanced: Bool = false
     
     var body: some View {
-        Text(isEditMode ? "" : "Add Counter Stat")
-            .font(.largeTitle)
+        VStack {
+            Text(isEditMode ? "" : "Add Counter Stat")
+                .font(.largeTitle)
+            
+            if !isAdvanced {
+                Button("Advanced Form") {
+                    isAdvanced = true
+                }
+                .padding()
+            } else {
+                Button("Basic Form") {
+                    isAdvanced = false
+                }
+                .padding()
+            }
+        }
         
         Form {
-            TextField("Name", text: $tempCounterStat.name)
+            Section(header: Text("Basic Information")) {
+                TextField("Name", text: $tempCounterStat.name)
+                
+                if isAdvanced {
+                    TextField("Description", text: $tempCounterStat.desc)
+                }
+                
+                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon)
+            }
             
-        }
-        .onAppear {
-            if let counterStat = counterStat {
-                tempCounterStat = counterStat
+            FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
+            
+
+            if isAdvanced {
+                FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        
-        if isEditMode {
-            Button("Update") {
-                editCounter(name: tempCounterStat.name)
+                
+            if isEditMode {
+                Button("Update") {
+                    editCounter()
+                }
+                .padding()
+                .buttonStyle(.plain)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+            } else {
+                Button("Add Counter") {
+                    addCounter()
+                }
+                .padding()
+                .buttonStyle(.plain)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
             }
-            .padding()
-            .buttonStyle(.plain)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(10)
-        } else {
-            Button("Add Counter") {
-                addCounter()
+                
             }
-            .padding()
-            .buttonStyle(.plain)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(10)
+            .onAppear {
+                if let counterStat = counterStat {
+                    tempCounterStat = counterStat
+                    icon = tempCounterStat.icon
+                    chosenCategory = tempCounterStat.category
+                    
+                    if let reminder = tempCounterStat.reminder {
+                        reminders = reminder.reminderTime
+                        interval = String(reminder.interval)
+                        hasReminder = true
+                    } else {
+                        reminders = []
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        Spacer()
-        
-    }
     
     private func addCounter() {
+        tempCounterStat.icon = icon
+        
+        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+        tempCounterStat.reminder = newReminder
+        tempCounterStat.category = chosenCategory
+        
         modelContext.insert(tempCounterStat)
         selectedTab.selectedTab = .statList
         dismiss()
     }
-        
     
-        
-    
-    private func editCounter(name: String) {
-        //TODO: After attributes added, just save temp counter onto the counterStat rather than each individual property
-        counterStat?.name = name
+    private func editCounter() {
+        if let stat = counterStat {
+            stat.name = tempCounterStat.name
+            stat.desc = tempCounterStat.desc
+            stat.icon = icon
+            stat.category = chosenCategory
+            
+            if let reminder = stat.reminder {
+                reminder.interval = Int(interval) ?? 0
+                reminder.reminderTime = reminders
+            }
+        }
         dismiss()
     }
 }

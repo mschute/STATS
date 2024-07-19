@@ -12,6 +12,6 @@ struct CounterCard: View {
     }
 }
 
-#Preview {
-    CounterCard(stat: CounterStat(name: "Smoking Count", created: Date()))
-}
+//#Preview {
+//    CounterCard(stat: CounterStat(name: "Smoking Count", desc: "Test desc", icon: "lasso.badge.sparkles", created: Date(), streak: true, streakFrequency: .daily, reminder: true, tag: "Health"))
+//}

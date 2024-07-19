@@ -11,7 +11,8 @@ struct STATSApp: App {
     public var sharedModelContainer: ModelContainer = {
         //TODO: Need to add schema for Picture type
         let schema = Schema([
-            DecimalStat.self, CounterStat.self, CounterEntry.self, DecimalEntry.self
+            DecimalStat.self, CounterStat.self, CounterEntry.self, DecimalEntry.self, Category.self, Reminder.self
+            //DecimalStat.self, CounterStat.self, CounterEntry.self, DecimalEntry.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         

@@ -4,39 +4,40 @@ import SwiftUI
 
 class StatUtility {
     // as! https://stackoverflow.com/questions/28723625/how-to-convert-cast-from-a-protocol-to-a-class-in-swift
+    
     static func Remove(stat: any Stat, modelContext: ModelContext) {
         if (stat is DecimalStat) {
-            
-            modelContext.delete(stat as! DecimalStat)
-        }
+            do {
+                modelContext.delete(stat as! DecimalStat)
+                
+                try modelContext.save()
+            } catch {
+                    print("Error deleting stat")
+                }
+            }
         
         if (stat is CounterStat){
-            modelContext.delete(stat as! CounterStat)
+            do {
+                modelContext.delete(stat as! CounterStat)
+                
+                try modelContext.save()
+            } catch {
+                    print("Error deleting stat")
+                }
+            }
         }
-    }
     
-//    static func Remove(stat: any Stat, modelContext: ModelContext) {
-//        if let decimalStat = stat as? DecimalStat {
-//            modelContext.delete(decimalStat)
-//        }
+//    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
+//        Remove(stat: statItems[index].stat, modelContext: modelContext)
 //        
-//        if let counterStat = stat as? CounterStat {
-//            modelContext.delete(counterStat)
-//        }
+//        //statItems.remove(at: index)
 //    }
     
-    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
-        Remove(stat: statItems[index].stat, modelContext: modelContext)
-        
-        statItems.remove(at: index)
-    }
-    
-    static func Remove(offsets: IndexSet, statItems: inout[AnyStat], modelContext: ModelContext) {
+    //Index set and offets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
+    static func Remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
         for index in offsets {
             Remove(stat: statItems[index].stat, modelContext: modelContext)
         }
-        
-        statItems.remove(atOffsets: offsets)
     }
     
     static func Card(stat: any Stat) -> some View {
@@ -78,7 +79,7 @@ class StatUtility {
     
     static func Report(stat: any Stat) -> some View {
         if (stat is CounterStat) {
-            return AnyView(CounterReport())
+            return AnyView(CounterReport(counterStat: stat as! CounterStat))
         }
         
         if (stat is DecimalStat) {

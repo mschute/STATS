@@ -4,42 +4,59 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     
+    @Query(animation: .easeInOut) var counterStats: [CounterStat]
+    @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
+    
     @State private var stats: [AnyStat] = []
     
+    @State var filter: String? = nil
+    
+    //https://www.avanderlee.com/swift/computed-property/
+    var filteredCounterStats: [CounterStat] {
+        if let filter = filter {
+            return counterStats.filter { $0.category?.name == filter }
+        }
+        return counterStats
+    }
+    
+    var filteredDecimalStats: [DecimalStat] {
+        if let filter = filter {
+            return decimalStats.filter { $0.category?.name == filter }
+        }
+        return decimalStats
+    }
     
     var body: some View {
-        StatList(stats: $stats)
+        StatList(stats: $stats, filter: $filter)
             .task {
-                fetchStats()
+                combineStats()
+            }
+            .onChange(of: counterStats){
+                combineStats()
+            }
+            .onChange(of: decimalStats){
+                combineStats()
+            }
+            .onChange(of: filter){
+                combineStats()
             }
     }
 
     //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
     //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
-    func fetchStats() {
+    func combineStats() {
         stats = []
         
-        let fetchedCounters = FetchDescriptor<CounterStat>()
-        let fetchedDecimals = FetchDescriptor<DecimalStat>()
-        
-        do {
-            let counters = try modelContext.fetch(fetchedCounters)
-            let decimals = try modelContext.fetch(fetchedDecimals)
-            
-            //Takes each stat and transforms it to an AnyStat object (with the decimal or counter stat assigned to the stat attribute) and appends it to the stats array
-            stats += counters.map { AnyStat(stat: $0) }
-            stats += decimals.map { AnyStat(stat: $0) }
-            
-            sortStats()
-            
-        } catch {
-            print("Add a stat!")
-        }
+        stats += filteredCounterStats.map { AnyStat(stat: $0) }
+        stats += filteredDecimalStats.map { AnyStat(stat: $0) }
+
+        sortStats()
     }
     
-    func sortStats(){
+    func sortStats() {
         stats.sort { $0.stat.created > $1.stat.created}
     }
+    
 }
 
 //#Preview {

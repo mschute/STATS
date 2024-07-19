@@ -3,6 +3,8 @@ import SwiftData
 
 @Model
 class DecimalEntry: Entry, Identifiable {
+    typealias T = DecimalStat
+    
     @Relationship var decimalStat: DecimalStat
     var entryId: UUID
     var timestamp: Date
