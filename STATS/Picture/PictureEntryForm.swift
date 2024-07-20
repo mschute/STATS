@@ -28,6 +28,7 @@ struct PictureEntryForm: View {
         let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note)
         pictureStat.statEntry.append(entry)
         
+        note = ""
         timestamp = Date.now
         dismiss()
         selectedDetailTab.selectedDetailTab = .history

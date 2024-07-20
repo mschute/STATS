@@ -16,7 +16,6 @@ struct DecimalEntryList: View {
         _entries = Query(filter: DecimalEntryList.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp, order: .reverse)])
     }
     
-    //TODO: Need to inject Entry Card here
     var body: some View {
         List {
             ForEach(entries) { entry in
