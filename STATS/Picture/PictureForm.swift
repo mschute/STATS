@@ -75,7 +75,7 @@ struct PictureForm: View {
                 .background(Color.blue)
                 .cornerRadius(10)
             } else {
-                Button("Add Counter") {
+                Button("Add Picture") {
                     addPicture()
                 }
                 .padding()
@@ -98,7 +98,7 @@ struct PictureForm: View {
                 } else {
                     reminders = []
                 }
-                //Needs to reset the counter stat here, otherwise it remembers the state from previous session
+                //Needs to reset the stat here, otherwise it remembers the state from previous session
             } else {
                 tempPictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "", reminder: nil, category: nil)
             }
