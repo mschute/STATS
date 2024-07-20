@@ -13,10 +13,12 @@ class CounterEntry: Entry, Identifiable {
     @Relationship var counterStat: CounterStat
     var entryId: UUID
     var timestamp: Date
+    var note: String
     
-    init(counterStat: CounterStat, entryId: UUID, timestamp: Date) {
+    init(counterStat: CounterStat, entryId: UUID, timestamp: Date, note: String) {
         self.counterStat = counterStat
         self.entryId = entryId
         self.timestamp = timestamp
+        self.note = note
     }
 }
