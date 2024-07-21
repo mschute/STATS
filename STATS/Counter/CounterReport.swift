@@ -76,7 +76,7 @@ struct CounterReport: View {
     }
     
     private func updateCalcs() {
-        timePeriodTotal = ReportUtility.calcTimePeriodTotal(stat: counterStat, startDate: startDate, endDate: endDate)
+        timePeriodTotal = ReportUtility.calcTotalEntriesDateRange(stat: counterStat, startDate: startDate, endDate: endDate)
         (timeOfDay, timeOfDayCount) = ReportUtility.calcTimeOfDay(stat: counterStat)
         data = ReportUtility.createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate)
     }
