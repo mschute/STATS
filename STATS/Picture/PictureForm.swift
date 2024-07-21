@@ -50,6 +50,8 @@ struct PictureForm: View {
         Form {
             Section(header: Text("Basic Information")) {
                 TextField("Name", text: $tempPictureStat.name)
+                DatePicker("Created", selection: $tempPictureStat.created, displayedComponents: .date)
+                    .datePickerStyle(.compact)
                 
                 if isAdvanced {
                     TextField("Description", text: $tempPictureStat.desc)

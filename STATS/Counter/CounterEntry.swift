@@ -9,7 +9,6 @@ class CounterEntry: Entry, Identifiable {
     // Unsure why this needs to be optional but the one in the Decimal doesnt?
     // This may cause an error in production
     //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
-    //TODO: Need to add note field to CounterEntry
     @Relationship var counterStat: CounterStat
     var entryId: UUID
     var timestamp: Date

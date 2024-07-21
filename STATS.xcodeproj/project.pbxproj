@@ -76,6 +76,7 @@
 		0B7C63E22C4AC3D100798513 /* PictureEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */; };
 		0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E32C4AC46000798513 /* PictureForm.swift */; };
 		0B7C63E62C4AC5B500798513 /* PictureReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReport.swift */; };
+		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryList.swift; sourceTree = "<group>"; };
 		0B7C63E32C4AC46000798513 /* PictureForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureForm.swift; sourceTree = "<group>"; };
 		0B7C63E52C4AC5B500798513 /* PictureReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReport.swift; sourceTree = "<group>"; };
+		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +357,7 @@
 			children = (
 				0B6AC3732C4512CC00636AAA /* CountDayData.swift */,
 				0B6AC3752C45313200636AAA /* CountWeekData.swift */,
+				0B7C63EB2C4D384300798513 /* ValueDayData.swift */,
 			);
 			path = ChartData;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
+				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
