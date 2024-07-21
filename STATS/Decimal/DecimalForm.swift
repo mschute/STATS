@@ -51,6 +51,8 @@ struct DecimalForm: View {
         Form {
             Section(header: Text("Basic Information")) {
                 TextField("Name", text: $tempDecimalStat.name)
+                DatePicker("Created", selection: $tempDecimalStat.created, displayedComponents: .date)
+                    .datePickerStyle(.compact)
                 TextField("Unit name", text: $tempDecimalStat.unitName)
                 
                 if isAdvanced {
