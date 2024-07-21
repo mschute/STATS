@@ -9,7 +9,6 @@ class StatUtility {
         if (stat is DecimalStat) {
             do {
                 modelContext.delete(stat as! DecimalStat)
-
                 try modelContext.save()
             } catch {
                     print("Error deleting stat")
@@ -19,7 +18,6 @@ class StatUtility {
         if (stat is CounterStat){
             do {
                 modelContext.delete(stat as! CounterStat)
-                
                 try modelContext.save()
             } catch {
                     print("Error deleting stat")
@@ -29,7 +27,6 @@ class StatUtility {
         if (stat is PictureStat){
             do {
                 modelContext.delete(stat as! PictureStat)
-                
                 try modelContext.save()
             } catch {
                     print("Error deleting stat")

@@ -50,6 +50,8 @@ struct CounterForm: View {
         Form {
             Section(header: Text("Basic Information")) {
                 TextField("Name", text: $tempCounterStat.name)
+                DatePicker("Created", selection: $tempCounterStat.created, displayedComponents: .date)
+                    .datePickerStyle(.compact)
                 
                 if isAdvanced {
                     TextField("Description", text: $tempCounterStat.desc)
