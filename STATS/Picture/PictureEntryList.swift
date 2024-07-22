@@ -23,13 +23,29 @@ struct PictureEntryList: View {
             ForEach(entries) { entry in
                 PictureEntryCard(pictureEntry: entry)
             }
+            .onDelete(perform: deleteItems)
+        }
+    }
+    
+    func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            // Uses IndexSet to remove from [AnyStat] and ModelContext
+            // TODO: Can this be extract out? ViewModel?
+            for index in offsets {
+                do {
+                    modelContext.delete(entries[index])
+                    try modelContext.save()
+                } catch {
+                        print("Error deleting entry")
+                    }
+            }
         }
     }
     
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<PictureEntry> {
         return #Predicate<PictureEntry> {
-            entry in entry.pictureStat.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+            entry in entry.pictureStat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }

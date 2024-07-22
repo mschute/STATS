@@ -5,7 +5,7 @@ import SwiftData
 class PictureEntry: Entry, Identifiable {
     typealias T = PictureStat
     
-    @Relationship var pictureStat: PictureStat
+    var pictureStat: PictureStat?
     var entryId: UUID
     var timestamp: Date
     var note: String
