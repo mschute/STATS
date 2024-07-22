@@ -2,10 +2,9 @@ import SwiftData
 import SwiftUI
 
 struct CounterEntryForm: View {
-    @Bindable var counterStat: CounterStat
-    //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
     
-    @Environment(\.dismiss) var dismiss
+    var counterStat: CounterStat
+    
     @EnvironmentObject var selectedDetailTab: StatTabs
     
     @State var note = ""
@@ -26,13 +25,12 @@ struct CounterEntryForm: View {
         //TODO: Add alert that a field is empty if they try to submit with an empty field
         
         let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), timestamp: timestamp, note: note)
+        //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
         counterStat.statEntry.append(entry)
         
         note = ""
         timestamp = Date.now
-        dismiss()
         selectedDetailTab.selectedDetailTab = .history
-        
     }
 }
 

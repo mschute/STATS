@@ -8,9 +8,10 @@ struct STATSApp: App {
     @StateObject private var selectedTab = NavbarTabs()
     @StateObject private var selectedDetailTab = StatTabs()
     
+    //Does not need StatEntry models because the relationship is inferred
     public var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            CounterStat.self, DecimalStat.self, PictureStat.self, CounterEntry.self, DecimalEntry.self, PictureEntry.self, Category.self, Reminder.self
+            CounterStat.self, DecimalStat.self, PictureStat.self, Category.self, Reminder.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         

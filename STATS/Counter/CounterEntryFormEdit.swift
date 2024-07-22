@@ -2,6 +2,8 @@ import SwiftUI
 
 struct CounterEntryFormEdit: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+
     var counterEntry: CounterEntry
     
     @State var timestamp: Date
@@ -25,9 +27,12 @@ struct CounterEntryFormEdit: View {
     
     //TODO: Navigation is wrong, it is going to Home first and then to history, it should go straight to history
     func saveEntry() {
+        
         counterEntry.note = note
         counterEntry.timestamp = timestamp
-        presentationMode.wrappedValue.dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
