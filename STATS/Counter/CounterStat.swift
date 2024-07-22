@@ -9,20 +9,10 @@ class CounterStat: Stat, Identifiable {
     var desc: String
     var icon: String
     var reminder: Reminder?
-    //var categories: [String]?
     var category: Category?
     
-    @Relationship(deleteRule: .cascade) var statEntry = [CounterEntry]()
-    
-//    init(name: String, desc: String, icon: String, created: Date, reminder: Reminder?, categories: [String]? = nil, statEntry: [CounterEntry] = [CounterEntry]()) {
-//        self.name = name
-//        self.desc = desc
-//        self.icon = icon
-//        self.created = created
-//        self.reminder = reminder
-//        self.categories = categories
-//        self.statEntry = statEntry
-//    }
+    //If want this on CloudKit - this must be null rather than setting to empty array
+    @Relationship(deleteRule: .cascade, inverse: \CounterEntry.counterStat) var statEntry = [CounterEntry]()
     
     init(name: String, desc: String, icon: String, created: Date, reminder: Reminder?, category: Category? = nil, statEntry: [CounterEntry] = [CounterEntry]()) {
         self.name = name
