@@ -51,6 +51,7 @@ struct CounterReport: View {
                 .padding()
                 
                 //TODO: If time, add option to view count by week and count by month
+                //TODO: Need to fix the bar chart domain for this.
                 Chart {
                     ForEach(data) { entry in
                             BarMark(

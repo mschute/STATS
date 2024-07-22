@@ -11,6 +11,7 @@ class PictureStat: Stat, Identifiable {
     var reminder: Reminder?
     var category: Category?
     
+    //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [PictureEntry]()
     
     init(name: String, created: Date, desc: String, icon: String, reminder: Reminder?, category: Category? = nil, statEntry: [PictureEntry] = [PictureEntry]()) {

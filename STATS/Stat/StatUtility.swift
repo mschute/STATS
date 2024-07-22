@@ -4,7 +4,7 @@ import SwiftUI
 
 class StatUtility {
     // as! https://stackoverflow.com/questions/28723625/how-to-convert-cast-from-a-protocol-to-a-class-in-swift
-    
+    //TODO: Can I unwrap this safely?
     static func Remove(stat: any Stat, modelContext: ModelContext) {
         if (stat is DecimalStat) {
             do {

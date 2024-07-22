@@ -64,7 +64,6 @@ struct DecimalReport: View {
                     
                     //Adjusting look of line chart https://blog.stackademic.com/line-chart-using-swift-charts-swiftui-cd1abeac9e44
                     Chart {
-                        
                         ForEach(data) { entry in
                             LineMark(
     
@@ -94,6 +93,8 @@ struct DecimalReport: View {
                     .chartYAxis {
                         AxisMarks(position: .leading)
                     }
+                    //TODO: Need to adjust the range to be based on the values in the entries
+                    //TODO: Strange bug in the chart, one of the points is way off the chart
                     .chartYScale(domain: [55, 57])
                     .chartXAxisLabel(position: .bottom, alignment: .center) {
                         Text("Date")

@@ -13,7 +13,7 @@ struct DecimalEntryFormEdit: View {
         self.decimalEntry = decimalEntry
         _value = State(initialValue: String(decimalEntry.value))
         _timestamp = State(initialValue: decimalEntry.timestamp)
-        _unitName = State(initialValue: decimalEntry.decimalStat.unitName)
+        _unitName = State(initialValue: decimalEntry.decimalStat?.unitName ?? "")
     }
     
     var body: some View {

@@ -1,23 +1,21 @@
 import SwiftUI
 
 struct DecimalEntryForm: View {
-    @Bindable var decimalStat: DecimalStat
-    //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
+    var decimalStat: DecimalStat
     
-    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedDetailTab: StatTabs
     
     @State var value = ""
     @State var note = ""
     @State var timestamp = Date.now
     
-    //TODO: Need to add note field to DecimalEntry
     var body: some View {
         Form(content: {
             HStack{
                 Text("\(decimalStat.unitName) ")
                 TextField("Value", text: $value)
                     .keyboardType(.decimalPad)
+                TextField("Note", text: $note)
             }
             
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])

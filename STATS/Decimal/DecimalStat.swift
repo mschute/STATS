@@ -14,6 +14,7 @@ class DecimalStat: Stat, Identifiable {
     var trackTotal: Bool
     var category: Category?
 
+    //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [DecimalEntry]()
     
     init(name: String, created: Date, desc: String, icon: String, unitName: String, reminder: Reminder?, trackAverage: Bool, trackTotal: Bool, category: Category?, statEntry: [DecimalEntry] = [DecimalEntry]()) {
