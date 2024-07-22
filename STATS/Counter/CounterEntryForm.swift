@@ -2,7 +2,6 @@ import SwiftData
 import SwiftUI
 
 struct CounterEntryForm: View {
-    
     var counterStat: CounterStat
     
     @EnvironmentObject var selectedDetailTab: StatTabs
