@@ -4,7 +4,7 @@ struct CounterEntryFormEdit: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
 
-    var counterEntry: CounterEntry
+    @Bindable var counterEntry: CounterEntry
     
     @State var timestamp: Date
     @State var note: String
