@@ -2,39 +2,24 @@ import SwiftUI
 
 struct DecimalEntryFormEdit: View {
     @Environment(\.presentationMode) var presentationMode
-    var decimalEntry: DecimalEntry
-    
-    @State var value: String
-    @State var timestamp: Date
-    @State var unitName: String
-    
-    //State initialValue: https://stackoverflow.com/questions/56691630/swiftui-state-var-initialization-issue
-    init(decimalEntry: DecimalEntry) {
-        self.decimalEntry = decimalEntry
-        _value = State(initialValue: String(decimalEntry.value))
-        _timestamp = State(initialValue: decimalEntry.timestamp)
-        _unitName = State(initialValue: decimalEntry.decimalStat?.unitName ?? "")
-    }
+    @Bindable var decimalEntry: DecimalEntry
     
     var body: some View {
         Form(content: {
             HStack{
                 Text("Value ")
-                TextField("Value", text: $value)
+                TextField("Value", value: $decimalEntry.value, format: .number)
                     .keyboardType(.numberPad)
-                Text("\(unitName)")
+                Text(decimalEntry.decimalStat?.unitName ?? "")
             }
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+            DatePicker("Timestamp", selection: $decimalEntry.timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Update", action: saveEntry)
         })
     }
     
     func saveEntry() {
-        guard !value.isEmpty else { return }
-        
-        decimalEntry.value = Double(value) ?? 0.0
-        decimalEntry.timestamp = timestamp
+        guard !String(decimalEntry.value).isEmpty else { return }
         presentationMode.wrappedValue.dismiss()
     }
 }
