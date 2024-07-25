@@ -78,8 +78,15 @@ class ReportUtility {
         }
     }
     
-    //Specific to count?
-    static func createDayCountData(statEntries: [any Entry], startDate: Date, endDate: Date) -> [CountDayData] {
+    static func calcYRangeCount(statEntries: [any Entry], startDate: Date, endDate: Date) -> Int {
+        let maxDayCount = findDayCount(statEntries: statEntries, startDate: startDate, endDate: endDate).values.max() ?? 0
+        let buffer = 2
+        
+        return maxDayCount + buffer
+    }
+    
+    //Common amongst all reports?
+    static func findDayCount(statEntries: [any Entry], startDate: Date, endDate: Date) -> [Date : Int] {
         var dateCounts: [Date : Int] = [:]
         let calendar = Calendar.current
         
@@ -90,8 +97,12 @@ class ReportUtility {
                 dateCounts[date, default: 0] += 1
             }
         }
-        
-        return dateCounts.map{ CountDayData(day: $0.key, count: $0.value) }
+        return dateCounts
+    }
+    
+    //Specific to count?
+    static func createDayCountData(statEntries: [any Entry], startDate: Date, endDate: Date) -> [CountDayData] {
+        return findDayCount(statEntries: statEntries, startDate: startDate, endDate: endDate).map{ CountDayData(day: $0.key, count: $0.value) }
     }
     
     //TODO: If time, create count data by week and by month

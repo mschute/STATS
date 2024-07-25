@@ -9,7 +9,6 @@ struct CounterEntryForm: View {
     @State var note = ""
     @State var timestamp = Date.now
     
-    //TODO: Need to add note field to CounterEntry
     var body: some View {
         Form(content: {
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])

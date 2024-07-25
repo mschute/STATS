@@ -6,6 +6,8 @@ struct DecimalReport: View {
     @State var endDate: Date = Date()
     
     @State var chartType: ChartType = .line
+    @State var chartYLow: Double = 0.0
+    @State var chartYHigh: Double = 100.0
     
     private var decimalStat: DecimalStat
     
@@ -25,6 +27,7 @@ struct DecimalReport: View {
     
     @State var data: [ValueDayData] = []
     
+    //TODO: DO I create a function to calculate report range but use the calc smallest value and largest value functions to do it?
     init(decimalStat: DecimalStat){
         self.decimalStat = decimalStat
         _startDate = State(initialValue: decimalStat.created)
@@ -39,6 +42,9 @@ struct DecimalReport: View {
         _avgAllTime = State(initialValue: ReportUtility.calcAvgValue(statEntries: decimalStat.statEntry))
         _avgDateRange = State(initialValue: ReportUtility.calcAvgValueDateRange(statEntries: decimalStat.statEntry, startDate: startDate, endDate: endDate))
         _data = State(initialValue: ReportUtility.createDayValueData(statEntries: decimalStat.statEntry, startDate: startDate, endDate: endDate))
+        _chartYLow = State(initialValue: Double(smallestDateRange) ?? 0.0)
+        _chartYHigh = State(initialValue: Double(largestDateRange) ?? 100.0)
+                           
     }
     var body: some View {
         VStack {
@@ -94,8 +100,7 @@ struct DecimalReport: View {
                         AxisMarks(position: .leading)
                     }
                     //TODO: Need to adjust the range to be based on the values in the entries
-                    //TODO: Strange bug in the chart, one of the points is way off the chart
-                    .chartYScale(domain: [55, 57])
+                    .chartYScale(domain: [chartYLow, chartYHigh])
                     .chartXAxisLabel(position: .bottom, alignment: .center) {
                         Text("Date")
                     }

@@ -6,6 +6,9 @@ struct CounterReport: View {
     @State var endDate: Date = Date()
     
     @State var chartType: ChartType = .bar
+    @State var chartYLow: Int = 0
+    //TODO: Create function to calculate highest count per day
+    @State var chartYHigh: Int = 10
     
     private var counterStat: CounterStat
     
@@ -21,6 +24,7 @@ struct CounterReport: View {
         _startDate = State(initialValue: counterStat.created)
         _total = State(initialValue: String(counterStat.statEntry.count))
         _data = State(initialValue: ReportUtility.createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
+        _chartYHigh = State(initialValue: ReportUtility.calcYRangeCount(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
     }
     
     //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
@@ -64,6 +68,7 @@ struct CounterReport: View {
                 .chartYAxis {
                     AxisMarks(position: .leading)
                 }
+                .chartYScale(domain: [chartYLow, chartYHigh])
                 .chartXAxisLabel(position: .bottom, alignment: .center) {
                     Text("Date")
                 }

@@ -1,31 +1,54 @@
 import SwiftUI
+import PhotosUI
 
 //TODO: Need to Add picture functionality
 struct PictureEntryForm: View {
-    @Bindable var pictureStat: PictureStat
-    //TODO: Why is this bindable but I have it for State for passing in stat type elsewhere?
+    var pictureStat: PictureStat
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedDetailTab: StatTabs
     
-    //TODO: Create the temp object with blank values rather than individual properties?
+    //TODO: Create the temp object with blank values rather than individual properties? Use @Bindable
     @State var timestamp = Date.now
     @State var note = ""
     
+    @State var selectedPhoto: PhotosPickerItem?
+    @State var selectedPhotoData: Data?
+    
+    @State var cameraImage: UIImage?
+    @State private var showCamera: Bool = false
+    
     var body: some View {
         Form(content: {
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+            Section(header: Text("TimeStamp")) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+            }
             
-            TextField("Note", text: $note)
-            Button("Add", action: addEntry)
+              PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
+            
+            Section(header: Text("Additional Information")) {
+                TextField("Note", text: $note)
+            }
+            
+            
+            Section {
+                Button("Add", action: addEntry)
+            }
+            
         })
+        .task(id: selectedPhoto) {
+            if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
+                selectedPhotoData = data
+            }
+        }
     }
+    
     
     func addEntry() {
         //TODO: Will need to add additional guards if each required field is empty
         //TODO: Add alert that a field is empty if they try to submit with an empty field
         
-        let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note)
+        let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note, image: selectedPhotoData)
         pictureStat.statEntry.append(entry)
         
         note = ""
