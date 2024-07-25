@@ -8,12 +8,15 @@ struct PictureEntryForm: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedDetailTab: StatTabs
     
-    //TODO: Create the temp object with blank values rather than individual properties?
+    //TODO: Create the temp object with blank values rather than individual properties? Use @Bindable
     @State var timestamp = Date.now
     @State var note = ""
     
     @State var selectedPhoto: PhotosPickerItem?
     @State var selectedPhotoData: Data?
+    
+    @State var cameraImage: UIImage?
+    @State private var showCamera: Bool = false
     
     var body: some View {
         Form(content: {
@@ -21,33 +24,7 @@ struct PictureEntryForm: View {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             }
             
-            //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
-            //TODO: Extract this out into a view
-              PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData)
-//            Section(header: Text("Photo")) {
-//                if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
-//                    Image(uiImage: uiImage)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(maxWidth: .infinity, maxHeight: 300)
-//                }
-//                
-//                PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
-//                    Label("Add Library Image", systemImage: "photo.fill")
-//                }
-//                
-//                if selectedPhotoData != nil {
-//                    Button(role: .destructive) {
-//                        withAnimation {
-//                            selectedPhoto = nil
-//                            selectedPhotoData = nil
-//                        }
-//                    } label: {
-//                        Label("Remove Image", systemImage: "xmark")
-//                            .foregroundStyle(.red)
-//                    }
-//                }
-//            }
+              PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
             Section(header: Text("Additional Information")) {
                 TextField("Note", text: $note)

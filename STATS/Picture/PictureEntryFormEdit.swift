@@ -11,6 +11,9 @@ struct PictureEntryFormEdit: View {
     @State var selectedPhoto: PhotosPickerItem?
     @State var selectedPhotoData: Data?
     
+    @State var cameraImage: UIImage?
+    @State private var showCamera: Bool = false
+    
     @State var timestamp: Date
     @State var note: String
     
@@ -27,7 +30,7 @@ struct PictureEntryFormEdit: View {
             DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
             
             //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
-            PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData)
+            PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
             Button("Update", action: saveEntry)
         })

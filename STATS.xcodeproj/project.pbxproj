@@ -78,6 +78,8 @@
 		0B7C63E62C4AC5B500798513 /* PictureReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReport.swift */; };
 		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
 		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
+		0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EF2C5241E600798513 /* CameraPermission.swift */; };
+		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +173,8 @@
 		0B7C63E52C4AC5B500798513 /* PictureReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReport.swift; sourceTree = "<group>"; };
 		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
 		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
+		0B7C63EF2C5241E600798513 /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
+		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 		0B38216B2C171366004F26E3 /* STATS */ = {
 			isa = PBXGroup;
 			children = (
+				0B7C63F12C52499E00798513 /* Camera */,
 				0B6AC3722C45022000636AAA /* ChartData */,
 				0B3821FE2C1EF9BB004F26E3 /* Counter */,
 				0B3821FF2C1EFA0F004F26E3 /* Decimal */,
@@ -297,7 +302,6 @@
 				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
-				0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -376,10 +380,20 @@
 				0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */,
 				0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */,
 				0B7C63E32C4AC46000798513 /* PictureForm.swift */,
-				0B7C63D32C4ABF4000798513 /* PictureStat.swift */,
+				0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */,
 				0B7C63E52C4AC5B500798513 /* PictureReport.swift */,
+				0B7C63D32C4ABF4000798513 /* PictureStat.swift */,
 			);
 			path = Picture;
+			sourceTree = "<group>";
+		};
+		0B7C63F12C52499E00798513 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0B7C63EF2C5241E600798513 /* CameraPermission.swift */,
+				0B7C63F22C5249C100798513 /* UIKitCamera.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
+				0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
 				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
@@ -574,6 +589,7 @@
 				0B38219C2C1845D5004F26E3 /* StreakFrequency.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
+				0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */,
 				0B7C63DE2C4AC1CE00798513 /* PictureEntryForm.swift in Sources */,
 				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
 				0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */,
@@ -749,6 +765,7 @@
 				DEVELOPMENT_TEAM = 572P869P75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need permission to use camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -777,6 +794,7 @@
 				DEVELOPMENT_TEAM = 572P869P75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need permission to use camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
