@@ -77,6 +77,7 @@
 		0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E32C4AC46000798513 /* PictureForm.swift */; };
 		0B7C63E62C4AC5B500798513 /* PictureReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReport.swift */; };
 		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
+		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		0B7C63E32C4AC46000798513 /* PictureForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureForm.swift; sourceTree = "<group>"; };
 		0B7C63E52C4AC5B500798513 /* PictureReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReport.swift; sourceTree = "<group>"; };
 		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
+		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
+				0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
 				0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */,
+				0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
 				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
 				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
