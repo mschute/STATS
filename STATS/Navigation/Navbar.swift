@@ -25,12 +25,14 @@ struct Navbar: View {
             }
             .tag(Tab.addStat)
             
-            Settings()
-                .tabItem {
-                    Image(systemName: "gearshape.circle.fill")
-                    Text("Settings")
-                }
-                .tag(Tab.settings)
+            NavigationStack {
+                Settings()
+            }
+            .tabItem {
+                Image(systemName: "gearshape.circle.fill")
+                Text("Settings")
+            }
+            .tag(Tab.settings)
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
