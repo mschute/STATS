@@ -3,6 +3,7 @@ import SwiftData
 
 @Model
 class PictureEntry: Entry, Identifiable {
+    //TODO: Is typealias necessary?
     typealias T = PictureStat
     
     var pictureStat: PictureStat?

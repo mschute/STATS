@@ -3,6 +3,7 @@ import SwiftData
 
 @Model
 class DecimalEntry: Entry, Identifiable {
+    //TODO: Is typealias necessary?
     typealias T = DecimalStat
     
     var decimalStat: DecimalStat?
