@@ -28,7 +28,6 @@ struct DecimalEntryList: View {
     func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
-            // TODO: Can this be extract out? ViewModel?
             for index in offsets {
                 do {
                     modelContext.delete(entries[index])

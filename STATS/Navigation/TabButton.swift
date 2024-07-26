@@ -1,6 +1,5 @@
 import SwiftUI
 
-//TODO: Where should this file be moved?
 //TODO: Need source
 struct TabButton: View {
     let title: String
