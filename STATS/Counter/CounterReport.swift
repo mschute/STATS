@@ -13,7 +13,7 @@ struct CounterReport: View {
     private var counterStat: CounterStat
     
     @State var total: String = ""
-    @State var timePeriodTotal: String = ""
+    @State var timePeriodTotal: Int = 0
     @State var timeOfDay: TimeOfDay = .morning
     @State var timeOfDayCount: String = ""
     
@@ -23,8 +23,8 @@ struct CounterReport: View {
         self.counterStat = counterStat
         _startDate = State(initialValue: counterStat.created)
         _total = State(initialValue: String(counterStat.statEntry.count))
-        _data = State(initialValue: ReportUtility.createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
-        _chartYHigh = State(initialValue: ReportUtility.calcYRangeCount(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
+        _data = State(initialValue: createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
+        _chartYHigh = State(initialValue: calcYRangeCount(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate))
     }
     
     //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
@@ -82,9 +82,69 @@ struct CounterReport: View {
     }
     
     private func updateCalcs() {
-        timePeriodTotal = ReportUtility.calcTotalEntriesDateRange(stat: counterStat, startDate: startDate, endDate: endDate)
-        (timeOfDay, timeOfDayCount) = ReportUtility.calcTimeOfDay(stat: counterStat)
-        data = ReportUtility.createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate)
+        timePeriodTotal = ReportUtility.calcTotalEntries(stat: counterStat, startDate: startDate, endDate: endDate)
+        (timeOfDay, timeOfDayCount) = calcTimeOfDay(stat: counterStat)
+        data = createDayCountData(statEntries: counterStat.statEntry, startDate: startDate, endDate: endDate)
+    }
+    
+    //Count specific?
+    func calcTimeOfDay(stat: any Stat) -> (timeOfDay: TimeOfDay, count: String) {
+        var timeOfDayCounts: [TimeOfDay: Int] = [
+            .morning: 0,
+            .afternoon: 0,
+            .evening: 0,
+            .overnight: 0
+        ]
+        
+        let calendar = Calendar.current
+        
+        for entry in stat.statEntry {
+            let hour = calendar.component(.hour, from: entry.timestamp)
+            
+            switch hour {
+            case 6..<12:
+                //https://www.hackingwithswift.com/sixty/2/6/dictionary-default-values
+                timeOfDayCounts[.morning, default: 0] += 1
+            case 12..<18:
+                timeOfDayCounts[.afternoon, default: 0] += 1
+            case 18..<24:
+                timeOfDayCounts[.evening, default: 0] += 1
+            default:
+                timeOfDayCounts[.overnight, default: 0] += 1
+            }
+        }
+        
+        if let maxPeriod = timeOfDayCounts.max(by: { $0.value < $1.value } ) {
+            return (timeOfDay: maxPeriod.key, count: String(maxPeriod.value))
+        } else {
+            //Structural binding
+            return (timeOfDay: .morning, count: String(0))
+        }
+    }
+    
+    func createDayCountData(statEntries: [any Entry], startDate: Date, endDate: Date) -> [CountDayData] {
+        return findDayCount(statEntries: statEntries, startDate: startDate, endDate: endDate).map{ CountDayData(day: $0.key, count: $0.value) }
+    }
+    
+    func calcYRangeCount(statEntries: [any Entry], startDate: Date, endDate: Date) -> Int {
+        let maxDayCount = findDayCount(statEntries: statEntries, startDate: startDate, endDate: endDate).values.max() ?? 0
+        let buffer = 2
+        
+        return maxDayCount + buffer
+    }
+    
+    func findDayCount(statEntries: [any Entry], startDate: Date, endDate: Date) -> [Date : Int] {
+        var dateCounts: [Date : Int] = [:]
+        let calendar = Calendar.current
+        
+        for entry in statEntries {
+            if (entry.timestamp >= startDate && entry.timestamp <= endDate) {
+                //https://developer.apple.com/documentation/foundation/calendar/2293783-startofday
+                let date = calendar.startOfDay(for: entry.timestamp)
+                dateCounts[date, default: 0] += 1
+            }
+        }
+        return dateCounts
     }
 }
 
