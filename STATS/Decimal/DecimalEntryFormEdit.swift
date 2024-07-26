@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct DecimalEntryFormEdit: View {
+    //TODO: Proper way is to use Navigation Path
     @Environment(\.presentationMode) var presentationMode
+    
+    //Bindable allows for changes to automatically be saved
     @Bindable var decimalEntry: DecimalEntry
     
     var body: some View {
@@ -13,6 +16,7 @@ struct DecimalEntryFormEdit: View {
                 Text(decimalEntry.decimalStat?.unitName ?? "")
             }
             DatePicker("Timestamp", selection: $decimalEntry.timestamp, displayedComponents: [.date, .hourAndMinute])
+            TextField("Note", text: $decimalEntry.note)
             
             Button("Update", action: saveEntry)
         })
