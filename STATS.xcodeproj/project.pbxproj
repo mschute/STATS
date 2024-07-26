@@ -299,7 +299,6 @@
 				0B6AC3622C418C9600636AAA /* Reminder.swift */,
 				0B6AC3702C44405A00636AAA /* ReportUtility.swift */,
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
-				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
 			);
@@ -355,6 +354,7 @@
 				0B6AC3562C37ED3500636AAA /* NavbarTabs.swift */,
 				0B6AC3582C37F49100636AAA /* StatTabs.swift */,
 				0B4705B12C2AAFA1004D1DDB /* TabButton.swift */,
+				0B4705A92C297986004D1DDB /* StatDetailTabs.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
