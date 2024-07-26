@@ -10,7 +10,7 @@ struct DecimalForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var decimalStat: DecimalStat?
-    @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "", unitName: "", reminder: nil, trackAverage: false, trackTotal: false, category: nil)
+    @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "network", unitName: "", reminder: nil, trackAverage: false, trackTotal: false, category: nil)
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -23,7 +23,6 @@ struct DecimalForm: View {
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
-    @State private var icon: String = "network"
     
     var isEditMode: Bool
     @State var isAdvanced: Bool = false
@@ -59,7 +58,7 @@ struct DecimalForm: View {
                     TextField("Description", text: $tempDecimalStat.desc)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon)
+                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempDecimalStat.icon)
             }
             
             //TODO: Add tooltip explaining this section?
@@ -98,7 +97,6 @@ struct DecimalForm: View {
         .onAppear {
             if let decimalStat = decimalStat {
                 tempDecimalStat = decimalStat
-                icon = tempDecimalStat.icon
                 chosenCategory = tempDecimalStat.category
                 
                 if let reminder = tempDecimalStat.reminder {
@@ -117,7 +115,6 @@ struct DecimalForm: View {
     }
 
     private func addDecimal() {
-        tempDecimalStat.icon = icon
         
         let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempDecimalStat.reminder = newReminder
@@ -138,7 +135,7 @@ struct DecimalForm: View {
             stat.unitName = tempDecimalStat.unitName
             stat.trackAverage = tempDecimalStat.trackAverage
             stat.trackTotal = tempDecimalStat.trackTotal
-            stat.icon = icon
+            stat.icon = tempDecimalStat.icon
             stat.category = chosenCategory
             
             if let reminder = stat.reminder {

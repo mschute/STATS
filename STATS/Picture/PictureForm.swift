@@ -10,7 +10,7 @@ struct PictureForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var pictureStat: PictureStat?
-    @State var tempPictureStat: PictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "", reminder: nil, category: nil)
+    @State var tempPictureStat: PictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "network", reminder: nil, category: nil)
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -23,7 +23,6 @@ struct PictureForm: View {
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
-    @State private var icon: String = "network"
     
     var isEditMode: Bool
     @State var isAdvanced: Bool = false
@@ -57,7 +56,7 @@ struct PictureForm: View {
                     TextField("Description", text: $tempPictureStat.desc)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon)
+                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempPictureStat.icon)
             }
             
             FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
@@ -90,7 +89,6 @@ struct PictureForm: View {
         .onAppear {
             if let pictureStat = pictureStat {
                 tempPictureStat = pictureStat
-                icon = tempPictureStat.icon
                 chosenCategory = tempPictureStat.category
                 
                 if let reminder = tempPictureStat.reminder {
@@ -109,7 +107,6 @@ struct PictureForm: View {
     }
     
     private func addPicture() {
-        tempPictureStat.icon = icon
         
         let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempPictureStat.reminder = newReminder
@@ -129,7 +126,7 @@ struct PictureForm: View {
         if let stat = pictureStat {
             stat.name = tempPictureStat.name
             stat.desc = tempPictureStat.desc
-            stat.icon = icon
+            stat.icon = tempPictureStat.icon
             stat.category = chosenCategory
             
             if let reminder = stat.reminder {

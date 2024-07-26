@@ -10,7 +10,7 @@ struct CounterForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var counterStat: CounterStat?
-    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, category: nil)
+    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -19,11 +19,9 @@ struct CounterForm: View {
     @State var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
-    @State private var icon: String = "network"
     
     var isEditMode: Bool
     @State var isAdvanced: Bool = false
@@ -57,7 +55,7 @@ struct CounterForm: View {
                     TextField("Description", text: $tempCounterStat.desc)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon)
+                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempCounterStat.icon)
             }
             
             FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
@@ -90,7 +88,6 @@ struct CounterForm: View {
         .onAppear {
             if let counterStat = counterStat {
                 tempCounterStat = counterStat
-                icon = tempCounterStat.icon
                 chosenCategory = tempCounterStat.category
                 
                 if let reminder = tempCounterStat.reminder {
@@ -102,15 +99,13 @@ struct CounterForm: View {
                 }
                 //Needs to reset the counter stat here, otherwise it remembers the state from previous session
             } else {
-                tempCounterStat = CounterStat(name: "", desc: "", icon: "", created: Date(), reminder: nil, category: nil)
+                tempCounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
     private func addCounter() {
-        tempCounterStat.icon = icon
-        
         let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempCounterStat.reminder = newReminder
         tempCounterStat.category = chosenCategory
@@ -129,7 +124,7 @@ struct CounterForm: View {
         if let stat = counterStat {
             stat.name = tempCounterStat.name
             stat.desc = tempCounterStat.desc
-            stat.icon = icon
+            stat.icon = tempCounterStat.icon
             stat.category = chosenCategory
             
             if let reminder = stat.reminder {
