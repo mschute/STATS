@@ -49,6 +49,7 @@ struct PictureEntryForm: View {
         //TODO: Add alert that a field is empty if they try to submit with an empty field
         
         let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note, image: selectedPhotoData)
+        
         pictureStat.statEntry.append(entry)
         
         note = ""
