@@ -5,21 +5,24 @@ struct PictureReport: View {
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
     
-    @State var chartType: ChartType = .bar
-    
     private var pictureStat: PictureStat
+
+    @State var pictureData: [PictureData] = []
     
-    //TODO: Need to determine which facts will be in this report
+    @State var filteredPictureData: [PictureData] = []
+    
+    @State var total: Int = 0
+    
+    //@Query(sort: \Category.name) var categories: [Category]
     
     @State var data: [CountDayData] = []
     
     init(pictureStat: PictureStat) {
         self.pictureStat = pictureStat
         _startDate = State(initialValue: pictureStat.created)
+        _total = State(initialValue: ReportUtility.calcTotalEntries(stat: pictureStat, startDate: startDate, endDate: endDate))
     }
-    
-    //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
-    //Tutorial for marquee: https://talk.objc.io/episodes/S01E374-interactive-marquee-view-part-1
+
     var body: some View {
         VStack {
             Text("Report")
@@ -32,50 +35,70 @@ struct PictureReport: View {
                     .padding()
                 
                 VStack {
+                    Text("Total entries in date range: \(total)")
+                    
                     ScrollView(.horizontal) {
-                        HStack(spacing: 40) {
-                            ForEach(pictureStat.statEntry) { entry in
+                        HStack(spacing: 10) {
+                            ForEach(filteredPictureData) { entry in
                                 VStack(spacing: 20) {
                                     if let imageData = entry.image, let uiImage = UIImage(data: imageData) {
                                         Image(uiImage: uiImage)
                                             .resizable()
                                             .scaledToFill()
                                             .frame(maxWidth: 250, maxHeight: 250)
-                                        
+                                            .clipped()
                                     }
 
-                                    Text("\(entry.timestamp)")
+                                    Text("\(entry.timestamp.formatted(date: .abbreviated, time: .shortened))")
                                         .font(.caption)
                                         .foregroundColor(.gray)
+                                    
+                                    //TODO: Need a nested ForEach loop with the other stats values
+                                    //TODO: Need if statement that if the day in the timestamp matches then put an overlay on the photo
+                                    //TODO: Need to create an overlay on the photos
                                 }
                             }
                         }
                     }
                 }
+                //TODO: Fixed size appears to be funky
                 
-                
-                //Need a marquee of the pictures
-                //Label with timestamp underneath the picture?
-                //Need a dropdown menu of different Stats - Just the names
-                //Need an overlay of the decimal value on top of the picture
-                //How would I do count? #2nd entry?
-                
-                //Count of pictures taken in date range
-                
+                //TODO: Need a dropdown menu of different Stats - Just the names
+                //TODO: Need an overlay of the decimal value on top of the picture
+                //TODO: How would I do count? Entry count? Since started? Both?
                 
             }
             .padding(.horizontal)
             
-            //TODO: NEED TO ADD CHART, Need to add picture marquee paired with stat
+            //Need function to compare startOfDay between two stat types?
         }
+        .onAppear { pictureData = createPictureData(pictureStat: pictureStat) }
+    }
+    
+    private func updateCalcs() {
+        total = ReportUtility.calcTotalEntries(stat: pictureStat, startDate: startDate, endDate: endDate)
+        filteredPictureData = filterPictureData(pictureData: pictureData, startDate: startDate, endDate: endDate)
+    }
+    
+    func filterPictureData(pictureData: [PictureData], startDate: Date, endDate: Date) -> [PictureData] {
+        return pictureData.filter { $0.timestamp >= startDate && $0.timestamp <= endDate }
+    }
+    
+    func createPictureData(pictureStat: PictureStat) -> [PictureData] {
+        var newPictureDataArray: [PictureData] = []
+        
+        for entry in pictureStat.statEntry {
+            if let unwrappedImage = entry.image {
+                let newPictureData = PictureData(id: UUID(), timestamp: entry.timestamp, image: unwrappedImage)
+                newPictureDataArray.append(newPictureData)
+            }
+        }
+        
+        return newPictureDataArray.sorted { $0.timestamp < $1.timestamp}
     }
 }
 
-private func updateCalcs() {
-    //        timePeriodTotal = ReportUtility.calcTimePeriodTotal(stat: pictureStat, startDate: startDate, endDate: endDate)
-    //        (timeOfDay, timeOfDayCount) = ReportUtility.calcTimeOfDay(stat: pictureStat)
-    //        data = ReportUtility.createDayCountData(statEntries: pictureStat.statEntry, startDate: startDate, endDate: endDate)
-}
+
 
 
 //#Preview {
