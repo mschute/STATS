@@ -60,7 +60,7 @@ struct PictureReport: View {
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 10) {
-                            ForEach(sortedPictureEntries) { pictureEntry in
+                            ForEach(filteredPictureData) { pictureEntry in
                                 VStack {
                                     ZStack(alignment: .bottom) {
                                         if let imageData = pictureEntry.image, let uiImage = UIImage(data: imageData) {
