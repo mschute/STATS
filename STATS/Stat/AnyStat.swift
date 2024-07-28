@@ -1,6 +1,6 @@
 import Foundation
 
-class AnyStat: Identifiable {
+class AnyStat: Identifiable, Hashable {
     var stat: any Stat
     
     init(stat: any Stat) {
@@ -26,5 +26,14 @@ class AnyStat: Identifiable {
         }
         
         return (startDate, endDate)
+    }
+    
+    //https://www.hackingwithswift.com/forums/swift/form-picker-error-requires-that-x-conform-to-hashable/19961
+    static func == (lhs: AnyStat, rhs: AnyStat) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

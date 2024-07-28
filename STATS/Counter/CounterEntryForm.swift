@@ -26,6 +26,7 @@ struct CounterEntryForm: View {
         //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
         counterStat.statEntry.append(entry)
         
+        
         note = ""
         timestamp = Date.now
         selectedDetailTab.selectedDetailTab = .history

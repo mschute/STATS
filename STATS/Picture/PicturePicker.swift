@@ -37,6 +37,7 @@ struct PicturePicker: View {
                 } message: { error in
                     Text(error.recoverySuggestion ?? "Try again later")
                 }
+            //TODO: Add grid line over the camera
                 .sheet(isPresented: $showCamera) {
                     UIKitCamera(selectedImage: $cameraImage)
                         .ignoresSafeArea()
