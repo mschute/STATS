@@ -18,7 +18,6 @@
 		0B38218A2C171367004F26E3 /* STATSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821892C171367004F26E3 /* STATSUITests.swift */; };
 		0B38218C2C171367004F26E3 /* STATSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */; };
 		0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821982C1836DB004F26E3 /* CounterStat.swift */; };
-		0B38219C2C1845D5004F26E3 /* StreakFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38219B2C1845D5004F26E3 /* StreakFrequency.swift */; };
 		0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38219E2C184621004F26E3 /* DaysOfWeek.swift */; };
 		0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A02C184638004F26E3 /* CounterEntry.swift */; };
 		0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A82C186D69004F26E3 /* CounterForm.swift */; };
@@ -117,7 +116,6 @@
 		0B3821892C171367004F26E3 /* STATSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITests.swift; sourceTree = "<group>"; };
 		0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0B3821982C1836DB004F26E3 /* CounterStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterStat.swift; sourceTree = "<group>"; };
-		0B38219B2C1845D5004F26E3 /* StreakFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakFrequency.swift; sourceTree = "<group>"; };
 		0B38219E2C184621004F26E3 /* DaysOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeek.swift; sourceTree = "<group>"; };
 		0B3821A02C184638004F26E3 /* CounterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntry.swift; sourceTree = "<group>"; };
 		0B3821A82C186D69004F26E3 /* CounterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterForm.swift; sourceTree = "<group>"; };
@@ -283,7 +281,6 @@
 				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
 				0B6AC3522C369CFE00636AAA /* DetailTab.swift */,
 				0B6AC34E2C35B51400636AAA /* SortType.swift */,
-				0B38219B2C1845D5004F26E3 /* StreakFrequency.swift */,
 				0B6AC3502C369CF400636AAA /* Tab.swift */,
 				0B6AC36E2C43D40C00636AAA /* TimeOfDay.swift */,
 			);
@@ -596,7 +593,6 @@
 				0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */,
 				0B6AC36F2C43D40C00636AAA /* TimeOfDay.swift in Sources */,
 				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
-				0B38219C2C1845D5004F26E3 /* StreakFrequency.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
 				0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
