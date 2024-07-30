@@ -5,6 +5,7 @@ import SwiftUI
 struct CounterEntryList: View {
     @Environment(\.modelContext) var modelContext
     @Query private var entries: [CounterEntry]
+    
     //https://forums.developer.apple.com/forums/thread/123920?answerId=387111022#387111022
     @Binding var startDate: Date
     @Binding var endDate: Date
@@ -29,7 +30,6 @@ struct CounterEntryList: View {
     func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
-            // TODO: Can this be extract out? ViewModel?
             for index in offsets {
                 do {
                     modelContext.delete(entries[index])

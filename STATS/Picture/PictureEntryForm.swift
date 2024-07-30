@@ -1,7 +1,6 @@
 import SwiftUI
 import PhotosUI
 
-//TODO: Need to Add picture functionality
 struct PictureEntryForm: View {
     var pictureStat: PictureStat
     
@@ -43,11 +42,7 @@ struct PictureEntryForm: View {
         }
     }
     
-    
     func addEntry() {
-        //TODO: Will need to add additional guards if each required field is empty
-        //TODO: Add alert that a field is empty if they try to submit with an empty field
-        
         let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note, image: selectedPhotoData)
         
         pictureStat.statEntry.append(entry)

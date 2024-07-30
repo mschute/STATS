@@ -10,7 +10,6 @@ struct FormCategoryPicker: View {
     @Binding var chosenCategory: Category?
     @Binding var addNewCategory: Bool
     
-    //TODO: Create custom multiple picker with SwiftUI, implement if time https://www.fline.dev/multi-selector-in-swiftui/
     //optional picker https://stackoverflow.com/questions/59348093/picker-for-optional-data-type-in-swiftui
     var body: some View {
         Section(header: Text("Category")) {
@@ -45,11 +44,11 @@ struct FormCategoryPicker: View {
         }
     }
 
-    //TODO: May need to extract this out to the StatUtility and remove private, make it switchable? (maybe thats not necessary)
     private func addCategory(newCategory: String){
         modelContext.insert(Category(name: newCategory))
     }
 }
+
 //#Preview {
 //    FormCategoryPicker()
 //}

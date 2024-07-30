@@ -9,7 +9,6 @@ struct DecimalEntryForm: View {
     @State var note = ""
     @State var timestamp = Date.now
     
-    //TODO: Need to add note field to DecimalEntry
     var body: some View {
         Form(content: {
             HStack{
@@ -28,7 +27,6 @@ struct DecimalEntryForm: View {
     
     func addEntry() {
         guard !value.isEmpty else { return }
-        //TODO: Add alert that a field is empty if they try to submit with an empty field
         
         let entry = DecimalEntry(decimalStat: decimalStat, entryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0, note: note)
         decimalStat.statEntry.append(entry)
