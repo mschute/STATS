@@ -76,5 +76,4 @@ struct StatList: View {
             isNameAscending = false
         }
     }
-    
 }
