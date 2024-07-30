@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct EditTags: View {
+struct EditCategory: View {
     @Environment(\.modelContext) var modelContext
     
     @Query(sort: \Category.name) var categories: [Category]
@@ -23,8 +23,6 @@ struct EditTags: View {
             }
         }
         .navigationTitle("Manage Tags")
-        
-
     }
     
     private func deleteItems(offsets: IndexSet) {

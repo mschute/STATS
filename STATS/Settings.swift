@@ -6,7 +6,7 @@ struct Settings: View {
         List {
             Section {
                 NavigationLink(destination: {
-                    EditTags()
+                    EditCategory()
                 }, label: {
                     Label("Manage Tags", systemImage: "tag")
                 })
