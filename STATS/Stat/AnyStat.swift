@@ -17,7 +17,6 @@ class AnyStat: Identifiable, Hashable {
         var endDate = firstEntry.timestamp
         
         for entry in entryArray {
-            
             if(startDate > entry.timestamp) {
                 startDate = entry.timestamp
             } else if(endDate < entry.timestamp ) {

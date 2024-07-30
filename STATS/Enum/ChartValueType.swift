@@ -1,6 +1,5 @@
 import Foundation
 
 enum ChartValueType {
-    case total
-    case average
+    case total, average
 }

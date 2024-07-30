@@ -1,6 +1,5 @@
 import Foundation
 import SwiftData
-import SwiftUI
 
 @Model
 class PictureStat: Stat, Identifiable {

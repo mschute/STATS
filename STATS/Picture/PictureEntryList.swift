@@ -1,7 +1,6 @@
 import SwiftData
 import SwiftUI
 
-
 struct PictureEntryList: View {
     @Environment(\.modelContext) var modelContext
     @Query private var entries: [PictureEntry]

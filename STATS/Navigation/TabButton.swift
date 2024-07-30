@@ -5,6 +5,7 @@ struct TabButton: View {
     let title: String
     let icon: String
     let tag: DetailTab
+    
     @EnvironmentObject var selectedDetailTab: StatTabs
     
     var body: some View {

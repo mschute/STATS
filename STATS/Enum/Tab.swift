@@ -1,5 +1,5 @@
 import SwiftUI
 
-enum Tab{
+enum Tab {
     case statList, addStat, settings
 }
