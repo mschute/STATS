@@ -21,7 +21,7 @@ struct StatDetailTabs: View {
                 case .addEntry:
                     StatUtility.EntryForm(stat: stat)
                 case .report:
-                    StatUtility.Report(stat: stat)
+                    Report(stat: stat)
                 case .history:
                     History(stat: stat)
             }

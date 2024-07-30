@@ -96,21 +96,21 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
-    static func Report(stat: any Stat) -> some View {
-        if (stat is CounterStat) {
-            return AnyView(CounterReport(counterStat: stat as! CounterStat))
-        }
-        
-        if (stat is DecimalStat) {
-            return AnyView(DecimalReport(decimalStat: stat as! DecimalStat))
-        }
-        
-        if (stat is PictureStat) {
-            return AnyView(PictureReport(pictureStat: stat as! PictureStat))
-        }
-        
-        return AnyView(Text("No stat available"))
-    }
+//    static func Report(stat: any Stat) -> some View {
+//        if (stat is CounterStat) {
+//            return AnyView(Report(stat: stat as! CounterStat))
+//        }
+//        
+//        if (stat is DecimalStat) {
+//            return AnyView(Report(stat: stat as! DecimalStat))
+//        }
+//        
+//        if (stat is PictureStat) {
+//            return AnyView(Report(stat: stat as! PictureStat))
+//        }
+//        
+//        return AnyView(Text("No stat available"))
+//    }
     
     static func EntryList(stat: any Stat, startDate: Binding<Date>, endDate: Binding<Date>) -> some View {
         let id = stat.persistentModelID
@@ -128,6 +128,23 @@ class StatUtility {
         }
         
         return AnyView(Text("No stat available"))
+    }
+    
+    static func ReportContent(stat: any Stat, startDate: Binding<Date>, endDate: Binding<Date>) -> some View {
+        let id = stat.persistentModelID
         
+//        if (stat is CounterStat) {
+//            return AnyView(CounterReportContent(id: id, startDate: startDate, endDate: endDate))
+//        }
+//        
+        if let decimalStat = stat as? DecimalStat {
+            return AnyView(DecimalReportContent(id: id, startDate: startDate, endDate: endDate))
+        }
+        
+        if (stat is PictureStat) {
+            return AnyView(PictureReportContent(id: id, startDate: startDate, endDate: endDate))
+        }
+        
+        return AnyView(Text("No stat available"))
     }
 }

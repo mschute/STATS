@@ -1,7 +1,7 @@
 import Charts
 import SwiftUI
 
-struct CounterReport: View {
+struct CounterReportContent: View {
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
     

@@ -16,17 +16,13 @@ class ReportUtility {
         return count
     }
     
-//    static func calcTotalDays(startDate: Date, endDate: Date) -> Int {
-//        let component = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
-//        
-//        if let daysDifference = component.day {
-//            return daysDifference
-//        } else {
-//            return 0
-//        }
-//    }
-    
-    //TODO: If time, create count data by week and by month
-    
-    
+    //Implementation: https://sarunw.com/posts/getting-number-of-days-between-two-dates/
+    static func calcDaysBetween(from: Date, to: Date) -> Int {
+        let calendar = Calendar.current
+        let fromDate = calendar.startOfDay(for: from)
+        let toDate = calendar.startOfDay(for: to)
+        let numberOfDays = calendar.dateComponents([.day], from: fromDate, to: toDate)
+        
+        return numberOfDays.day! + 1
+    }
 }

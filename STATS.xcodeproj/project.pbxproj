@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EB2C57A11600E4B7B9 /* Report.swift */; };
+		0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */; };
+		0B1300F22C57F65A00E4B7B9 /* ChartValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */; };
 		0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38216C2C171366004F26E3 /* STATSApp.swift */; };
 		0B38216F2C171366004F26E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38216E2C171366004F26E3 /* ContentView.swift */; };
 		0B3821732C171367004F26E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3821722C171367004F26E3 /* Assets.xcassets */; };
@@ -38,8 +41,8 @@
 		0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822152C22E8FE004F26E3 /* Settings.swift */; };
 		0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38221B2C2488E7004F26E3 /* DecimalCard.swift */; };
 		0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705A92C297986004D1DDB /* StatDetailTabs.swift */; };
-		0B4705AC2C297CA6004D1DDB /* CounterReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AB2C297CA6004D1DDB /* CounterReport.swift */; };
-		0B4705B02C29C9A8004D1DDB /* DecimalReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */; };
+		0B4705AC2C297CA6004D1DDB /* CounterReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */; };
+		0B4705B02C29C9A8004D1DDB /* DecimalReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */; };
 		0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B12C2AAFA1004D1DDB /* TabButton.swift */; };
 		0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */; };
 		0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */; };
@@ -64,7 +67,6 @@
 		0B6AC36F2C43D40C00636AAA /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC36E2C43D40C00636AAA /* TimeOfDay.swift */; };
 		0B6AC3712C44405A00636AAA /* ReportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3702C44405A00636AAA /* ReportUtility.swift */; };
 		0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3732C4512CC00636AAA /* CountDayData.swift */; };
-		0B6AC3762C45313200636AAA /* CountWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3752C45313200636AAA /* CountWeekData.swift */; };
 		0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */; };
 		0B7C63D42C4ABF4000798513 /* PictureStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D32C4ABF4000798513 /* PictureStat.swift */; };
 		0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D52C4ABFDD00798513 /* PictureEntry.swift */; };
@@ -75,13 +77,12 @@
 		0B7C63E02C4AC2BC00798513 /* PictureEntryFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */; };
 		0B7C63E22C4AC3D100798513 /* PictureEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */; };
 		0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E32C4AC46000798513 /* PictureForm.swift */; };
-		0B7C63E62C4AC5B500798513 /* PictureReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReport.swift */; };
+		0B7C63E62C4AC5B500798513 /* PictureReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */; };
 		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
 		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
 		0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EF2C5241E600798513 /* CameraPermission.swift */; };
 		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
-		0B7C63F52C53D5A400798513 /* EditTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditTags.swift */; };
-		0B7C63F92C54E80C00798513 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F82C54E80C00798513 /* PictureData.swift */; };
+		0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1300EB2C57A11600E4B7B9 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReportCharts.swift; sourceTree = "<group>"; };
+		0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueType.swift; sourceTree = "<group>"; };
 		0B3821692C171366004F26E3 /* STATS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STATS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B38216C2C171366004F26E3 /* STATSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSApp.swift; sourceTree = "<group>"; };
 		0B38216E2C171366004F26E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,8 +140,8 @@
 		0B3822152C22E8FE004F26E3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0B38221B2C2488E7004F26E3 /* DecimalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCard.swift; sourceTree = "<group>"; };
 		0B4705A92C297986004D1DDB /* StatDetailTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailTabs.swift; sourceTree = "<group>"; };
-		0B4705AB2C297CA6004D1DDB /* CounterReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReport.swift; sourceTree = "<group>"; };
-		0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReport.swift; sourceTree = "<group>"; };
+		0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReportContent.swift; sourceTree = "<group>"; };
+		0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReportContent.swift; sourceTree = "<group>"; };
 		0B4705B12C2AAFA1004D1DDB /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryCard.swift; sourceTree = "<group>"; };
 		0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryCard.swift; sourceTree = "<group>"; };
@@ -161,7 +165,6 @@
 		0B6AC36E2C43D40C00636AAA /* TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		0B6AC3702C44405A00636AAA /* ReportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUtility.swift; sourceTree = "<group>"; };
 		0B6AC3732C4512CC00636AAA /* CountDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDayData.swift; sourceTree = "<group>"; };
-		0B6AC3752C45313200636AAA /* CountWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWeekData.swift; sourceTree = "<group>"; };
 		0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCategoryPicker.swift; sourceTree = "<group>"; };
 		0B7C63D32C4ABF4000798513 /* PictureStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureStat.swift; sourceTree = "<group>"; };
 		0B7C63D52C4ABFDD00798513 /* PictureEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntry.swift; sourceTree = "<group>"; };
@@ -172,13 +175,12 @@
 		0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryFormEdit.swift; sourceTree = "<group>"; };
 		0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryList.swift; sourceTree = "<group>"; };
 		0B7C63E32C4AC46000798513 /* PictureForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureForm.swift; sourceTree = "<group>"; };
-		0B7C63E52C4AC5B500798513 /* PictureReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReport.swift; sourceTree = "<group>"; };
+		0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReportContent.swift; sourceTree = "<group>"; };
 		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
 		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		0B7C63EF2C5241E600798513 /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
 		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
-		0B7C63F42C53D5A400798513 /* EditTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTags.swift; sourceTree = "<group>"; };
-		0B7C63F82C54E80C00798513 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
+		0B7C63F42C53D5A400798513 /* EditCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6AC36C2C43075600636AAA /* ChartType.swift */,
+				0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */,
 				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
 				0B6AC3522C369CFE00636AAA /* DetailTab.swift */,
 				0B6AC34E2C35B51400636AAA /* SortType.swift */,
@@ -302,10 +305,11 @@
 				0B3822132C22E7A9004F26E3 /* NewStatType.swift */,
 				0B6AC3622C418C9600636AAA /* Reminder.swift */,
 				0B6AC3702C44405A00636AAA /* ReportUtility.swift */,
+				0B1300EB2C57A11600E4B7B9 /* Report.swift */,
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
-				0B7C63F42C53D5A400798513 /* EditTags.swift */,
+				0B7C63F42C53D5A400798513 /* EditCategory.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -322,7 +326,7 @@
 				0B4705BD2C316777004D1DDB /* CounterEntryList.swift */,
 				0B3821A82C186D69004F26E3 /* CounterForm.swift */,
 				0B3821982C1836DB004F26E3 /* CounterStat.swift */,
-				0B4705AB2C297CA6004D1DDB /* CounterReport.swift */,
+				0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -339,7 +343,8 @@
 				0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */,
 				0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */,
 				0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */,
-				0B4705AF2C29C9A8004D1DDB /* DecimalReport.swift */,
+				0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */,
+				0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */,
 			);
 			path = Decimal;
 			sourceTree = "<group>";
@@ -368,9 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6AC3732C4512CC00636AAA /* CountDayData.swift */,
-				0B6AC3752C45313200636AAA /* CountWeekData.swift */,
 				0B7C63EB2C4D384300798513 /* ValueDayData.swift */,
-				0B7C63F82C54E80C00798513 /* PictureData.swift */,
 			);
 			path = ChartData;
 			sourceTree = "<group>";
@@ -387,7 +390,7 @@
 				0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */,
 				0B7C63E32C4AC46000798513 /* PictureForm.swift */,
 				0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */,
-				0B7C63E52C4AC5B500798513 /* PictureReport.swift */,
+				0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */,
 				0B7C63D32C4ABF4000798513 /* PictureStat.swift */,
 			);
 			path = Picture;
@@ -548,16 +551,15 @@
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */,
 				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
-				0B7C63F92C54E80C00798513 /* PictureData.swift in Sources */,
 				0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */,
 				0B7C63E02C4AC2BC00798513 /* PictureEntryFormEdit.swift in Sources */,
 				0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */,
 				0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */,
-				0B7C63F52C53D5A400798513 /* EditTags.swift in Sources */,
-				0B4705B02C29C9A8004D1DDB /* DecimalReport.swift in Sources */,
+				0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */,
+				0B4705B02C29C9A8004D1DDB /* DecimalReportContent.swift in Sources */,
 				0B6AC3632C418C9600636AAA /* Reminder.swift in Sources */,
 				0B6AC3712C44405A00636AAA /* ReportUtility.swift in Sources */,
-				0B4705AC2C297CA6004D1DDB /* CounterReport.swift in Sources */,
+				0B4705AC2C297CA6004D1DDB /* CounterReportContent.swift in Sources */,
 				0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */,
 				0B38220E2C2056DD004F26E3 /* ModelContext.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
@@ -571,12 +573,12 @@
 				0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */,
 				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
 				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
+				0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */,
 				0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */,
 				0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */,
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
-				0B6AC3762C45313200636AAA /* CountWeekData.swift in Sources */,
 				0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
@@ -587,7 +589,7 @@
 				0B7C63DA2C4AC0F500798513 /* PictureDetail.swift in Sources */,
 				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,
 				0B6AC3692C42F02200636AAA /* FormIconPicker.swift in Sources */,
-				0B7C63E62C4AC5B500798513 /* PictureReport.swift in Sources */,
+				0B7C63E62C4AC5B500798513 /* PictureReportContent.swift in Sources */,
 				0B7C63D42C4ABF4000798513 /* PictureStat.swift in Sources */,
 				0B6AC3672C42E54C00636AAA /* FormReminder.swift in Sources */,
 				0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */,
@@ -596,8 +598,10 @@
 				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
 				0B38219C2C1845D5004F26E3 /* StreakFrequency.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
+				0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
 				0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */,
+				0B1300F22C57F65A00E4B7B9 /* ChartValueType.swift in Sources */,
 				0B7C63DE2C4AC1CE00798513 /* PictureEntryForm.swift in Sources */,
 				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
 				0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */,
