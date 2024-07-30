@@ -34,12 +34,6 @@ class StatUtility {
             }
         }
     
-//    static func Remove(index: Int, statItems: inout[AnyStat], modelContext: ModelContext){
-//        Remove(stat: statItems[index].stat, modelContext: modelContext)
-//        
-//        //statItems.remove(at: index)
-//    }
-    
     //Index set and offets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
     static func Remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
         for index in offsets {
@@ -96,22 +90,6 @@ class StatUtility {
         return AnyView(Text("No stat available"))
     }
     
-//    static func Report(stat: any Stat) -> some View {
-//        if (stat is CounterStat) {
-//            return AnyView(Report(stat: stat as! CounterStat))
-//        }
-//        
-//        if (stat is DecimalStat) {
-//            return AnyView(Report(stat: stat as! DecimalStat))
-//        }
-//        
-//        if (stat is PictureStat) {
-//            return AnyView(Report(stat: stat as! PictureStat))
-//        }
-//        
-//        return AnyView(Text("No stat available"))
-//    }
-    
     static func EntryList(stat: any Stat, startDate: Binding<Date>, endDate: Binding<Date>) -> some View {
         let id = stat.persistentModelID
         
@@ -137,7 +115,7 @@ class StatUtility {
 //            return AnyView(CounterReportContent(id: id, startDate: startDate, endDate: endDate))
 //        }
 //        
-        if let decimalStat = stat as? DecimalStat {
+        if (stat is DecimalStat) {
             return AnyView(DecimalReportContent(id: id, startDate: startDate, endDate: endDate))
         }
         
