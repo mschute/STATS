@@ -19,13 +19,9 @@ struct CounterEntryForm: View {
     }
     
     func addEntry() {
-        //TODO: Will need to add additional guards if each required field is empty
-        //TODO: Add alert that a field is empty if they try to submit with an empty field
-        
         let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), timestamp: timestamp, note: note)
         //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
         counterStat.statEntry.append(entry)
-        
         
         note = ""
         timestamp = Date.now
