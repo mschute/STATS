@@ -3,9 +3,6 @@ import SwiftData
 
 @Model
 class CounterEntry: Entry, Identifiable {
-    //TODO: Do I need these typealias? Research
-    typealias T = CounterStat
-
     //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
     //Associated relationship must be optional / does not need @Relationship https://www.youtube.com/watch?v=dAMFgq4tDPM
     var counterStat: CounterStat?
