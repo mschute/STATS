@@ -71,11 +71,11 @@ class StatUtility {
         }
         
         switch stat {
-        case let stat as CounterStat:
+        case is CounterStat:
             return AnyView(CounterEntryList(id: id, startDate: startDate, endDate: endDate))
-        case let stat as DecimalStat:
+        case is DecimalStat:
             return AnyView(DecimalEntryList(id: id, startDate: startDate, endDate: endDate))
-        case let stat as PictureStat:
+        case is PictureStat:
             return AnyView(PictureEntryList(id: id, startDate: startDate, endDate: endDate))
         default:
             return AnyView(Text("No stat available"))
@@ -90,11 +90,11 @@ class StatUtility {
         }
         
         switch stat {
-        case let stat as CounterStat:
+        case is CounterStat:
             return AnyView(CounterReportContent(id: id, startDate: startDate, endDate: endDate))
-        case let stat as DecimalStat:
-            return AnyView(DecimalReportContent(stat: stat, id: id, startDate: startDate, endDate: endDate))
-        case let stat as PictureStat:
+        case is DecimalStat:
+            return AnyView(DecimalReportContent(id: id, startDate: startDate, endDate: endDate))
+        case is PictureStat:
             return AnyView(PictureReportContent(id: id, startDate: startDate, endDate: endDate))
         default:
             return AnyView(Text("No stat available"))
