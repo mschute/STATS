@@ -10,7 +10,7 @@ struct DecimalForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var decimalStat: DecimalStat?
-    @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "network", unitName: "", trackAverage: false, trackTotal: false, reminder: nil, category: nil)
+    @State var tempDecimalStat: DecimalStat = DecimalStat()
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil

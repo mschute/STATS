@@ -10,7 +10,7 @@ class CounterEntry: Entry, Identifiable {
     //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
     var stat: CounterStat?
     
-    init(entryId: UUID, timestamp: Date, note: String, stat: CounterStat) {
+    init(entryId: UUID = UUID(), timestamp: Date = Date(), note: String = "", stat: CounterStat? = nil) {
         self.entryId = entryId
         self.timestamp = timestamp
         self.note = note

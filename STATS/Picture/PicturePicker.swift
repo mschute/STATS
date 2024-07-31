@@ -4,7 +4,6 @@ import PhotosUI
 struct PicturePicker: View {
     @Binding var selectedPhoto: PhotosPickerItem?
     @Binding var selectedPhotoData: Data?
-    
     @Binding var cameraImage: UIImage?
     @Binding var showCamera: Bool
     

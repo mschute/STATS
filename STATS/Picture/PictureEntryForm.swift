@@ -4,12 +4,9 @@ import PhotosUI
 struct PictureEntryForm: View {
     var pictureStat: PictureStat
     
-    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedDetailTab: StatTabs
     
-    //TODO: Create the temp object with blank values rather than individual properties? Use @Bindable
-    @State var timestamp = Date.now
-    @State var note = ""
+    @State var entry: PictureEntry = PictureEntry()
     
     @State var selectedPhoto: PhotosPickerItem?
     @State var selectedPhotoData: Data?
@@ -20,13 +17,13 @@ struct PictureEntryForm: View {
     var body: some View {
         Form(content: {
             Section(header: Text("TimeStamp")) {
-                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
             }
             
               PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
             Section(header: Text("Additional Information")) {
-                TextField("Note", text: $note)
+                TextField("Note", text: $entry.note)
             }
             
             
@@ -37,19 +34,16 @@ struct PictureEntryForm: View {
         })
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
-                selectedPhotoData = data
+                entry.image = data
             }
         }
     }
     
     func addEntry() {
-        let entry = PictureEntry(entryId: UUID(), timestamp: timestamp, note: note, stat: pictureStat, image: selectedPhotoData)
+        entry.stat = pictureStat
         
         pictureStat.statEntry.append(entry)
         
-        note = ""
-        timestamp = Date.now
-        dismiss()
         selectedDetailTab.selectedDetailTab = .history
     }
 }

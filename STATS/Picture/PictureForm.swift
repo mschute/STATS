@@ -10,7 +10,7 @@ struct PictureForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var pictureStat: PictureStat?
-    @State var tempPictureStat: PictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "network", reminder: nil, category: nil)
+    @State var tempPictureStat: PictureStat = PictureStat()
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil

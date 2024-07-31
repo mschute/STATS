@@ -10,7 +10,7 @@ class PictureEntry: Entry, Identifiable {
     var stat: PictureStat?
     @Attribute(.externalStorage) var image: Data?
     
-    init(entryId: UUID, timestamp: Date, note: String, stat: StatType, image: Data?) {
+    init(entryId: UUID = UUID(), timestamp: Date = Date(), note: String = "", stat: PictureStat? = nil, image: Data? = nil) {
         self.entryId = entryId
         self.timestamp = timestamp
         self.note = note

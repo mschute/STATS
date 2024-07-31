@@ -5,9 +5,8 @@ struct DecimalEntryForm: View {
     
     @EnvironmentObject var selectedDetailTab: StatTabs
     
-    @State var value = ""
-    @State var note = ""
-    @State var timestamp = Date.now
+    @State var entry: DecimalEntry = DecimalEntry()
+    @State var value: String = ""
     
     var body: some View {
         Form(content: {
@@ -15,10 +14,10 @@ struct DecimalEntryForm: View {
                 Text("\(decimalStat.unitName) ")
                 TextField("Value", text: $value)
                     .keyboardType(.decimalPad)
-                TextField("Note", text: $note)
+                TextField("Note", text: $entry.note)
             }
             
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+            DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
             
             Button("Add", action: addEntry)
         })
@@ -26,14 +25,11 @@ struct DecimalEntryForm: View {
     }
     
     func addEntry() {
-        guard !value.isEmpty else { return }
+        entry.stat = decimalStat
+        entry.value = Double(value) ?? 0.0
         
-        let entry = DecimalEntry(entryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0, note: note, stat: decimalStat)
         decimalStat.statEntry.append(entry)
         
-        value = ""
-        note = ""
-        timestamp = Date.now
         selectedDetailTab.selectedDetailTab = .history
     }
 }
