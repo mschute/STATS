@@ -3,17 +3,17 @@ import SwiftData
 
 @Model
 class CounterEntry: Entry, Identifiable {
-    //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
-    //Associated relationship must be optional / does not need @Relationship https://www.youtube.com/watch?v=dAMFgq4tDPM
-    var counterStat: CounterStat?
     var entryId: UUID
     var timestamp: Date
     var note: String
+    //Associated relationship must be optional / does not need @Relationship https://www.youtube.com/watch?v=dAMFgq4tDPM
+    //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
+    var stat: CounterStat?
     
-    init(counterStat: CounterStat, entryId: UUID, timestamp: Date, note: String) {
-        self.counterStat = counterStat
+    init(entryId: UUID, timestamp: Date, note: String, stat: CounterStat) {
         self.entryId = entryId
         self.timestamp = timestamp
         self.note = note
+        self.stat = stat
     }
 }
