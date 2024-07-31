@@ -13,7 +13,7 @@ struct DecimalEntryFormEdit: View {
                 Text("Value ")
                 TextField("Value", value: $decimalEntry.value, format: .number)
                     .keyboardType(.numberPad)
-                Text(decimalEntry.decimalStat?.unitName ?? "")
+                Text(decimalEntry.stat?.unitName ?? "")
             }
             DatePicker("Timestamp", selection: $decimalEntry.timestamp, displayedComponents: [.date, .hourAndMinute])
             TextField("Note", text: $decimalEntry.note)

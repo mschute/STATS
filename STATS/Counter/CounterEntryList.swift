@@ -44,7 +44,7 @@ struct CounterEntryList: View {
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {
         return #Predicate<CounterEntry> {
-            entry in entry.counterStat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }

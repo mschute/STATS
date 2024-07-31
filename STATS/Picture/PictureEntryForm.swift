@@ -43,7 +43,7 @@ struct PictureEntryForm: View {
     }
     
     func addEntry() {
-        let entry = PictureEntry(pictureStat: pictureStat, entryId: UUID(), timestamp: timestamp, note: note, image: selectedPhotoData)
+        let entry = PictureEntry(entryId: UUID(), timestamp: timestamp, note: note, stat: pictureStat, image: selectedPhotoData)
         
         pictureStat.statEntry.append(entry)
         

@@ -28,7 +28,7 @@ struct DecimalEntryForm: View {
     func addEntry() {
         guard !value.isEmpty else { return }
         
-        let entry = DecimalEntry(decimalStat: decimalStat, entryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0, note: note)
+        let entry = DecimalEntry(entryId: UUID(), timestamp: timestamp, value: Double(value) ?? 0.0, note: note, stat: decimalStat)
         decimalStat.statEntry.append(entry)
         
         value = ""

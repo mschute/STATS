@@ -44,7 +44,7 @@ struct PictureEntryList: View {
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<PictureEntry> {
         return #Predicate<PictureEntry> {
-            entry in entry.pictureStat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }

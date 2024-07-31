@@ -42,7 +42,7 @@ struct DecimalEntryList: View {
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<DecimalEntry> {
         return #Predicate<DecimalEntry> {
-            entry in entry.decimalStat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }
