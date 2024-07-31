@@ -39,7 +39,12 @@ struct EditCategory: View {
     }
     
     private func addCategory(){
-        modelContext.insert(Category(name: newCategory))
+        do {
+            modelContext.insert(Category(name: newCategory))
+            try modelContext.save()
+        } catch {
+                print("Error adding category")
+            }
         newCategory = ""
     }
 }
