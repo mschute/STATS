@@ -12,6 +12,7 @@ struct UIKitCamera: UIViewControllerRepresentable {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .camera
         imagePicker.delegate = context.coordinator
+        
         return imagePicker
     }
     
