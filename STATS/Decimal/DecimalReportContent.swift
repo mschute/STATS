@@ -2,6 +2,7 @@ import SwiftData
 import SwiftUI
 
 struct DecimalReportContent: View {
+    @Environment(\.modelContext) var modelContext
     @Query() var decimalEntries: [DecimalEntry]
     
     @Binding var startDate: Date
@@ -20,7 +21,7 @@ struct DecimalReportContent: View {
         self._startDate = startDate
         self._endDate = endDate
         
-        _decimalEntries = Query(filter: DecimalReportContent.entryPredicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
+        _decimalEntries = Query(filter: DecimalReportContent.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     
     var body: some View {
@@ -34,7 +35,7 @@ struct DecimalReportContent: View {
                 }
                 .padding(.horizontal)
                 
-                if (decimalEntries[0].decimalStat?.trackTotal == true) {
+                if (decimalEntries[0].stat?.trackTotal == true) {
                     Section(header: Text("Total")) {
                         Text("Sum of entry values for date range: \(sum)")
                         
@@ -43,7 +44,7 @@ struct DecimalReportContent: View {
                     .padding(.horizontal)
                 }
                 
-                if (decimalEntries[0].decimalStat?.trackAverage == true) {
+                if (decimalEntries[0].stat?.trackAverage == true) {
                     Section(header: Text("Average")) {
                         Text("Average for date range: \(average)")
                         
@@ -55,9 +56,9 @@ struct DecimalReportContent: View {
         }
     }
     
-    private static func entryPredicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<DecimalEntry> {
+    private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<DecimalEntry> {
         return #Predicate<DecimalEntry> {
-            entry in entry.decimalStat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }
