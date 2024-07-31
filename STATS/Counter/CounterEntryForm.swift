@@ -19,7 +19,7 @@ struct CounterEntryForm: View {
     }
     
     func addEntry() {
-        let entry = CounterEntry(counterStat: counterStat, entryId: UUID(), timestamp: timestamp, note: note)
+        let entry = CounterEntry(entryId: UUID(), timestamp: timestamp, note: note, stat: counterStat)
         //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
         counterStat.statEntry.append(entry)
         

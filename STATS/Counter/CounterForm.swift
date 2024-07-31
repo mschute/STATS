@@ -10,7 +10,7 @@ struct CounterForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var counterStat: CounterStat?
-    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
+    @State var tempCounterStat: CounterStat = CounterStat(name: "", created: Date(), desc: "", icon: "network",  reminder: nil, category: nil)
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -99,7 +99,7 @@ struct CounterForm: View {
                 }
                 //Needs to reset the counter stat here, otherwise it remembers the state from previous session
             } else {
-                tempCounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
+                tempCounterStat = CounterStat(name: "", created: Date(), desc: "", icon: "network",  reminder: nil, category: nil)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
