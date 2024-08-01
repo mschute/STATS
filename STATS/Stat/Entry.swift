@@ -1,8 +1,9 @@
 import Foundation
 
 protocol Entry {
-    associatedtype T
     var entryId: UUID { get }
     var timestamp: Date { get }
     var note: String { get }
+    associatedtype StatType: Stat
+    var stat: StatType? { get }
 }

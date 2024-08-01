@@ -37,7 +37,6 @@ struct FormReminder: View {
         }
     }
     
-    //TODO: Should I extract these functions outside of the view?
     private func addReminder() {
         reminders.append(newReminder)
         sortReminders()

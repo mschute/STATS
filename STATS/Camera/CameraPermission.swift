@@ -1,8 +1,7 @@
 import UIKit
 import AVFoundation
 
-//https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
-
+//Implementation source: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
 enum CameraPermission {
     enum CameraError: Error, LocalizedError {
         case unauthorized

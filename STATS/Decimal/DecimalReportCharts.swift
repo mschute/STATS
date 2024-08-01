@@ -35,7 +35,7 @@ struct DecimalReportCharts: View {
                 ForEach(data) { entry in
                     LineMark(
                         x: .value("Date", entry.day),
-                        y: .value("\(decimalEntries[0].decimalStat?.unitName ?? "")", entry.value)
+                        y: .value("\(decimalEntries[0].stat?.unitName ?? "")", entry.value)
                     )
                     .interpolationMethod(.catmullRom)
                     .lineStyle(.init(lineWidth: 2))
@@ -62,7 +62,7 @@ struct DecimalReportCharts: View {
                 Text("Date")
             }
             .chartYAxisLabel(position: .leading, alignment: .center) {
-                Text("\(decimalEntries[0].decimalStat?.unitName ?? "")")
+                Text("\(decimalEntries[0].stat?.unitName ?? "")")
             }
             .frame(height: 200)
             .padding(.horizontal)

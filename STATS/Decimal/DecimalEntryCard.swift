@@ -8,7 +8,7 @@ struct DecimalEntryCard: View {
             DecimalEntryFormEdit(decimalEntry: decimalEntry)
         } label: {
             VStack {
-                Text("Value: \(decimalEntry.value) \(decimalEntry.decimalStat?.unitName ?? "")")
+                Text("Value: \(decimalEntry.value) \(decimalEntry.stat?.unitName ?? "")")
                 Text("Timestamp: \(decimalEntry.timestamp)")
             }
             .frame(alignment: .leading)

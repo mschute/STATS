@@ -10,7 +10,7 @@ struct CounterForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var counterStat: CounterStat?
-    @State var tempCounterStat: CounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
+    @State var tempCounterStat: CounterStat = CounterStat()
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -31,7 +31,6 @@ struct CounterForm: View {
             Text(isEditMode ? "" : "Add Counter Stat")
                 .font(.largeTitle)
             
-            //TODO: Should I abstract this out?
             if !isAdvanced {
                 Button("Advanced Form") {
                     isAdvanced = true
@@ -99,7 +98,7 @@ struct CounterForm: View {
                 }
                 //Needs to reset the counter stat here, otherwise it remembers the state from previous session
             } else {
-                tempCounterStat = CounterStat(name: "", desc: "", icon: "network", created: Date(), reminder: nil, category: nil)
+                tempCounterStat = CounterStat()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -148,5 +147,3 @@ struct CounterForm: View {
 //        fatalError("Failed to create error")
 //    }
 //}
-
-

@@ -1,12 +1,13 @@
 import SwiftUI
 
-//TODO: Need source
 struct TabButton: View {
     let title: String
     let icon: String
     let tag: DetailTab
+    
     @EnvironmentObject var selectedDetailTab: StatTabs
     
+    //Custom tab bar: https://www.youtube.com/watch?v=R_KZwX-yP4o
     var body: some View {
         Button(action: {
             selectedDetailTab.selectedDetailTab = tag

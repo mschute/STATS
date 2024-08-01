@@ -10,7 +10,7 @@ struct DecimalForm: View {
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var decimalStat: DecimalStat?
-    @State var tempDecimalStat: DecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "network", unitName: "", reminder: nil, trackAverage: false, trackTotal: false, category: nil)
+    @State var tempDecimalStat: DecimalStat = DecimalStat()
     
     @State private var newCategory: String = ""
     @State private var chosenCategory: Category? = nil
@@ -108,7 +108,7 @@ struct DecimalForm: View {
                 }
                 //Needs to reset the counter stat here, otherwise it remembers the state from previous session
             } else {
-                tempDecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "", unitName: "", reminder: nil, trackAverage: false, trackTotal: false, category: nil)
+                tempDecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "network", unitName: "", trackAverage: false, trackTotal: false, reminder: nil, category: nil)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
