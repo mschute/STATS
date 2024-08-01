@@ -144,7 +144,11 @@ struct PictureReportContent: View {
         let toDate = calendar.startOfDay(for: to)
         let numberOfDays = calendar.dateComponents([.day], from: fromDate, to: toDate)
         
-        return numberOfDays.day! + 1
+        if let days = numberOfDays.day {
+            return days + 1
+        } else {
+            return 0
+        }
     }
 }
 
