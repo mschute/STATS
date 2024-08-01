@@ -5,6 +5,7 @@ import SwiftUI
 struct History: View {
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
+    @State var dateRange: (startDate: Date, endDate: Date) = (Date(), Date())
     
     private var stat: any Stat
     
@@ -13,18 +14,30 @@ struct History: View {
     init(stat: any Stat) {
         self.stat = stat
         
-        let dateRange = AnyStat.getEntryDateRange(entryArray: stat.statEntry)
+        _dateRange = State(initialValue: AnyStat.getEntryDateRange(entryArray: stat.statEntry))
         _startDate = State(initialValue: dateRange.startDate)
         _endDate = State(initialValue: dateRange.endDate)
     }
 
     var body: some View {
-        Text("History")
-            .font(.largeTitle)
-        
-        DateRangePicker(startDate: $startDate, endDate: $endDate)
-        
-        StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
+        VStack {
+            Text("History")
+                .font(.largeTitle)
+            
+            DateRangePicker(startDate: $startDate, endDate: $endDate)
+            
+            StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
+        }
+        //Update date range to fix bug of entry not showing if timestamp is edited
+        .onAppear {
+            updateDateRange()
+        }
+    }
+    
+    private func updateDateRange() {
+        dateRange = AnyStat.getEntryDateRange(entryArray: stat.statEntry)
+        startDate = dateRange.startDate
+        endDate = dateRange.endDate
     }
 }
 
