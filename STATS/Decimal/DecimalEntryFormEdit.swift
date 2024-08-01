@@ -1,22 +1,32 @@
 import SwiftUI
 
 struct DecimalEntryFormEdit: View {
-    //TODO: Proper way is to use Navigation Path
+    @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    //Bindable allows for changes to automatically be saved
-    @Bindable var decimalEntry: DecimalEntry
+   var decimalEntry: DecimalEntry
+    
+    @State private var value: Double
+    @State private var timestamp: Date
+    @State private var note: String
+    
+    init(decimalEntry: DecimalEntry) {
+        self.decimalEntry = decimalEntry
+        _value = State(initialValue: decimalEntry.value)
+        _timestamp = State(initialValue: decimalEntry.timestamp)
+        _note = State(initialValue: decimalEntry.note)
+    }
     
     var body: some View {
         Form(content: {
             HStack{
                 Text("Value ")
-                TextField("Value", value: $decimalEntry.value, format: .number)
+                TextField("Value", value: $value, format: .number)
                     .keyboardType(.numberPad)
                 Text(decimalEntry.stat?.unitName ?? "")
             }
-            DatePicker("Timestamp", selection: $decimalEntry.timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $decimalEntry.note)
+            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+            TextField("Note", text: $note)
             
             Button("Update", action: saveEntry)
         })
@@ -24,7 +34,20 @@ struct DecimalEntryFormEdit: View {
     
     func saveEntry() {
         guard !String(decimalEntry.value).isEmpty else { return }
-        presentationMode.wrappedValue.dismiss()
+        
+        decimalEntry.value = value
+        decimalEntry.timestamp = timestamp
+        decimalEntry.note = note
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving entry")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
