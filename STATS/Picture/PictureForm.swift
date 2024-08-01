@@ -19,7 +19,6 @@ struct PictureForm: View {
     @State var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
