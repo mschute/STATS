@@ -31,7 +31,6 @@ struct CounterForm: View {
             Text(isEditMode ? "" : "Add Counter Stat")
                 .font(.largeTitle)
             
-            //TODO: Should I abstract this out?
             if !isAdvanced {
                 Button("Advanced Form") {
                     isAdvanced = true
@@ -99,7 +98,7 @@ struct CounterForm: View {
                 }
                 //Needs to reset the counter stat here, otherwise it remembers the state from previous session
             } else {
-                tempCounterStat = CounterStat(name: "", created: Date(), desc: "", icon: "network",  reminder: nil, category: nil)
+                tempCounterStat = CounterStat()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -148,5 +147,3 @@ struct CounterForm: View {
 //        fatalError("Failed to create error")
 //    }
 //}
-
-
