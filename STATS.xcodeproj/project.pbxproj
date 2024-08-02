@@ -79,6 +79,11 @@
 		0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EF2C5241E600798513 /* CameraPermission.swift */; };
 		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
 		0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditCategory.swift */; };
+		0BB8E7142C5BBA8B00838EEC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7132C5BBA8B00838EEC /* SplashView.swift */; };
+		0BB8E7172C5C06AB00838EEC /* CounterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7162C5C06AB00838EEC /* CounterButtonStyle.swift */; };
+		0BB8E7192C5C0F7900838EEC /* CounterTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */; };
+		0BB8E71B2C5C16B100838EEC /* DecimalTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */; };
+		0BB8E71D2C5C170A00838EEC /* PictureTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +178,11 @@
 		0B7C63EF2C5241E600798513 /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
 		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
 		0B7C63F42C53D5A400798513 /* EditCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategory.swift; sourceTree = "<group>"; };
+		0BB8E7132C5BBA8B00838EEC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		0BB8E7162C5C06AB00838EEC /* CounterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterButtonStyle.swift; sourceTree = "<group>"; };
+		0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextButtonStyle.swift; sourceTree = "<group>"; };
+		0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextButtonStyle.swift; sourceTree = "<group>"; };
+		0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTextButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +234,7 @@
 		0B38216B2C171366004F26E3 /* STATS */ = {
 			isa = PBXGroup;
 			children = (
+				0BB8E7152C5C069400838EEC /* ViewModifiers */,
 				0B7C63F12C52499E00798513 /* Camera */,
 				0B6AC3722C45022000636AAA /* ChartData */,
 				0B3821FE2C1EF9BB004F26E3 /* Counter */,
@@ -298,6 +309,7 @@
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
 				0B7C63F42C53D5A400798513 /* EditCategory.swift */,
+				0BB8E7132C5BBA8B00838EEC /* SplashView.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -383,6 +395,17 @@
 				0B7C63F22C5249C100798513 /* UIKitCamera.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		0BB8E7152C5C069400838EEC /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				0BB8E7162C5C06AB00838EEC /* CounterButtonStyle.swift */,
+				0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */,
+				0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */,
+				0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +548,7 @@
 				0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
 				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
+				0BB8E71B2C5C16B100838EEC /* DecimalTextButtonStyle.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
@@ -539,11 +563,13 @@
 				0B4705B02C29C9A8004D1DDB /* DecimalReportContent.swift in Sources */,
 				0B6AC3632C418C9600636AAA /* Reminder.swift in Sources */,
 				0B4705AC2C297CA6004D1DDB /* CounterReportContent.swift in Sources */,
+				0BB8E7172C5C06AB00838EEC /* CounterButtonStyle.swift in Sources */,
 				0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
 				0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */,
 				0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
+				0BB8E7192C5C0F7900838EEC /* CounterTextButtonStyle.swift in Sources */,
 				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
 				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
@@ -552,6 +578,7 @@
 				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
 				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
 				0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */,
+				0BB8E71D2C5C170A00838EEC /* PictureTextButtonStyle.swift in Sources */,
 				0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */,
 				0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */,
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
@@ -585,6 +612,7 @@
 				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
 				0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */,
+				0BB8E7142C5BBA8B00838EEC /* SplashView.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 				0B7C63DC2C4AC15100798513 /* PictureEntryCard.swift in Sources */,
 			);
