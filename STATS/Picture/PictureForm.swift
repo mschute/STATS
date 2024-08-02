@@ -3,7 +3,6 @@ import SwiftUI
 
 struct PictureForm: View {
     @Environment(\.modelContext) var modelContext
-    //TODO: Should I add presentationMode?
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedTab: NavbarTabs
     
@@ -99,7 +98,7 @@ struct PictureForm: View {
                 }
                 //Needs to reset the stat here, otherwise it remembers the state from previous session
             } else {
-                tempPictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "", reminder: nil, category: nil)
+                tempPictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "network", reminder: nil, category: nil)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
