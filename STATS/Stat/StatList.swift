@@ -3,11 +3,9 @@ import SwiftUI
 
 struct StatList: View {
     @Environment(\.modelContext) private var modelContext
-    
     @Query(sort: \Category.name) var categories: [Category]
     
     @Binding var stats: [AnyStat]
-
     @Binding var filter: String?
     
     @State private var isCreatedAscending = false
@@ -20,10 +18,11 @@ struct StatList: View {
             }
             .onDelete(perform: deleteItems)
         }
-        .navigationTitle("Stat List")
+        .navigationTitle("")
         .toolbar {
             ToolbarItem {
                 HStack {
+                    Text("Stat List")
                     Menu {
                         Button(action: { sortStats(sortType: .created) } ) {
                             Label("Sort by Date", systemImage: "calendar")
