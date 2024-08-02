@@ -3,42 +3,38 @@ import SwiftUI
 struct NewStatType: View {
     
     var body: some View {
-        VStack{
+        VStack {
             Text("New Stat")
-                .font(.largeTitle)
-            
-            NavigationLink {
-                CounterForm(isEditMode: false)
-            } label: {
-                  Text("Add Counter Stat")
-                    .padding()
-                    .buttonStyle(.plain)
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                .font(.custom("Menlo", size: 34))
+                .fontWeight(.black)
+                .padding(.top, 60)
+                .padding(.bottom, 150)
+            VStack(spacing: 40) {
+                NavigationLink {
+                    CounterForm(isEditMode: false)
+                } label: {
+                      Text("Counter")
+                        .font(.custom("Menlo", size: 20))
+                        .counterTextStyle()
+                }
+                
+                NavigationLink {
+                    DecimalForm(isEditMode: false)
+                } label: {
+                      Text("Decimal")
+                        .font(.custom("Menlo", size: 20))
+                        .decimalTextStyle()
+                }
+                
+                NavigationLink {
+                    PictureForm(isEditMode: false)
+                } label: {
+                      Text("Picture")
+                        .font(.custom("Menlo", size: 20))
+                        .pictureTextStyle()
+                }
             }
-            
-            NavigationLink {
-                DecimalForm(isEditMode: false)
-            } label: {
-                  Text("Add Decimal Stat")
-                    .padding()
-                    .buttonStyle(.plain)
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            
-            NavigationLink {
-                PictureForm(isEditMode: false)
-            } label: {
-                  Text("Add Picture Stat")
-                    .padding()
-                    .buttonStyle(.plain)
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
+            Spacer()
         }
     }
 }

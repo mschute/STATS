@@ -41,9 +41,7 @@ struct PictureEntryForm: View {
     
     func addEntry() {
         entry.stat = pictureStat
-        
         pictureStat.statEntry.append(entry)
-        
         selectedDetailTab.selectedDetailTab = .history
     }
 }
