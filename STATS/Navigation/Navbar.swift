@@ -6,34 +6,41 @@ struct Navbar: View {
     
     var body: some View {
         TabView(selection: $selectedTab.selectedTab) {
-            
-            NavigationStack {
-                ContentView()
+            Group {
+                NavigationStack {
+                    ContentView()
+                }
+                .tabItem {
+                        Image(systemName: "list.bullet.circle.fill")
+                        Text("Stat List")
+                }
+                .tag(Tab.statList)
+                
+                NavigationStack {
+                    NewStatType()
+                }
+                .tabItem {
+                        Image(systemName: "plus.circle.fill")
+                        .imageScale(.large)
+                        Text("New Stat")
+                }
+                .tag(Tab.addStat)
+                
+                NavigationStack {
+                    Settings()
+                }
+                .tabItem {
+                        Image(systemName: "gearshape.circle.fill")
+                        .imageScale(.large)
+                        Text("Settings")
+                    
+                }
+                .tag(Tab.settings)
             }
-            .tabItem {
-                Image(systemName: "list.bullet.circle.fill")
-                Text("Stat List")
-            }
-            .tag(Tab.statList)
-            
-            NavigationStack {
-                NewStatType()
-            }
-            .tabItem{
-                Image(systemName: "plus.circle.fill")
-                Text("New Stat")
-            }
-            .tag(Tab.addStat)
-            
-            NavigationStack {
-                Settings()
-            }
-            .tabItem {
-                Image(systemName: "gearshape.circle.fill")
-                Text("Settings")
-            }
-            .tag(Tab.settings)
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .toolbarBackground(Color(.background), for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
+            .toolbarColorScheme(.dark, for: .tabBar)
         }
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
