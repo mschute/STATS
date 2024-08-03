@@ -12,39 +12,49 @@ struct StatList: View {
     @State private var isNameAscending = false
     
     var body: some View {
-        List {
-            ForEach(stats) { item in
-                StatUtility.Card(stat: item.stat)
+        VStack {
+            Text("Stat List")
+                .font(.custom("Menlo", size: 34))
+                .fontWeight(.black)
+                .foregroundColor(.white)
+                .padding(.vertical, 30)
+            
+            List {
+                ForEach(stats, id: \.self) { item in
+                    StatUtility.Card(stat: item.stat)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
-        }
-        .navigationTitle("")
-        .toolbar {
-            ToolbarItem {
-                HStack {
-                    Text("Stat List")
-                    Menu {
-                        Button(action: { sortStats(sortType: .created) } ) {
-                            Label("Sort by Date", systemImage: "calendar")
+            .frame(alignment: .leading)
+            .listStyle(PlainListStyle())
+            .toolbar {
+                ToolbarItem {
+                    HStack {
+                        Menu {
+                            Button(action: { sortStats(sortType: .created) } ) {
+                                Label("Sort by Date", systemImage: "calendar")
+                            }
+                            
+                            Button(action: { sortStats(sortType: .name) } ) {
+                                Label("Sort by Name", systemImage: "abc")
+                            }
+                        } label: {
+                            Label("", systemImage: "arrow.up.arrow.down")
                         }
                         
-                        Button(action: { sortStats(sortType: .name) } ) {
-                            Label("Sort by Name", systemImage: "abc")
-                        }
-                    } label: {
-                        Label("", systemImage: "arrow.up.arrow.down")
-                    }
-                    
-                    Menu {
-                        ForEach(categories, id: \.id){ category in
-                            if (filter == "\(category.name)") {
-                                Button("\(category.name)", systemImage: "checkmark", action: { filter = nil } )
-                            } else {
-                                Button("\(category.name)", action: { filter = category.name } )
+                        Menu {
+                            ForEach(categories, id: \.id){ category in
+                                if (filter == "\(category.name)") {
+                                    Button("\(category.name)", systemImage: "checkmark", action: { filter = nil } )
+                                } else {
+                                    Button("\(category.name)", action: { filter = category.name } )
+                                }
                             }
+                        } label: {
+                            Label("", systemImage: "line.3.horizontal.decrease.circle")
                         }
-                    } label: {
-                        Label("", systemImage: "line.3.horizontal.decrease.circle")
                     }
                 }
             }
