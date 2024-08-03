@@ -3,6 +3,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
+    @Environment(\.backgroundColor) var backgroundColor
     
     @Query(animation: .easeInOut) var counterStats: [CounterStat]
     @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
@@ -35,24 +36,28 @@ struct ContentView: View {
     }
     
     var body: some View {
-        StatList(stats: $stats, filter: $filter)
-            .task {
-                combineStats()
-            }
-            .onChange(of: counterStats){
-                combineStats()
-            }
-            .onChange(of: decimalStats){
-                combineStats()
-            }
-            .onChange(of: pictureStats){
-                combineStats()
-            }
-            .onChange(of: filter){
-                combineStats()
-            }
+        VStack {
+            StatList(stats: $stats, filter: $filter)
+                .task {
+                    combineStats()
+                }
+                .onChange(of: counterStats){
+                    combineStats()
+                }
+                .onChange(of: decimalStats){
+                    combineStats()
+                }
+                .onChange(of: pictureStats){
+                    combineStats()
+                }
+                .onChange(of: filter){
+                    combineStats()
+                }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(backgroundColor.ignoresSafeArea())
     }
-
+    
     //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
     //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
     func combineStats() {
@@ -61,7 +66,7 @@ struct ContentView: View {
         stats += filteredCounterStats.map { AnyStat(stat: $0) }
         stats += filteredDecimalStats.map { AnyStat(stat: $0) }
         stats += filteredPictureStats.map { AnyStat(stat: $0) }
-
+        
         sortStats()
     }
     
@@ -70,11 +75,12 @@ struct ContentView: View {
     }
 }
 
+
 //#Preview {
 //    do {
 //        let config = ModelConfiguration(isStoredInMemoryOnly: true)
 //        let container = try ModelContainer(for: CounterStat.self, DecimalStat.self, configurations: config)
-//        
+//
 //        return ContentView()
 //            .modelContainer(container)
 //    } catch {
