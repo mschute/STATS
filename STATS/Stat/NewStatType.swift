@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct NewStatType: View {
+    @Environment(\.backgroundColor) var backgroundColor
     
     var body: some View {
         VStack {
@@ -13,7 +14,7 @@ struct NewStatType: View {
                 NavigationLink {
                     CounterForm(isEditMode: false)
                 } label: {
-                      Text("Counter")
+                    Text("Counter")
                         .font(.custom("Menlo", size: 20))
                         .counterTextStyle()
                 }
@@ -21,7 +22,7 @@ struct NewStatType: View {
                 NavigationLink {
                     DecimalForm(isEditMode: false)
                 } label: {
-                      Text("Decimal")
+                    Text("Decimal")
                         .font(.custom("Menlo", size: 20))
                         .decimalTextStyle()
                 }
@@ -29,12 +30,15 @@ struct NewStatType: View {
                 NavigationLink {
                     PictureForm(isEditMode: false)
                 } label: {
-                      Text("Picture")
+                    Text("Picture")
                         .font(.custom("Menlo", size: 20))
                         .pictureTextStyle()
                 }
             }
             Spacer()
         }
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(backgroundColor.ignoresSafeArea())
     }
 }
