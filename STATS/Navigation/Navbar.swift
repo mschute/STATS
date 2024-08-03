@@ -40,7 +40,6 @@ struct Navbar: View {
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .toolbarBackground(Color(.background), for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
-            .toolbarColorScheme(.dark, for: .tabBar)
         }
     }
 }
