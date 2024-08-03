@@ -41,6 +41,7 @@ struct STATSApp: App {
                     .environmentObject(selectedTab)
                     .environmentObject(selectedDetailTab)
                     .environment(\.font, Font.custom("Menlo", size: 17))
+                    .environment(\.backgroundColor, Color.background)
                     .accentColor(.universal)
             }
         }
