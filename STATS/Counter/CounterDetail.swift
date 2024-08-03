@@ -6,6 +6,7 @@ struct CounterDetail: View {
     var body: some View {
         Text("\(stat.name) Counter Stat Detail")
             .font(.largeTitle)
+
         StatDetailTabs(stat: stat as any Stat)
         Spacer()
     }
