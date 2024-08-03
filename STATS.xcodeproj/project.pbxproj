@@ -84,6 +84,7 @@
 		0BB8E7192C5C0F7900838EEC /* CounterTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */; };
 		0BB8E71B2C5C16B100838EEC /* DecimalTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */; };
 		0BB8E71D2C5C170A00838EEC /* PictureTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */; };
+		0BB8E73C2C5E163C00838EEC /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTextButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTextButtonStyle.swift; sourceTree = "<group>"; };
+		0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +406,7 @@
 				0BB8E7182C5C0F7900838EEC /* CounterTextButtonStyle.swift */,
 				0BB8E71A2C5C16B100838EEC /* DecimalTextButtonStyle.swift */,
 				0BB8E71C2C5C170A00838EEC /* PictureTextButtonStyle.swift */,
+				0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				0BB8E71B2C5C16B100838EEC /* DecimalTextButtonStyle.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
+				0BB8E73C2C5E163C00838EEC /* BackgroundColor.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */,
