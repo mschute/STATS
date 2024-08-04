@@ -3,27 +3,33 @@ import SwiftUI
 
 struct EditCategory: View {
     @Environment(\.modelContext) var modelContext
-    
     @Query(sort: \Category.name) var categories: [Category]
     
     @State var newCategory = ""
     
     var body: some View {
-        List {
-            ForEach(categories) { category in
-                Text("\(category.name)")
-            }
-            .onDelete(perform: deleteItems)
-            
-            Section {
-                TextField("Add new category", text: $newCategory)
-                Button(action: addCategory) {
-                    Text("Add")
+        VStack {
+            TopBar(title: "MANAGE TAGS", topPadding: 0, bottomPadding: 20)
+            List {
+                ForEach(categories) { category in
+                    Text("\(category.name)")
+                }
+                .onDelete(perform: deleteItems)
+                .tint(.cancel)
+                
+                Section {
+                    TextField("New category", text: $newCategory)
+                    Button(action: addCategory) {
+                        Text("Add")
+                            .textButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main)
+                            .padding(.vertical, 5)
+                    }
                 }
             }
         }
-        .navigationTitle("Manage Tags")
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+    
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
@@ -32,8 +38,8 @@ struct EditCategory: View {
                     modelContext.delete(categories[index])
                     try modelContext.save()
                 } catch {
-                        print("Error deleting category")
-                    }
+                    print("Error deleting category")
+                }
             }
         }
     }
@@ -43,12 +49,8 @@ struct EditCategory: View {
             modelContext.insert(Category(name: newCategory))
             try modelContext.save()
         } catch {
-                print("Error adding category")
-            }
+            print("Error adding category")
+        }
         newCategory = ""
     }
 }
-
-//#Preview {
-//    EditTags()
-//}
