@@ -70,8 +70,6 @@ struct PictureForm: View {
                 }
                 .padding()
                 .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
                 .cornerRadius(10)
             } else {
                 Button("Add Picture") {
@@ -79,8 +77,6 @@ struct PictureForm: View {
                 }
                 .padding()
                 .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
                 .cornerRadius(10)
             }
         }

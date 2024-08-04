@@ -80,8 +80,6 @@ struct DecimalForm: View {
                 }
                 .padding()
                 .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
                 .cornerRadius(10)
             } else {
                 Button("Add Decimal") {
@@ -89,8 +87,6 @@ struct DecimalForm: View {
                 }
                 .padding()
                 .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
                 .cornerRadius(10)
             }
         }
