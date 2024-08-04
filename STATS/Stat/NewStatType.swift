@@ -1,30 +1,23 @@
 import SwiftUI
 
 struct NewStatType: View {
-    @Environment(\.backgroundColor) var backgroundColor
-    
     var body: some View {
         VStack {
-            Text("New Stat")
-                .font(.custom("Menlo", size: 34))
-                .fontWeight(.black)
-                .padding(.top, 60)
-                .padding(.bottom, 150)
+            TopBar(title: "NEW STAT", topPadding: 40, bottomPadding: 20)
+            Spacer()
             VStack(spacing: 40) {
                 NavigationLink {
                     CounterForm(isEditMode: false)
                 } label: {
                     Text("Counter")
-                        .font(.custom("Menlo", size: 20))
-                        .counterTextStyle()
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter)
                 }
                 
                 NavigationLink {
                     DecimalForm(isEditMode: false)
                 } label: {
                     Text("Decimal")
-                        .font(.custom("Menlo", size: 20))
-                        .decimalTextStyle()
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal)
                 }
                 
                 NavigationLink {
@@ -32,13 +25,12 @@ struct NewStatType: View {
                 } label: {
                     Text("Picture")
                         .font(.custom("Menlo", size: 20))
-                        .pictureTextStyle()
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture)
                 }
             }
             Spacer()
         }
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(backgroundColor.ignoresSafeArea())
+        .navigationTitle("")
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
