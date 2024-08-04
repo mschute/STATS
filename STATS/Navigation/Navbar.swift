@@ -18,6 +18,7 @@ struct Navbar: View {
                 
                 NavigationStack {
                     NewStatType()
+                        
                 }
                 .tabItem {
                         Image(systemName: "plus.circle.fill")
@@ -38,8 +39,8 @@ struct Navbar: View {
                 .tag(Tab.settings)
             }
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            .toolbarBackground(Color(.background), for: .tabBar)
-            .toolbarBackground(.visible, for: .tabBar)
+            //.toolbarBackground(Color(.background), for: .tabBar)
+            //.toolbarBackground(.visible, for: .tabBar)
         }
     }
 }
