@@ -8,6 +8,8 @@ struct STATSApp: App {
     @StateObject private var selectedDetailTab = StatTabs()
     @State private var showSplash = true
     
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = true
+    
     //Does not need StatEntry models because the relationship is inferred
     public var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -23,6 +25,7 @@ struct STATSApp: App {
     }()
     
     //Splash Screen: https://www.youtube.com/watch?v=N7-QfGQrxlw
+    //Dark mode: https://www.hackingwithswift.com/forums/swiftui/preferredcolorscheme-not-affecting-datepicker-and-confirmationdialog/11796
     var body: some Scene {
         WindowGroup {
             if (showSplash) {
@@ -37,12 +40,18 @@ struct STATSApp: App {
                         }
                     }
             } else {
+            //Background color: https://stackoverflow.com/questions/56488228/xcode-11-swiftui-preview-dark-mode/58892521
                 Navbar()
                     .environmentObject(selectedTab)
                     .environmentObject(selectedDetailTab)
                     .environment(\.font, Font.custom("Menlo", size: 17))
-                    .environment(\.backgroundColor, Color.background)
-                    .accentColor(.universal)
+                    //.environment(\.colorScheme, .dark)
+                    //.environment(\.backgroundColor, Color.background)
+                    //.background(Color(UIColor.systemBackground))
+                    .tint(.main)
+                    .onAppear {
+                        UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
+                     }
             }
         }
         .modelContainer(sharedModelContainer)
