@@ -46,14 +46,12 @@ struct PictureCard: View {
                         }
                     }
                 }
-                .foregroundColor(.white)
             }
             .padding()
             .environment(\.font, .custom("Menlo", size: 14))
             .background(Color.picture)
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
-            .padding(.horizontal)
             
             NavigationLink(destination: PictureDetail(stat: stat)) {
                 EmptyView()
