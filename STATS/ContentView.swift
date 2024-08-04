@@ -3,7 +3,6 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.backgroundColor) var backgroundColor
     
     @Query(animation: .easeInOut) var counterStats: [CounterStat]
     @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
@@ -55,7 +54,6 @@ struct ContentView: View {
                 }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(backgroundColor.ignoresSafeArea())
     }
     
     //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
