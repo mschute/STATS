@@ -1,6 +1,7 @@
 import SwiftUI
 
 // Implementation: https://useyourloaf.com/blog/swiftui-custom-environment-values/
+//TODO: Potentially delete
 struct BackgroundColor: EnvironmentKey {
     static let defaultValue: Color = .background
 }
