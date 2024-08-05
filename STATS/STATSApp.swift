@@ -45,9 +45,6 @@ struct STATSApp: App {
                     .environmentObject(selectedTab)
                     .environmentObject(selectedDetailTab)
                     .environment(\.font, Font.custom("Menlo", size: 17))
-                    //.environment(\.colorScheme, .dark)
-                    //.environment(\.backgroundColor, Color.background)
-                    //.background(Color(UIColor.systemBackground))
                     .tint(.main)
                     .onAppear {
                         UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
