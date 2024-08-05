@@ -5,6 +5,8 @@ struct FormIconPicker: View {
     @Binding var iconPickerPresented: Bool
     @Binding var icon: String
     
+    @State var statColor: Color
+    
     var body: some View {
         HStack {
             Text("Icon")
@@ -15,8 +17,8 @@ struct FormIconPicker: View {
                     Image(systemName: icon)
                     Image(systemName: "chevron.right")
                 }
+                .tint(statColor)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .foregroundColor(.black)
             }
             .sheet(isPresented: $iconPickerPresented) {
                 SymbolPicker(symbol: $icon)
@@ -24,7 +26,3 @@ struct FormIconPicker: View {
         }
     }
 }
-
-//#Preview {
-//    FormIconPicker()
-//}

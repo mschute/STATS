@@ -4,37 +4,56 @@ struct FormReminder: View {
     @Binding var hasReminder: Bool
     @Binding var reminders: [Date]
     @Binding var newReminder: Date
-    
     @Binding var interval: String
     
+    @Environment(\.colorScheme) var colorScheme
+    @State var statColor: Color
+    
     var body: some View {
-        Section(header: Text("Reminder")) {
-            Toggle("Reminder", isOn: $hasReminder)
-            
-            if hasReminder {
-                HStack {
-                    Text("Every")
-                    
-                    TextField("Value", text: $interval)
-                        .keyboardType(.numberPad)
-                    //Dismiss keyboard tips: https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
-                    Text("Day(s)")
+            Section(header: Text("Reminder").foregroundColor(statColor)) {
+                Toggle(isOn: $hasReminder) {
+                    Text("Reminder")
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
-                
-                List {
-                    ForEach(reminders, id: \.self) { reminder in
-                        Text(reminder, style: .time)
+                .tint(statColor)
+    
+                if hasReminder {
+                    HStack {
+                        Text("Every")
+                        TextField("Value", text: $interval)
+                            .fontWeight(.light)
+                            .keyboardType(.numberPad)
+                            .frame(width: 60)
+                            .padding(5)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(5)
+                            .frame(alignment: .trailing)
+                            .multilineTextAlignment(.center)
+                        //Dismiss keyboard tips: https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
+                        Text("Day(s)")
                     }
-                    .onDelete(perform: deleteReminder)
-                }
-                
-                DatePicker(reminders.isEmpty ? "At" : "And", selection: $newReminder, displayedComponents: [.hourAndMinute])
-                
-                Button("Add reminder time") {
-                    addReminder()
+                    if (!reminders.isEmpty) {
+                        Text("At")
+                            .fontWeight(.medium)
+                    }
+                    List {
+                        ForEach(reminders, id: \.self) { reminder in
+                            Text(reminder, style: .time)
+                                .fontWeight(.regular)
+                                .padding(.leading, 10)
+                        }
+                        .onDelete(perform: deleteReminder)
+                    }
+    
+                    DatePicker(reminders.isEmpty ? "At" : "And", selection: $newReminder, displayedComponents: [.hourAndMinute])
+    
+                    Button("Add time") {
+                        addReminder()
+                    }
+                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor))
+                    .padding(.vertical)
                 }
             }
-        }
     }
     
     private func addReminder() {
@@ -51,7 +70,3 @@ struct FormReminder: View {
         reminders.sort(by: { $0 < $1 } )
     }
 }
-
-//#Preview {
-//    ReminderSection()
-//}
