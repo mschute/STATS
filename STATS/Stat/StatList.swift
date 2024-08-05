@@ -11,24 +11,22 @@ struct StatList: View {
     @State private var isCreatedAscending = false
     @State private var isNameAscending = false
     
+    @State private var newReminder: Date = Date()
+    
+    //TODO: Change color of delete
+    //TODO: Add delay because the picture does not load?
     var body: some View {
         VStack {
-            Text("Stat List")
-                .font(.custom("Menlo", size: 34))
-                .fontWeight(.black)
-                .foregroundColor(.white)
-                .padding(.vertical, 30)
-            
-            List {
+            TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
+            List() {
                 ForEach(stats, id: \.self) { item in
                     StatUtility.Card(stat: item.stat)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                 }
                 .onDelete(perform: deleteItems)
+                
             }
-            .frame(alignment: .leading)
-            .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItem {
                     HStack {
@@ -43,6 +41,7 @@ struct StatList: View {
                         } label: {
                             Label("", systemImage: "arrow.up.arrow.down")
                         }
+                        
                         
                         Menu {
                             ForEach(categories, id: \.id){ category in
