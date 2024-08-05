@@ -35,8 +35,7 @@ class StatUtility {
             return AnyView(Text("No stat available"))
         }
     }
-    
-    //Pass bindin
+
     static func StatForm(stat: any Stat, isEditMode: Bool) -> some View {
         switch stat {
         case let stat as CounterStat:
