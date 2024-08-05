@@ -1,12 +1,10 @@
 import SwiftUI
 
 struct SplashView: View {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = true
     
     var body: some View {
         ZStack {
-            Color.background
-                .edgesIgnoringSafeArea(.all)
-            
             VStack(spacing: 40) {
                 Image(systemName: "chart.bar.xaxis")
                     .resizable()
@@ -16,7 +14,10 @@ struct SplashView: View {
                 Text("STATS")
                     .font(.custom("Menlo", size: 100))
             }
-            .foregroundColor(.white)
+            .foregroundColor(isDarkMode ? .white : .black)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(isDarkMode ? Color.black : Color.white)
+        .edgesIgnoringSafeArea(.all)
     }
 }
