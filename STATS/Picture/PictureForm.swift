@@ -27,77 +27,72 @@ struct PictureForm: View {
     
     var body: some View {
         VStack {
-            Text(isEditMode ? "" : "Add Picture Stat")
-                .font(.largeTitle)
-            
-            //TODO: Should I abstract this out?
-            if !isAdvanced {
-                Button("Advanced Form") {
-                    isAdvanced = true
-                }
-                .padding()
-            } else {
-                Button("Basic Form") {
-                    isAdvanced = false
-                }
-                .padding()
+            if (!isEditMode) {
+                TopBar(title: isEditMode ? "" : "Add Picture Stat", topPadding: 0, bottomPadding: 20)
             }
-        }
-        
-        Form {
-            Section(header: Text("Basic Information")) {
-                TextField("Name", text: $tempPictureStat.name)
-                DatePicker("Created", selection: $tempPictureStat.created, displayedComponents: .date)
-                    .datePickerStyle(.compact)
+            Form {
+                Section {
+                    VStack {
+                        Button(isAdvanced ? "Basic Form" : "Advanced Form") {
+                            isAdvanced.toggle()
+                        }
+                        .underline()
+                        .fontWeight(.semibold)
+                        .foregroundColor(.main)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Section(header: Text("Basic Information").foregroundColor(.picture)) {
+                    TextField("Name", text: $tempPictureStat.name)
+                        .fontWeight(.regular)
+                    
+                    DatePicker("Created", selection: $tempPictureStat.created, displayedComponents: .date)
+                    
+                    if isAdvanced {
+                        TextField("Description", text: $tempPictureStat.desc)
+                            .fontWeight(.regular)
+                    }
+                    
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempPictureStat.icon, statColor: .picture)
+                }
+                .fontWeight(.medium)
+                
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .picture)
+                    .fontWeight(.medium)
+                
                 
                 if isAdvanced {
-                    TextField("Description", text: $tempPictureStat.desc)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .picture)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempPictureStat.icon)
-            }
-            
-            FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
-            
-            
-            if isAdvanced {
-                FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
-            }
-            
-            if isEditMode {
-                Button("Update") {
-                    editPicture()
+                Button(isEditMode ? "Update" : "Add Picture") {
+                    isEditMode ? editPicture() : addPicture()
                 }
-                .padding()
-                .buttonStyle(.plain)
-                .cornerRadius(10)
-            } else {
-                Button("Add Picture") {
-                    addPicture()
-                }
-                .padding()
-                .buttonStyle(.plain)
-                .cornerRadius(10)
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture))
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-        }
-        .onAppear {
-            if let pictureStat = pictureStat {
-                tempPictureStat = pictureStat
-                chosenCategory = tempPictureStat.category
-                
-                if let reminder = tempPictureStat.reminder {
-                    reminders = reminder.reminderTime
-                    interval = String(reminder.interval)
-                    hasReminder = true
+            .onAppear {
+                if let pictureStat = pictureStat {
+                    tempPictureStat = pictureStat
+                    chosenCategory = tempPictureStat.category
+                    
+                    if let reminder = tempPictureStat.reminder {
+                        reminders = reminder.reminderTime
+                        interval = String(reminder.interval)
+                        hasReminder = true
+                    } else {
+                        reminders = []
+                    }
+                    //Needs to reset the stat here, otherwise it remembers the state from previous session
                 } else {
-                    reminders = []
+                    tempPictureStat = PictureStat()
                 }
-                //Needs to reset the stat here, otherwise it remembers the state from previous session
-            } else {
-                tempPictureStat = PictureStat(name: "", created: Date(), desc: "", icon: "network", reminder: nil, category: nil)
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .frame(maxWidth: .infinity)
     }
     
     private func addPicture() {
@@ -131,7 +126,3 @@ struct PictureForm: View {
         dismiss()
     }
 }
-
-//#Preview {
-//    PictureForm()
-//}

@@ -3,9 +3,9 @@ import SwiftData
 
 struct DecimalForm: View {
     @Environment(\.modelContext) var modelContext
-    //TODO: Should I add presentationMode?
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedTab: NavbarTabs
+    @Environment(\.colorScheme) var colorScheme
     
     @Query(sort: \Category.name) var categories: [Category]
     
@@ -19,7 +19,6 @@ struct DecimalForm: View {
     @State var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    
     @State private var interval: String = ""
     
     @State private var iconPickerPresented: Bool = false
@@ -29,89 +28,90 @@ struct DecimalForm: View {
     
     var body: some View {
         VStack {
-            Text(isEditMode ? "" : "Add Decimal Stat")
-                .font(.largeTitle)
-            
-            //TODO: Should I abstract this out?
-            if !isAdvanced {
-                Button("Advanced Form") {
-                    isAdvanced = true
-                }
-                .padding()
-            } else {
-                Button("Basic Form") {
-                    isAdvanced = false
-                }
-                .padding()
+            if (!isEditMode) {
+                TopBar(title: isEditMode ? "" : "Add Decimal Stat", topPadding: 0, bottomPadding: 20)
             }
-        }
-        
-        
-        Form {
-            Section(header: Text("Basic Information")) {
-                TextField("Name", text: $tempDecimalStat.name)
-                DatePicker("Created", selection: $tempDecimalStat.created, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-                TextField("Unit name", text: $tempDecimalStat.unitName)
+            Form {
+                Section {
+                    VStack {
+                        Button(isAdvanced ? "Basic Form" : "Advanced Form") {
+                            isAdvanced.toggle()
+                        }
+                        .underline()
+                        .fontWeight(.semibold)
+                        .foregroundColor(.main)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                Section(header: Text("Basic Information").foregroundColor(.decimal)) {
+                    TextField("Name", text: $tempDecimalStat.name)
+                        .fontWeight(.regular)
+                    
+                    DatePicker("Created", selection: $tempDecimalStat.created, displayedComponents: .date)
+
+                    TextField("Unit name", text: $tempDecimalStat.unitName)
+                        .fontWeight(.regular)
+                    
+                    if isAdvanced {
+                        TextField("Description", text: $tempDecimalStat.desc)
+                            .fontWeight(.regular)
+                    }
+                    
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempDecimalStat.icon, statColor: .decimal)
+                }
+                .fontWeight(.medium)
+                
+                Section(header: Text("Report Configurations").foregroundColor(.decimal)) {
+                    Toggle(isOn: $tempDecimalStat.trackAverage) {
+                        Text("Calculate Average")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                    }
+                    
+                    Toggle(isOn: $tempDecimalStat.trackTotal) {
+                        Text("Calculate Total")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                    }
+                }
+                .fontWeight(.medium)
+                .tint(.decimal)
+                
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .decimal)
+                    .fontWeight(.medium)
                 
                 if isAdvanced {
-                    TextField("Description", text: $tempDecimalStat.desc)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .decimal)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempDecimalStat.icon)
-            }
-            
-            //TODO: Add tooltip explaining this section?
-            Section(header: Text("Report Configurations")) {
-                Toggle("Track Average", isOn: $tempDecimalStat.trackAverage)
-                Toggle("Track Total", isOn: $tempDecimalStat.trackTotal)
-            }
-            
-            FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
-            
-            
-            if isAdvanced {
-                FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
-            }
-            
-            if isEditMode {
-                Button("Update") {
-                    editDecimal()
+                Button(isEditMode ? "Update" : "Add Decimal") {
+                    isEditMode ? editDecimal() : addDecimal()
                 }
-                .padding()
-                .buttonStyle(.plain)
-                .cornerRadius(10)
-            } else {
-                Button("Add Decimal") {
-                    addDecimal()
-                }
-                .padding()
-                .buttonStyle(.plain)
-                .cornerRadius(10)
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal))
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-        }
-        .onAppear {
-            if let decimalStat = decimalStat {
-                tempDecimalStat = decimalStat
-                chosenCategory = tempDecimalStat.category
-                
-                if let reminder = tempDecimalStat.reminder {
-                    reminders = reminder.reminderTime
-                    interval = String(reminder.interval)
-                    hasReminder = true
+            .onAppear {
+                if let decimalStat = decimalStat {
+                    tempDecimalStat = decimalStat
+                    chosenCategory = tempDecimalStat.category
+                    
+                    if let reminder = tempDecimalStat.reminder {
+                        reminders = reminder.reminderTime
+                        interval = String(reminder.interval)
+                        hasReminder = true
+                    } else {
+                        reminders = []
+                    }
+                    //Needs to reset the counter stat here, otherwise it remembers the state from previous session
                 } else {
-                    reminders = []
+                    tempDecimalStat = DecimalStat()
                 }
-                //Needs to reset the counter stat here, otherwise it remembers the state from previous session
-            } else {
-                tempDecimalStat = DecimalStat(name: "", created: Date(), desc: "", icon: "network", unitName: "", trackAverage: false, trackTotal: false, reminder: nil, category: nil)
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .frame(maxWidth: .infinity)
     }
-
+    
     private func addDecimal() {
-        
         let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
         tempDecimalStat.reminder = newReminder
         tempDecimalStat.category = chosenCategory

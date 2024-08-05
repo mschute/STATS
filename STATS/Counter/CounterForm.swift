@@ -3,7 +3,6 @@ import SwiftUI
 
 struct CounterForm: View {
     @Environment(\.modelContext) var modelContext
-    //TODO: Should I add presentationMode?
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectedTab: NavbarTabs
     
@@ -28,80 +27,73 @@ struct CounterForm: View {
     
     var body: some View {
         VStack {
-            Text(isEditMode ? "" : "Add Counter Stat")
-                .font(.largeTitle)
-            
-            if !isAdvanced {
-                Button("Advanced Form") {
-                    isAdvanced = true
-                }
-                .padding()
-            } else {
-                Button("Basic Form") {
-                    isAdvanced = false
-                }
-                .padding()
+            if (!isEditMode) {
+                TopBar(title: isEditMode ? "" : "ADD COUNTER STAT", topPadding: 0, bottomPadding: 20)
             }
-        }
-        
-        Form {
-            Section(header: Text("Basic Information")) {
-                TextField("Name", text: $tempCounterStat.name)
-                DatePicker("Created", selection: $tempCounterStat.created, displayedComponents: .date)
-                    .datePickerStyle(.compact)
+
+            Form {
+                Section {
+                    VStack {
+                        Button(isAdvanced ? "Basic Form" : "Advanced Form") {
+                            isAdvanced.toggle()
+                        }
+                        .underline()
+                        .fontWeight(.semibold)
+                        .foregroundColor(.main)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Section(header: Text("Basic Information").foregroundColor(.counter)) {
+                    TextField("Name", text: $tempCounterStat.name)
+                        .fontWeight(.regular)
+                    
+                    DatePicker("Created", selection: $tempCounterStat.created, displayedComponents: .date)
+                    
+                    if isAdvanced {
+                        TextField("Description", text: $tempCounterStat.desc)
+                            .fontWeight(.regular)
+                    }
+                    
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempCounterStat.icon, statColor: .counter)
+                    
+                }
+                .fontWeight(.medium)
+                
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .counter)
+                    .fontWeight(.medium)
                 
                 if isAdvanced {
-                    TextField("Description", text: $tempCounterStat.desc)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .counter)
                 }
                 
-                FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $tempCounterStat.icon)
-            }
-            
-            FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval)
-            
-            
-            if isAdvanced {
-                FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory)
-            }
-            
-            if isEditMode {
-                Button("Update") {
-                    editCounter()
+                Button(isEditMode ? "Update" : "Add Counter") {
+                    isEditMode ? editCounter() : addCounter()
                 }
-                .padding()
-                .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .cornerRadius(10)
-            } else {
-                Button("Add Counter") {
-                    addCounter()
-                }
-                .padding()
-                .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .cornerRadius(10)
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter))
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-        }
-        .onAppear {
-            if let counterStat = counterStat {
-                tempCounterStat = counterStat
-                chosenCategory = tempCounterStat.category
-                
-                if let reminder = tempCounterStat.reminder {
-                    reminders = reminder.reminderTime
-                    interval = String(reminder.interval)
-                    hasReminder = true
+            .onAppear {
+                if let counterStat = counterStat {
+                    tempCounterStat = counterStat
+                    chosenCategory = tempCounterStat.category
+                    
+                    if let reminder = tempCounterStat.reminder {
+                        reminders = reminder.reminderTime
+                        interval = String(reminder.interval)
+                        hasReminder = true
+                    } else {
+                        reminders = []
+                    }
+                    //Needs to reset the counter stat here, otherwise it remembers the state from previous session
                 } else {
-                    reminders = []
+                    tempCounterStat = CounterStat()
                 }
-                //Needs to reset the counter stat here, otherwise it remembers the state from previous session
-            } else {
-                tempCounterStat = CounterStat()
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .frame(maxWidth: .infinity)
     }
     
     private func addCounter() {
@@ -112,7 +104,6 @@ struct CounterForm: View {
         modelContext.insert(tempCounterStat)
         
         dismiss()
-        
         //Delaying the call https://www.hackingwithswift.com/example-code/system/how-to-run-code-after-a-delay-using-asyncafter-and-perform
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             selectedTab.selectedTab = .statList
