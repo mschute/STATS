@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct NewStatType: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             TopBar(title: "NEW STAT", topPadding: 40, bottomPadding: 20)
@@ -28,9 +30,9 @@ struct NewStatType: View {
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture)
                 }
             }
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color.clear)
         }
         .navigationTitle("")
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
