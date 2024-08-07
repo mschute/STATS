@@ -82,9 +82,9 @@
 		0BB8E7142C5BBA8B00838EEC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7132C5BBA8B00838EEC /* SplashView.swift */; };
 		0BB8E7172C5C06AB00838EEC /* StatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */; };
 		0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */; };
-		0BB8E73C2C5E163C00838EEC /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */; };
 		0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7422C5EE3B700838EEC /* ColorMode.swift */; };
 		0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7452C5FADC200838EEC /* TopBar.swift */; };
+		0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,9 +182,9 @@
 		0BB8E7132C5BBA8B00838EEC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonStyle.swift; sourceTree = "<group>"; };
-		0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		0BB8E7422C5EE3B700838EEC /* ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMode.swift; sourceTree = "<group>"; };
 		0BB8E7452C5FADC200838EEC /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
+		0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSectionMimic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,7 +406,7 @@
 			children = (
 				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
 				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
-				0BB8E73B2C5E163C00838EEC /* BackgroundColor.swift */,
+				0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -570,7 +570,6 @@
 				0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
-				0BB8E73C2C5E163C00838EEC /* BackgroundColor.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */,
@@ -621,6 +620,7 @@
 				0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */,
 				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
+				0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */,
 				0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
 				0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */,
