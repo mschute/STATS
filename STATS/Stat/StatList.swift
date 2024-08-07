@@ -18,7 +18,7 @@ struct StatList: View {
     var body: some View {
         VStack {
             TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
-            List() {
+            List {
                 ForEach(stats, id: \.self) { item in
                     StatUtility.Card(stat: item.stat)
                         .listRowSeparator(.hidden)
