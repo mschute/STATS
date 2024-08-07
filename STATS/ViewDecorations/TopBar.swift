@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct TopBar: View {
-    @Environment(\.backgroundColor) var backgroundColor
     var title: String
     var topPadding: CGFloat
     var bottomPadding: CGFloat
@@ -14,8 +13,11 @@ struct TopBar: View {
                 .padding(.top, topPadding)
                 .padding(.bottom, bottomPadding)
                 .kerning(4)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .center)
+//                .background(LinearGradient(gradient: Gradient(colors: [.background, .backgroundHighlight]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea()
                 .background(Color.background.ignoresSafeArea())
         }
     }
 }
+
+
