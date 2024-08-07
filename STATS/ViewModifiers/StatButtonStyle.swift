@@ -22,7 +22,6 @@ struct StatButtonStyle: ButtonStyle {
             .padding(.horizontal, horizontalPadding)
             .background(statColor)
             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-            //.frame(maxWidth: .infinity, maxHeight: 30, alignment: align)
             .frame(maxHeight: 30, alignment: align)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
     }
