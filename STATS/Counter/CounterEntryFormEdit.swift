@@ -2,13 +2,14 @@ import SwiftUI
 
 struct CounterEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
+    //TODO: Should this be changed to dismiss?
     @Environment(\.presentationMode) var presentationMode
-
     var counterEntry: CounterEntry
     
     @State private var timestamp: Date
     @State private var note: String
     
+    //TODO: Why do I have an init, versus tempEntryCounter
     init(counterEntry: CounterEntry) {
         self.counterEntry = counterEntry
         _timestamp = State(initialValue: counterEntry.timestamp)
@@ -16,12 +17,25 @@ struct CounterEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+        TopBar(title: "Edit Entry", topPadding: 0, bottomPadding: 20)
+        Form {
+            Section(header: Text("Timestamp").foregroundColor(.counter)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .padding(.vertical, 5)
+            }
+            .fontWeight(.medium)
             
-            Button("Update", action: saveEntry)
-        })
+            Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
+
+            Section {
+                Button("Update", action: saveEntry)
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
     }
 
     func saveEntry() {
@@ -39,7 +53,3 @@ struct CounterEntryFormEdit: View {
         }
     }
 }
-
-//#Preview {
-//    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
-//}

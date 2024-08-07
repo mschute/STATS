@@ -3,8 +3,8 @@ import PhotosUI
 
 struct PictureEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
+    //TODO: Should this be dismiss instead?
     @Environment(\.presentationMode) var presentationMode
-    
     var pictureEntry: PictureEntry
     
     @State private var timestamp: Date
@@ -23,14 +23,26 @@ struct PictureEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+        Form {
+            Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .fontWeight(.medium)
+                    .padding(.vertical, 5)
+            }
             
             PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
+
+            Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
             
-            Button("Update", action: saveEntry)
-        })
+            Section {
+                Button("Update", action: saveEntry)
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
     }
 
     func saveEntry() {
@@ -50,7 +62,3 @@ struct PictureEntryFormEdit: View {
         }
     }
 }
-
-//#Preview {
-//    PictureEntryFormEdit()
-//}

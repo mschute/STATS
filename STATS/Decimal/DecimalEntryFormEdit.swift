@@ -18,20 +18,36 @@ struct DecimalEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            HStack{
-                Text("Value ")
-                TextField("Value", value: $value, format: .number)
-                    .keyboardType(.numberPad)
-                Text(decimalEntry.stat?.unitName ?? "")
+        TopBar(title: "Edit Entry", topPadding: 0, bottomPadding: 20)
+        Form {
+            Section(header: Text("Timestamp").foregroundColor(.decimal)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .padding(.vertical, 5)
             }
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+            .fontWeight(.medium)
             
-            Button("Update", action: saveEntry)
-        })
+            Section(header: Text("Value").foregroundColor(.decimal).fontWeight(.medium)) {
+                HStack {
+                    TextField("Value", value: $value, format: .number)
+                        .keyboardType(.numberPad)
+                    Text(decimalEntry.stat?.unitName ?? "")
+                        .fontWeight(.medium)
+                }
+            }
+
+            Section(header: Text("Additional Information").foregroundColor(.decimal).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
+            
+            Section {
+                Button("Update", action: saveEntry)
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
     }
-    
+    //TODO: Change in some sort of closure instead of individual entry. whatever
     func saveEntry() {
         guard !String(decimalEntry.value).isEmpty else { return }
         
@@ -50,7 +66,3 @@ struct DecimalEntryFormEdit: View {
         }
     }
 }
-
-//#Preview {
-//    DecimalEntryForm(decimalStat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"), value: "0.0", timestamp: Date())
-//}
