@@ -2,10 +2,8 @@ import SwiftUI
 import PhotosUI
 
 struct PictureEntryForm: View {
-    var pictureStat: PictureStat
-    
     @EnvironmentObject var selectedDetailTab: StatTabs
-    
+    var pictureStat: PictureStat
     @State var entry: PictureEntry = PictureEntry()
     
     @State var selectedPhoto: PhotosPickerItem?
@@ -15,23 +13,26 @@ struct PictureEntryForm: View {
     @State private var showCamera: Bool = false
     
     var body: some View {
-        Form(content: {
-            Section(header: Text("TimeStamp")) {
+        Form {
+            Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
                 DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .fontWeight(.medium)
+                    .padding(.vertical, 5)
             }
             
-              PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
+            PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
-            Section(header: Text("Additional Information")) {
+            Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
                 TextField("Note", text: $entry.note)
             }
             
-            
             Section {
                 Button("Add", action: addEntry)
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
-            
-        })
+        }
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
                 entry.image = data
@@ -45,7 +46,3 @@ struct PictureEntryForm: View {
         selectedDetailTab.selectedDetailTab = .history
     }
 }
-
-//#Preview {
-//    PictureEntryForm()
-//}
