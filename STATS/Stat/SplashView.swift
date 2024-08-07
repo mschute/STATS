@@ -13,6 +13,7 @@ struct SplashView: View {
                 
                 Text("STATS")
                     .font(.custom("Menlo", size: 100))
+                    .fontWeight(.black)
             }
             .foregroundColor(isDarkMode ? .white : .black)
         }
