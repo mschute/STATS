@@ -21,6 +21,9 @@ struct PictureEntryList: View {
         List {
             ForEach(entries) { entry in
                 PictureEntryCard(pictureEntry: entry)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .padding(.vertical, 5)
             }
             .onDelete(perform: deleteItems)
         }
@@ -34,8 +37,8 @@ struct PictureEntryList: View {
                     modelContext.delete(entries[index])
                     try modelContext.save()
                 } catch {
-                        print("Error deleting entry")
-                    }
+                    print("Error deleting entry")
+                }
             }
         }
     }

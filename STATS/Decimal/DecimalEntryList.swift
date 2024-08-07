@@ -20,9 +20,13 @@ struct DecimalEntryList: View {
         List {
             ForEach(entries) { entry in
                 DecimalEntryCard(decimalEntry: entry)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .padding(.vertical, 5)
             }
             .onDelete(perform: deleteItems)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     func deleteItems(offsets: IndexSet) {

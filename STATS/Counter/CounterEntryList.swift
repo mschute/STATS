@@ -1,7 +1,6 @@
 import SwiftData
 import SwiftUI
 
-
 struct CounterEntryList: View {
     @Environment(\.modelContext) var modelContext
     @Query private var entries: [CounterEntry]
@@ -20,11 +19,15 @@ struct CounterEntryList: View {
 
     var body: some View {
         List {
-            ForEach(entries) { entry in
+            ForEach(entries, id: \.self) { entry in
                 CounterEntryCard(counterEntry: entry)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .padding(.vertical, 5)
             }
             .onDelete(perform: deleteItems)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     func deleteItems(offsets: IndexSet) {
