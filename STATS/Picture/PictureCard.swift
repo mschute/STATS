@@ -7,7 +7,7 @@ struct PictureCard: View {
         ZStack {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    HStack(spacing: 15) {
+                    HStack(alignment: .top, spacing: 15) {
                         Image(systemName: stat.icon != "network" ? stat.icon : "camera.circle.fill")
                             .resizable()
                             .scaledToFit()
@@ -23,7 +23,6 @@ struct PictureCard: View {
                                 .fontWeight(.regular)
                         }
                     }
-                    
                     Spacer()
                     
                     VStack(alignment: .trailing, spacing: 5) {
@@ -34,7 +33,7 @@ struct PictureCard: View {
                                 .resizable()
                                 .scaledToFit()
                                 .cornerRadius(10)
-                                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .trailing)
+                                .frame(maxWidth: .infinity, maxHeight: 60, alignment: .trailing)
                                 .clipped()
                                 
                             Text("\(lastEntry.timestamp, style: .date)")
@@ -47,16 +46,23 @@ struct PictureCard: View {
                     }
                 }
             }
+            .font(.custom("Menlo", size: 13))
             .padding()
-            .environment(\.font, .custom("Menlo", size: 14))
-            .background(Color.picture)
-            .cornerRadius(10)
-            .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(LinearGradient(gradient: Gradient(colors: [.picture, .pictureHighlight]), startPoint: .top, endPoint: .bottom))
+            .cornerRadius(12)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
+            )
+            .shadow(color: Color(.pictureHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination: PictureDetail(stat: stat)) {
                 EmptyView()
             }
             .opacity(0.0)
+            .navigationTitle("")
         }
     }
 }
