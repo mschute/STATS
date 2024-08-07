@@ -37,17 +37,17 @@ struct DecimalReportCharts: View {
                         x: .value("Date", entry.day),
                         y: .value("\(decimalEntries[0].stat?.unitName ?? "")", entry.value)
                     )
+                    .foregroundStyle(.decimal)
                     .interpolationMethod(.catmullRom)
                     .lineStyle(.init(lineWidth: 2))
                     .symbol {
-                        //TODO: Need to format the mark labels
                         Circle()
-                            .fill(.blue)
+                            .fill(.decimal)
                             .frame(width: 12, height: 12)
                             .overlay {
                                 Text(String(format: "%0.2f", entry.value))
                                     .frame(width: 20)
-                                    .font(.system(size: 6, weight: .medium))
+                                    .font(.system(size: 7, weight: .medium))
                                     .offset(y: -15)
                             }
                             .padding(.horizontal)
@@ -60,9 +60,11 @@ struct DecimalReportCharts: View {
             .chartYScale(domain: [chartYLow, chartYHigh])
             .chartXAxisLabel(position: .bottom, alignment: .center) {
                 Text("Date")
+                    .font(.custom("Menlo", size: 16))
             }
             .chartYAxisLabel(position: .leading, alignment: .center) {
                 Text("\(decimalEntries[0].stat?.unitName ?? "")")
+                    .font(.custom("Menlo", size: 16))
             }
             .frame(height: 200)
             .padding(.horizontal)

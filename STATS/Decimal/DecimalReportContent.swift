@@ -8,7 +8,7 @@ struct DecimalReportContent: View {
     @Binding var startDate: Date
     @Binding var endDate: Date
     
-//https://www.hackingwithswift.com/example-code/language/how-to-sum-an-array-of-numbers-using-reduce
+    //https://www.hackingwithswift.com/example-code/language/how-to-sum-an-array-of-numbers-using-reduce
     var sum: Double { decimalEntries.reduce(0) { $0 + $1.value } }
     var average: Double {
         if (decimalEntries.count == 0) {
@@ -20,37 +20,115 @@ struct DecimalReportContent: View {
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>){
         self._startDate = startDate
         self._endDate = endDate
-        
         _decimalEntries = Query(filter: DecimalReportContent.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     
     var body: some View {
         VStack {
-            ScrollView {
-                Section(header: Text("Date Range")) {
-                    Text("Total entries for date range: \(decimalEntries.count)")
-                    Text("Largest value for date range: \(decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0)")
-                    Text("Smallest value for date range: \(decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0)")
-                    
+            VStack {
+                HStack {
+                    Text("Total entries:")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(decimalEntries.count)")
+                        .font(.custom("Menlo", size: 32))
+                        .fontWeight(.bold)
+                        .foregroundColor(.decimal)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.horizontal)
+                .padding(.vertical, 10)
                 
+                Divider()
+                
+                HStack {
+                    Text("Largest value:")
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                    Text(String(format: "%.2f", decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0))
+                        .font(.custom("Menlo", size: 28))
+                        .fontWeight(.bold)
+                        .foregroundColor(.decimal)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                
+                Divider()
+                
+                HStack {
+                    Text("Smallest value:")
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                    Text(String(format: "%.2f", decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0))
+                        .font(.custom("Menlo", size: 28))
+                        .fontWeight(.bold)
+                        .foregroundColor(.decimal)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                
+            }
+            .formSectionMimic()
+            
+            VStack {
                 if (decimalEntries[0].stat?.trackTotal == true) {
-                    Section(header: Text("Total")) {
-                        Text("Sum of entry values for date range: \(sum)")
+                    HStack {
+                        Text("Sum:")
+                            .fontWeight(.semibold)
+                            .frame(alignment: .leading)
+                        
+                        Text(String(format: "%.2f", sum))
+                            .font(.custom("Menlo", size: 28))
+                            .fontWeight(.bold)
+                            .foregroundColor(.decimal)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .formSectionMimic()
+                    
+                    VStack {
+                        Text("Value Sum by Day")
+                            .fontWeight(.semibold)
+                            .font(.custom("Menlo", size: 24))
+                            .padding()
                         
                         DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
+                            .foregroundStyle(.decimal)
+                    }
+                    .formSectionMimic()
+                }
+            }
+            
+            VStack {
+                if (decimalEntries[0].stat?.trackAverage == true) {
+                    HStack {
+                        Text("Average:")
+                            .fontWeight(.semibold)
+                            .frame(alignment: .leading)
+                    
+                        Text(String(format: "%.2f", average))
+                            .font(.custom("Menlo", size: 28))
+                            .fontWeight(.bold)
+                            .foregroundColor(.decimal)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .padding(.horizontal)
-                }
-                
-                if (decimalEntries[0].stat?.trackAverage == true) {
-                    Section(header: Text("Average")) {
-                        Text("Average for date range: \(average)")
+                    .padding(.vertical, 10)
+                    .formSectionMimic()
+                    
+                    VStack {
+                        Text("Value Average by Day")
+                            .fontWeight(.semibold)
+                            .font(.custom("Menlo", size: 24))
+                            .padding()
                         
                         DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
+                            .foregroundStyle(.decimal)
                     }
-                    .padding(.horizontal)
+                    .formSectionMimic()
                 }
             }
         }
@@ -62,7 +140,3 @@ struct DecimalReportContent: View {
         }
     }
 }
-
-//#Preview {
-//    DecimalReport()
-//}
