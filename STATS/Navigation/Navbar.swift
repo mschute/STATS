@@ -3,6 +3,7 @@ import SwiftUI
 struct Navbar: View {
     @EnvironmentObject var selectedTab: NavbarTabs
     @EnvironmentObject var selectedDetailTab: StatTabs
+    @Environment (\.colorScheme) var colorScheme
     
     var body: some View {
         TabView(selection: $selectedTab.selectedTab) {
@@ -18,7 +19,6 @@ struct Navbar: View {
                 
                 NavigationStack {
                     NewStatType()
-                        
                 }
                 .tabItem {
                         Image(systemName: "plus.circle.fill")
@@ -34,11 +34,10 @@ struct Navbar: View {
                         Image(systemName: "gearshape.circle.fill")
                         .imageScale(.large)
                         Text("Settings")
-                    
                 }
                 .tag(Tab.settings)
             }
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }

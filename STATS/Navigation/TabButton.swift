@@ -6,25 +6,25 @@ struct TabButton: View {
     let tag: DetailTab
     
     @EnvironmentObject var selectedDetailTab: StatTabs
+    @Environment(\.colorScheme) var colorScheme
     
-    //Custom tab bar: https://www.youtube.com/watch?v=R_KZwX-yP4o
+    private var textColor: Color {
+        colorScheme == .dark ? .white : .black
+    }
+    
     var body: some View {
         Button(action: {
             selectedDetailTab.selectedDetailTab = tag
         }) {
             VStack {
                 Image(systemName: icon)
-                    .foregroundColor(selectedDetailTab.selectedDetailTab == tag ? .blue : .black)
                     .padding(.vertical, 1)
                 Text(title)
-                    .foregroundColor(selectedDetailTab.selectedDetailTab == tag ? .blue : .black)
             }
+            .fontWeight(selectedDetailTab.selectedDetailTab == tag ? .medium : .regular)
+            .foregroundColor(selectedDetailTab.selectedDetailTab == tag ? .main : textColor)
         }
         .padding(.vertical, 10)
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 15)
     }
 }
-
-//#Preview {
-//    TabButton(title: "Edit", icon: "square.and.pencil", tag: .editStat, selectedDetailTab: )
-//}
