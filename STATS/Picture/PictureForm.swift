@@ -30,6 +30,7 @@ struct PictureForm: View {
             if (!isEditMode) {
                 TopBar(title: isEditMode ? "" : "Add Picture Stat", topPadding: 0, bottomPadding: 20)
             }
+            
             Form {
                 Section {
                     VStack {
