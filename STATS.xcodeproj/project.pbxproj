@@ -85,6 +85,7 @@
 		0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7422C5EE3B700838EEC /* ColorMode.swift */; };
 		0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7452C5FADC200838EEC /* TopBar.swift */; };
 		0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */; };
+		0BB8E74A2C63CF7C00838EEC /* GradientFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		0BB8E7422C5EE3B700838EEC /* ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMode.swift; sourceTree = "<group>"; };
 		0BB8E7452C5FADC200838EEC /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSectionMimic.swift; sourceTree = "<group>"; };
+		0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +409,7 @@
 				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
 				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
 				0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */,
+				0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
 				0B7C63D82C4AC08600798513 /* PictureCard.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
+				0BB8E74A2C63CF7C00838EEC /* GradientFilter.swift in Sources */,
 				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
 				0B7C63DA2C4AC0F500798513 /* PictureDetail.swift in Sources */,
 				0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */,
