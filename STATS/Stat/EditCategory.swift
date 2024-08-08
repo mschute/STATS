@@ -21,7 +21,7 @@ struct EditCategory: View {
                     TextField("New category", text: $newCategory)
                     Button(action: addCategory) {
                         Text("Add")
-                            .textButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main)
+                            .textButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight)
                             .padding(.vertical, 5)
                     }
                 }

@@ -7,7 +7,8 @@ struct FormReminder: View {
     @Binding var interval: String
     
     @Environment(\.colorScheme) var colorScheme
-    @State var statColor: Color
+    var statColor: Color
+    var statHighlightColor: Color
     
     var body: some View {
             Section(header: Text("Reminder").foregroundColor(statColor)) {
@@ -26,7 +27,7 @@ struct FormReminder: View {
                             .frame(width: 60)
                             .padding(5)
                             .background(Color(UIColor.systemGray5))
-                            .cornerRadius(5)
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
                             .frame(alignment: .trailing)
                             .multilineTextAlignment(.center)
                         //Dismiss keyboard tips: https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
@@ -50,7 +51,7 @@ struct FormReminder: View {
                     Button("Add time") {
                         addReminder()
                     }
-                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor))
+                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
                     .padding(.vertical)
                 }
             }

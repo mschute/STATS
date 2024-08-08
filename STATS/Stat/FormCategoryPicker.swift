@@ -9,7 +9,8 @@ struct FormCategoryPicker: View {
     @Binding var chosenCategory: Category?
     @Binding var addNewCategory: Bool
     
-    @State var statColor: Color
+    var statColor: Color
+    var statHighlightColor: Color
     
     //optional picker https://stackoverflow.com/questions/59348093/picker-for-optional-data-type-in-swiftui
     var body: some View {
@@ -28,7 +29,7 @@ struct FormCategoryPicker: View {
                 Button("Add tag") {
                     addNewCategory = true
                 }
-                .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor))
+                .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
                 .padding(.vertical)
             } else {
                 TextField("Add new tag", text: $newCategory)
@@ -38,13 +39,13 @@ struct FormCategoryPicker: View {
                         newCategory = ""
                         addNewCategory = false
                     }
-                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor))
+                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
 
                     Button("Cancel") {
                         newCategory = ""
                         addNewCategory = false
                     }
-                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .cancel))
+                    .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .cancel, statHighlightColor: .cancelHighlight))
                 }
                 .padding(.vertical)
                 .frame(alignment: .leading)

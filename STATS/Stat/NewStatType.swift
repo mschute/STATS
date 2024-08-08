@@ -12,14 +12,14 @@ struct NewStatType: View {
                     CounterForm(isEditMode: false)
                 } label: {
                     Text("Counter")
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter, statHighlightColor: .counterHighlight)
                 }
                 
                 NavigationLink {
                     DecimalForm(isEditMode: false)
                 } label: {
                     Text("Decimal")
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight)
                 }
                 
                 NavigationLink {
@@ -27,7 +27,7 @@ struct NewStatType: View {
                 } label: {
                     Text("Picture")
                         .font(.custom("Menlo", size: 20))
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)

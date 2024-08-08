@@ -75,17 +75,17 @@ struct DecimalForm: View {
                 .fontWeight(.medium)
                 .tint(.decimal)
                 
-                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .decimal)
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .decimal, statHighlightColor: .decimalHighlight)
                     .fontWeight(.medium)
                 
                 if isAdvanced {
-                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .decimal)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .decimal, statHighlightColor: .decimalHighlight)
                 }
                 
                 Button(isEditMode ? "Update" : "Add Decimal") {
                     isEditMode ? editDecimal() : addDecimal()
                 }
-                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal))
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
             }

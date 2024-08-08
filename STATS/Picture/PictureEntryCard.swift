@@ -24,7 +24,7 @@ struct PictureEntryCard: View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFit()
-                            .cornerRadius(10)
+                            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                             .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
                             .clipped()
                             .shadow(radius: 5)
@@ -58,14 +58,15 @@ struct PictureEntryCard: View {
             .font(.custom("Menlo", size: 13))
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(LinearGradient(gradient: Gradient(colors: [.picture, .pictureHighlight]), startPoint: .top, endPoint: .bottom))
-            .cornerRadius(12)
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-            )
-            .shadow(color: Color(.pictureHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
+            .gradientFilter(gradientColor: .picture, gradientHighlight: .pictureHighlight, cornerRadius: 12)
+//            .background(LinearGradient(gradient: Gradient(colors: [.picture, .pictureHighlight]), startPoint: .top, endPoint: .bottom))
+//            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
+//            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
+//            )
+//            .shadow(color: Color(.pictureHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination:
                             PictureEntryFormEdit(pictureEntry: pictureEntry)) {
