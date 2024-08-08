@@ -86,7 +86,7 @@ struct CounterReportContent: View {
                     .font(.custom("Menlo", size: 10))
                     .padding()
                     .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
+                    .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
             }

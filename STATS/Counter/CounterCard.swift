@@ -42,14 +42,15 @@ struct CounterCard: View {
             .font(.custom("Menlo", size: 13))
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(LinearGradient(gradient: Gradient(colors: [.counter, .counterHighlight]), startPoint: .top, endPoint: .bottom))
-            .cornerRadius(12)
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-            )
-            .shadow(color: Color(.counterHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
+            .gradientFilter(gradientColor: .counter, gradientHighlight: .counterHighlight, cornerRadius: 12)
+//            .background(LinearGradient(gradient: Gradient(colors: [.counter, .counterHighlight]), startPoint: .top, endPoint: .bottom))
+//            .cornerRadius(12)
+//            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
+//            )
+//            .shadow(color: Color(.counterHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination: CounterDetail(stat: stat)) {
                 EmptyView()

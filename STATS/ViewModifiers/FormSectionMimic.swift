@@ -1,6 +1,5 @@
 import SwiftUI
 
-//TODO: Need the background to be white when light and systemGray6 when black
 struct FormSectionMimic: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     
@@ -9,7 +8,7 @@ struct FormSectionMimic: ViewModifier {
             .padding(10)
             .frame(alignment: .center)
             .background(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
-            .cornerRadius(20)
+            .clipShape(RoundedRectangle(cornerRadius: 20.0, style: .continuous))
             .padding(.top, 35)
             .padding(.horizontal, 15)
     }

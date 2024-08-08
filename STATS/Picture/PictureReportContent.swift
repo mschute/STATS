@@ -76,7 +76,7 @@ struct PictureReportContent: View {
                                                     .padding(5)
                                                     .background(Color.black.opacity(0.7))
                                                     .foregroundColor(.white)
-                                                    .cornerRadius(5)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
                                                     .padding([.bottom, .trailing], 5)
                                             }
                                         }
@@ -90,7 +90,7 @@ struct PictureReportContent: View {
                                                 .padding(5)
                                                 .background(Color.black.opacity(0.7))
                                                 .foregroundColor(.white)
-                                                .cornerRadius(5)
+                                                .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
                                                 .padding([.bottom, .trailing], 5)
                                             }
                                         }
