@@ -2,16 +2,16 @@ import Charts
 import SwiftUI
 
 struct DecimalReportCharts: View {
-    var decimalEntries: [DecimalEntry]
-    var data: [ValueDayData] = []
-    var chartValueType: ChartValueType
+    private var decimalEntries: [DecimalEntry]
+    private var data: [ValueDayData] = []
+    private var chartValueType: ChartValueType
     
-    var chartYLow: Double {
+    private var chartYLow: Double {
         let minValue = decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0
         let pad = minValue * 0.2
         return minValue - pad
     }
-    var chartYHigh: Double {
+    private var chartYHigh: Double {
         let maxValue = decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0
         let pad = maxValue * 0.2
         return maxValue + pad
@@ -71,7 +71,7 @@ struct DecimalReportCharts: View {
         }
     }
     
-    func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+    private func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
         var dateValues: [Date : Double] = [:]
         let calendar = Calendar.current
         
@@ -88,7 +88,7 @@ struct DecimalReportCharts: View {
         return data.sorted(by: { $0.day < $1.day })
     }
     
-    func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+    private func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
         var dateValues: [Date : (total: Double, count: Int)] = [:]
         let calendar = Calendar.current
         

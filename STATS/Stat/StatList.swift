@@ -12,9 +12,7 @@ struct StatList: View {
     @State private var isNameAscending = false
     
     @State private var newReminder: Date = Date()
-    
-    //TODO: Change color of delete
-    //TODO: Add delay because the picture does not load?
+
     var body: some View {
         VStack {
             TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
@@ -60,14 +58,14 @@ struct StatList: View {
         }
     }
     
-    func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
             StatUtility.Remove(offsets: offsets, statItems: stats, modelContext: modelContext)
         }
     }
     
-    func sortStats(sortType: SortType) {
+    private func sortStats(sortType: SortType) {
         
         switch sortType {
         case .created where isCreatedAscending == false:

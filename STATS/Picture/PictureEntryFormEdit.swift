@@ -3,16 +3,15 @@ import PhotosUI
 
 struct PictureEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    //TODO: Should this be dismiss instead?
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     var pictureEntry: PictureEntry
     
     @State private var timestamp: Date
     @State private var note: String
     
-    @State var selectedPhoto: PhotosPickerItem?
-    @State var selectedPhotoData: Data?
-    @State var cameraImage: UIImage?
+    @State private var selectedPhoto: PhotosPickerItem?
+    @State private var selectedPhotoData: Data?
+    @State private var cameraImage: UIImage?
     @State private var showCamera: Bool = false
     
     init(pictureEntry: PictureEntry) {
@@ -41,15 +40,21 @@ struct PictureEntryFormEdit: View {
                     .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                saveEntry()
+                            }
+                    )
             }
         }
+        .dismissKeyboardOnTap()
     }
 
-    func saveEntry() {
+    private func saveEntry() {
         pictureEntry.timestamp = timestamp
         pictureEntry.note = note
         pictureEntry.image = selectedPhotoData
-        
         
         do {
             try modelContext.save()
@@ -58,7 +63,7 @@ struct PictureEntryFormEdit: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 }

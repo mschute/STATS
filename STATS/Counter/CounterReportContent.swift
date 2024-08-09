@@ -9,16 +9,16 @@ struct CounterReportContent: View {
     @Binding var startDate: Date
     @Binding var endDate: Date
     
-    var chartYLow: Int = 0
-    var chartYHigh: Int {
+    private var chartYLow: Int = 0
+    private var chartYHigh: Int {
         let maxDayCount = findDayCount().values.max() ?? 0
         return maxDayCount + 2
     }
     
     private var timeOfDayAndCount: (timeOfDay: TimeOfDay, count: Int) { calcTimeOfDay() }
-    var timeOfDay: TimeOfDay { timeOfDayAndCount.timeOfDay }
-    var timeOfDayCount: Int { timeOfDayAndCount.count }
-    var data: [CountDayData] { return findDayCount().map{ CountDayData(day: $0.key, count: $0.value) } }
+    private var timeOfDay: TimeOfDay { timeOfDayAndCount.timeOfDay }
+    private var timeOfDayCount: Int { timeOfDayAndCount.count }
+    private var data: [CountDayData] { return findDayCount().map{ CountDayData(day: $0.key, count: $0.value) } }
     
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
         self._startDate = startDate
@@ -70,6 +70,7 @@ struct CounterReportContent: View {
                         Text("With a occurence count of:")
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
+                        
                         Text("\(timeOfDayCount)")
                             .font(.custom("Menlo", size: 32))
                             .fontWeight(.bold)
@@ -97,6 +98,7 @@ struct CounterReportContent: View {
                     .fontWeight(.semibold)
                     .font(.custom("Menlo", size: 24))
                     .padding()
+                
                 Chart {
                     ForEach(data) { entry in
                         BarMark(
@@ -132,7 +134,7 @@ struct CounterReportContent: View {
         }
     }
     
-    func calcTimeOfDay() -> (timeOfDay: TimeOfDay, count: Int) {
+    private func calcTimeOfDay() -> (timeOfDay: TimeOfDay, count: Int) {
         var timeOfDayCounts: [TimeOfDay: Int] = [
             .morning: 0,
             .afternoon: 0,
@@ -165,7 +167,7 @@ struct CounterReportContent: View {
         }
     }
     
-    func findDayCount() -> [Date : Int] {
+    private func findDayCount() -> [Date : Int] {
         var dateCounts: [Date : Int] = [:]
         let calendar = Calendar.current
         

@@ -7,7 +7,7 @@ struct PicturePicker: View {
     @Binding var selectedPhotoData: Data?
     @Binding var cameraImage: UIImage?
     @Binding var showCamera: Bool
-    @State var cameraError: CameraPermission.CameraError?
+    @State private var cameraError: CameraPermission.CameraError?
     
     //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
     //Source for code/implementation: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3

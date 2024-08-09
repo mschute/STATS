@@ -9,7 +9,7 @@ struct ContentView: View {
     
     @State private var stats: [AnyStat] = []
     
-    @State var filter: String? = nil
+    @State private var filter: String? = nil
     
     //https://www.avanderlee.com/swift/computed-property/
     var filteredCounterStats: [CounterStat] {
@@ -56,7 +56,7 @@ struct ContentView: View {
     
     //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
     //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
-    func combineStats() {
+    private func combineStats() {
         stats = []
         
         stats += filteredCounterStats.map { AnyStat(stat: $0) }
@@ -66,7 +66,7 @@ struct ContentView: View {
         sortStats()
     }
     
-    func sortStats() {
+    private func sortStats() {
         stats.sort { $0.stat.created > $1.stat.created }
     }
 }

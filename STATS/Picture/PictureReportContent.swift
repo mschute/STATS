@@ -8,9 +8,9 @@ struct PictureReportContent: View {
     @Binding private var startDate: Date
     @Binding private var endDate: Date
     
-    @State var statSelection: AnyStat?
-    @State var stats: [AnyStat] = []
-    @State var filteredStatData: [AnyEntry] = []
+    @State private var statSelection: AnyStat?
+    @State private var stats: [AnyStat] = []
+    @State private var filteredStatData: [AnyEntry] = []
     
     @Query(animation: .easeInOut) var counterStats: [CounterStat]
     @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
@@ -129,7 +129,7 @@ struct PictureReportContent: View {
         }
     }
     
-    func createStatData(anyStat: AnyStat?) -> [AnyEntry] {
+    private func createStatData(anyStat: AnyStat?) -> [AnyEntry] {
         
         if let counterStat = anyStat?.stat as? CounterStat {
             return counterStat.statEntry.filter { $0.timestamp >= startDate && $0.timestamp <= endDate }.map { AnyEntry(entry: $0) }
@@ -142,7 +142,7 @@ struct PictureReportContent: View {
         return []
     }
     
-    func combineStats() {
+    private func combineStats() {
         stats = []
         
         stats += counterStats.map { AnyStat(stat: $0) }
@@ -151,12 +151,12 @@ struct PictureReportContent: View {
         sortStats()
     }
     
-    func sortStats() {
+    private func sortStats() {
         stats.sort { $0.stat.name > $1.stat.name }
     }
     
     //Implementation: https://sarunw.com/posts/getting-number-of-days-between-two-dates/
-    func calcDaysBetween(from: Date, to: Date) -> Int {
+    private func calcDaysBetween(from: Date, to: Date) -> Int {
         let calendar = Calendar.current
         let fromDate = calendar.startOfDay(for: from)
         let toDate = calendar.startOfDay(for: to)
