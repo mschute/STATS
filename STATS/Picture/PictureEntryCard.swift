@@ -8,7 +8,7 @@ struct PictureEntryCard: View {
         ZStack {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Image(systemName: "\(pictureEntry.stat?.icon ?? "network")")
+                    Image(systemName: "\(pictureEntry.stat?.icon ?? "photo")")
                         .fontWeight(.bold)
                     Text("\(pictureEntry.stat?.name ?? "") Entry")
                         .font(.custom("Menlo", size: 16))
@@ -59,14 +59,6 @@ struct PictureEntryCard: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .picture, gradientHighlight: .pictureHighlight, cornerRadius: 12)
-//            .background(LinearGradient(gradient: Gradient(colors: [.picture, .pictureHighlight]), startPoint: .top, endPoint: .bottom))
-//            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
-//            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 12)
-//                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-//            )
-//            .shadow(color: Color(.pictureHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination:
                             PictureEntryFormEdit(pictureEntry: pictureEntry)) {
