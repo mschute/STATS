@@ -3,8 +3,8 @@ import SwiftUI
 struct DecimalEntryForm: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
     var decimalStat: DecimalStat
-    @State var entry: DecimalEntry = DecimalEntry()
-    @State var value: String = ""
+    @State private var entry: DecimalEntry = DecimalEntry()
+    @State private var value: String = ""
     
     var body: some View {
         Form {
@@ -28,15 +28,22 @@ struct DecimalEntryForm: View {
             }
 
             Section {
-                Button("Add", action: addEntry)
+                Button("Add"){}
                     .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                addEntry()
+                            }
+                    )
             }
         }
+        .dismissKeyboardOnTap()
     }
-    //TODO: Change in some sort of closure instead of individual entry. whatever
-    func addEntry() {
+
+    private func addEntry() {
         entry.stat = decimalStat
         entry.value = Double(value) ?? 0.0
         

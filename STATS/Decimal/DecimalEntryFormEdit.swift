@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DecimalEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
    var decimalEntry: DecimalEntry
     
@@ -40,15 +40,22 @@ struct DecimalEntryFormEdit: View {
             }
             
             Section {
-                Button("Update", action: saveEntry)
+                Button("Update") {}
                     .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                saveEntry()
+                            }
+                    )
             }
         }
+        .dismissKeyboardOnTap()
     }
-    //TODO: Change in some sort of closure instead of individual entry. whatever
-    func saveEntry() {
+
+    private func saveEntry() {
         guard !String(decimalEntry.value).isEmpty else { return }
         
         decimalEntry.value = value
@@ -62,7 +69,7 @@ struct DecimalEntryFormEdit: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 }
