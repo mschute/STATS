@@ -5,7 +5,7 @@ struct FormIconPicker: View {
     @Binding var iconPickerPresented: Bool
     @Binding var icon: String
     
-    @State var statColor: Color
+    var statColor: Color
     
     var body: some View {
         HStack {
