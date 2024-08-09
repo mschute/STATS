@@ -15,7 +15,7 @@ class StatUtility {
         try? modelContext.save()
     }
     
-    //Index set and offets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
+    //Index set and offsets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
     static func Remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
         for index in offsets {
             Remove(stat: statItems[index].stat, modelContext: modelContext)
