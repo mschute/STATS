@@ -21,10 +21,8 @@ struct StatButtonStyle: ButtonStyle {
             .foregroundColor(textColor)
             .padding(.vertical, verticalPadding)
             .padding(.horizontal, horizontalPadding)
-            //.background(statColor)
-            //.clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-            .frame(maxHeight: 30, alignment: align)
-            //.shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+            .frame(alignment: align)
             .gradientFilter(gradientColor: statColor, gradientHighlight: statHighlightColor, cornerRadius: 10)
     }
 }
