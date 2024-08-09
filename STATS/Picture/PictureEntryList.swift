@@ -29,7 +29,7 @@ struct PictureEntryList: View {
         }
     }
     
-    func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
             for index in offsets {
@@ -50,7 +50,3 @@ struct PictureEntryList: View {
         }
     }
 }
-
-//#Preview {
-//    PictureEntryList()
-//}
