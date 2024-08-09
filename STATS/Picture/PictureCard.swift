@@ -11,21 +11,22 @@ struct PictureCard: View {
                         Image(systemName: stat.icon)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 50, height: 50)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 8) {
                             Text(stat.name)
-                                .font(.custom("Menlo", size: 15))
+                                .font(.custom("Menlo", size: 16))
                                 .fontWeight(.medium)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
                             Text("Picture Stat")
+                                .font(.custom("Menlo", size: 14))
                                 .fontWeight(.regular)
                         }
                     }
                     Spacer()
                     
-                    VStack(alignment: .trailing, spacing: 5) {
+                    VStack(alignment: .trailing, spacing: 8) {
                         if let latestEntry = stat.statEntry
                             .sorted(by: { $0.timestamp > $1.timestamp })
                             .first(where: { $0.image != nil }) {
@@ -35,11 +36,11 @@ struct PictureCard: View {
                                     .resizable()
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .trailing)
+                                    .frame(maxWidth: .infinity, maxHeight: 50, alignment: .trailing)
                                     .clipped()
                                 
                                 Text("\(latestEntry.timestamp, style: .date)")
-                                    .font(.custom("Menlo", size: 10))
+                                    .font(.custom("Menlo", size: 12))
                                     .fontWeight(.regular)
                             } else {
                                 EmptyView()
@@ -49,6 +50,7 @@ struct PictureCard: View {
                                 .fontWeight(.medium)
                         }
                     }
+                    .frame(maxWidth: 110)
                 }
             }
             .font(.custom("Menlo", size: 13))

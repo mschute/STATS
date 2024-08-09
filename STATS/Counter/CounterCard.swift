@@ -11,26 +11,28 @@ struct CounterCard: View {
                         Image(systemName: stat.icon)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 50, height: 50)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 8) {
                             Text(stat.name)
-                                .font(.custom("Menlo", size: 15))
+                                .font(.custom("Menlo", size: 16))
                                 .fontWeight(.medium)
                                 .lineLimit(1)
                                 .truncationMode(.tail)
                             Text("Counter Stat")
+                                .font(.custom("Menlo", size: 14))
                                 .fontWeight(.regular)
                         }
                     }
                     Spacer()
                     
-                    VStack(alignment: .trailing, spacing: 5) {
+                    VStack(alignment: .trailing, spacing: 8) {
                         Text("Last Entry:")
+                            .font(.custom("Menlo", size: 14))
                             .fontWeight(.medium)
                         if let lastEntry = stat.statEntry.last {
                             Text("\(lastEntry.timestamp, style: .date)")
-                                .font(.custom("Menlo", size: 10))
+                                .font(.custom("Menlo", size: 12))
                                 .fontWeight(.regular)
                         } else {
                             Text("No entries")
@@ -39,7 +41,6 @@ struct CounterCard: View {
                     }
                 }
             }
-            .font(.custom("Menlo", size: 13))
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .counter, gradientHighlight: .counterHighlight, cornerRadius: 12)
