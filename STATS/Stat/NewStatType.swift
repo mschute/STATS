@@ -9,21 +9,21 @@ struct NewStatType: View {
             Spacer()
             VStack(spacing: 40) {
                 NavigationLink {
-                    CounterForm(isEditMode: false)
+                    CounterFormAdd()
                 } label: {
                     Text("Counter")
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter, statHighlightColor: .counterHighlight)
                 }
                 
                 NavigationLink {
-                    DecimalForm(isEditMode: false)
+                    DecimalFormAdd()
                 } label: {
                     Text("Decimal")
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight)
                 }
                 
                 NavigationLink {
-                    PictureForm(isEditMode: false)
+                    PictureFormAdd()
                 } label: {
                     Text("Picture")
                         .font(.custom("Menlo", size: 20))
