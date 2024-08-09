@@ -18,15 +18,12 @@
 		0B38218A2C171367004F26E3 /* STATSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821892C171367004F26E3 /* STATSUITests.swift */; };
 		0B38218C2C171367004F26E3 /* STATSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */; };
 		0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821982C1836DB004F26E3 /* CounterStat.swift */; };
-		0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38219E2C184621004F26E3 /* DaysOfWeek.swift */; };
 		0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A02C184638004F26E3 /* CounterEntry.swift */; };
-		0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A82C186D69004F26E3 /* CounterForm.swift */; };
 		0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AA2C199D9E004F26E3 /* StatList.swift */; };
 		0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */; };
 		0B3821AF2C19DE91004F26E3 /* DecimalStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */; };
 		0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */; };
 		0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B22C19E14A004F26E3 /* Stat.swift */; };
-		0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */; };
 		0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */; };
 		0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B92C1C2510004F26E3 /* AnyStat.swift */; };
 		0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822002C1F0F68004F26E3 /* Entry.swift */; };
@@ -72,20 +69,26 @@
 		0B7C63DE2C4AC1CE00798513 /* PictureEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63DD2C4AC1CE00798513 /* PictureEntryForm.swift */; };
 		0B7C63E02C4AC2BC00798513 /* PictureEntryFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */; };
 		0B7C63E22C4AC3D100798513 /* PictureEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */; };
-		0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E32C4AC46000798513 /* PictureForm.swift */; };
 		0B7C63E62C4AC5B500798513 /* PictureReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */; };
 		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
 		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
 		0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EF2C5241E600798513 /* CameraPermission.swift */; };
 		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
 		0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditCategory.swift */; };
-		0BB8E7142C5BBA8B00838EEC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7132C5BBA8B00838EEC /* SplashView.swift */; };
 		0BB8E7172C5C06AB00838EEC /* StatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */; };
 		0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */; };
 		0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7422C5EE3B700838EEC /* ColorMode.swift */; };
 		0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7452C5FADC200838EEC /* TopBar.swift */; };
 		0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */; };
 		0BB8E74A2C63CF7C00838EEC /* GradientFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */; };
+		0BB8E74D2C64CE9100838EEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8E74C2C64CE9100838EEC /* LaunchScreen.storyboard */; };
+		0BB8E7512C6523FE00838EEC /* CounterFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7502C6523FE00838EEC /* CounterFormEdit.swift */; };
+		0BB8E7532C65256B00838EEC /* CounterFormAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7522C65256B00838EEC /* CounterFormAdd.swift */; };
+		0BB8E7552C65276100838EEC /* DecimalFormAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7542C65276100838EEC /* DecimalFormAdd.swift */; };
+		0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7562C65276F00838EEC /* DecimalFormEdit.swift */; };
+		0BB8E7592C65278C00838EEC /* PictureFormAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */; };
+		0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */; };
+		0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,15 +123,12 @@
 		0B3821892C171367004F26E3 /* STATSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITests.swift; sourceTree = "<group>"; };
 		0B38218B2C171367004F26E3 /* STATSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STATSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0B3821982C1836DB004F26E3 /* CounterStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterStat.swift; sourceTree = "<group>"; };
-		0B38219E2C184621004F26E3 /* DaysOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeek.swift; sourceTree = "<group>"; };
 		0B3821A02C184638004F26E3 /* CounterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntry.swift; sourceTree = "<group>"; };
-		0B3821A82C186D69004F26E3 /* CounterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterForm.swift; sourceTree = "<group>"; };
 		0B3821AA2C199D9E004F26E3 /* StatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatList.swift; sourceTree = "<group>"; };
 		0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntryForm.swift; sourceTree = "<group>"; };
 		0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalStat.swift; sourceTree = "<group>"; };
 		0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntry.swift; sourceTree = "<group>"; };
 		0B3821B22C19E14A004F26E3 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
-		0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalForm.swift; sourceTree = "<group>"; };
 		0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryForm.swift; sourceTree = "<group>"; };
 		0B3821B92C1C2510004F26E3 /* AnyStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStat.swift; sourceTree = "<group>"; };
 		0B3822002C1F0F68004F26E3 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -173,20 +173,27 @@
 		0B7C63DD2C4AC1CE00798513 /* PictureEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryForm.swift; sourceTree = "<group>"; };
 		0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryFormEdit.swift; sourceTree = "<group>"; };
 		0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryList.swift; sourceTree = "<group>"; };
-		0B7C63E32C4AC46000798513 /* PictureForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureForm.swift; sourceTree = "<group>"; };
 		0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReportContent.swift; sourceTree = "<group>"; };
 		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
 		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		0B7C63EF2C5241E600798513 /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
 		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
 		0B7C63F42C53D5A400798513 /* EditCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategory.swift; sourceTree = "<group>"; };
-		0BB8E7132C5BBA8B00838EEC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E7422C5EE3B700838EEC /* ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMode.swift; sourceTree = "<group>"; };
 		0BB8E7452C5FADC200838EEC /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSectionMimic.swift; sourceTree = "<group>"; };
 		0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFilter.swift; sourceTree = "<group>"; };
+		0BB8E74B2C64CAB200838EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0BB8E74C2C64CE9100838EEC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0BB8E7502C6523FE00838EEC /* CounterFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFormEdit.swift; sourceTree = "<group>"; };
+		0BB8E7522C65256B00838EEC /* CounterFormAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFormAdd.swift; sourceTree = "<group>"; };
+		0BB8E7542C65276100838EEC /* DecimalFormAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalFormAdd.swift; sourceTree = "<group>"; };
+		0BB8E7562C65276F00838EEC /* DecimalFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalFormEdit.swift; sourceTree = "<group>"; };
+		0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormAdd.swift; sourceTree = "<group>"; };
+		0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormEdit.swift; sourceTree = "<group>"; };
+		0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardGestureModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +225,7 @@
 		0B3821602C171366004F26E3 = {
 			isa = PBXGroup;
 			children = (
+				0BB8E74C2C64CE9100838EEC /* LaunchScreen.storyboard */,
 				0B38216B2C171366004F26E3 /* STATS */,
 				0B38217E2C171367004F26E3 /* STATSTests */,
 				0B3821882C171367004F26E3 /* STATSUITests */,
@@ -238,6 +246,7 @@
 		0B38216B2C171366004F26E3 /* STATS */ = {
 			isa = PBXGroup;
 			children = (
+				0BB8E74B2C64CAB200838EEC /* Info.plist */,
 				0BB8E7442C5FADAA00838EEC /* ViewDecorations */,
 				0BB8E7412C5EE39900838EEC /* Extensions */,
 				0BB8E7152C5C069400838EEC /* ViewModifiers */,
@@ -287,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */,
-				0B38219E2C184621004F26E3 /* DaysOfWeek.swift */,
 				0B6AC3522C369CFE00636AAA /* DetailTab.swift */,
 				0B6AC34E2C35B51400636AAA /* SortType.swift */,
 				0B6AC3502C369CF400636AAA /* Tab.swift */,
@@ -315,7 +323,6 @@
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
 				0B7C63F42C53D5A400798513 /* EditCategory.swift */,
-				0BB8E7132C5BBA8B00838EEC /* SplashView.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -330,7 +337,8 @@
 				0B3821AC2C19BA8F004F26E3 /* CounterEntryForm.swift */,
 				0B6AC3542C36AAD200636AAA /* CounterEntryFormEdit.swift */,
 				0B4705BD2C316777004D1DDB /* CounterEntryList.swift */,
-				0B3821A82C186D69004F26E3 /* CounterForm.swift */,
+				0BB8E7522C65256B00838EEC /* CounterFormAdd.swift */,
+				0BB8E7502C6523FE00838EEC /* CounterFormEdit.swift */,
 				0B3821982C1836DB004F26E3 /* CounterStat.swift */,
 				0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */,
 			);
@@ -347,7 +355,8 @@
 				0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */,
 				0B6AC35A2C3D53A300636AAA /* DecimalEntryFormEdit.swift */,
 				0B4705C32C32DEAA004D1DDB /* DecimalEntryList.swift */,
-				0B3821B42C1B2F27004F26E3 /* DecimalForm.swift */,
+				0BB8E7542C65276100838EEC /* DecimalFormAdd.swift */,
+				0BB8E7562C65276F00838EEC /* DecimalFormEdit.swift */,
 				0B3821AE2C19DE91004F26E3 /* DecimalStat.swift */,
 				0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */,
 				0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */,
@@ -386,7 +395,8 @@
 				0B7C63DD2C4AC1CE00798513 /* PictureEntryForm.swift */,
 				0B7C63DF2C4AC2BC00798513 /* PictureEntryFormEdit.swift */,
 				0B7C63E12C4AC3D100798513 /* PictureEntryList.swift */,
-				0B7C63E32C4AC46000798513 /* PictureForm.swift */,
+				0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */,
+				0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */,
 				0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */,
 				0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */,
 				0B7C63D32C4ABF4000798513 /* PictureStat.swift */,
@@ -410,6 +420,7 @@
 				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
 				0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */,
 				0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */,
+				0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -540,6 +551,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB8E74D2C64CE9100838EEC /* LaunchScreen.storyboard in Resources */,
 				0B3821762C171367004F26E3 /* Preview Assets.xcassets in Resources */,
 				0B3821732C171367004F26E3 /* Assets.xcassets in Resources */,
 			);
@@ -567,21 +579,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
+				0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */,
 				0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
 				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
 				0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
+				0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */,
 				0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */,
 				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
-				0B38219F2C184621004F26E3 /* DaysOfWeek.swift in Sources */,
 				0B7C63E02C4AC2BC00798513 /* PictureEntryFormEdit.swift in Sources */,
 				0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */,
 				0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */,
+				0BB8E7532C65256B00838EEC /* CounterFormAdd.swift in Sources */,
 				0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */,
 				0B4705B02C29C9A8004D1DDB /* DecimalReportContent.swift in Sources */,
 				0B6AC3632C418C9600636AAA /* Reminder.swift in Sources */,
@@ -593,22 +607,22 @@
 				0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
 				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
-				0B3821A92C186D69004F26E3 /* CounterForm.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
 				0B7C63E22C4AC3D100798513 /* PictureEntryList.swift in Sources */,
 				0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */,
-				0B3821B52C1B2F27004F26E3 /* DecimalForm.swift in Sources */,
 				0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */,
+				0BB8E7512C6523FE00838EEC /* CounterFormEdit.swift in Sources */,
 				0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */,
 				0B4705C42C32DEAA004D1DDB /* DecimalEntryList.swift in Sources */,
 				0B3821A12C184638004F26E3 /* CounterEntry.swift in Sources */,
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
+				0BB8E7552C65276100838EEC /* DecimalFormAdd.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
-				0B7C63E42C4AC46000798513 /* PictureForm.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
 				0B7C63D82C4AC08600798513 /* PictureCard.swift in Sources */,
+				0BB8E7592C65278C00838EEC /* PictureFormAdd.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
 				0BB8E74A2C63CF7C00838EEC /* GradientFilter.swift in Sources */,
 				0B3821AD2C19BA8F004F26E3 /* CounterEntryForm.swift in Sources */,
@@ -625,6 +639,7 @@
 				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
 				0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */,
+				0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */,
 				0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */,
 				0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */,
 				0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */,
@@ -636,7 +651,6 @@
 				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
 				0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */,
-				0BB8E7142C5BBA8B00838EEC /* SplashView.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 				0B7C63DC2C4AC15100798513 /* PictureEntryCard.swift in Sources */,
 			);
@@ -799,16 +813,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"STATS/Preview Content\"";
 				DEVELOPMENT_TEAM = 572P869P75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = STATS/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need permission to use camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -828,16 +845,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"STATS/Preview Content\"";
 				DEVELOPMENT_TEAM = 572P869P75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = STATS/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need permission to use camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
