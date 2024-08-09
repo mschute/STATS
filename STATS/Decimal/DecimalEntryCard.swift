@@ -58,14 +58,6 @@ struct DecimalEntryCard: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .decimal, gradientHighlight: .decimalHighlight, cornerRadius: 12)
-//            .background(LinearGradient(gradient: Gradient(colors: [.decimal, .decimalHighlight]), startPoint: .top, endPoint: .bottom))
-//            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
-//            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 12)
-//                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-//            )
-//            .shadow(color: Color(.decimalHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination: DecimalEntryFormEdit(decimalEntry: decimalEntry))
             {
