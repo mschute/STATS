@@ -8,7 +8,7 @@ struct PictureCard: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     HStack(alignment: .top, spacing: 15) {
-                        Image(systemName: stat.icon != "network" ? stat.icon : "camera.circle.fill")
+                        Image(systemName: stat.icon)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 30, height: 30)
@@ -26,19 +26,24 @@ struct PictureCard: View {
                     Spacer()
                     
                     VStack(alignment: .trailing, spacing: 5) {
-                        if let lastEntry = stat.statEntry.last,
-                           let imageData = lastEntry.image,
-                           let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                                .frame(maxWidth: .infinity, maxHeight: 60, alignment: .trailing)
-                                .clipped()
+                        if let latestEntry = stat.statEntry
+                            .sorted(by: { $0.timestamp > $1.timestamp })
+                            .first(where: { $0.image != nil }) {
+                            if let imageData = latestEntry.image,
+                               let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .trailing)
+                                    .clipped()
                                 
-                            Text("\(lastEntry.timestamp, style: .date)")
-                                .font(.custom("Menlo", size: 10))
-                                .fontWeight(.regular)
+                                Text("\(latestEntry.timestamp, style: .date)")
+                                    .font(.custom("Menlo", size: 10))
+                                    .fontWeight(.regular)
+                            } else {
+                                EmptyView()
+                            }
                         } else {
                             Text("No entries")
                                 .fontWeight(.medium)
@@ -50,14 +55,6 @@ struct PictureCard: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .picture, gradientHighlight: .pictureHighlight, cornerRadius: 12)
-//            .background(LinearGradient(gradient: Gradient(colors: [.picture, .pictureHighlight]), startPoint: .top, endPoint: .bottom))
-//            .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
-//            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 12)
-//                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-//            )
-//            .shadow(color: Color(.pictureHighlight).opacity(0.4), radius: 10, x: 0, y: 5)
             
             NavigationLink(destination: PictureDetail(stat: stat)) {
                 EmptyView()
