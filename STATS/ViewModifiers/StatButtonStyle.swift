@@ -9,7 +9,6 @@ struct StatButtonStyle: ButtonStyle {
     var statColor: Color
     var statHighlightColor: Color
 
-    // Font is changed to purple without setting it explicitly
     private var textColor: Color {
         colorScheme == .dark ? .white : .black
     }

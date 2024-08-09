@@ -9,7 +9,6 @@ struct TextButtonStyle: ViewModifier {
     var statColor: Color
     var statHighlightColor: Color
     
-    // Font is changed to purple without setting it explicitly
     private var textColor: Color {
         colorScheme == .dark ? .white : .black
     }
@@ -21,11 +20,8 @@ struct TextButtonStyle: ViewModifier {
             .foregroundColor(textColor)
             .padding(.vertical, verticalPadding)
             .padding(.horizontal, horizontalPadding)
-            //.background(statColor)
             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-            .frame(maxHeight: 50, alignment: align)
-            //.frame(maxWidth: .infinity, maxHeight: 50, alignment: align)
-            //.shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+            .frame(maxHeight: 60, alignment: align)
             .gradientFilter(gradientColor: statColor, gradientHighlight: statHighlightColor, cornerRadius: 10.0)
     }
 }
