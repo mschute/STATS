@@ -5,7 +5,8 @@ struct EditCategory: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \Category.name) var categories: [Category]
     
-    @State var newCategory = ""
+    @State private var newCategory = ""
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
@@ -13,12 +14,21 @@ struct EditCategory: View {
             List {
                 ForEach(categories) { category in
                     Text("\(category.name)")
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                if let index = categories.firstIndex(of: category) {
+                                    deleteItems(offsets: IndexSet(integer: index))
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .tint(.cancel)
                 }
-                .onDelete(perform: deleteItems)
-                .tint(.cancel)
                 
                 Section {
                     TextField("New category", text: $newCategory)
+                    
                     Button(action: addCategory) {
                         Text("Add")
                             .textButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight)
@@ -27,6 +37,7 @@ struct EditCategory: View {
                 }
             }
         }
+        .dismissKeyboardOnTap()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     

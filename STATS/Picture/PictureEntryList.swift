@@ -24,8 +24,17 @@ struct PictureEntryList: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .padding(.vertical, 5)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            if let index = entries.firstIndex(of: entry) {
+                                deleteItems(offsets: IndexSet(integer: index))
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.cancel)
+                    }
             }
-            .onDelete(perform: deleteItems)
         }
     }
     

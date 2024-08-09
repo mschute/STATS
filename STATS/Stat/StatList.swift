@@ -12,7 +12,7 @@ struct StatList: View {
     @State private var isNameAscending = false
     
     @State private var newReminder: Date = Date()
-
+    
     var body: some View {
         VStack {
             TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
@@ -21,9 +21,20 @@ struct StatList: View {
                     StatUtility.Card(stat: item.stat)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
+                    //Custom swipe action: https://useyourloaf.com/blog/swiftui-swipe-actions/#:~:text=The%20destructive%20button%20role%20gives,method.
+                    //index of: https://medium.com/@wesleymatlock/advanced-techniques-for-using-list-in-swiftui-a03ee8e28f0e
+                    // Swipe fully to delete: https://developer.apple.com/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:)?changes=latest_major
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                if let index = stats.firstIndex(of: item) {
+                                    deleteItems(offsets: IndexSet(integer: index))
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            .tint(.cancel)
+                        }
                 }
-                .onDelete(perform: deleteItems)
-                
             }
             .toolbar {
                 ToolbarItem {

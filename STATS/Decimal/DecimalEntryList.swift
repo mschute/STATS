@@ -23,8 +23,17 @@ struct DecimalEntryList: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .padding(.vertical, 5)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            if let index = entries.firstIndex(of: entry) {
+                                deleteItems(offsets: IndexSet(integer: index))
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.cancel)
+                    }
             }
-            .onDelete(perform: deleteItems)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -37,8 +46,8 @@ struct DecimalEntryList: View {
                     modelContext.delete(entries[index])
                     try modelContext.save()
                 } catch {
-                        print("Error deleting entry")
-                    }
+                    print("Error deleting entry")
+                }
             }
         }
     }
