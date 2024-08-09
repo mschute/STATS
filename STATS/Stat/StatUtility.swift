@@ -36,14 +36,27 @@ class StatUtility {
         }
     }
 
-    static func StatForm(stat: any Stat, isEditMode: Bool) -> some View {
+    static func StatEditForm(stat: any Stat, isEditMode: Bool) -> some View {
         switch stat {
         case let stat as CounterStat:
-            return AnyView(CounterForm(counterStat: stat, isEditMode: isEditMode))
+            return AnyView(CounterFormEdit(counterStat: stat))
         case let stat as DecimalStat:
-            return AnyView(DecimalForm(decimalStat: stat, isEditMode: isEditMode))
+            return AnyView(DecimalFormEdit(decimalStat: stat))
         case let stat as PictureStat:
-            return AnyView(PictureForm(pictureStat: stat, isEditMode: isEditMode))
+            return AnyView(PictureFormEdit(pictureStat: stat))
+        default:
+            return AnyView(Text("No stat available"))
+        }
+    }
+    
+    static func StatAddForm(stat: any Stat, isEditMode: Bool) -> some View {
+        switch stat {
+        case is CounterStat:
+            return AnyView(CounterFormAdd())
+        case is DecimalStat:
+            return AnyView(DecimalFormAdd())
+        case is PictureStat:
+            return AnyView(PictureFormAdd())
         default:
             return AnyView(Text("No stat available"))
         }
