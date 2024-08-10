@@ -20,7 +20,7 @@ struct StatDetailTabs: View {
         Group {
             switch selectedDetailTab.selectedDetailTab {
             case .editStat:
-                StatUtility.StatEditForm(stat: stat, isEditMode: true)
+                StatUtility.StatEditForm(stat: stat)
             case .addEntry:
                 StatUtility.EntryForm(stat: stat)
             case .report:

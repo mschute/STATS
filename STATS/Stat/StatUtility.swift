@@ -36,7 +36,7 @@ class StatUtility {
         }
     }
 
-    static func StatEditForm(stat: any Stat, isEditMode: Bool) -> some View {
+    static func StatEditForm(stat: any Stat) -> some View {
         switch stat {
         case let stat as CounterStat:
             return AnyView(CounterFormEdit(counterStat: stat))
