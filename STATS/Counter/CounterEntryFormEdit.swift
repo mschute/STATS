@@ -2,8 +2,7 @@ import SwiftUI
 
 struct CounterEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.presentationMode) var presentationMode
-
+    @Environment(\.dismiss) var dismiss
     var counterEntry: CounterEntry
     
     @State private var timestamp: Date
@@ -16,15 +15,36 @@ struct CounterEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+        TopBar(title: "Edit Entry", topPadding: 0, bottomPadding: 20)
+        Form {
+            Section(header: Text("Timestamp").foregroundColor(.counter)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .padding(.vertical, 5)
+            }
+            .fontWeight(.medium)
             
-            Button("Update", action: saveEntry)
-        })
+            Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
+
+            Section {
+                Button("Update") {}
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter, statHighlightColor: .counterHighlight))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                saveEntry()
+                                Haptics.shared.play(.light)
+                            }
+                    )
+            }
+        }
+        .dismissKeyboardOnTap()
     }
 
-    func saveEntry() {
+    private func saveEntry() {
         counterEntry.timestamp = timestamp
         counterEntry.note = note
         
@@ -35,11 +55,7 @@ struct CounterEntryFormEdit: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 }
-
-//#Preview {
-//    CounterEntryForm(counterStat: CounterStat(name: "No Smoking", created: Date()), value: "1", timestamp: Date())
-//}

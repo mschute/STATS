@@ -1,7 +1,6 @@
 import SwiftUI
 
 //https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
-//TODO: Add gridlines over camera
 
 struct UIKitCamera: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?

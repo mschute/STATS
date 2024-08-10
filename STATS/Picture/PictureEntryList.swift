@@ -21,12 +21,24 @@ struct PictureEntryList: View {
         List {
             ForEach(entries) { entry in
                 PictureEntryCard(pictureEntry: entry)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .padding(.vertical, 5)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            if let index = entries.firstIndex(of: entry) {
+                                deleteItems(offsets: IndexSet(integer: index))
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.cancel)
+                    }
             }
-            .onDelete(perform: deleteItems)
         }
     }
     
-    func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
             for index in offsets {
@@ -34,8 +46,8 @@ struct PictureEntryList: View {
                     modelContext.delete(entries[index])
                     try modelContext.save()
                 } catch {
-                        print("Error deleting entry")
-                    }
+                    print("Error deleting entry")
+                }
             }
         }
     }
@@ -47,7 +59,3 @@ struct PictureEntryList: View {
         }
     }
 }
-
-//#Preview {
-//    PictureEntryList()
-//}

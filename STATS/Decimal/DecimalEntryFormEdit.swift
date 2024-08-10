@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DecimalEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
    var decimalEntry: DecimalEntry
     
@@ -18,21 +18,45 @@ struct DecimalEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            HStack{
-                Text("Value ")
-                TextField("Value", value: $value, format: .number)
-                    .keyboardType(.numberPad)
-                Text(decimalEntry.stat?.unitName ?? "")
+        TopBar(title: "Edit Entry", topPadding: 0, bottomPadding: 20)
+        Form {
+            Section(header: Text("Timestamp").foregroundColor(.decimal)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .padding(.vertical, 5)
             }
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+            .fontWeight(.medium)
             
-            Button("Update", action: saveEntry)
-        })
+            Section(header: Text("Value").foregroundColor(.decimal).fontWeight(.medium)) {
+                HStack {
+                    TextField("Value", value: $value, format: .number)
+                        .keyboardType(.numberPad)
+                    Text(decimalEntry.stat?.unitName ?? "")
+                        .fontWeight(.medium)
+                }
+            }
+
+            Section(header: Text("Additional Information").foregroundColor(.decimal).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
+            
+            Section {
+                Button("Update") {}
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                saveEntry()
+                                Haptics.shared.play(.light)
+                            }
+                    )
+            }
+        }
+        .dismissKeyboardOnTap()
     }
-    
-    func saveEntry() {
+
+    private func saveEntry() {
         guard !String(decimalEntry.value).isEmpty else { return }
         
         decimalEntry.value = value
@@ -46,11 +70,7 @@ struct DecimalEntryFormEdit: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 }
-
-//#Preview {
-//    DecimalEntryForm(decimalStat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"), value: "0.0", timestamp: Date())
-//}

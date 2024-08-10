@@ -1,7 +1,6 @@
 import SwiftData
 import SwiftUI
 
-
 struct CounterEntryList: View {
     @Environment(\.modelContext) var modelContext
     @Query private var entries: [CounterEntry]
@@ -20,14 +19,27 @@ struct CounterEntryList: View {
 
     var body: some View {
         List {
-            ForEach(entries) { entry in
+            ForEach(entries, id: \.self) { entry in
                 CounterEntryCard(counterEntry: entry)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .padding(.vertical, 5)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            if let index = entries.firstIndex(of: entry) {
+                                deleteItems(offsets: IndexSet(integer: index))
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .tint(.cancel)
+                    }
             }
-            .onDelete(perform: deleteItems)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
-    func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
             for index in offsets {

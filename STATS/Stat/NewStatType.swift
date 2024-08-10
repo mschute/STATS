@@ -1,40 +1,56 @@
 import SwiftUI
 
 struct NewStatType: View {
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
-            Text("New Stat")
-                .font(.custom("Menlo", size: 34))
-                .fontWeight(.black)
-                .padding(.top, 60)
-                .padding(.bottom, 150)
+            TopBar(title: "NEW STAT", topPadding: 40, bottomPadding: 20)
+            Spacer()
             VStack(spacing: 40) {
                 NavigationLink {
-                    CounterForm(isEditMode: false)
+                    CounterFormAdd()
                 } label: {
-                      Text("Counter")
-                        .font(.custom("Menlo", size: 20))
-                        .counterTextStyle()
+                    Text("Counter")
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter, statHighlightColor: .counterHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
                 
                 NavigationLink {
-                    DecimalForm(isEditMode: false)
+                    DecimalFormAdd()
                 } label: {
-                      Text("Decimal")
-                        .font(.custom("Menlo", size: 20))
-                        .decimalTextStyle()
+                    Text("Decimal")
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
                 
                 NavigationLink {
-                    PictureForm(isEditMode: false)
+                    PictureFormAdd()
                 } label: {
-                      Text("Picture")
+                    Text("Picture")
                         .font(.custom("Menlo", size: 20))
-                        .pictureTextStyle()
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
             }
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color.clear)
         }
+        .navigationTitle("")
     }
 }

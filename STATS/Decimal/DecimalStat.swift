@@ -15,7 +15,7 @@ class DecimalStat: Stat, Identifiable {
     //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [DecimalEntry]()
     
-    init(name: String = "", created: Date = Date(), desc: String = "", icon: String = "network", unitName: String = "", trackAverage: Bool = false, trackTotal: Bool = false, reminder: Reminder? = nil, category: Category? = nil, statEntry: [DecimalEntry] = []) {
+    init(name: String = "", created: Date = Date(), desc: String = "", icon: String = "number.circle.fill", unitName: String = "", trackAverage: Bool = false, trackTotal: Bool = false, reminder: Reminder? = nil, category: Category? = nil, statEntry: [DecimalEntry] = []) {
         self.name = name
         self.created = created
         self.desc = desc

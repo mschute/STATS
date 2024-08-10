@@ -2,16 +2,16 @@ import Charts
 import SwiftUI
 
 struct DecimalReportCharts: View {
-    var decimalEntries: [DecimalEntry]
-    var data: [ValueDayData] = []
-    var chartValueType: ChartValueType
+    private var decimalEntries: [DecimalEntry]
+    private var data: [ValueDayData] = []
+    private var chartValueType: ChartValueType
     
-    var chartYLow: Double {
+    private var chartYLow: Double {
         let minValue = decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0
         let pad = minValue * 0.2
         return minValue - pad
     }
-    var chartYHigh: Double {
+    private var chartYHigh: Double {
         let maxValue = decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0
         let pad = maxValue * 0.2
         return maxValue + pad
@@ -37,17 +37,17 @@ struct DecimalReportCharts: View {
                         x: .value("Date", entry.day),
                         y: .value("\(decimalEntries[0].stat?.unitName ?? "")", entry.value)
                     )
+                    .foregroundStyle(.decimal)
                     .interpolationMethod(.catmullRom)
                     .lineStyle(.init(lineWidth: 2))
                     .symbol {
-                        //TODO: Need to format the mark labels
                         Circle()
-                            .fill(.blue)
+                            .fill(.decimal)
                             .frame(width: 12, height: 12)
                             .overlay {
                                 Text(String(format: "%0.2f", entry.value))
                                     .frame(width: 20)
-                                    .font(.system(size: 6, weight: .medium))
+                                    .font(.system(size: 7, weight: .medium))
                                     .offset(y: -15)
                             }
                             .padding(.horizontal)
@@ -60,16 +60,18 @@ struct DecimalReportCharts: View {
             .chartYScale(domain: [chartYLow, chartYHigh])
             .chartXAxisLabel(position: .bottom, alignment: .center) {
                 Text("Date")
+                    .font(.custom("Menlo", size: 16))
             }
             .chartYAxisLabel(position: .leading, alignment: .center) {
                 Text("\(decimalEntries[0].stat?.unitName ?? "")")
+                    .font(.custom("Menlo", size: 16))
             }
             .frame(height: 200)
             .padding(.horizontal)
         }
     }
     
-    func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+    private func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
         var dateValues: [Date : Double] = [:]
         let calendar = Calendar.current
         
@@ -86,7 +88,7 @@ struct DecimalReportCharts: View {
         return data.sorted(by: { $0.day < $1.day })
     }
     
-    func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+    private func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
         var dateValues: [Date : (total: Double, count: Int)] = [:]
         let calendar = Calendar.current
         

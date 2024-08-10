@@ -1,39 +1,60 @@
 import SwiftUI
 
 struct DecimalEntryForm: View {
+    @EnvironmentObject var selectedDetailTab: StatTabs
     var decimalStat: DecimalStat
     
-    @EnvironmentObject var selectedDetailTab: StatTabs
-    
-    @State var entry: DecimalEntry = DecimalEntry()
-    @State var value: String = ""
+    @State private var timestamp: Date = Date()
+    @State private var note: String = ""
+    @State private var value: String = ""
     
     var body: some View {
-        Form(content: {
-            HStack{
-                Text("\(decimalStat.unitName) ")
-                TextField("Value", text: $value)
-                    .keyboardType(.decimalPad)
-                TextField("Note", text: $entry.note)
+        Form {
+            Section(header: Text("Timestamp").foregroundColor(.decimal)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .padding(.vertical, 5)
             }
+            .fontWeight(.medium)
             
-            DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
-            
-            Button("Add", action: addEntry)
-        })
-        
+            Section(header: Text("Value").foregroundColor(.decimal).fontWeight(.medium)) {
+                HStack {
+                    TextField("Value", text: $value)
+                        .keyboardType(.decimalPad)
+                    Text("\(decimalStat.unitName)")
+                        .fontWeight(.medium)
+                }
+            }
+
+            Section(header: Text("Additional Information").foregroundColor(.decimal).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
+
+            Section {
+                Button("Add"){}
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                addEntry()
+                                Haptics.shared.play(.light)
+                            }
+                    )
+            }
+        }
+        .dismissKeyboardOnTap()
     }
-    
-    func addEntry() {
-        entry.stat = decimalStat
-        entry.value = Double(value) ?? 0.0
+
+    private func addEntry() {
+        let newEntry = DecimalEntry(
+            timestamp: timestamp,
+            value: Double(value) ?? 0.0,
+            note: note,
+            stat: decimalStat
+        )
         
-        decimalStat.statEntry.append(entry)
-        
+        decimalStat.statEntry.append(newEntry)
         selectedDetailTab.selectedDetailTab = .history
     }
 }
-
-//#Preview {
-//    DecimalEntryForm(decimalStat: DecimalStat(name: "Weight", created: Date(), unitName: "KG"), value: String(10.0), timestamp: Date.now)
-//}

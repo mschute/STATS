@@ -2,18 +2,18 @@ import SwiftUI
 import PhotosUI
 
 struct PicturePicker: View {
+    @Environment (\.colorScheme) var colorScheme
     @Binding var selectedPhoto: PhotosPickerItem?
     @Binding var selectedPhotoData: Data?
     @Binding var cameraImage: UIImage?
     @Binding var showCamera: Bool
-    
-    @State var cameraError: CameraPermission.CameraError?
+    @State private var cameraError: CameraPermission.CameraError?
     
     //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
     //Source for code/implementation: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
     
     var body: some View {
-        Section(header: Text("Photo")) {
+        Section(header: Text("Photo").foregroundColor(.picture).fontWeight(.medium)) {
             if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -27,7 +27,13 @@ struct PicturePicker: View {
                     } else {
                         showCamera.toggle()
                     }
-                }) { Label("Camera", systemImage: "camera.fill")
+                }) {
+                    HStack {
+                        Image(systemName: "camera.fill")
+                        Text("Camera")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .fontWeight(.medium)
+                    }
                 }
                 .alert(isPresented: .constant(cameraError != nil), error: cameraError) { _ in
                     Button("OK") {
@@ -36,14 +42,18 @@ struct PicturePicker: View {
                 } message: { error in
                     Text(error.recoverySuggestion ?? "Try again later")
                 }
-            //TODO: Add grid line over the camera
                 .sheet(isPresented: $showCamera) {
                     UIKitCamera(selectedImage: $cameraImage)
                         .ignoresSafeArea()
                 }
                 
                 PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
-                    Label("Add Library Image", systemImage: "photo.fill")
+                    HStack {
+                        Image(systemName: "photo.fill")
+                        Text("Add Library Image")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .fontWeight(.medium)
+                    }
                 }
             
             if selectedPhotoData != nil {
@@ -71,7 +81,3 @@ struct PicturePicker: View {
         }
     }
 }
-
-//#Preview {
-//    PicturePicker()
-//}

@@ -15,7 +15,7 @@ class StatUtility {
         try? modelContext.save()
     }
     
-    //Index set and offets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
+    //Index set and offsets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
     static func Remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
         for index in offsets {
             Remove(stat: statItems[index].stat, modelContext: modelContext)
@@ -35,16 +35,28 @@ class StatUtility {
             return AnyView(Text("No stat available"))
         }
     }
-    
-    //Pass bindin
-    static func StatForm(stat: any Stat, isEditMode: Bool) -> some View {
+
+    static func StatEditForm(stat: any Stat, isEditMode: Bool) -> some View {
         switch stat {
         case let stat as CounterStat:
-            return AnyView(CounterForm(counterStat: stat, isEditMode: isEditMode))
+            return AnyView(CounterFormEdit(counterStat: stat))
         case let stat as DecimalStat:
-            return AnyView(DecimalForm(decimalStat: stat, isEditMode: isEditMode))
+            return AnyView(DecimalFormEdit(decimalStat: stat))
         case let stat as PictureStat:
-            return AnyView(PictureForm(pictureStat: stat, isEditMode: isEditMode))
+            return AnyView(PictureFormEdit(pictureStat: stat))
+        default:
+            return AnyView(Text("No stat available"))
+        }
+    }
+    
+    static func StatAddForm(stat: any Stat, isEditMode: Bool) -> some View {
+        switch stat {
+        case is CounterStat:
+            return AnyView(CounterFormAdd())
+        case is DecimalStat:
+            return AnyView(DecimalFormAdd())
+        case is PictureStat:
+            return AnyView(PictureFormAdd())
         default:
             return AnyView(Text("No stat available"))
         }
@@ -67,7 +79,8 @@ class StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No current entries"))
+            return AnyView(Text("No current entries").frame(maxWidth: .infinity, alignment: .center))
+                
         }
         
         switch stat {
@@ -86,7 +99,15 @@ class StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No available data for report"))
+            return AnyView(Text("No available data for report")                    
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
+                .padding(.horizontal)
+                .padding(.top, 24)
+                .multilineTextAlignment(.center)
+            )
         }
         
         switch stat {

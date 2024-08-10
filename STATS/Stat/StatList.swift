@@ -11,54 +11,100 @@ struct StatList: View {
     @State private var isCreatedAscending = false
     @State private var isNameAscending = false
     
+    @State private var newReminder: Date = Date()
+    
     var body: some View {
-        List {
-            ForEach(stats) { item in
-                StatUtility.Card(stat: item.stat)
+        VStack {
+            TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
+            
+            if stats.isEmpty {
+                Text("No current stats")
+                    .font(.custom("Menlo", size: 20))
+                    .padding(.top, 100)
             }
-            .onDelete(perform: deleteItems)
-        }
-        .navigationTitle("")
-        .toolbar {
-            ToolbarItem {
-                HStack {
-                    Text("Stat List")
-                    Menu {
-                        Button(action: { sortStats(sortType: .created) } ) {
-                            Label("Sort by Date", systemImage: "calendar")
-                        }
-                        
-                        Button(action: { sortStats(sortType: .name) } ) {
-                            Label("Sort by Name", systemImage: "abc")
-                        }
-                    } label: {
-                        Label("", systemImage: "arrow.up.arrow.down")
-                    }
-                    
-                    Menu {
-                        ForEach(categories, id: \.id){ category in
-                            if (filter == "\(category.name)") {
-                                Button("\(category.name)", systemImage: "checkmark", action: { filter = nil } )
-                            } else {
-                                Button("\(category.name)", action: { filter = category.name } )
+            
+            List {
+                ForEach(stats, id: \.self) { item in
+                    StatUtility.Card(stat: item.stat)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                    //Custom swipe action: https://useyourloaf.com/blog/swiftui-swipe-actions/#:~:text=The%20destructive%20button%20role%20gives,method.
+                    //index of: https://medium.com/@wesleymatlock/advanced-techniques-for-using-list-in-swiftui-a03ee8e28f0e
+                    // Swipe fully to delete: https://developer.apple.com/documentation/swiftui/view/swipeactions(edge:allowsfullswipe:content:)?changes=latest_major
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                if let index = stats.firstIndex(of: item) {
+                                    deleteItems(offsets: IndexSet(integer: index))
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
+                            .tint(.cancel)
                         }
-                    } label: {
-                        Label("", systemImage: "line.3.horizontal.decrease.circle")
+                }
+            }
+            .toolbar {
+                ToolbarItem {
+                    HStack {
+                        Menu {
+                            Button(action: { sortStats(sortType: .created)
+                                Haptics.shared.play(.light)
+                            } ) {
+                                Label("Sort by Date", systemImage: "calendar")
+                            }
+                            
+                            Button(action: { sortStats(sortType: .name)
+                                Haptics.shared.play(.light)
+                            } ) {
+                                Label("Sort by Name", systemImage: "abc")
+                            }
+                        } label: {
+                            Label("", systemImage: "arrow.up.arrow.down")
+                        }
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
+                        
+                        Menu {
+                            ForEach(categories, id: \.id){ category in
+                                if (filter == "\(category.name)") {
+                                    Button("\(category.name)", systemImage: "checkmark", action: {
+                                        filter = nil
+                                        Haptics.shared.play(.light)
+                                    } )
+                                } else {
+                                    Button("\(category.name)", action: {
+                                        filter = category.name
+                                        Haptics.shared.play(.light)
+                                    } )
+                                }
+                            }
+                        } label: {
+                            Label("", systemImage: "line.3.horizontal.decrease.circle")
+                        }
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
                     }
                 }
             }
         }
     }
     
-    func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
             StatUtility.Remove(offsets: offsets, statItems: stats, modelContext: modelContext)
         }
     }
     
-    func sortStats(sortType: SortType) {
+    private func sortStats(sortType: SortType) {
         
         switch sortType {
         case .created where isCreatedAscending == false:

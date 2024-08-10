@@ -3,16 +3,15 @@ import PhotosUI
 
 struct PictureEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.presentationMode) var presentationMode
-    
+    @Environment(\.dismiss) var dismiss
     var pictureEntry: PictureEntry
     
     @State private var timestamp: Date
     @State private var note: String
     
-    @State var selectedPhoto: PhotosPickerItem?
-    @State var selectedPhotoData: Data?
-    @State var cameraImage: UIImage?
+    @State private var selectedPhoto: PhotosPickerItem?
+    @State private var selectedPhotoData: Data?
+    @State private var cameraImage: UIImage?
     @State private var showCamera: Bool = false
     
     init(pictureEntry: PictureEntry) {
@@ -23,21 +22,40 @@ struct PictureEntryFormEdit: View {
     }
     
     var body: some View {
-        Form(content: {
-            DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-            TextField("Note", text: $note)
+        Form {
+            Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                    .fontWeight(.medium)
+                    .padding(.vertical, 5)
+            }
             
             PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
+
+            Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
+                TextField("Note", text: $note)
+            }
             
-            Button("Update", action: saveEntry)
-        })
+            Section {
+                Button("Update", action: saveEntry)
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                saveEntry()
+                                Haptics.shared.play(.light)
+                            }
+                    )
+            }
+        }
+        .dismissKeyboardOnTap()
     }
 
-    func saveEntry() {
+    private func saveEntry() {
         pictureEntry.timestamp = timestamp
         pictureEntry.note = note
         pictureEntry.image = selectedPhotoData
-        
         
         do {
             try modelContext.save()
@@ -46,11 +64,7 @@ struct PictureEntryFormEdit: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 }
-
-//#Preview {
-//    PictureEntryFormEdit()
-//}
