@@ -61,6 +61,7 @@ struct CounterFormEdit: View {
                             TapGesture()
                                 .onEnded { _ in
                                     isAdvanced.toggle()
+                                    Haptics.shared.play(.light)
                                 }
                         )
                     }
@@ -97,6 +98,7 @@ struct CounterFormEdit: View {
                     TapGesture()
                         .onEnded { _ in
                             updateCounter()
+                            Haptics.shared.play(.light)
                         }
                 )
             }

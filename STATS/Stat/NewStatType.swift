@@ -14,6 +14,12 @@ struct NewStatType: View {
                     Text("Counter")
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter, statHighlightColor: .counterHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
                 
                 NavigationLink {
                     DecimalFormAdd()
@@ -21,6 +27,12 @@ struct NewStatType: View {
                     Text("Decimal")
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
                 
                 NavigationLink {
                     PictureFormAdd()
@@ -29,6 +41,12 @@ struct NewStatType: View {
                         .font(.custom("Menlo", size: 20))
                         .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight)
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            Haptics.shared.play(.light)
+                        }
+                )
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color.clear)

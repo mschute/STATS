@@ -61,6 +61,7 @@ struct DecimalFormEdit: View {
                             TapGesture()
                                 .onEnded { _ in
                                     isAdvanced.toggle()
+                                    Haptics.shared.play(.light)
                                 }
                         )
                     }
@@ -115,6 +116,7 @@ struct DecimalFormEdit: View {
                     TapGesture()
                         .onEnded { _ in
                             updateDecimal()
+                            Haptics.shared.play(.light)
                         }
                 )
             }

@@ -44,6 +44,7 @@ struct PictureEntryFormEdit: View {
                         TapGesture()
                             .onEnded { _ in
                                 saveEntry()
+                                Haptics.shared.play(.light)
                             }
                     )
             }

@@ -28,9 +28,11 @@ struct FormCategoryPicker: View {
             if !addNewCategory {
                 Button("Add tag") {
                     addNewCategory = true
+                    Haptics.shared.play(.light)
                 }
                 .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
                 .padding(.vertical)
+  
             } else {
                 TextField("Add new tag", text: $newCategory)
                 HStack(spacing: 10) {
@@ -38,12 +40,14 @@ struct FormCategoryPicker: View {
                         addCategory(newCategory: newCategory)
                         newCategory = ""
                         addNewCategory = false
+                        Haptics.shared.play(.light)
                     }
                     .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
 
                     Button("Cancel") {
                         newCategory = ""
                         addNewCategory = false
+                        Haptics.shared.play(.light)
                     }
                     .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .cancel, statHighlightColor: .cancelHighlight))
                 }

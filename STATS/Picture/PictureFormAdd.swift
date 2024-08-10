@@ -43,6 +43,7 @@ struct PictureFormAdd: View {
                             TapGesture()
                                 .onEnded { _ in
                                     isAdvanced.toggle()
+                                    Haptics.shared.play(.light)
                                 }
                         )
                     }
@@ -80,6 +81,7 @@ struct PictureFormAdd: View {
                     TapGesture()
                         .onEnded { _ in
                             addPicture()
+                            Haptics.shared.play(.light)
                         }
                 )
             }

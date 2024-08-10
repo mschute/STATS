@@ -16,6 +16,13 @@ struct StatList: View {
     var body: some View {
         VStack {
             TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
+            
+            if stats.isEmpty {
+                Text("No current stats")
+                    .font(.custom("Menlo", size: 20))
+                    .padding(.top, 100)
+            }
+            
             List {
                 ForEach(stats, id: \.self) { item in
                     StatUtility.Card(stat: item.stat)
@@ -40,29 +47,50 @@ struct StatList: View {
                 ToolbarItem {
                     HStack {
                         Menu {
-                            Button(action: { sortStats(sortType: .created) } ) {
+                            Button(action: { sortStats(sortType: .created)
+                                Haptics.shared.play(.light)
+                            } ) {
                                 Label("Sort by Date", systemImage: "calendar")
                             }
                             
-                            Button(action: { sortStats(sortType: .name) } ) {
+                            Button(action: { sortStats(sortType: .name)
+                                Haptics.shared.play(.light)
+                            } ) {
                                 Label("Sort by Name", systemImage: "abc")
                             }
                         } label: {
                             Label("", systemImage: "arrow.up.arrow.down")
                         }
-                        
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
                         
                         Menu {
                             ForEach(categories, id: \.id){ category in
                                 if (filter == "\(category.name)") {
-                                    Button("\(category.name)", systemImage: "checkmark", action: { filter = nil } )
+                                    Button("\(category.name)", systemImage: "checkmark", action: {
+                                        filter = nil
+                                        Haptics.shared.play(.light)
+                                    } )
                                 } else {
-                                    Button("\(category.name)", action: { filter = category.name } )
+                                    Button("\(category.name)", action: {
+                                        filter = category.name
+                                        Haptics.shared.play(.light)
+                                    } )
                                 }
                             }
                         } label: {
                             Label("", systemImage: "line.3.horizontal.decrease.circle")
                         }
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
                     }
                 }
             }
