@@ -8,7 +8,7 @@ struct STATSApp: App {
     @StateObject private var selectedTab = NavbarTabs()
     @StateObject private var selectedDetailTab = StatTabs()
     
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = true
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
     //Keyboard implementation: https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui#comment109419055_60010955
     @State private var keyboardIsShown = false
