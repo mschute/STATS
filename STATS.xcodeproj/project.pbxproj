@@ -89,6 +89,7 @@
 		0BB8E7592C65278C00838EEC /* PictureFormAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */; };
 		0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */; };
 		0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */; };
+		0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7622C677A2800838EEC /* HapticFeedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormAdd.swift; sourceTree = "<group>"; };
 		0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormEdit.swift; sourceTree = "<group>"; };
 		0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardGestureModifier.swift; sourceTree = "<group>"; };
+		0BB8E7622C677A2800838EEC /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,11 +253,13 @@
 				0BB8E7412C5EE39900838EEC /* Extensions */,
 				0BB8E7152C5C069400838EEC /* ViewModifiers */,
 				0B7C63F12C52499E00798513 /* Camera */,
+				0BB8E7672C680E0A00838EEC /* Category */,
 				0B6AC3722C45022000636AAA /* ChartData */,
 				0B3821FE2C1EF9BB004F26E3 /* Counter */,
 				0B3821FF2C1EFA0F004F26E3 /* Decimal */,
 				0B7C63D22C4ABF1D00798513 /* Picture */,
 				0B38219D2C1845D9004F26E3 /* Enum */,
+				0BB8E7642C6791B700838EEC /* Haptics */,
 				0B6AC35C2C3D624600636AAA /* Navigation */,
 				0B3821FD2C1EF9AC004F26E3 /* Stat */,
 				0B38216E2C171366004F26E3 /* ContentView.swift */,
@@ -309,7 +313,6 @@
 			children = (
 				0B4705BF2C316814004D1DDB /* AnyEntry.swift */,
 				0B3821B92C1C2510004F26E3 /* AnyStat.swift */,
-				0B6AC35D2C3E967100636AAA /* Category.swift */,
 				0B6AC36A2C42F72700636AAA /* DateRangePicker.swift */,
 				0B3822002C1F0F68004F26E3 /* Entry.swift */,
 				0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */,
@@ -322,7 +325,6 @@
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
-				0B7C63F42C53D5A400798513 /* EditCategory.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -416,11 +418,10 @@
 		0BB8E7152C5C069400838EEC /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
-				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
-				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
 				0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */,
 				0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */,
-				0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */,
+				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
+				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -429,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				0BB8E7422C5EE3B700838EEC /* ColorMode.swift */,
+				0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -439,6 +441,23 @@
 				0BB8E7452C5FADC200838EEC /* TopBar.swift */,
 			);
 			path = ViewDecorations;
+			sourceTree = "<group>";
+		};
+		0BB8E7642C6791B700838EEC /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				0BB8E7622C677A2800838EEC /* HapticFeedback.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		0BB8E7672C680E0A00838EEC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0B6AC35D2C3E967100636AAA /* Category.swift */,
+				0B7C63F42C53D5A400798513 /* EditCategory.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -579,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
+				0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */,
 				0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */,
 				0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
