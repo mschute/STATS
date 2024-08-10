@@ -8,7 +8,6 @@ struct CounterEntryFormEdit: View {
     @State private var timestamp: Date
     @State private var note: String
     
-    
     init(counterEntry: CounterEntry) {
         self.counterEntry = counterEntry
         _timestamp = State(initialValue: counterEntry.timestamp)
@@ -26,7 +25,6 @@ struct CounterEntryFormEdit: View {
             
             Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
                 TextField("Note", text: $note)
-//                    .focused($isFocused)
             }
 
             Section {
@@ -38,6 +36,7 @@ struct CounterEntryFormEdit: View {
                         TapGesture()
                             .onEnded { _ in
                                 saveEntry()
+                                Haptics.shared.play(.light)
                             }
                     )
             }
