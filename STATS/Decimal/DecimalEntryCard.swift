@@ -63,6 +63,7 @@ struct DecimalEntryCard: View {
             {
                 EmptyView()
             }
+            .navigationTitle("")
             .opacity(0.0)
         }
     }

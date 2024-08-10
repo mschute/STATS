@@ -51,6 +51,7 @@ struct CounterEntryCard: View {
                 EmptyView()
             }
             .opacity(0.0)
+            .navigationTitle("")
         }
     }
 }
