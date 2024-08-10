@@ -13,6 +13,7 @@ struct DateRangePicker: View {
                         .padding(.trailing, 5)
                     
                     Text("Start Date")
+                        .font(.custom("Menlo", size: 16))
                         .fontWeight(.bold)
                 }
                 .frame(alignment: .center)
@@ -35,6 +36,7 @@ struct DateRangePicker: View {
                         .padding(.trailing, 5)
                     
                     Text("End Date")
+                        .font(.custom("Menlo", size: 16))
                         .fontWeight(.bold)
                 }
                 .frame(alignment: .center)
