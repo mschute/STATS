@@ -79,7 +79,8 @@ class StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No current entries"))
+            return AnyView(Text("No current entries").frame(maxWidth: .infinity, alignment: .center))
+                
         }
         
         switch stat {
@@ -98,7 +99,15 @@ class StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No available data for report"))
+            return AnyView(Text("No available data for report")                    
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
+                .padding(.horizontal)
+                .padding(.top, 24)
+                .multilineTextAlignment(.center)
+            )
         }
         
         switch stat {
