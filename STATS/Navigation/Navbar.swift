@@ -14,6 +14,7 @@ struct Navbar: View {
                 .tabItem {
                         Image(systemName: "list.bullet.circle.fill")
                         Text("Stat List")
+                    
                 }
                 .tag(Tab.statList)
                 

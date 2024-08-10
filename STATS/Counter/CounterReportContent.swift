@@ -81,6 +81,7 @@ struct CounterReportContent: View {
                     .padding(.vertical, 10)
                 }
                 .frame(maxWidth: .infinity)
+                
                 Divider()
                 
                 Text("Note: Morning is 6am-11:59am, Afternoon is 12pm-5:59pm, Evening is 6pm-11:59pm, Overnight is 12am-5:59am")
