@@ -3,13 +3,15 @@ import SwiftUI
 struct DecimalEntryForm: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
     var decimalStat: DecimalStat
-    @State private var entry: DecimalEntry = DecimalEntry()
+    
+    @State private var timestamp: Date = Date()
+    @State private var note: String = ""
     @State private var value: String = ""
     
     var body: some View {
         Form {
             Section(header: Text("Timestamp").foregroundColor(.decimal)) {
-                DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .padding(.vertical, 5)
             }
             .fontWeight(.medium)
@@ -24,7 +26,7 @@ struct DecimalEntryForm: View {
             }
 
             Section(header: Text("Additional Information").foregroundColor(.decimal).fontWeight(.medium)) {
-                TextField("Note", text: $entry.note)
+                TextField("Note", text: $note)
             }
 
             Section {
@@ -36,6 +38,7 @@ struct DecimalEntryForm: View {
                         TapGesture()
                             .onEnded { _ in
                                 addEntry()
+                                Haptics.shared.play(.light)
                             }
                     )
             }
@@ -44,10 +47,14 @@ struct DecimalEntryForm: View {
     }
 
     private func addEntry() {
-        entry.stat = decimalStat
-        entry.value = Double(value) ?? 0.0
+        let newEntry = DecimalEntry(
+            timestamp: timestamp,
+            value: Double(value) ?? 0.0,
+            note: note,
+            stat: decimalStat
+        )
         
-        decimalStat.statEntry.append(entry)
+        decimalStat.statEntry.append(newEntry)
         selectedDetailTab.selectedDetailTab = .history
     }
 }

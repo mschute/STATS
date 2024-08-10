@@ -4,19 +4,20 @@ import SwiftUI
 struct CounterEntryForm: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
     var counterStat: CounterStat
-    @State private var entry: CounterEntry = CounterEntry()
-    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var timestamp: Date = Date()
+    @State private var note: String = ""
     
     var body: some View {
         Form {
             Section(header: Text("Timestamp").foregroundColor(.counter)) {
-                DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .padding(.vertical, 5)
             }
             .fontWeight(.medium)
             
             Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
-                TextField("Note", text: $entry.note)
+                TextField("Note", text: $note)
             }
 
             Section {
@@ -28,6 +29,7 @@ struct CounterEntryForm: View {
                         TapGesture()
                             .onEnded { _ in
                                 addEntry()
+                                Haptics.shared.play(.light)
                             }
                     )
             }
@@ -36,8 +38,13 @@ struct CounterEntryForm: View {
     }
     //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
     private func addEntry() {
-        entry.stat = counterStat
-        counterStat.statEntry.append(entry)
+        let newEntry = CounterEntry(
+            timestamp: timestamp,
+            note: note,
+            stat: counterStat
+        )
+        
+        counterStat.statEntry.append(newEntry)
         selectedDetailTab.selectedDetailTab = .history
     }
 }

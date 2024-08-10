@@ -4,7 +4,10 @@ import PhotosUI
 struct PictureEntryForm: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
     var pictureStat: PictureStat
-    @State private var entry: PictureEntry = PictureEntry()
+    
+    @State private var timestamp: Date = Date()
+    @State private var note: String = ""
+    @State private var image: Data?
     
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var selectedPhotoData: Data?
@@ -15,7 +18,7 @@ struct PictureEntryForm: View {
     var body: some View {
         Form {
             Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
-                DatePicker("Timestamp", selection: $entry.timestamp, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .fontWeight(.medium)
                     .padding(.vertical, 5)
             }
@@ -23,7 +26,7 @@ struct PictureEntryForm: View {
             PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
             Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
-                TextField("Note", text: $entry.note)
+                TextField("Note", text: $note)
             }
             
             Section {
@@ -35,6 +38,7 @@ struct PictureEntryForm: View {
                         TapGesture()
                             .onEnded { _ in
                                 addEntry()
+                                Haptics.shared.play(.light)
                             }
                     )
             }
@@ -42,19 +46,25 @@ struct PictureEntryForm: View {
         .dismissKeyboardOnTap()
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
-                entry.image = data
+                image = data
             }
         }
         .task(id: selectedPhotoData) {
             if let data = selectedPhotoData {
-                entry.image = data
+                image = data
             }
         }
     }
     
     private func addEntry() {
-        entry.stat = pictureStat
-        pictureStat.statEntry.append(entry)
+        let newEntry = PictureEntry(
+            timestamp: timestamp,
+            note: note,
+            stat: pictureStat,
+            image: image
+        )
+        
+        pictureStat.statEntry.append(newEntry)
         selectedDetailTab.selectedDetailTab = .history
     }
 }
