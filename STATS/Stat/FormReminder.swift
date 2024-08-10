@@ -30,26 +30,38 @@ struct FormReminder: View {
                             .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
                             .frame(alignment: .trailing)
                             .multilineTextAlignment(.center)
-                        //Dismiss keyboard tips: https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
                         Text("Day(s)")
                     }
+                    
                     if (!reminders.isEmpty) {
                         Text("At")
                             .fontWeight(.medium)
                     }
+                    
                     List {
                         ForEach(reminders, id: \.self) { reminder in
                             Text(reminder, style: .time)
                                 .fontWeight(.regular)
                                 .padding(.leading, 10)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        if let index = reminders.firstIndex(of: reminder) {
+                                            deleteReminder(at: IndexSet(integer: index))
+                                        }
+                                        Haptics.shared.play(.light)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
+                                .tint(.cancel)
                         }
-                        .onDelete(perform: deleteReminder)
                     }
     
                     DatePicker(reminders.isEmpty ? "At" : "And", selection: $newReminder, displayedComponents: [.hourAndMinute])
     
                     Button("Add time") {
                         addReminder()
+                        Haptics.shared.play(.light)
                     }
                     .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
                     .padding(.vertical)
