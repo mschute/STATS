@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sck-GH-5aA">
-                                <rect key="frame" x="0.0" y="-110" width="628" height="1200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sck-GH-5aA">
+                                <rect key="frame" x="-117.66666666666669" y="-103" width="628.33333333333337" height="955"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
                                 <rect key="frame" x="0.0" y="832" width="393" height="0.0"/>
@@ -47,9 +46,12 @@
                         <color key="backgroundColor" name="Launch"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sck-GH-5aA" secondAttribute="bottom" id="7HJ-jv-w6v"/>
+                            <constraint firstItem="sck-GH-5aA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LB7-G9-2TD"/>
                             <constraint firstItem="mu6-xZ-N7r" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fHp-Ke-nPp"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="g9P-Yh-5PZ"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="mu6-xZ-N7r" secondAttribute="bottom" constant="210" id="gqU-9k-t2Y"/>
+                            <constraint firstItem="sck-GH-5aA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="-103" id="hlQ-x9-BeQ"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="150" id="mpo-po-xuA"/>
                         </constraints>
                     </view>
