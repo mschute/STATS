@@ -40,11 +40,12 @@ struct STATSApp: App {
             // Needed to remove applyColorMode function to preferredColorScheme as was not loading correctly.
                 .environment(\.keyboardIsShown, keyboardIsShown)
                 .onDisappear { dismantleKeyboarMonitors() }
-                .onAppear { setupKeyboardMonitors() }
-                .preferredColorScheme(isDarkMode ? .dark : .light)
+                .onAppear { 
+                    setupKeyboardMonitors()
+                    UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
+                }
         }
         .modelContainer(sharedModelContainer)
-
     }
     
     func setupKeyboardMonitors() {
