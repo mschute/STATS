@@ -92,6 +92,7 @@
 		0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7622C677A2800838EEC /* HapticFeedback.swift */; };
 		0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
 		0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */; };
+		0BB8E76F2C6A7F4300838EEC /* ValidationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,7 @@
 		0BB8E7622C677A2800838EEC /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		0BB8E7682C6A2C2700838EEC /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0B3822082C1F6B93004F26E3 /* StatUtility.swift */,
+				0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				0B6AC36F2C43D40C00636AAA /* TimeOfDay.swift in Sources */,
 				0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */,
 				0B4705B42C2C44C3004D1DDB /* CounterEntryCard.swift in Sources */,
+				0BB8E76F2C6A7F4300838EEC /* ValidationUtility.swift in Sources */,
 				0B6AC36B2C42F72700636AAA /* DateRangePicker.swift in Sources */,
 				0BB8E7482C6363E200838EEC /* FormSectionMimic.swift in Sources */,
 				0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */,
