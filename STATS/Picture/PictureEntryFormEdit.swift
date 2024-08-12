@@ -22,6 +22,7 @@ struct PictureEntryFormEdit: View {
     }
     
     var body: some View {
+        TopBar(title: "EDIT ENTRY", topPadding: 0, bottomPadding: 20)
         Form {
             Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
