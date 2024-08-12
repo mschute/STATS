@@ -1,7 +1,6 @@
 import Foundation
 import SwiftData
 
-//https://developer.apple.com/tutorials/app-dev-training/using-existentials-and-generics
 protocol Stat {
     var name: String { get }
     var created: Date { get }
