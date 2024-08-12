@@ -47,7 +47,6 @@ struct CounterReportContent: View {
                 .frame(maxWidth: .infinity)
                 Divider()
                 
-                //Prevent from not wrapping: https://stackoverflow.com/questions/56505929/the-text-doesnt-get-wrapped-in-swift-ui
                 VStack {
                     HStack {
                         Text("Most frequent time of day:")

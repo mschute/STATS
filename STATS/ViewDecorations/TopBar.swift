@@ -14,7 +14,6 @@ struct TopBar: View {
                 .padding(.bottom, bottomPadding)
                 .kerning(4)
                 .frame(maxWidth: .infinity, alignment: .center)
-//                .background(LinearGradient(gradient: Gradient(colors: [.background, .backgroundHighlight]), startPoint: .top, endPoint: .bottom)).ignoresSafeArea()
                 .background(Color.background.ignoresSafeArea())
         }
     }

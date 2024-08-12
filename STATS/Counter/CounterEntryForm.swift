@@ -1,4 +1,3 @@
-import SwiftData
 import SwiftUI
 
 struct CounterEntryForm: View {
@@ -36,12 +35,13 @@ struct CounterEntryForm: View {
         }
         .dismissKeyboardOnTap()
     }
+    
     //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
     private func addEntry() {
+        print("Adding new entry")
         let newEntry = CounterEntry(
             timestamp: timestamp,
-            note: note,
-            stat: counterStat
+            note: note
         )
         
         counterStat.statEntry.append(newEntry)

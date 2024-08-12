@@ -9,41 +9,45 @@ struct DecimalCard: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     HStack(spacing: 15) {
-                            Image(systemName: stat.icon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
+                        Image(systemName: stat.icon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                         
-                        //Truncate implementation: https://www.hackingwithswift.com/forums/swiftui/force-truncation-of-text-in-a-listview/13330
                         VStack(alignment: .leading, spacing: 8) {
                             Text(stat.name)
                                 .font(.custom("Menlo", size: 16))
                                 .fontWeight(.medium)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
                             Text("Decimal Stat")
-                                .font(.custom("Menlo", size: 14))
+                                .font(.custom("Menlo", size: 13))
                                 .fontWeight(.regular)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity)
                     
                     Spacer()
                     
                     VStack(alignment: .trailing, spacing: 8) {
-                        if let lastEntry = stat.statEntry.last {
-                            let formattedValue = String(format: "%.2f", lastEntry.value)
-                            Text("\(formattedValue) \(stat.unitName)")
-                                .font(.custom("Menlo", size: 15))
-                                .fontWeight(.semibold)
-                            Text("\(lastEntry.timestamp, style: .date)")
-                                .font(.custom("Menlo", size: 12))
-                                .fontWeight(.regular)
-                            
-                        } else {
+                        if (stat.statEntry.isEmpty) {
                             Text("No entries")
+                                .font(.custom("Menlo", size: 13))
                                 .fontWeight(.medium)
+                        } else {
+                            if let latestEntry = stat.statEntry
+                                .sorted(by: { $0.timestamp > $1.timestamp })
+                                .first {
+                                let formattedValue = String(format: "%.2f", latestEntry.value)
+                                Text("\(formattedValue) \(stat.unitName)")
+                                    .font(.custom("Menlo", size: 15))
+                                    .fontWeight(.semibold)
+                                Text("\(DateUtility.abbreviatedDateString(date: latestEntry.timestamp))")
+                                    .font(.custom("Menlo", size: 12))
+                                    .fontWeight(.regular)
+                            }
                         }
                     }
+                    .frame(maxWidth: 105)
                 }
             }
             .font(.custom("Menlo", size: 13))

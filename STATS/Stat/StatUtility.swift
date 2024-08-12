@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-class StatUtility {
+struct StatUtility {
     static func Remove(stat: any Stat, modelContext: ModelContext) {
         if let stat = stat as? CounterStat {
             modelContext.delete(stat)
@@ -36,7 +36,7 @@ class StatUtility {
         }
     }
 
-    static func StatEditForm(stat: any Stat, isEditMode: Bool) -> some View {
+    static func StatEditForm(stat: any Stat) -> some View {
         switch stat {
         case let stat as CounterStat:
             return AnyView(CounterFormEdit(counterStat: stat))

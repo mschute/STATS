@@ -47,10 +47,12 @@ struct CounterEntryCard: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .counter, gradientHighlight: .counterHighlight, cornerRadius: 12)
+            
             NavigationLink(destination: CounterEntryFormEdit(counterEntry: counterEntry)) {
                 EmptyView()
             }
             .opacity(0.0)
+            .navigationTitle("")
         }
     }
 }

@@ -64,6 +64,7 @@ struct PictureEntryCard: View {
                             PictureEntryFormEdit(pictureEntry: pictureEntry)) {
                 EmptyView()
             }
+            .navigationTitle("")
             .opacity(0.0)
         }
     }

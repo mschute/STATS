@@ -10,7 +10,6 @@ struct STATSApp: App {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    //Keyboard implementation: https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui#comment109419055_60010955
     @State private var keyboardIsShown = false
     @State private var keyboardHideMonitor: AnyCancellable? = nil
     @State private var keyboardShownMonitor: AnyCancellable? = nil
@@ -29,7 +28,6 @@ struct STATSApp: App {
         }
     }()
     
-    //Splash Screen: https://www.youtube.com/watch?v=N7-QfGQrxlw
     //Dark mode: https://www.hackingwithswift.com/forums/swiftui/preferredcolorscheme-not-affecting-datepicker-and-confirmationdialog/11796
     var body: some Scene {
         WindowGroup {
@@ -42,11 +40,12 @@ struct STATSApp: App {
             // Needed to remove applyColorMode function to preferredColorScheme as was not loading correctly.
                 .environment(\.keyboardIsShown, keyboardIsShown)
                 .onDisappear { dismantleKeyboarMonitors() }
-                .onAppear { setupKeyboardMonitors() }
-                .preferredColorScheme(isDarkMode ? .dark : .light)
+                .onAppear { 
+                    setupKeyboardMonitors()
+                    UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
+                }
         }
         .modelContainer(sharedModelContainer)
-
     }
     
     func setupKeyboardMonitors() {

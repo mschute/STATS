@@ -7,7 +7,7 @@ struct CounterCard: View {
         ZStack {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    HStack(spacing: 15) {
+                    HStack(alignment: .top, spacing: 15) {
                         Image(systemName: stat.icon)
                             .resizable()
                             .scaledToFit()
@@ -17,33 +17,43 @@ struct CounterCard: View {
                             Text(stat.name)
                                 .font(.custom("Menlo", size: 16))
                                 .fontWeight(.medium)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
                             Text("Counter Stat")
-                                .font(.custom("Menlo", size: 14))
+                                .font(.custom("Menlo", size: 13))
                                 .fontWeight(.regular)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity)
+                    
                     Spacer()
                     
                     VStack(alignment: .trailing, spacing: 8) {
-                        Text("Last Entry:")
-                            .font(.custom("Menlo", size: 14))
-                            .fontWeight(.medium)
-                        if let lastEntry = stat.statEntry.last {
-                            Text("\(lastEntry.timestamp, style: .date)")
-                                .font(.custom("Menlo", size: 12))
-                                .fontWeight(.regular)
-                        } else {
+                        if (stat.statEntry.isEmpty) {
                             Text("No entries")
+                                .font(.custom("Menlo", size: 13))
                                 .fontWeight(.medium)
+                            
+                        } else {
+                            Text("Latest Entry:")
+                                .font(.custom("Menlo", size: 13))
+                                .fontWeight(.medium)
+                            
+                            if let latestEntry = stat.statEntry
+                                .sorted(by: { $0.timestamp > $1.timestamp })
+                                .first {
+                                Text("\(DateUtility.abbreviatedDateString(date: latestEntry.timestamp))")
+                                        .font(.custom("Menlo", size: 12))
+                                        .fontWeight(.regular)
+                                }
                         }
                     }
+                    .frame(maxWidth: 105)
                 }
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: .counter, gradientHighlight: .counterHighlight, cornerRadius: 12)
+            
             NavigationLink(destination: CounterDetail(stat: stat)) {
                 EmptyView()
             }
