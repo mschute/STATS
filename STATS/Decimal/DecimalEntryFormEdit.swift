@@ -18,7 +18,7 @@ struct DecimalEntryFormEdit: View {
     }
     
     var body: some View {
-        TopBar(title: "Edit Entry", topPadding: 0, bottomPadding: 20)
+        TopBar(title: "EDIT ENTRY", topPadding: 0, bottomPadding: 20)
         Form {
             Section(header: Text("Timestamp").foregroundColor(.decimal)) {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
