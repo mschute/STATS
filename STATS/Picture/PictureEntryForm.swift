@@ -60,7 +60,6 @@ struct PictureEntryForm: View {
         let newEntry = PictureEntry(
             timestamp: timestamp,
             note: note,
-            stat: pictureStat,
             image: image
         )
         

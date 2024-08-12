@@ -10,11 +10,10 @@ class DecimalEntry: Entry, Identifiable {
     //Associated relationship must be optional / does not need @Relationship
     var stat: DecimalStat?
     
-    init(entryId: UUID = UUID(), timestamp: Date = Date(), value: Double = 0.0, note: String = "", stat: DecimalStat? = nil) {
+    init(entryId: UUID = UUID(), timestamp: Date = Date(), value: Double = 0.0, note: String = "") {
         self.entryId = entryId
         self.timestamp = timestamp
         self.value = value
         self.note = note
-        self.stat = stat
     }
 }

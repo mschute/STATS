@@ -50,8 +50,7 @@ struct DecimalEntryForm: View {
         let newEntry = DecimalEntry(
             timestamp: timestamp,
             value: Double(value) ?? 0.0,
-            note: note,
-            stat: decimalStat
+            note: note
         )
         
         decimalStat.statEntry.append(newEntry)
