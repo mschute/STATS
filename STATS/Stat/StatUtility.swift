@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-class StatUtility {
+struct StatUtility {
     static func Remove(stat: any Stat, modelContext: ModelContext) {
         if let stat = stat as? CounterStat {
             modelContext.delete(stat)
