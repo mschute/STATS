@@ -8,8 +8,6 @@ struct History: View {
     @State private var endDate: Date = Date()
     @State private var dateRange: (startDate: Date, endDate: Date) = (Date(), Date())
     
-    //https://stackoverflow.com/questions/77039981/swiftdata-query-with-predicate-on-relationship-model?ref=simplykyra.com
-    //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     init(stat: any Stat) {
         self.stat = stat
         _dateRange = State(initialValue: AnyStat.getEntryDateRange(entryArray: stat.statEntry))
