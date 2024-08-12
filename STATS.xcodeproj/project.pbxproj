@@ -90,6 +90,7 @@
 		0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */; };
 		0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */; };
 		0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7622C677A2800838EEC /* HapticFeedback.swift */; };
+		0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormEdit.swift; sourceTree = "<group>"; };
 		0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardGestureModifier.swift; sourceTree = "<group>"; };
 		0BB8E7622C677A2800838EEC /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		0BB8E7682C6A2C2700838EEC /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 				0B4705BF2C316814004D1DDB /* AnyEntry.swift */,
 				0B3821B92C1C2510004F26E3 /* AnyStat.swift */,
 				0B6AC36A2C42F72700636AAA /* DateRangePicker.swift */,
+				0BB8E7682C6A2C2700838EEC /* DateUtility.swift */,
 				0B3822002C1F0F68004F26E3 /* Entry.swift */,
 				0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */,
 				0B6AC3682C42F02200636AAA /* FormIconPicker.swift */,
@@ -621,6 +624,7 @@
 				0B6AC3632C418C9600636AAA /* Reminder.swift in Sources */,
 				0B4705AC2C297CA6004D1DDB /* CounterReportContent.swift in Sources */,
 				0BB8E7172C5C06AB00838EEC /* StatButtonStyle.swift in Sources */,
+				0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */,
 				0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
 				0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */,
