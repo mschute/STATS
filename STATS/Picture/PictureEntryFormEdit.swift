@@ -4,6 +4,8 @@ import PhotosUI
 struct PictureEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
+    
     var pictureEntry: PictureEntry
     
     @State private var timestamp: Date
@@ -13,6 +15,8 @@ struct PictureEntryFormEdit: View {
     @State private var selectedPhotoData: Data?
     @State private var cameraImage: UIImage?
     @State private var showCamera: Bool = false
+    
+    @State private var showAlert: Bool = false
     
     init(pictureEntry: PictureEntry) {
         self.pictureEntry = pictureEntry
@@ -44,13 +48,23 @@ struct PictureEntryFormEdit: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                saveEntry()
+                                if selectedPhotoData == nil {
+                                    showAlert = true
+                                } else {
+                                    saveEntry()
+                                }
                                 Haptics.shared.play(.light)
                             }
                     )
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboardOnTap()        
+        .alert("Must add picture", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
+        }
+        .onAppear() {
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
+        }
     }
 
     private func saveEntry() {

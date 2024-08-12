@@ -91,6 +91,7 @@
 		0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */; };
 		0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7622C677A2800838EEC /* HapticFeedback.swift */; };
 		0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
+		0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardGestureModifier.swift; sourceTree = "<group>"; };
 		0BB8E7622C677A2800838EEC /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		0BB8E7682C6A2C2700838EEC /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +436,7 @@
 			children = (
 				0BB8E7422C5EE3B700838EEC /* ColorMode.swift */,
 				0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */,
+				0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				0B7C63DE2C4AC1CE00798513 /* PictureEntryForm.swift in Sources */,
 				0B3821992C1836DB004F26E3 /* CounterStat.swift in Sources */,
 				0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */,
+				0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
 				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,

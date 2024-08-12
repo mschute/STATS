@@ -3,6 +3,7 @@ import PhotosUI
 
 struct PictureEntryForm: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
+    @Environment(\.colorScheme) var colorScheme
     var pictureStat: PictureStat
     
     @State private var timestamp: Date = Date()
@@ -14,6 +15,8 @@ struct PictureEntryForm: View {
     
     @State private var cameraImage: UIImage?
     @State private var showCamera: Bool = false
+    
+    @State private var showAlert: Bool = false
     
     var body: some View {
         Form {
@@ -37,7 +40,11 @@ struct PictureEntryForm: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                addEntry()
+                                if image == nil {
+                                    showAlert = true
+                                } else {
+                                    addEntry()
+                                }
                                 Haptics.shared.play(.light)
                             }
                     )
@@ -53,6 +60,14 @@ struct PictureEntryForm: View {
             if let data = selectedPhotoData {
                 image = data
             }
+        }
+        //Alerts: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-an-alert
+        .alert("Must add picture", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
+        }
+        // Change alert tint color: https://www.hackingwithswift.com/forums/swiftui/alert-button-color-conforming-to-accentcolor/7193#:~:text=There%20is%20no%20way%20to,the%20system%20do%20its%20thing.
+        .onAppear() {
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
         }
     }
     
