@@ -27,7 +27,7 @@ class AnyStat: Identifiable, Hashable {
         return (startDate, endDate)
     }
     
-    //https://www.hackingwithswift.com/forums/swift/form-picker-error-requires-that-x-conform-to-hashable/19961
+    //Conform to hashable https://www.hackingwithswift.com/forums/swift/form-picker-error-requires-that-x-conform-to-hashable/19961
     static func == (lhs: AnyStat, rhs: AnyStat) -> Bool {
         return lhs.id == rhs.id
     }
