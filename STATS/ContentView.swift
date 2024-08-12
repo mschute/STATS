@@ -70,16 +70,3 @@ struct ContentView: View {
         stats.sort { $0.stat.created > $1.stat.created }
     }
 }
-
-
-//#Preview {
-//    do {
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let container = try ModelContainer(for: CounterStat.self, DecimalStat.self, configurations: config)
-//
-//        return ContentView()
-//            .modelContainer(container)
-//    } catch {
-//        fatalError("Failed to create model container.")
-//    }
-//}
