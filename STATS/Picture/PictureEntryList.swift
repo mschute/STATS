@@ -5,7 +5,6 @@ struct PictureEntryList: View {
     @Environment(\.modelContext) var modelContext
     @Query private var entries: [PictureEntry]
     
-    //https://forums.developer.apple.com/forums/thread/123920?answerId=387111022#387111022
     @Binding var startDate: Date
     @Binding var endDate: Date
     
@@ -13,7 +12,6 @@ struct PictureEntryList: View {
         self._startDate = startDate
         self._endDate = endDate
         
-        //https://developer.apple.com/documentation/swiftui/binding/wrappedvalue
         _entries = Query(filter: PictureEntryList.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp, order: .reverse)])
     }
     
@@ -52,7 +50,6 @@ struct PictureEntryList: View {
         }
     }
     
-    //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<PictureEntry> {
         return #Predicate<PictureEntry> {
             entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)

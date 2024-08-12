@@ -1,7 +1,6 @@
 import SwiftData
 import SwiftUI
 
-// https://www.youtube.com/watch?v=Saw_sZWa4aQ
 struct Report: View {
     @Environment(\.colorScheme) var colorScheme
     var stat: any Stat
@@ -9,8 +8,6 @@ struct Report: View {
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
     
-    //https://stackoverflow.com/questions/77039981/swiftdata-query-with-predicate-on-relationship-model?ref=simplykyra.com
-    //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     init(stat: any Stat) {
         self.stat = stat
         let dateRange = AnyStat.getEntryDateRange(entryArray: stat.statEntry)

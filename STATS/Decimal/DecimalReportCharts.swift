@@ -78,7 +78,6 @@ struct DecimalReportCharts: View {
         if (decimalEntries.isEmpty) { return [] }
         
         for entry in decimalEntries {
-            //https://developer.apple.com/documentation/foundation/calendar/2293783-startofday
             let date = calendar.startOfDay(for: entry.timestamp)
             dateValues[date, default: 0] += entry.value
         }
@@ -95,7 +94,6 @@ struct DecimalReportCharts: View {
         if (decimalEntries.isEmpty) { return [] }
         
         for entry in decimalEntries {
-            //https://developer.apple.com/documentation/foundation/calendar/2293783-startofday
             let date = calendar.startOfDay(for: entry.timestamp)
             if dateValues[date] == nil {
                 dateValues[date] = (total: 0, count: 0)
@@ -105,11 +103,6 @@ struct DecimalReportCharts: View {
         }
         
         let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
-        //Sorting https://stackoverflow.com/questions/25377177/sort-dictionary-by-keys
         return data.sorted(by: { $0.day < $1.day })
     }
 }
-
-//#Preview {
-//    DecimalReportCharts()
-//}
