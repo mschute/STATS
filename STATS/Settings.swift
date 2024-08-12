@@ -3,6 +3,7 @@ import SwiftUI
 struct Settings: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @AppStorage("isHaptics") private var isHaptics: Bool = true
+    @AppStorage("isReminder") private var isReminder: Bool = false
     
     //Navigation Transitions: https://stackoverflow.com/questions/75635848/new-navigationstack-in-swiftui-transition-how-to-change-from-the-default-slide
     
@@ -32,6 +33,8 @@ struct Settings: View {
                         }
                     Toggle("Haptics", isOn: $isHaptics)
                         .onChange(of: isHaptics, initial: true) {}
+                    Toggle("Reminders", isOn: $isReminder)
+                        .onChange(of: isReminder, initial: true) {}
                 }
                 .fontWeight(.semibold)
                 
