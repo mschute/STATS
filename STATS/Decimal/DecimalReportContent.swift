@@ -66,9 +66,8 @@ struct DecimalReportContent: View {
                         .foregroundColor(.decimal)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 20)
                 .padding(.vertical, 10)
-                
             }
             .formSectionMimic()
             
