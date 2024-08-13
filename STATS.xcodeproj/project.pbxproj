@@ -93,6 +93,7 @@
 		0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
 		0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */; };
 		0BB8E76F2C6A7F4300838EEC /* ValidationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */; };
+		0BB8E7712C6AA96400838EEC /* NoDataSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7702C6AA96400838EEC /* NoDataSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,7 @@
 		0BB8E7682C6A2C2700838EEC /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtility.swift; sourceTree = "<group>"; };
+		0BB8E7702C6AA96400838EEC /* NoDataSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 			children = (
 				0BB8E7472C6363E200838EEC /* FormSectionMimic.swift */,
 				0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */,
+				0BB8E7702C6AA96400838EEC /* NoDataSection.swift */,
 				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
 				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
 			);
@@ -648,6 +651,7 @@
 				0B4705C02C316814004D1DDB /* AnyEntry.swift in Sources */,
 				0B4705BE2C316777004D1DDB /* CounterEntryList.swift in Sources */,
 				0BB8E7552C65276100838EEC /* DecimalFormAdd.swift in Sources */,
+				0BB8E7712C6AA96400838EEC /* NoDataSection.swift in Sources */,
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
