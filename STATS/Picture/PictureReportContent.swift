@@ -72,7 +72,7 @@ struct PictureReportContent: View {
                                         //Compare timestamps https://www.hackingwithswift.com/example-code/system/how-to-check-whether-one-date-is-similar-to-another
                                         if let decimalEntry = statEntry.entry as? DecimalEntry {
                                             if (Calendar.current.isDate(decimalEntry.timestamp, equalTo: pictureEntry.timestamp, toGranularity: .day)) {
-                                                Text("\(decimalEntry.value) \(decimalEntry.stat?.unitName ?? "")")
+                                                Text("\(String(format: "%.2f", decimalEntry.value)) \(decimalEntry.stat?.unitName ?? "")")
                                                     .padding(5)
                                                     .background(Color.black.opacity(0.7))
                                                     .foregroundColor(.white)

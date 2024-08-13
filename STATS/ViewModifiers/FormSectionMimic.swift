@@ -10,7 +10,7 @@ struct FormSectionMimic: ViewModifier {
             .background(colorScheme == .dark ? Color(UIColor.systemGray6) : Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
             .padding(.top, 35)
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 35)
     }
 }
 

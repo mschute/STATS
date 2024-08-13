@@ -32,7 +32,7 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureCard(stat: stat))
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
 
@@ -45,7 +45,7 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureFormEdit(pictureStat: stat))
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
     
@@ -58,7 +58,7 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureFormAdd())
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
     
@@ -71,7 +71,7 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureEntryForm(pictureStat: stat))
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
     
@@ -79,8 +79,10 @@ struct StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No current entries").frame(maxWidth: .infinity, alignment: .center))
-                
+            return AnyView(Text("No current entries")
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(10)
+            )
         }
         
         switch stat {
@@ -91,7 +93,7 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureEntryList(id: id, startDate: startDate, endDate: endDate))
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
     
@@ -99,14 +101,7 @@ struct StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No available data for report")                    
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(UIColor.systemGray6))
-                .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
-                .padding(.horizontal)
-                .padding(.top, 24)
-                .multilineTextAlignment(.center)
+            return AnyView(Text("No available data").noDataSection()
             )
         }
         
@@ -118,7 +113,7 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureReportContent(id: id, startDate: startDate, endDate: endDate))
         default:
-            return AnyView(Text("No stat available"))
+            return AnyView(Text("No stat available").noDataSection())
         }
     }
 }
