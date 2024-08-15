@@ -38,7 +38,6 @@ struct CounterEntryForm: View {
     
     //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
     private func addEntry() {
-        print("Adding new entry")
         let newEntry = CounterEntry(
             timestamp: timestamp,
             note: note

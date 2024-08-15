@@ -21,12 +21,12 @@ extension UIApplication {
 }
 
 extension View {
-    /// Assigns a tap gesture that dismisses the first responder only when the keyboard is visible to the KeyboardIsShown EnvironmentKey
+    // Assign a tap gesture that dismisses the first responser only when the keyboard is visible to the KeyboardIsShown EnvironmentKey
     func dismissKeyboardOnTap() -> some View {
         modifier(HideKeyboardGestureModifier())
     }
     
-    /// Shortcut to close in a function call
+    // Shortcut to close in a function call
     func resignCurrentResponder() {
         UIApplication.shared.resignCurrentResponder()
     }
