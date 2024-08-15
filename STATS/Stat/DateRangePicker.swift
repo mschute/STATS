@@ -20,7 +20,6 @@ struct DateRangePicker: View {
                 
                 DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                     .labelsHidden()
-                    .padding(.vertical, 10)
                     .padding(.horizontal, 15)
                     .datePickerStyle(.compact)
                     .fontWeight(.medium)
@@ -43,12 +42,11 @@ struct DateRangePicker: View {
                 
                 DatePicker("", selection: $endDate, displayedComponents: .date)
                     .labelsHidden()
-                    .padding(.vertical, 10)
                     .padding(.horizontal, 15)
                     .datePickerStyle(.compact)
                     .fontWeight(.medium)
             }
-            .padding()
+           .padding()
         }
     }
 }

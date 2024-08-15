@@ -16,12 +16,10 @@ struct Report: View {
     }
 
     var body: some View {
-        ScrollView {
+        Form {
             DateRangePicker(startDate: $startDate, endDate: $endDate)
-                .formSectionMimic()
+
             StatUtility.ReportContent(stat: stat, startDate: $startDate, endDate: $endDate)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(colorScheme == .dark ? Color.black : Color(UIColor.systemGray6))
     }
 }

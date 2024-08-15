@@ -22,8 +22,8 @@ struct PictureReportContent: View {
     }
     
     var body: some View {
-        VStack {
-            VStack {
+        Group {
+            Section(header: Text("")) {
                 HStack {
                     Text("Total entries:")
                         .fontWeight(.semibold)
@@ -38,12 +38,10 @@ struct PictureReportContent: View {
                 .padding(.horizontal)
                 .padding(.vertical, 10)
             }
-            .frame(maxWidth: .infinity)
-            .formSectionMimic()
             
-            VStack {
+            Section(header: Text("")) {
                 LabeledContent("Pair a stat") {
-                    Picker("Pair stat", selection: $statSelection) {
+                    Picker("", selection: $statSelection) {
                         Text("").tag(nil as AnyStat?)
                         ForEach(stats) { stat in
                             Text(stat.stat.name)
@@ -105,8 +103,6 @@ struct PictureReportContent: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity)
-            .formSectionMimic()
         }
         .onAppear {
             combineStats()

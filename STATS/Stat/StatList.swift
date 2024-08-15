@@ -18,12 +18,11 @@ struct StatList: View {
         if stats.isEmpty {
             VStack {
                 TopBar(title: "STAT LIST", topPadding: 40, bottomPadding: 20)
-                ScrollView {
+                Form {
                     Text("No current stats")
-                        .noDataSection()
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(colorScheme == .dark ? Color.black : Color(UIColor.systemGray6))
             }
         } else {
             VStack {

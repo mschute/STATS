@@ -32,7 +32,13 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureCard(stat: stat))
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No current stat")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
         }
     }
 
@@ -45,7 +51,13 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureFormEdit(pictureStat: stat))
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No stat available")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
         }
     }
     
@@ -58,7 +70,13 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureFormAdd())
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No stat available")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
         }
     }
     
@@ -71,7 +89,13 @@ struct StatUtility {
         case let stat as PictureStat:
             return AnyView(PictureEntryForm(pictureStat: stat))
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No stat available")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
         }
     }
     
@@ -79,9 +103,12 @@ struct StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No current entries")
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(10)
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No current entries")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
             )
         }
         
@@ -93,7 +120,7 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureEntryList(id: id, startDate: startDate, endDate: endDate))
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(Text(""))
         }
     }
     
@@ -101,7 +128,12 @@ struct StatUtility {
         let id = stat.persistentModelID
         
         if(stat.statEntry.isEmpty) {
-            return AnyView(Text("No available data").noDataSection()
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No available data")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
             )
         }
         
@@ -113,7 +145,7 @@ struct StatUtility {
         case is PictureStat:
             return AnyView(PictureReportContent(id: id, startDate: startDate, endDate: endDate))
         default:
-            return AnyView(Text("No stat available").noDataSection())
+            return AnyView(Text(""))
         }
     }
 }

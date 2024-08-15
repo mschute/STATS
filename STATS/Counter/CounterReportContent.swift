@@ -28,8 +28,7 @@ struct CounterReportContent: View {
     
     //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
     var body: some View {
-        VStack {
-            VStack {
+        Section(header: Text("")) {
                 VStack {
                     HStack {
                         Text("Total Count:")
@@ -41,11 +40,8 @@ struct CounterReportContent: View {
                             .foregroundColor(.counter)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
                 }
-                .frame(maxWidth: .infinity)
-                Divider()
+                .padding(.top, 10)
                 
                 VStack {
                     HStack {
@@ -58,11 +54,7 @@ struct CounterReportContent: View {
                             .foregroundColor(.counter)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
                 }
-                .frame(maxWidth: .infinity)
-                Divider()
 
                 VStack {
                     HStack {
@@ -76,12 +68,7 @@ struct CounterReportContent: View {
                             .foregroundColor(.counter)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
                 }
-                .frame(maxWidth: .infinity)
-                
-                Divider()
                 
                 Text("Note: Morning is 6am-11:59am, Afternoon is 12pm-5:59pm, Evening is 6pm-11:59pm, Overnight is 12am-5:59am")
                     .font(.custom("Menlo", size: 10))
@@ -91,12 +78,13 @@ struct CounterReportContent: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
             }
-            .formSectionMimic()
 
-            VStack {
+        Section(header: Text("")) {
                 Text("Entry Count by Day")
                     .fontWeight(.semibold)
                     .font(.custom("Menlo", size: 24))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
                     .padding()
                 
                 Chart {
@@ -124,8 +112,6 @@ struct CounterReportContent: View {
                 .padding(.vertical, 15)
                 .foregroundStyle(.counter)
             }
-            .formSectionMimic()
-        }
     }
     
     private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {

@@ -24,112 +24,102 @@ struct DecimalReportContent: View {
     }
     
     var body: some View {
-        VStack {
-            VStack {
+        Section(header: Text("")) {
+            HStack {
+                Text("Total entries:")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("\(decimalEntries.count)")
+                    .font(.custom("Menlo", size: 32))
+                    .fontWeight(.bold)
+                    .foregroundColor(.decimal)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding(.vertical, 10)
+            
+            HStack {
+                Text("Largest value:")
+                    .fontWeight(.semibold)
+                    .frame(alignment: .leading)
+                Text(String(format: "%.2f", decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0))
+                    .font(.custom("Menlo", size: 28))
+                    .fontWeight(.bold)
+                    .foregroundColor(.decimal)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding(.vertical, 10)
+            
+            HStack {
+                Text("Smallest value:")
+                    .fontWeight(.semibold)
+                    .frame(alignment: .leading)
+                Text(String(format: "%.2f", decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0))
+                    .font(.custom("Menlo", size: 28))
+                    .fontWeight(.bold)
+                    .foregroundColor(.decimal)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding(.vertical, 10)
+        }
+        
+        Section(header: Text("")) {
+            if (decimalEntries[0].stat?.trackTotal == true) {
                 HStack {
-                    Text("Total entries:")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(decimalEntries.count)")
-                        .font(.custom("Menlo", size: 32))
-                        .fontWeight(.bold)
-                        .foregroundColor(.decimal)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                
-                Divider()
-                
-                HStack {
-                    Text("Largest value:")
+                    Text("Sum:")
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
-                    Text(String(format: "%.2f", decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0))
+                    
+                    Text(String(format: "%.2f", sum))
                         .font(.custom("Menlo", size: 28))
                         .fontWeight(.bold)
                         .foregroundColor(.decimal)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.horizontal)
                 .padding(.vertical, 10)
-                
-                Divider()
-                
+            }
+        }
+        
+        Section(header: Text("")) {
+            Text("Value Sum by Day")
+                .fontWeight(.semibold)
+                .font(.custom("Menlo", size: 24))
+                .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
+                .foregroundStyle(.decimal)
+        }
+        
+        
+        
+        Section(header: Text("")) {
+            if (decimalEntries[0].stat?.trackAverage == true) {
                 HStack {
-                    Text("Smallest value:")
+                    Text("Average:")
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
-                    Text(String(format: "%.2f", decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0))
+                    
+                    Text(String(format: "%.2f", average))
                         .font(.custom("Menlo", size: 28))
                         .fontWeight(.bold)
                         .foregroundColor(.decimal)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.horizontal, 20)
                 .padding(.vertical, 10)
             }
-            .formSectionMimic()
+        }
+        
+        Section(header: Text("")) {
+            Text("Value Average by Day")
+                .fontWeight(.semibold)
+                .font(.custom("Menlo", size: 24))
+                .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
+                .padding()
             
-            VStack {
-                if (decimalEntries[0].stat?.trackTotal == true) {
-                    HStack {
-                        Text("Sum:")
-                            .fontWeight(.semibold)
-                            .frame(alignment: .leading)
-                        
-                        Text(String(format: "%.2f", sum))
-                            .font(.custom("Menlo", size: 28))
-                            .fontWeight(.bold)
-                            .foregroundColor(.decimal)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .formSectionMimic()
-                    
-                    VStack {
-                        Text("Value Sum by Day")
-                            .fontWeight(.semibold)
-                            .font(.custom("Menlo", size: 24))
-                            .padding()
-                        
-                        DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
-                            .foregroundStyle(.decimal)
-                    }
-                    .formSectionMimic()
-                }
-            }
-            
-            VStack {
-                if (decimalEntries[0].stat?.trackAverage == true) {
-                    HStack {
-                        Text("Average:")
-                            .fontWeight(.semibold)
-                            .frame(alignment: .leading)
-                    
-                        Text(String(format: "%.2f", average))
-                            .font(.custom("Menlo", size: 28))
-                            .fontWeight(.bold)
-                            .foregroundColor(.decimal)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .formSectionMimic()
-                    
-                    VStack {
-                        Text("Value Average by Day")
-                            .fontWeight(.semibold)
-                            .font(.custom("Menlo", size: 24))
-                            .padding()
-                        
-                        DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
-                            .foregroundStyle(.decimal)
-                    }
-                    .formSectionMimic()
-                }
-            }
+            DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
+                .foregroundStyle(.decimal)
         }
     }
     
