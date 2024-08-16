@@ -80,15 +80,17 @@ struct DecimalReportContent: View {
         }
         
         Section(header: Text("")) {
-            Text("Value Sum by Day")
-                .fontWeight(.semibold)
-                .font(.custom("Menlo", size: 24))
-                .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .padding()
-            
-            DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
-                .foregroundStyle(.decimal)
+            if (decimalEntries[0].stat?.trackTotal == true) {
+                Text("Value Sum by Day")
+                    .fontWeight(.semibold)
+                    .font(.custom("Menlo", size: 24))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
+                    .foregroundStyle(.decimal)
+            }
         }
         
         
@@ -111,15 +113,17 @@ struct DecimalReportContent: View {
         }
         
         Section(header: Text("")) {
-            Text("Value Average by Day")
-                .fontWeight(.semibold)
-                .font(.custom("Menlo", size: 24))
-                .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .padding()
-            
-            DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
-                .foregroundStyle(.decimal)
+            if (decimalEntries[0].stat?.trackAverage == true) {
+                Text("Value Average by Day")
+                    .fontWeight(.semibold)
+                    .font(.custom("Menlo", size: 24))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
+                    .foregroundStyle(.decimal)
+            }
         }
     }
     
