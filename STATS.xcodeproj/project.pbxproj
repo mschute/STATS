@@ -32,7 +32,7 @@
 		0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */; };
 		0B3822092C1F6B93004F26E3 /* StatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822082C1F6B93004F26E3 /* StatUtility.swift */; };
 		0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822112C22E4B9004F26E3 /* Navbar.swift */; };
-		0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822132C22E7A9004F26E3 /* NewStatType.swift */; };
+		0B3822142C22E7A9004F26E3 /* ChooseStatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822132C22E7A9004F26E3 /* ChooseStatType.swift */; };
 		0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822152C22E8FE004F26E3 /* Settings.swift */; };
 		0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38221B2C2488E7004F26E3 /* DecimalCard.swift */; };
 		0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705A92C297986004D1DDB /* StatDetailTabs.swift */; };
@@ -141,7 +141,7 @@
 		0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDetail.swift; sourceTree = "<group>"; };
 		0B3822082C1F6B93004F26E3 /* StatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatUtility.swift; sourceTree = "<group>"; };
 		0B3822112C22E4B9004F26E3 /* Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navbar.swift; sourceTree = "<group>"; };
-		0B3822132C22E7A9004F26E3 /* NewStatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStatType.swift; sourceTree = "<group>"; };
+		0B3822132C22E7A9004F26E3 /* ChooseStatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStatType.swift; sourceTree = "<group>"; };
 		0B3822152C22E8FE004F26E3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0B38221B2C2488E7004F26E3 /* DecimalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCard.swift; sourceTree = "<group>"; };
 		0B4705A92C297986004D1DDB /* StatDetailTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailTabs.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 				0B6AC3682C42F02200636AAA /* FormIconPicker.swift */,
 				0B6AC3662C42E54C00636AAA /* FormReminder.swift */,
 				0B4705C12C32DD30004D1DDB /* History.swift */,
-				0B3822132C22E7A9004F26E3 /* NewStatType.swift */,
+				0B3822132C22E7A9004F26E3 /* ChooseStatType.swift */,
 				0B6AC3622C418C9600636AAA /* Reminder.swift */,
 				0B1300EB2C57A11600E4B7B9 /* Report.swift */,
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
@@ -680,7 +680,7 @@
 				0B6AC34F2C35B51500636AAA /* SortType.swift in Sources */,
 				0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
-				0B3822142C22E7A9004F26E3 /* NewStatType.swift in Sources */,
+				0B3822142C22E7A9004F26E3 /* ChooseStatType.swift in Sources */,
 				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
 				0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,

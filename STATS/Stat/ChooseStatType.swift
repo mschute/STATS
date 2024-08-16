@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewStatType: View {
+struct ChooseStatType: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
