@@ -19,7 +19,7 @@ struct Navbar: View {
                 .tag(Tab.statList)
                 
                 NavigationStack {
-                    NewStatType()
+                    ChooseStatType()
                 }
                 .tabItem {
                         Image(systemName: "plus.circle.fill")
