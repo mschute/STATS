@@ -80,32 +80,17 @@ struct PictureFormAdd: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            addPicture()
+                            PictureStat.addPicture(name: name, created: created, desc: desc, icon: icon, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
+                            dismiss()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                selectedTab.selectedTab = .statList
+                            }
                         }
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private func addPicture() {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-        let newPictureStat = PictureStat(
-            name: name,
-            created: created,
-            desc: desc,
-            icon: icon,
-            reminder: newReminder,
-            category: chosenCategory
-        )
-        
-        modelContext.insert(newPictureStat)
-        
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            selectedTab.selectedTab = .statList
-        }
     }
 }

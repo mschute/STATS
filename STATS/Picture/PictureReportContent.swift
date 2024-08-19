@@ -18,7 +18,7 @@ struct PictureReportContent: View {
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
         self._startDate = startDate
         self._endDate = endDate
-        _pictureEntries = Query(filter: PictureReportContent.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp)])
+        _pictureEntries = Query(filter: PictureEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp)])
     }
     
     var body: some View {
@@ -82,7 +82,7 @@ struct PictureReportContent: View {
                                         if let counterEntry = statEntry.entry as? CounterEntry {
                                             if (Calendar.current.isDate(counterEntry.timestamp, equalTo: pictureEntry.timestamp, toGranularity: .day)) {
                                                 VStack {
-                                                    Text("\(calcDaysBetween(from: counterEntry.stat?.created ?? Date(), to: counterEntry.timestamp)) days since started")
+                                                    Text("\(PictureEntry.calcDaysBetween(from: counterEntry.stat?.created ?? Date(), to: counterEntry.timestamp)) days since started")
                                                     Text("\(counterEntry.stat?.statEntry.count ?? 0) entries since started")
                                                 }
                                                 .padding(5)
@@ -105,63 +105,16 @@ struct PictureReportContent: View {
             }
         }
         .onAppear {
-            combineStats()
+            PictureEntry.combineStats(stats: &stats, counterStats: counterStats, decimalStats: decimalStats)
         }
         .onChange(of: statSelection) {
-            filteredStatData = createStatData(anyStat: statSelection ?? nil)
+            filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
         }
         .onChange(of: startDate) {
-            filteredStatData = createStatData(anyStat: statSelection ?? nil)
+            filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
         }
         .onChange(of: endDate) {
-            filteredStatData = createStatData(anyStat: statSelection ?? nil)
-        }
-    }
-    
-    
-    private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<PictureEntry> {
-        return #Predicate<PictureEntry> {
-            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
-        }
-    }
-    
-    private func createStatData(anyStat: AnyStat?) -> [AnyEntry] {
-        
-        if let counterStat = anyStat?.stat as? CounterStat {
-            return counterStat.statEntry.filter { $0.timestamp >= startDate && $0.timestamp <= endDate }.map { AnyEntry(entry: $0) }
-        }
-        
-        if let decimalStat = anyStat?.stat as? DecimalStat {
-            return decimalStat.statEntry.filter { $0.timestamp >= startDate && $0.timestamp <= endDate }.map { AnyEntry(entry: $0) }
-        }
-        
-        return []
-    }
-    
-    private func combineStats() {
-        stats = []
-        
-        stats += counterStats.map { AnyStat(stat: $0) }
-        stats += decimalStats.map { AnyStat(stat: $0) }
-        
-        sortStats()
-    }
-    
-    private func sortStats() {
-        stats.sort { $0.stat.name > $1.stat.name }
-    }
-    
-    //Implementation: https://sarunw.com/posts/getting-number-of-days-between-two-dates/
-    private func calcDaysBetween(from: Date, to: Date) -> Int {
-        let calendar = Calendar.current
-        let fromDate = calendar.startOfDay(for: from)
-        let toDate = calendar.startOfDay(for: to)
-        let numberOfDays = calendar.dateComponents([.day], from: fromDate, to: toDate)
-        
-        if let days = numberOfDays.day {
-            return days + 1
-        } else {
-            return 0
+            filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
         }
     }
 }
