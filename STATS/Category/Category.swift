@@ -11,3 +11,9 @@ class Category: Identifiable {
         self.name = name
     }
 }
+
+extension Category {
+    static func addCategory(newCategory: String, modelContext: ModelContext){
+        modelContext.insert(Category(name: newCategory))
+    }
+}
