@@ -46,7 +46,7 @@ struct FormReminder: View {
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                     Button(role: .destructive) {
                                         if let index = reminders.firstIndex(of: reminder) {
-                                            deleteReminder(at: IndexSet(integer: index))
+                                            Reminder.deleteReminder(at: IndexSet(integer: index), reminders: &reminders)
                                         }
                                         Haptics.shared.play(.light)
                                     } label: {
@@ -60,26 +60,12 @@ struct FormReminder: View {
                     DatePicker(reminders.isEmpty ? "At" : "And", selection: $newReminder, displayedComponents: [.hourAndMinute])
     
                     Button("Add time") {
-                        addReminder()
+                        Reminder.addReminder(reminders: &reminders, newReminder: &newReminder)
                         Haptics.shared.play(.light)
                     }
                     .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
                     .padding(.vertical)
                 }
             }
-    }
-    
-    private func addReminder() {
-        reminders.append(newReminder)
-        sortReminders()
-    }
-    
-    private func deleteReminder(at offsets: IndexSet) {
-        reminders.remove(atOffsets: offsets)
-        sortReminders()
-    }
-    
-    private func sortReminders() {
-        reminders.sort(by: { $0 < $1 } )
     }
 }
