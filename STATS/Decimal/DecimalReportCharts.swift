@@ -22,9 +22,9 @@ struct DecimalReportCharts: View {
         self.chartValueType = chartValueType
         
         if (chartValueType == .total) {
-            self.data = createDayTotalValueData(decimalEntries: decimalEntries)
+            self.data = DecimalEntry.createDayTotalValueData(decimalEntries: decimalEntries)
         } else {
-            self.data = createDayAvgValueData(decimalEntries: decimalEntries)
+            self.data = DecimalEntry.createDayAvgValueData(decimalEntries: decimalEntries)
         }
     }
     
@@ -69,40 +69,5 @@ struct DecimalReportCharts: View {
             .frame(height: 200)
             .padding(.horizontal)
         }
-    }
-    
-    private func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
-        var dateValues: [Date : Double] = [:]
-        let calendar = Calendar.current
-        
-        if (decimalEntries.isEmpty) { return [] }
-        
-        for entry in decimalEntries {
-            let date = calendar.startOfDay(for: entry.timestamp)
-            dateValues[date, default: 0] += entry.value
-        }
-        
-        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value) }
-        //Sorting https://stackoverflow.com/questions/25377177/sort-dictionary-by-keys
-        return data.sorted(by: { $0.day < $1.day })
-    }
-    
-    private func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
-        var dateValues: [Date : (total: Double, count: Int)] = [:]
-        let calendar = Calendar.current
-        
-        if (decimalEntries.isEmpty) { return [] }
-        
-        for entry in decimalEntries {
-            let date = calendar.startOfDay(for: entry.timestamp)
-            if dateValues[date] == nil {
-                dateValues[date] = (total: 0, count: 0)
-            }
-            dateValues[date]?.total += entry.value
-            dateValues[date]?.count += 1
-        }
-        
-        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
-        return data.sorted(by: { $0.day < $1.day })
     }
 }

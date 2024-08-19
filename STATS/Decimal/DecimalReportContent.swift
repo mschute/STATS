@@ -20,7 +20,7 @@ struct DecimalReportContent: View {
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>){
         self._startDate = startDate
         self._endDate = endDate
-        _decimalEntries = Query(filter: DecimalReportContent.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
+        _decimalEntries = Query(filter: DecimalEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     
     var body: some View {
@@ -124,12 +124,6 @@ struct DecimalReportContent: View {
                 DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
                     .foregroundStyle(.decimal)
             }
-        }
-    }
-    
-    private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<DecimalEntry> {
-        return #Predicate<DecimalEntry> {
-            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
 }

@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 class DecimalEntry: Entry, Identifiable {
@@ -15,5 +16,112 @@ class DecimalEntry: Entry, Identifiable {
         self.timestamp = timestamp
         self.value = value
         self.note = note
+    }
+}
+
+extension DecimalEntry {
+    static func addEntry(decimalStat: DecimalStat, timestamp: Date, value: String, note: String, alertMessage: inout String, showAlert: inout Bool) {
+        
+        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {
+            return
+        }
+        
+        let newEntry = DecimalEntry(
+            timestamp: timestamp,
+            value: Double(value) ?? 0.0,
+            note: note
+        )
+        decimalStat.statEntry.append(newEntry)
+    }
+    
+    static func saveEntry(decimalEntry: DecimalEntry, value: String, timestamp: Date, note: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) {
+        
+        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {
+            return
+        }
+        
+        decimalEntry.value = Double(value) ?? 0.0
+        decimalEntry.timestamp = timestamp
+        decimalEntry.note = note
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving entry")
+        }
+    }
+    
+    static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<DecimalEntry> {
+        return #Predicate<DecimalEntry> {
+            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
+        }
+    }
+    
+    static func deleteItems(offsets: IndexSet, entries: [DecimalEntry], modelContext: ModelContext) {
+        withAnimation {
+            // Uses IndexSet to remove from [AnyStat] and ModelContext
+            for index in offsets {
+                do {
+                    modelContext.delete(entries[index])
+                    try modelContext.save()
+                } catch {
+                    print("Error deleting entry")
+                }
+            }
+        }
+    }
+}
+
+extension DecimalEntry {  
+    static func validateValueEntry(value: String, alertMessage: inout String, showAlert: inout Bool) -> Bool {
+        if(value.isEmpty) {
+            alertMessage = "Must add value"
+            showAlert = true
+            return false
+        } else if (ValidationUtility.moreThanOneDecimalPoint(value: value)) {
+            alertMessage = "Invalid value"
+            showAlert = true
+            return false
+        } else if (ValidationUtility.numberTooBig(value: value)) {
+            alertMessage = "Value is too big"
+            showAlert = true
+            return false
+        }
+        return true
+    }
+    
+    static func createDayTotalValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+        var dateValues: [Date : Double] = [:]
+        let calendar = Calendar.current
+        
+        if (decimalEntries.isEmpty) { return [] }
+        
+        for entry in decimalEntries {
+            let date = calendar.startOfDay(for: entry.timestamp)
+            dateValues[date, default: 0] += entry.value
+        }
+        
+        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value) }
+        //Sorting https://stackoverflow.com/questions/25377177/sort-dictionary-by-keys
+        return data.sorted(by: { $0.day < $1.day })
+    }
+    
+    static func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
+        var dateValues: [Date : (total: Double, count: Int)] = [:]
+        let calendar = Calendar.current
+        
+        if (decimalEntries.isEmpty) { return [] }
+        
+        for entry in decimalEntries {
+            let date = calendar.startOfDay(for: entry.timestamp)
+            if dateValues[date] == nil {
+                dateValues[date] = (total: 0, count: 0)
+            }
+            dateValues[date]?.total += entry.value
+            dateValues[date]?.count += 1
+        }
+        
+        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
+        return data.sorted(by: { $0.day < $1.day })
     }
 }

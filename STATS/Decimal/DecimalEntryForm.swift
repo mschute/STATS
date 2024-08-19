@@ -41,8 +41,9 @@ struct DecimalEntryForm: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                validateEntry()
+                                DecimalEntry.addEntry(decimalStat: decimalStat, timestamp: timestamp, value: value, note: note, alertMessage: &alertMessage, showAlert: &showAlert)
                                 Haptics.shared.play(.light)
+                                selectedDetailTab.selectedDetailTab = .history
                             }
                     )
             }
@@ -53,32 +54,6 @@ struct DecimalEntryForm: View {
         }
         .onAppear() {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
-        }
-    }
-
-    private func addEntry() {
-        let newEntry = DecimalEntry(
-            timestamp: timestamp,
-            value: Double(value) ?? 0.0,
-            note: note
-        )
-        
-        decimalStat.statEntry.append(newEntry)
-        selectedDetailTab.selectedDetailTab = .history
-    }
-    
-    private func validateEntry() {
-        if(value.isEmpty) {
-            alertMessage = "Must add value"
-            showAlert = true
-        } else if (ValidationUtility.moreThanOneDecimalPoint(value: value)) {
-            alertMessage = "Invalid value"
-            showAlert = true
-        } else if (ValidationUtility.numberTooBig(value: value)) {
-            alertMessage = "Value is too big"
-            showAlert = true
-        } else {
-            addEntry()
         }
     }
 }

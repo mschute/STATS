@@ -28,3 +28,54 @@ class DecimalStat: Stat, Identifiable {
         self.statEntry = statEntry
     }
 }
+
+extension DecimalStat {
+    static func addDecimal(name: String, created: Date, desc: String, icon: String, unitName: String, trackAverage: Bool, trackTotal: Bool, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
+        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+        let newDecimalStat = DecimalStat(
+            name: name,
+            created: created,
+            desc: desc,
+            icon: icon,
+            unitName: unitName,
+            trackAverage: trackAverage,
+            trackTotal: trackTotal,
+            reminder: newReminder,
+            category: chosenCategory
+        )
+        
+        modelContext.insert(newDecimalStat)
+    }
+    
+    static func updateDecimal(decimalStat: DecimalStat, name: String, created: Date, desc: String, icon: String, unitName: String, trackAverage: Bool, trackTotal: Bool, hasReminder: Bool, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
+        decimalStat.name = name
+        decimalStat.created = created
+        decimalStat.desc = desc
+        decimalStat.unitName = unitName
+        decimalStat.trackAverage = trackAverage
+        decimalStat.trackTotal = trackTotal
+        decimalStat.icon = icon
+        decimalStat.category = chosenCategory
+        
+        if hasReminder {
+            if let reminder = decimalStat.reminder {
+                reminder.interval = Int(interval) ?? 0
+                reminder.reminderTime = reminders
+            } else {
+                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+                decimalStat.reminder = newReminder
+            }
+        } else {
+            if let reminder = decimalStat.reminder {
+                modelContext.delete(reminder)
+                decimalStat.reminder = nil
+            }
+        }
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving decimal stat")
+        }
+    }
+}

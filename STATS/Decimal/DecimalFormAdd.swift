@@ -101,8 +101,12 @@ struct DecimalFormAdd: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            addDecimal()
+                            DecimalStat.addDecimal(name: name, created: created, desc: desc, icon: icon, unitName: unitName, trackAverage: trackAverage, trackTotal: trackTotal, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
+                            dismiss()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                selectedTab.selectedTab = .statList
+                            }
                         }
                 )
             }
@@ -110,27 +114,5 @@ struct DecimalFormAdd: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private func addDecimal() {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-        let newDecimalStat = DecimalStat(
-            name: name,
-            created: created,
-            desc: desc,
-            icon: icon,
-            unitName: unitName,
-            trackAverage: trackAverage,
-            trackTotal: trackTotal,
-            reminder: newReminder,
-            category: chosenCategory
-        )
-        
-        modelContext.insert(newDecimalStat)
-        
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            selectedTab.selectedTab = .statList
-        }
     }
 }
