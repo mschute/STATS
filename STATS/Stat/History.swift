@@ -21,19 +21,13 @@ struct History: View {
                 Section {
                     DateRangePicker(startDate: $startDate, endDate: $endDate)
                 }
-                StatUtility.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
+                AnyStat.EntryList(stat: stat, startDate: $startDate, endDate: $endDate)
             }
         }
         //Update date range to fix bug of entry not showing if timestamp is edited
         .onAppear {
-            updateDateRange()
+            AnyStat.updateDateRange(stat: stat, dateRange: &dateRange, startDate: &startDate, endDate: &endDate)
         }
-    }
-    
-    private func updateDateRange() {
-        dateRange = AnyStat.getEntryDateRange(entryArray: stat.statEntry)
-        startDate = dateRange.startDate
-        endDate = dateRange.endDate
     }
 }
 

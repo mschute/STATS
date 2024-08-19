@@ -19,7 +19,7 @@ struct Report: View {
         Form {
             DateRangePicker(startDate: $startDate, endDate: $endDate)
 
-            StatUtility.ReportContent(stat: stat, startDate: $startDate, endDate: $endDate)
+            AnyStat.ReportContent(stat: stat, startDate: $startDate, endDate: $endDate)
         }
     }
 }
