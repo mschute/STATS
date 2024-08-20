@@ -79,7 +79,7 @@ extension AnyStat {
         } else if let stat = stat as? DecimalStat {
             modelContext.delete(stat)
         } else if let stat = stat as? PictureStat {
-            modelContext.delete(stat as PictureStat)
+            modelContext.delete(stat)
         }
         //try? https://codewithchris.com/swift-try-catch/#:~:text=You%20can%20still%20call%20a,do%2Dtry%2Dcatch%20syntax.&text=If%20you%20use%20the%20try,assigned%20to%20the%20audioPlayer%20variable.
         try? modelContext.save()
