@@ -12,8 +12,8 @@ struct PictureReportContent: View {
     @State private var stats: [AnyStat] = []
     @State private var filteredStatData: [AnyEntry] = []
     
-    @Query(animation: .easeInOut) var counterStats: [CounterStat]
-    @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
+    @Query() var counterStats: [CounterStat]
+    @Query() var decimalStats: [DecimalStat]
     
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
         self._startDate = startDate
