@@ -10,6 +10,8 @@ struct STATSApp: App {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
+    //TODO: Why is haptics not here?
+    
     @State private var keyboardIsShown = false
     @State private var keyboardHideMonitor: AnyCancellable? = nil
     @State private var keyboardShownMonitor: AnyCancellable? = nil
