@@ -10,7 +10,7 @@ class DecimalStat: Stat, Identifiable {
     var unitName: String
     var trackAverage: Bool
     var trackTotal: Bool
-    var reminder: Reminder?
+    @Relationship(deleteRule: .cascade) var reminder: Reminder?
     var category: Category?
     //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [DecimalEntry]()

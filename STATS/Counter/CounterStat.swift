@@ -7,7 +7,7 @@ class CounterStat: Stat, Identifiable {
     var created: Date
     var desc: String
     var icon: String
-    var reminder: Reminder?
+    @Relationship(deleteRule: .cascade) var reminder: Reminder?
     var category: Category?
     //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [CounterEntry]()
