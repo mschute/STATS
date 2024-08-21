@@ -16,22 +16,30 @@ struct PictureEntryList: View {
     }
     
     var body: some View {
-        List {
-            ForEach(entries) { entry in
-                PictureEntryCard(pictureEntry: entry)
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
-                    .padding(.vertical, 5)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Button(role: .destructive) {
-                            if let index = entries.firstIndex(of: entry) {
-                                PictureEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
+        if !entries.isEmpty {
+            List {
+                ForEach(entries) { entry in
+                    PictureEntryCard(pictureEntry: entry)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .padding(.vertical, 5)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                if let index = entries.firstIndex(of: entry) {
+                                    PictureEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
-                        } label: {
-                            Label("Delete", systemImage: "trash")
+                            .tint(.cancel)
                         }
-                        .tint(.cancel)
-                    }
+                }
+            }
+        } else {
+            Section(header: Text("")) {
+                Text("No available entries")
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
     }

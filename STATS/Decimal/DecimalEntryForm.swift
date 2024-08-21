@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct DecimalEntryForm: View {
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
     @Environment(\.colorScheme) var colorScheme
     var decimalStat: DecimalStat
@@ -41,7 +42,7 @@ struct DecimalEntryForm: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                DecimalEntry.addEntry(decimalStat: decimalStat, timestamp: timestamp, value: value, note: note, alertMessage: &alertMessage, showAlert: &showAlert)
+                                DecimalEntry.addEntry(decimalStat: decimalStat, timestamp: timestamp, value: value, note: note, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
                                 if !showAlert {
                                     Haptics.shared.play(.light)
                                     selectedDetailTab.selectedDetailTab = .history

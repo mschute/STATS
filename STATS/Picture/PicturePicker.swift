@@ -63,8 +63,8 @@ struct PicturePicker: View {
                         selectedPhotoData = nil
                     }
                 } label: {
-                    Label("Remove Image", systemImage: "xmark")
-                        .foregroundStyle(.red)
+                    Label("Remove Picture", systemImage: "trash")
+                        .foregroundStyle(.cancel)
                 }
             }
         }

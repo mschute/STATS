@@ -20,7 +20,7 @@ class DecimalEntry: Entry, Identifiable {
 }
 
 extension DecimalEntry {
-    static func addEntry(decimalStat: DecimalStat, timestamp: Date, value: String, note: String, alertMessage: inout String, showAlert: inout Bool) {
+    static func addEntry(decimalStat: DecimalStat, timestamp: Date, value: String, note: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) {
         
         if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {
             return
@@ -32,6 +32,13 @@ extension DecimalEntry {
             note: note
         )
         decimalStat.statEntry.append(newEntry)
+        
+        //Save() not necessary but included it for clarity in the purpose of the method
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error adding entry")
+        }
     }
     
     static func saveEntry(decimalEntry: DecimalEntry, value: String, timestamp: Date, note: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) {

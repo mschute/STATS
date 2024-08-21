@@ -18,7 +18,7 @@ struct DateRangePicker: View {
                 }
                 .frame(alignment: .center)
                 
-                DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                DatePicker("Start Date", selection: $startDate, in: ...endDate, displayedComponents: .date)
                     .labelsHidden()
                     .padding(.horizontal, 15)
                     .datePickerStyle(.compact)
@@ -40,7 +40,7 @@ struct DateRangePicker: View {
                 }
                 .frame(alignment: .center)
                 
-                DatePicker("", selection: $endDate, displayedComponents: .date)
+                DatePicker("", selection: $endDate, in: startDate..., displayedComponents: .date)
                     .labelsHidden()
                     .padding(.horizontal, 15)
                     .datePickerStyle(.compact)

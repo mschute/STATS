@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CounterEntryForm: View {
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
     var counterStat: CounterStat
     
@@ -27,7 +28,7 @@ struct CounterEntryForm: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                CounterEntry.addEntry(counterStat: counterStat, timestamp: timestamp, note: note)
+                                CounterEntry.addEntry(counterStat: counterStat, timestamp: timestamp, note: note, modelContext: modelContext)
                                 Haptics.shared.play(.light)
                                 selectedDetailTab.selectedDetailTab = .history
                             }

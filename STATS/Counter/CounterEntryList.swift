@@ -18,24 +18,32 @@ struct CounterEntryList: View {
     }
 
     var body: some View {
-        List {
-            ForEach(entries, id: \.self) { entry in
-                CounterEntryCard(counterEntry: entry)
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
-                    .padding(.vertical, 5)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Button(role: .destructive) {
-                            if let index = entries.firstIndex(of: entry) {
-                                CounterEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
+        if !entries.isEmpty {
+            List {
+                ForEach(entries, id: \.self) { entry in
+                    CounterEntryCard(counterEntry: entry)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .padding(.vertical, 5)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                if let index = entries.firstIndex(of: entry) {
+                                    CounterEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
-                        } label: {
-                            Label("Delete", systemImage: "trash")
+                            .tint(.cancel)
                         }
-                        .tint(.cancel)
-                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
+            Section(header: Text("")) {
+                Text("No available entries")
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

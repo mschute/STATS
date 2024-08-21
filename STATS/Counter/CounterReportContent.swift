@@ -28,7 +28,8 @@ struct CounterReportContent: View {
     
     //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
     var body: some View {
-        Section(header: Text("")) {
+        if !counterEntries.isEmpty {
+            Section(header: Text("")) {
                 VStack {
                     HStack {
                         Text("Total Count:")
@@ -55,7 +56,7 @@ struct CounterReportContent: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
-
+                
                 VStack {
                     HStack {
                         Text("With a occurence count of:")
@@ -78,39 +79,54 @@ struct CounterReportContent: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
             }
-
-        Section(header: Text("")) {
-                Text("Entry Count by Day")
-                    .fontWeight(.semibold)
-                    .font(.custom("Menlo", size: 24))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Chart {
-                    ForEach(data) { entry in
-                        BarMark(
-                            x: .value("Date", entry.day, unit: .day),
-                            y: .value("Total Count", entry.count)
-                        )
+            
+            if counterEntries.count > 1 {
+                Section(header: Text("")) {
+                    Text("Entry Count by Day")
+                        .fontWeight(.semibold)
+                        .font(.custom("Menlo", size: 24))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    
+                    Chart {
+                        ForEach(data) { entry in
+                            BarMark(
+                                x: .value("Date", entry.day, unit: .day),
+                                y: .value("Total Count", entry.count)
+                            )
+                        }
                     }
+                    //Chart modifiers: https://stackoverflow.com/questions/72879128/how-to-label-axes-in-swift-charts
+                    .chartYAxis {
+                        AxisMarks(position: .leading)
+                    }
+                    .chartYScale(domain: [chartYLow, chartYHigh])
+                    .chartXAxisLabel(position: .bottom, alignment: .center) {
+                        Text("Date")
+                            .font(.custom("Menlo", size: 16))
+                    }
+                    .chartYAxisLabel(position: .leading, alignment: .center) {
+                        Text("Total Count")
+                            .font(.custom("Menlo", size: 16))
+                    }
+                    .frame(height: 200)
+                    .padding(.vertical, 15)
+                    .foregroundStyle(.counter)
                 }
-                //Chart modifiers: https://stackoverflow.com/questions/72879128/how-to-label-axes-in-swift-charts
-                .chartYAxis {
-                    AxisMarks(position: .leading)
+            } else {
+                Section(header: Text("")) {
+                    Text("No available data")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .chartYScale(domain: [chartYLow, chartYHigh])
-                .chartXAxisLabel(position: .bottom, alignment: .center) {
-                    Text("Date")
-                        .font(.custom("Menlo", size: 16))
-                }
-                .chartYAxisLabel(position: .leading, alignment: .center) {
-                    Text("Total Count")
-                        .font(.custom("Menlo", size: 16))
-                }
-                .frame(height: 200)
-                .padding(.vertical, 15)
-                .foregroundStyle(.counter)
             }
+        } else {
+            Section(header: Text("")) {
+                Text("No available data")
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
     }
 }
