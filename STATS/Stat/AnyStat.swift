@@ -81,11 +81,10 @@ extension AnyStat {
         } else if let stat = stat as? PictureStat {
             modelContext.delete(stat)
         }
-        //try? https://codewithchris.com/swift-try-catch/#:~:text=You%20can%20still%20call%20a,do%2Dtry%2Dcatch%20syntax.&text=If%20you%20use%20the%20try,assigned%20to%20the%20audioPlayer%20variable.
-        try? modelContext.save()
     }
     
     //Index set and offsets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
+    //Used IndexSet rather than Index for scalability
     static func remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
         for index in offsets {
             remove(stat: statItems[index].stat, modelContext: modelContext)
