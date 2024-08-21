@@ -15,21 +15,16 @@ struct StatList: View {
     @State private var newReminder: Date = Date()
     
     var body: some View {
-        if stats.isEmpty {
-            VStack {
-                TopBar(title: "STAT LIST", topPadding: 40, bottomPadding: 20)
-                Form {
+        VStack {
+            TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
+            List {
+                if stats.isEmpty {
                     Text("No current stats")
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-        } else {
-            VStack {
-                TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
-               List {
+                } else {
                     ForEach(stats, id: \.self) { item in
-                        StatUtility.Card(stat: item.stat)
+                        AnyStat.Card(stat: item.stat)
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                         //Custom swipe action: https://useyourloaf.com/blog/swiftui-swipe-actions/#:~:text=The%20destructive%20button%20role%20gives,method.
@@ -38,7 +33,7 @@ struct StatList: View {
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     if let index = stats.firstIndex(of: item) {
-                                        deleteItems(offsets: IndexSet(integer: index))
+                                        AnyStat.deleteItems(offsets: IndexSet(integer: index), stats: stats, modelContext: modelContext)
                                     }
                                 } label: {
                                     Label("Delete", systemImage: "trash")
@@ -47,83 +42,59 @@ struct StatList: View {
                             }
                     }
                 }
-                .toolbar {
-                    ToolbarItem {
-                        HStack {
-                            Menu {
-                                Button(action: { sortStats(sortType: .created)
-                                    Haptics.shared.play(.light)
-                                } ) {
-                                    Label("Sort by Date", systemImage: "calendar")
-                                }
-                                
-                                Button(action: { sortStats(sortType: .name)
-                                    Haptics.shared.play(.light)
-                                } ) {
-                                    Label("Sort by Name", systemImage: "abc")
-                                }
-                            } label: {
-                                Label("", systemImage: "arrow.up.arrow.down")
+                
+            }
+            .toolbar {
+                ToolbarItem {
+                    HStack {
+                        Menu {
+                            Button(action: { AnyStat.sortStats(sortType: .created, stats: &stats, isCreatedAscending: &isCreatedAscending, isNameAscending: &isNameAscending)
+                                Haptics.shared.play(.light)
+                            } ) {
+                                Label("Sort by Date", systemImage: "calendar")
                             }
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded {
-                                        Haptics.shared.play(.light)
-                                    }
-                            )
                             
-                            Menu {
-                                ForEach(categories, id: \.id){ category in
-                                    if (filter == "\(category.name)") {
-                                        Button("\(category.name)", systemImage: "checkmark", action: {
-                                            filter = nil
-                                            Haptics.shared.play(.light)
-                                        } )
-                                    } else {
-                                        Button("\(category.name)", action: {
-                                            filter = category.name
-                                            Haptics.shared.play(.light)
-                                        } )
-                                    }
-                                }
-                            } label: {
-                                Label("", systemImage: "line.3.horizontal.decrease.circle")
+                            Button(action: { AnyStat.sortStats(sortType: .name, stats: &stats, isCreatedAscending: &isCreatedAscending, isNameAscending: &isNameAscending)
+                                Haptics.shared.play(.light)
+                            } ) {
+                                Label("Sort by Name", systemImage: "abc")
                             }
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded {
-                                        Haptics.shared.play(.light)
-                                    }
-                            )
+                        } label: {
+                            Label("", systemImage: "arrow.up.arrow.down")
                         }
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
+                        
+                        Menu {
+                            ForEach(categories, id: \.id){ category in
+                                if (filter == "\(category.name)") {
+                                    Button("\(category.name)", systemImage: "checkmark", action: {
+                                        filter = nil
+                                        Haptics.shared.play(.light)
+                                    } )
+                                } else {
+                                    Button("\(category.name)", action: {
+                                        filter = category.name
+                                        Haptics.shared.play(.light)
+                                    } )
+                                }
+                            }
+                        } label: {
+                            Label("", systemImage: "line.3.horizontal.decrease.circle")
+                        }
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded {
+                                    Haptics.shared.play(.light)
+                                }
+                        )
                     }
                 }
             }
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            // Uses IndexSet to remove from [AnyStat] and ModelContext
-            StatUtility.Remove(offsets: offsets, statItems: stats, modelContext: modelContext)
-        }
-    }
-    
-    private func sortStats(sortType: SortType) {
-        
-        switch sortType {
-        case .created where isCreatedAscending == false:
-            stats.sort { $0.stat.created < $1.stat.created}
-            isCreatedAscending = true
-        case .created:
-            stats.sort { $0.stat.created > $1.stat.created }
-            isCreatedAscending = false
-        case .name where isNameAscending == false:
-            stats.sort { $0.stat.name < $1.stat.name }
-            isNameAscending = true
-        case .name:
-            stats.sort { $0.stat.name > $1.stat.name }
-            isNameAscending = false
         }
     }
 }

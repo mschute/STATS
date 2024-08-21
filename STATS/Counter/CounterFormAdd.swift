@@ -17,7 +17,7 @@ struct CounterFormAdd: View {
     @State private var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    @State private var interval: String = ""
+    @State private var interval: String = "1"
     
     @State private var iconPickerPresented: Bool = false
     
@@ -77,7 +77,12 @@ struct CounterFormAdd: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                addCounter()
+                                CounterStat.addCounter(hasReminder: hasReminder, interval: interval, reminders: reminders, name: name, created: created, desc: desc, icon: icon, chosenCategory: chosenCategory, modelContext: modelContext)
+                                dismiss()
+                                //Delaying the call https://www.hackingwithswift.com/example-code/system/how-to-run-code-after-a-delay-using-asyncafter-and-perform
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    selectedTab.selectedTab = .statList
+                                }
                                 Haptics.shared.play(.light)
                             }
                     )
@@ -86,25 +91,5 @@ struct CounterFormAdd: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
             .frame(maxWidth: .infinity)
-    }
-    
-    private func addCounter() {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-        let newCounterStat = CounterStat(
-            name: name,
-            created: created,
-            desc: desc,
-            icon: icon,
-            reminder: newReminder,
-            category: chosenCategory
-        )
-        
-        modelContext.insert(newCounterStat)
-        
-        dismiss()
-        //Delaying the call https://www.hackingwithswift.com/example-code/system/how-to-run-code-after-a-delay-using-asyncafter-and-perform
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            selectedTab.selectedTab = .statList
-        }
     }
 }

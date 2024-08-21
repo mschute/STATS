@@ -43,7 +43,8 @@ struct PictureEntryForm: View {
                                 if image == nil {
                                     showAlert = true
                                 } else {
-                                    addEntry()
+                                    PictureEntry.addEntry(pictureStat: pictureStat, timestamp: timestamp, note: note, image: image)
+                                    selectedDetailTab.selectedDetailTab = .history
                                 }
                                 Haptics.shared.play(.light)
                             }
@@ -69,16 +70,5 @@ struct PictureEntryForm: View {
         .onAppear() {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
         }
-    }
-    
-    private func addEntry() {
-        let newEntry = PictureEntry(
-            timestamp: timestamp,
-            note: note,
-            image: image
-        )
-        
-        pictureStat.statEntry.append(newEntry)
-        selectedDetailTab.selectedDetailTab = .history
     }
 }

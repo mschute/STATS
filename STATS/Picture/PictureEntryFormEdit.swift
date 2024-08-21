@@ -41,7 +41,7 @@ struct PictureEntryFormEdit: View {
             }
             
             Section {
-                Button("Update", action: saveEntry)
+                Button("Update") {}
                     .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -51,9 +51,12 @@ struct PictureEntryFormEdit: View {
                                 if selectedPhotoData == nil {
                                     showAlert = true
                                 } else {
-                                    saveEntry()
+                                    PictureEntry.saveEntry(pictureEntry: pictureEntry, timestamp: timestamp, note: note, selectedPhotoData: selectedPhotoData, modelContext: modelContext)
                                 }
                                 Haptics.shared.play(.light)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    dismiss()
+                                }
                             }
                     )
             }
@@ -64,22 +67,6 @@ struct PictureEntryFormEdit: View {
         }
         .onAppear() {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
-        }
-    }
-
-    private func saveEntry() {
-        pictureEntry.timestamp = timestamp
-        pictureEntry.note = note
-        pictureEntry.image = selectedPhotoData
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving entry")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            dismiss()
         }
     }
 }

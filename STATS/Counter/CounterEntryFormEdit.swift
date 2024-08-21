@@ -35,27 +35,15 @@ struct CounterEntryFormEdit: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                saveEntry()
+                                CounterEntry.saveEntry(counterEntry: counterEntry, timestamp: timestamp, note: note, modelContext: modelContext)
                                 Haptics.shared.play(.light)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    dismiss()
+                                }
                             }
                     )
             }
         }
         .dismissKeyboardOnTap()
-    }
-
-    private func saveEntry() {
-        counterEntry.timestamp = timestamp
-        counterEntry.note = note
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving entry")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            dismiss()
-        }
     }
 }

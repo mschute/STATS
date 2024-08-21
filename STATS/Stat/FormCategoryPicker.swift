@@ -37,7 +37,7 @@ struct FormCategoryPicker: View {
                 TextField("Add new tag", text: $newCategory)
                 HStack(spacing: 10) {
                     Button("Add") {
-                        addCategory(newCategory: newCategory)
+                        Category.addCategory(newCategory: newCategory, modelContext: modelContext)
                         newCategory = ""
                         addNewCategory = false
                         Haptics.shared.play(.light)
@@ -55,9 +55,5 @@ struct FormCategoryPicker: View {
                 .frame(alignment: .leading)
             }
         }
-    }
-
-    private func addCategory(newCategory: String){
-        modelContext.insert(Category(name: newCategory))
     }
 }

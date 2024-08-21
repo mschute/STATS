@@ -56,23 +56,6 @@ struct PictureCard: View {
                                         .clipped()
                                 }
                             }
-//                                .first(where: { $0.image != nil }) {
-//                                if let imageData = latestEntry.image,
-//                                   let uiImage = UIImage(data: imageData) {
-//                                    Image(uiImage: uiImage)
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-//                                        .frame(maxWidth: .infinity, maxHeight: 50, alignment: .trailing)
-//                                        .clipped()
-//                                    
-//                                    Text("\(DateUtility.abbreviatedDateString(date: latestEntry.timestamp))")
-//                                        .font(.custom("Menlo", size: 12))
-//                                        .fontWeight(.regular)
-//                                } else {
-//                                    EmptyView()
-//                                }
-                            //}
                         }
                     }
                     .frame(maxWidth: 100)

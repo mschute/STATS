@@ -17,7 +17,7 @@ struct EditCategory: View {
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 if let index = categories.firstIndex(of: category) {
-                                    deleteItems(offsets: IndexSet(integer: index))
+                                    Category.deleteItems(offsets: IndexSet(integer: index), categories: categories, modelContext: modelContext)
                                 }
                                 Haptics.shared.play(.light)
                             } label: {
@@ -30,46 +30,21 @@ struct EditCategory: View {
                 Section {
                     TextField("New category", text: $newCategory)
                     
-                    Button(action: addCategory) {
-                        Text("Add")
-                            .textButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight)
-                            .padding(.vertical, 5)
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded { _ in
-                                        addCategory()
-                                        Haptics.shared.play(.light)
-                                    }
-                            )
-                    }
+                    Button("Add") {}
+                        .buttonStyle(StatButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight))
+                        .padding(.vertical, 5)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded { _ in
+                                    Category.addCategory(newCategory: newCategory, modelContext: modelContext)
+                                    Haptics.shared.play(.light)
+                                }
+                        )
                 }
             }
         }
         .dismissKeyboardOnTap()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                do {
-                    modelContext.delete(categories[index])
-                    try modelContext.save()
-                } catch {
-                    print("Error deleting category")
-                }
-            }
-        }
-    }
-    
-    private func addCategory(){
-        do {
-            modelContext.insert(Category(name: newCategory))
-            try modelContext.save()
-        } catch {
-            print("Error adding category")
-        }
-        newCategory = ""
-    }
 }
+

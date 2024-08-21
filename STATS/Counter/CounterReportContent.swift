@@ -11,19 +11,19 @@ struct CounterReportContent: View {
     
     private var chartYLow: Int = 0
     private var chartYHigh: Int {
-        let maxDayCount = findDayCount().values.max() ?? 0
+        let maxDayCount = CounterEntry.findDayCount(counterEntries: counterEntries, startDate: startDate, endDate: endDate).values.max() ?? 0
         return maxDayCount + 2
     }
     
-    private var timeOfDayAndCount: (timeOfDay: TimeOfDay, count: Int) { calcTimeOfDay() }
+    private var timeOfDayAndCount: (timeOfDay: TimeOfDay, count: Int) { CounterEntry.calcTimeOfDay(counterEntries: counterEntries) }
     private var timeOfDay: TimeOfDay { timeOfDayAndCount.timeOfDay }
     private var timeOfDayCount: Int { timeOfDayAndCount.count }
-    private var data: [CountDayData] { return findDayCount().map{ CountDayData(day: $0.key, count: $0.value) } }
+    private var data: [CountDayData] { return CounterEntry.findDayCount(counterEntries: counterEntries, startDate: startDate, endDate: endDate).map{ CountDayData(day: $0.key, count: $0.value) } }
     
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
         self._startDate = startDate
         self._endDate = endDate
-        _counterEntries = Query(filter: CounterReportContent.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
+        _counterEntries = Query(filter: CounterEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     
     //https://www.kodeco.com/36025169-swift-charts-tutorial-getting-started/page/4?page=1#toc-anchor-001
@@ -112,58 +112,5 @@ struct CounterReportContent: View {
                 .padding(.vertical, 15)
                 .foregroundStyle(.counter)
             }
-    }
-    
-    private static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {
-        return #Predicate<CounterEntry> {
-            entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
-        }
-    }
-    
-    private func calcTimeOfDay() -> (timeOfDay: TimeOfDay, count: Int) {
-        var timeOfDayCounts: [TimeOfDay: Int] = [
-            .morning: 0,
-            .afternoon: 0,
-            .evening: 0,
-            .overnight: 0
-        ]
-        
-        let calendar = Calendar.current
-        
-        for entry in counterEntries {
-            let hour = calendar.component(.hour, from: entry.timestamp)
-            
-            switch hour {
-            case 6..<12:
-                //https://www.hackingwithswift.com/sixty/2/6/dictionary-default-values
-                timeOfDayCounts[.morning, default: 0] += 1
-            case 12..<18:
-                timeOfDayCounts[.afternoon, default: 0] += 1
-            case 18..<24:
-                timeOfDayCounts[.evening, default: 0] += 1
-            default:
-                timeOfDayCounts[.overnight, default: 0] += 1
-            }
-        }
-        
-        if let maxPeriod = timeOfDayCounts.max(by: { $0.value < $1.value } ) {
-            return (timeOfDay: maxPeriod.key, count: maxPeriod.value)
-        } else {
-            return (timeOfDay: .morning, count: 0)
-        }
-    }
-    
-    private func findDayCount() -> [Date : Int] {
-        var dateCounts: [Date : Int] = [:]
-        let calendar = Calendar.current
-        
-        for entry in counterEntries {
-            if (entry.timestamp >= startDate && entry.timestamp <= endDate) {
-                //https://developer.apple.com/documentation/foundation/calendar/2293783-startofday
-                let date = calendar.startOfDay(for: entry.timestamp)
-                dateCounts[date, default: 0] += 1
-            }
-        }
-        return dateCounts
     }
 }

@@ -35,16 +35,9 @@ struct CounterFormEdit: View {
         _desc = State(initialValue: counterStat.desc)
         _icon = State(initialValue: counterStat.icon)
         _chosenCategory = State(initialValue: counterStat.category)
-        
-        if let reminder = counterStat.reminder {
-            _reminders = State(initialValue: reminder.reminderTime)
-            _interval = State(initialValue: String(reminder.interval))
-            _hasReminder = State(initialValue: true)
-        } else {
-            _reminders = State(initialValue: [])
-            _interval = State(initialValue: "0")
-            _hasReminder = State(initialValue: false)
-        }
+        _reminders = State(initialValue: counterStat.reminder?.reminderTime ?? [])
+        _interval = State(initialValue: counterStat.reminder?.interval.description ?? "1")
+        _hasReminder = State(initialValue: counterStat.reminder != nil)
     }
     
     var body: some View {
@@ -97,8 +90,9 @@ struct CounterFormEdit: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            updateCounter()
+                            CounterStat.updateCounter(counterStat: counterStat, name: name, created: created, desc: desc, icon: icon, chosenCategory: chosenCategory, hasReminder: hasReminder, interval: interval, reminders: reminders, modelContext: modelContext)
                             Haptics.shared.play(.light)
+                            dismiss()
                         }
                 )
             }
@@ -106,36 +100,5 @@ struct CounterFormEdit: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private func updateCounter() {
-        counterStat.name = name
-        counterStat.created = created
-        counterStat.desc = desc
-        counterStat.icon = icon
-        counterStat.category = chosenCategory
-        
-        if hasReminder {
-            if let reminder = counterStat.reminder {
-                reminder.interval = Int(interval) ?? 0
-                reminder.reminderTime = reminders
-            } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                counterStat.reminder = newReminder
-            }
-        } else {
-            if let reminder = counterStat.reminder {
-                modelContext.delete(reminder)
-                counterStat.reminder = nil
-            }
-        }
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving counter stat")
-        }
-        
-        dismiss()
     }
 }

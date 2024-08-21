@@ -42,8 +42,9 @@ struct DecimalFormEdit: View {
         _trackAverage = State(initialValue: decimalStat.trackAverage)
         _trackTotal = State(initialValue: decimalStat.trackTotal)
         _chosenCategory = State(initialValue: decimalStat.category)
+        
         _reminders = State(initialValue: decimalStat.reminder?.reminderTime ?? [])
-        _interval = State(initialValue: decimalStat.reminder?.interval.description ?? "")
+        _interval = State(initialValue: decimalStat.reminder?.interval.description ?? "1")
         _hasReminder = State(initialValue: decimalStat.reminder != nil)
     }
     
@@ -115,8 +116,9 @@ struct DecimalFormEdit: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            updateDecimal()
+                            DecimalStat.updateDecimal(decimalStat: decimalStat, name: name, created: created, desc: desc, icon: icon, unitName: unitName, trackAverage: trackAverage, trackTotal: trackTotal, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
+                            dismiss()
                         }
                 )
             }
@@ -125,39 +127,5 @@ struct DecimalFormEdit: View {
             
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private func updateDecimal() {
-        decimalStat.name = name
-        decimalStat.created = created
-        decimalStat.desc = desc
-        decimalStat.unitName = unitName
-        decimalStat.trackAverage = trackAverage
-        decimalStat.trackTotal = trackTotal
-        decimalStat.icon = icon
-        decimalStat.category = chosenCategory
-        
-        if hasReminder {
-            if let reminder = decimalStat.reminder {
-                reminder.interval = Int(interval) ?? 0
-                reminder.reminderTime = reminders
-            } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                decimalStat.reminder = newReminder
-            }
-        } else {
-            if let reminder = decimalStat.reminder {
-                modelContext.delete(reminder)
-                decimalStat.reminder = nil
-            }
-        }
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving decimal stat")
-        }
-        
-        dismiss()
     }
 }

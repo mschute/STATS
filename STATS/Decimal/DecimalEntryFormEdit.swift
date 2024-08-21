@@ -51,8 +51,12 @@ struct DecimalEntryFormEdit: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded { _ in
-                                validateEntry()
+                                DecimalEntry.saveEntry(decimalEntry: decimalEntry, value: value, timestamp: timestamp, note: note, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
+
                                 Haptics.shared.play(.light)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    dismiss()
+                                }
                             }
                     )
             }
@@ -63,37 +67,6 @@ struct DecimalEntryFormEdit: View {
         }
         .onAppear() {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
-        }
-    }
-
-    private func saveEntry() {
-        decimalEntry.value = Double(value) ?? 0.0
-        decimalEntry.timestamp = timestamp
-        decimalEntry.note = note
-        
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving entry")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            dismiss()
-        }
-    }
-    
-    private func validateEntry() {
-        if(value.isEmpty) {
-            alertMessage = "Must add value"
-            showAlert = true
-        } else if (ValidationUtility.moreThanOneDecimalPoint(value: value)) {
-            alertMessage = "Invalid value"
-            showAlert = true
-        } else if (ValidationUtility.numberTooBig(value: value)) {
-            alertMessage = "Value is too big"
-            showAlert = true
-        } else {
-            saveEntry()
         }
     }
 }

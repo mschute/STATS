@@ -3,9 +3,9 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query(animation: .easeInOut) var counterStats: [CounterStat]
-    @Query(animation: .easeInOut) var decimalStats: [DecimalStat]
-    @Query(animation: .easeInOut) var pictureStats: [PictureStat]
+    @Query() var counterStats: [CounterStat]
+    @Query() var decimalStats: [DecimalStat]
+    @Query() var pictureStats: [PictureStat]
     
     @State private var stats: [AnyStat] = []
     
@@ -37,36 +37,20 @@ struct ContentView: View {
         VStack {
             StatList(stats: $stats, filter: $filter)
                 .task {
-                    combineStats()
+                    AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)
                 }
                 .onChange(of: counterStats){
-                    combineStats()
+                    AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)
                 }
                 .onChange(of: decimalStats){
-                    combineStats()
+                    AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)
                 }
                 .onChange(of: pictureStats){
-                    combineStats()
+                    AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)
                 }
                 .onChange(of: filter){
-                    combineStats()
+                    AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)
                 }
         }
-    }
-    
-    //https://www.hackingwithswift.com/example-code/language/how-to-use-map-to-transform-an-array
-    //https://www.tutorialspoint.com/how-do-i-concatenate-or-merge-arrays-in-swift
-    private func combineStats() {
-        stats = []
-        
-        stats += filteredCounterStats.map { AnyStat(stat: $0) }
-        stats += filteredDecimalStats.map { AnyStat(stat: $0) }
-        stats += filteredPictureStats.map { AnyStat(stat: $0) }
-        
-        sortStats()
-    }
-    
-    private func sortStats() {
-        stats.sort { $0.stat.created > $1.stat.created }
     }
 }

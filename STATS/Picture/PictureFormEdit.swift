@@ -90,8 +90,9 @@ struct PictureFormEdit: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            updatePicture()
+                            PictureStat.updatePicture(pictureStat: pictureStat, name: name, created: created, desc: desc, icon: icon, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
+                            dismiss()
                         }
                 )
             }
@@ -99,37 +100,6 @@ struct PictureFormEdit: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private func updatePicture() {
-        pictureStat.name = name
-        pictureStat.created = created
-        pictureStat.desc = desc
-        pictureStat.icon = icon
-        pictureStat.category = chosenCategory
-        
-        if hasReminder {
-            if let reminder = pictureStat.reminder {
-                reminder.interval = Int(interval) ?? 0
-                reminder.reminderTime = reminders
-            } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                pictureStat.reminder = newReminder
-            }
-        } else {
-            if let reminder = pictureStat.reminder {
-                modelContext.delete(reminder)
-                pictureStat.reminder = nil
-            }
-        }
-
-        do {
-            try modelContext.save()
-        } catch {
-            print("Error saving picture stat")
-        }
-        
-        dismiss()
     }
 }
 
