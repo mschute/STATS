@@ -30,8 +30,9 @@ class DecimalStat: Stat, Identifiable {
 }
 
 extension DecimalStat {
-    static func addDecimal(name: String, created: Date, desc: String, icon: String, unitName: String, trackAverage: Bool, trackTotal: Bool, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+    static func addDecimal(name: String, created: Date, desc: String, icon: String, unitName: String, trackAverage: Bool, trackTotal: Bool, hasReminder: Bool, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
+        let reminder = hasReminder ? Reminder(interval: Int(interval) ?? 1, reminderTime: reminders) : nil
+        
         let newDecimalStat = DecimalStat(
             name: name,
             created: created,
@@ -40,7 +41,7 @@ extension DecimalStat {
             unitName: unitName,
             trackAverage: trackAverage,
             trackTotal: trackTotal,
-            reminder: newReminder,
+            reminder: reminder,
             category: chosenCategory
         )
         
@@ -58,20 +59,23 @@ extension DecimalStat {
         decimalStat.category = chosenCategory
         
         if hasReminder {
+            //Update existing reminder
             if let reminder = decimalStat.reminder {
-                reminder.interval = Int(interval) ?? 0
+                reminder.interval = Int(interval) ?? 1
                 reminder.reminderTime = reminders
             } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                decimalStat.reminder = newReminder
+                //Create and set new reminder if none previously
+                decimalStat.reminder = Reminder(interval: Int(interval) ?? 1, reminderTime: reminders)
             }
         } else {
+            //Remove reminder if it exists
             if let reminder = decimalStat.reminder {
                 modelContext.delete(reminder)
                 decimalStat.reminder = nil
             }
         }
         
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {
