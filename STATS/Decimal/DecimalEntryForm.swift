@@ -42,8 +42,10 @@ struct DecimalEntryForm: View {
                         TapGesture()
                             .onEnded { _ in
                                 DecimalEntry.addEntry(decimalStat: decimalStat, timestamp: timestamp, value: value, note: note, alertMessage: &alertMessage, showAlert: &showAlert)
-                                Haptics.shared.play(.light)
-                                selectedDetailTab.selectedDetailTab = .history
+                                if !showAlert {
+                                    Haptics.shared.play(.light)
+                                    selectedDetailTab.selectedDetailTab = .history
+                                }
                             }
                     )
             }
