@@ -21,7 +21,7 @@
             <Locations>
                <Location
                   uuid = "2ADD1104-4B6E-4996-9E2E-FB2129581744 - d804aea2f6242aca"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "STATS.CounterHistory.init(counterStat: STATS.CounterStat) -&gt; STATS.CounterHistory"
@@ -36,7 +36,7 @@
                </Location>
                <Location
                   uuid = "2ADD1104-4B6E-4996-9E2E-FB2129581744 - 207a5016d67cd873"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #2 (Foundation.PredicateExpressions.Variable&lt;STATS.CounterEntry&gt;) -&gt; any Foundation.StandardPredicateExpression&lt;Self.Foundation.PredicateExpression.Output == Swift.Bool&gt; in STATS.CounterHistory.init(counterStat: STATS.CounterStat) -&gt; STATS.CounterHistory"
@@ -51,7 +51,7 @@
                </Location>
                <Location
                   uuid = "2ADD1104-4B6E-4996-9E2E-FB2129581744 - d804aea2f6242aca"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "STATS.CounterHistory.init(counterStat: STATS.CounterStat) -&gt; STATS.CounterHistory"
