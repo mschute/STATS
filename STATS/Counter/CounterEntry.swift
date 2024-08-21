@@ -77,12 +77,19 @@ extension CounterEntry {
 
 extension CounterEntry {
     //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
-    static func addEntry(counterStat: CounterStat, timestamp: Date, note: String) {
+    static func addEntry(counterStat: CounterStat, timestamp: Date, note: String, modelContext: ModelContext) {
         let newEntry = CounterEntry(
             timestamp: timestamp,
             note: note
         )
         counterStat.statEntry.append(newEntry)
+        
+        //Save() not necessary but included it for clarity in the purpose of the method
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error adding entry")
+        }
     }
     
     static func saveEntry(counterEntry: CounterEntry, timestamp: Date, note: String, modelContext: ModelContext) {

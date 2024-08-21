@@ -2,6 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct PictureEntryForm: View {
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
     @Environment(\.colorScheme) var colorScheme
     var pictureStat: PictureStat
@@ -43,7 +44,7 @@ struct PictureEntryForm: View {
                                 if image == nil {
                                     showAlert = true
                                 } else {
-                                    PictureEntry.addEntry(pictureStat: pictureStat, timestamp: timestamp, note: note, image: image)
+                                    PictureEntry.addEntry(pictureStat: pictureStat, timestamp: timestamp, note: note, image: image, modelContext: modelContext)
                                     selectedDetailTab.selectedDetailTab = .history
                                 }
                                 Haptics.shared.play(.light)

@@ -20,7 +20,7 @@ class PictureEntry: Entry, Identifiable {
 }
 
 extension PictureEntry {
-    static func addEntry(pictureStat: PictureStat, timestamp: Date, note: String, image: Data?) {
+    static func addEntry(pictureStat: PictureStat, timestamp: Date, note: String, image: Data?, modelContext: ModelContext) {
         let newEntry = PictureEntry(
             timestamp: timestamp,
             note: note,
@@ -28,6 +28,13 @@ extension PictureEntry {
         )
         
         pictureStat.statEntry.append(newEntry)
+        
+        //Save() not necessary but included it for clarity in the purpose of the method
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error adding entry")
+        }
     }
     
     static func saveEntry(pictureEntry: PictureEntry, timestamp: Date, note: String, selectedPhotoData: Data?, modelContext: ModelContext) {
