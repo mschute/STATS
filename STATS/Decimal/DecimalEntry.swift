@@ -36,14 +36,13 @@ extension DecimalEntry {
     
     static func saveEntry(decimalEntry: DecimalEntry, value: String, timestamp: Date, note: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) {
         
-        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {
-            return
-        }
+        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {}
         
         decimalEntry.value = Double(value) ?? 0.0
         decimalEntry.timestamp = timestamp
         decimalEntry.note = note
         
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {
@@ -60,13 +59,9 @@ extension DecimalEntry {
     static func deleteItems(offsets: IndexSet, entries: [DecimalEntry], modelContext: ModelContext) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
+            // Set to Index set rather than Index for scalability
             for index in offsets {
-                do {
                     modelContext.delete(entries[index])
-                    try modelContext.save()
-                } catch {
-                    print("Error deleting entry")
-                }
             }
         }
     }
@@ -82,7 +77,11 @@ extension DecimalEntry {
             alertMessage = "Invalid value"
             showAlert = true
             return false
-        } else if (ValidationUtility.numberTooBig(value: value)) {
+        } else if (ValidationUtility.decimalNumberTooBig(value: value)) {
+            alertMessage = "Value is too big"
+            showAlert = true
+            return false
+        } else if (ValidationUtility.intNumberTooBig(value: value)) {
             alertMessage = "Value is too big"
             showAlert = true
             return false

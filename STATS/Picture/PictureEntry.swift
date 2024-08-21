@@ -35,6 +35,7 @@ extension PictureEntry {
         pictureEntry.note = note
         pictureEntry.image = selectedPhotoData
         
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {
@@ -45,13 +46,9 @@ extension PictureEntry {
     static func deleteItems(offsets: IndexSet, entries: [PictureEntry], modelContext: ModelContext) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
+            // Used IndexSet rather than Index for future scalability
             for index in offsets {
-                do {
-                    modelContext.delete(entries[index])
-                    try modelContext.save()
-                } catch {
-                    print("Error deleting entry")
-                }
+                modelContext.delete(entries[index])
             }
         }
     }

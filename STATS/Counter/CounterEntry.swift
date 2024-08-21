@@ -53,7 +53,7 @@ extension CounterEntry {
         }
     }
     
-   static func findDayCount(counterEntries: [CounterEntry], startDate: Date, endDate: Date) -> [Date : Int] {
+    static func findDayCount(counterEntries: [CounterEntry], startDate: Date, endDate: Date) -> [Date : Int] {
         var dateCounts: [Date : Int] = [:]
         let calendar = Calendar.current
         
@@ -89,6 +89,7 @@ extension CounterEntry {
         counterEntry.timestamp = timestamp
         counterEntry.note = note
         
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {
@@ -98,14 +99,10 @@ extension CounterEntry {
     
     static func deleteItems(offsets: IndexSet, entries: [CounterEntry], modelContext: ModelContext) {
         withAnimation {
-            // Uses IndexSet to remove from [AnyStat] and ModelContext
+            //Uses IndexSet to remove from [AnyStat] and ModelContext
+            //Used IndexSet instead of Index for future scalability
             for index in offsets {
-                do {
-                    modelContext.delete(entries[index])
-                    try modelContext.save()
-                } catch {
-                        print("Error deleting entry")
-                    }
+                modelContext.delete(entries[index])
             }
         }
     }
