@@ -10,8 +10,6 @@ struct STATSApp: App {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    //TODO: Why is haptics not here?
-    
     @State private var keyboardIsShown = false
     @State private var keyboardHideMonitor: AnyCancellable? = nil
     @State private var keyboardShownMonitor: AnyCancellable? = nil
@@ -37,15 +35,14 @@ struct STATSApp: App {
             Navbar()
                 .environmentObject(selectedTab)
                 .environmentObject(selectedDetailTab)
-                .environment(\.font, Font.custom("Menlo", size: 17))
-                .tint(.main)
-            // Needed to remove applyColorMode function to preferredColorScheme as was not loading correctly.
                 .environment(\.keyboardIsShown, keyboardIsShown)
                 .onDisappear { dismantleKeyboarMonitors() }
-                .onAppear { 
+                .onAppear {
                     setupKeyboardMonitors()
                     UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
                 }
+                .tint(.main)
+                .environment(\.font, Font.custom("Menlo", size: 17))
         }
         .modelContainer(sharedModelContainer)
     }
