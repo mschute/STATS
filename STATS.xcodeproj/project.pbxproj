@@ -253,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				0BB8E74B2C64CAB200838EEC /* Info.plist */,
-				0BB8E7442C5FADAA00838EEC /* ViewDecorations */,
 				0BB8E7412C5EE39900838EEC /* Extensions */,
 				0BB8E7152C5C069400838EEC /* ViewModifiers */,
 				0B7C63F12C52499E00798513 /* Camera */,
@@ -329,6 +328,7 @@
 				0B1300EB2C57A11600E4B7B9 /* Report.swift */,
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
+				0BB8E7452C5FADC200838EEC /* TopBar.swift */,
 				0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */,
 			);
 			path = Stat;
@@ -439,14 +439,6 @@
 				0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		0BB8E7442C5FADAA00838EEC /* ViewDecorations */ = {
-			isa = PBXGroup;
-			children = (
-				0BB8E7452C5FADC200838EEC /* TopBar.swift */,
-			);
-			path = ViewDecorations;
 			sourceTree = "<group>";
 		};
 		0BB8E7642C6791B700838EEC /* Haptics */ = {
