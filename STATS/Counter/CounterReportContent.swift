@@ -116,7 +116,7 @@ struct CounterReportContent: View {
                 }
             } else {
                 Section(header: Text("")) {
-                    Text("No available data")
+                    Text("Not enough data for chart")
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
