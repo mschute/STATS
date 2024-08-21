@@ -24,14 +24,15 @@ class PictureStat: Stat, Identifiable {
 }
 
 extension PictureStat {
-    static func addPicture(name: String, created: Date, desc: String, icon: String, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+    static func addPicture(name: String, created: Date, desc: String, icon: String, hasReminder: Bool, interval: String, reminders: [Date], chosenCategory: Category?, modelContext: ModelContext) {
+        let reminder = hasReminder ? Reminder(interval: Int(interval) ?? 1, reminderTime: reminders) : nil
+        
         let newPictureStat = PictureStat(
             name: name,
             created: created,
             desc: desc,
             icon: icon,
-            reminder: newReminder,
+            reminder: reminder,
             category: chosenCategory
         )
         
@@ -46,20 +47,23 @@ extension PictureStat {
         pictureStat.category = chosenCategory
         
         if hasReminder {
+            //Update existing reminder
             if let reminder = pictureStat.reminder {
-                reminder.interval = Int(interval) ?? 0
+                reminder.interval = Int(interval) ?? 1
                 reminder.reminderTime = reminders
             } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                pictureStat.reminder = newReminder
+                //Create and set new reminder if none previously
+                pictureStat.reminder = Reminder(interval: Int(interval) ?? 1, reminderTime: reminders)
             }
         } else {
+            //Remove reminder if it exists
             if let reminder = pictureStat.reminder {
                 modelContext.delete(reminder)
                 pictureStat.reminder = nil
             }
         }
 
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {

@@ -35,16 +35,9 @@ struct CounterFormEdit: View {
         _desc = State(initialValue: counterStat.desc)
         _icon = State(initialValue: counterStat.icon)
         _chosenCategory = State(initialValue: counterStat.category)
-        
-        if let reminder = counterStat.reminder {
-            _reminders = State(initialValue: reminder.reminderTime)
-            _interval = State(initialValue: String(reminder.interval))
-            _hasReminder = State(initialValue: true)
-        } else {
-            _reminders = State(initialValue: [])
-            _interval = State(initialValue: "0")
-            _hasReminder = State(initialValue: false)
-        }
+        _reminders = State(initialValue: counterStat.reminder?.reminderTime ?? [])
+        _interval = State(initialValue: counterStat.reminder?.interval.description ?? "1")
+        _hasReminder = State(initialValue: counterStat.reminder != nil)
     }
     
     var body: some View {

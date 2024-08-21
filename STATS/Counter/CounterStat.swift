@@ -24,14 +24,15 @@ class CounterStat: Stat, Identifiable {
 }
 
 extension CounterStat {
-    static func addCounter(interval: String, reminders: [Date], name: String, created: Date, desc: String, icon: String, chosenCategory: Category?, modelContext: ModelContext) {
-        let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
+    static func addCounter(hasReminder: Bool, interval: String, reminders: [Date], name: String, created: Date, desc: String, icon: String, chosenCategory: Category?, modelContext: ModelContext) {
+        let reminder = hasReminder ? Reminder(interval: Int(interval) ?? 1, reminderTime: reminders) : nil
+
         let newCounterStat = CounterStat(
             name: name,
             created: created,
             desc: desc,
             icon: icon,
-            reminder: newReminder,
+            reminder: reminder,
             category: chosenCategory
         )
 
@@ -46,20 +47,23 @@ extension CounterStat {
         counterStat.category = chosenCategory
         
         if hasReminder {
+            //Update existing reminder
             if let reminder = counterStat.reminder {
-                reminder.interval = Int(interval) ?? 0
+                reminder.interval = Int(interval) ?? 1
                 reminder.reminderTime = reminders
             } else {
-                let newReminder = Reminder(interval: Int(interval) ?? 0, reminderTime: reminders)
-                counterStat.reminder = newReminder
+                //Create and set new reminder if none previously
+                counterStat.reminder = Reminder(interval: Int(interval) ?? 1, reminderTime: reminders)
             }
         } else {
+            //Remove reminder if it exists
             if let reminder = counterStat.reminder {
                 modelContext.delete(reminder)
                 counterStat.reminder = nil
             }
         }
         
+        //Save() not necessary but included it for clarity in the purpose of the method
         do {
             try modelContext.save()
         } catch {

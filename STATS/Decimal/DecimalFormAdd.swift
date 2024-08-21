@@ -22,7 +22,7 @@ struct DecimalFormAdd: View {
     @State private var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    @State private var interval: String = ""
+    @State private var interval: String = "1"
     
     @State private var iconPickerPresented: Bool = false
     @State private var newCategory: String = ""
@@ -101,7 +101,7 @@ struct DecimalFormAdd: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            DecimalStat.addDecimal(name: name, created: created, desc: desc, icon: icon, unitName: unitName, trackAverage: trackAverage, trackTotal: trackTotal, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
+                            DecimalStat.addDecimal(name: name, created: created, desc: desc, icon: icon, unitName: unitName, trackAverage: trackAverage, trackTotal: trackTotal, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
                             dismiss()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {

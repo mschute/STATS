@@ -17,7 +17,7 @@ struct PictureFormAdd: View {
     @State private var hasReminder: Bool = false
     @State private var reminders: [Date] = []
     @State private var newReminder: Date = Date()
-    @State private var interval: String = ""
+    @State private var interval: String = "1"
     
     @State private var iconPickerPresented: Bool = false
     
@@ -80,7 +80,7 @@ struct PictureFormAdd: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded { _ in
-                            PictureStat.addPicture(name: name, created: created, desc: desc, icon: icon, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
+                            PictureStat.addPicture(name: name, created: created, desc: desc, icon: icon, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
                             dismiss()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {

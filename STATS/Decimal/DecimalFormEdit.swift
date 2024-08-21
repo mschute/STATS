@@ -42,8 +42,9 @@ struct DecimalFormEdit: View {
         _trackAverage = State(initialValue: decimalStat.trackAverage)
         _trackTotal = State(initialValue: decimalStat.trackTotal)
         _chosenCategory = State(initialValue: decimalStat.category)
+        
         _reminders = State(initialValue: decimalStat.reminder?.reminderTime ?? [])
-        _interval = State(initialValue: decimalStat.reminder?.interval.description ?? "")
+        _interval = State(initialValue: decimalStat.reminder?.interval.description ?? "1")
         _hasReminder = State(initialValue: decimalStat.reminder != nil)
     }
     
