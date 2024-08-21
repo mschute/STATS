@@ -12,8 +12,10 @@ class Haptics {
 
     //Early exit: https://reintech.io/blog/how-to-use-swift-early-exit
     func play(_ feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle) {
+        //Ensures haptic feedback only occurs if true
         guard isHaptics else { return }
         
-        UIImpactFeedbackGenerator(style: feedbackStyle).impactOccurred()
+        let generator = UIImpactFeedbackGenerator(style: feedbackStyle)
+        generator.impactOccurred()
     }
 }
