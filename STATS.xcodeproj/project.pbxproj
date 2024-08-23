@@ -71,7 +71,6 @@
 		0B7C63E62C4AC5B500798513 /* PictureReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */; };
 		0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EB2C4D384300798513 /* ValueDayData.swift */; };
 		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
-		0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63EF2C5241E600798513 /* CameraPermission.swift */; };
 		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
 		0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditCategory.swift */; };
 		0BB8E7172C5C06AB00838EEC /* StatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */; };
@@ -86,7 +85,7 @@
 		0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7562C65276F00838EEC /* DecimalFormEdit.swift */; };
 		0BB8E7592C65278C00838EEC /* PictureFormAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */; };
 		0BB8E75B2C65279A00838EEC /* PictureFormEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */; };
-		0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */; };
+		0BB8E75D2C664A4100838EEC /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E75C2C664A4100838EEC /* HideKeyboard.swift */; };
 		0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7622C677A2800838EEC /* HapticFeedback.swift */; };
 		0BB8E7692C6A2C2700838EEC /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
 		0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */; };
@@ -178,7 +177,6 @@
 		0B7C63E52C4AC5B500798513 /* PictureReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureReportContent.swift; sourceTree = "<group>"; };
 		0B7C63EB2C4D384300798513 /* ValueDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueDayData.swift; sourceTree = "<group>"; };
 		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
-		0B7C63EF2C5241E600798513 /* CameraPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermission.swift; sourceTree = "<group>"; };
 		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
 		0B7C63F42C53D5A400798513 /* EditCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategory.swift; sourceTree = "<group>"; };
 		0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatButtonStyle.swift; sourceTree = "<group>"; };
@@ -194,7 +192,7 @@
 		0BB8E7562C65276F00838EEC /* DecimalFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalFormEdit.swift; sourceTree = "<group>"; };
 		0BB8E7582C65278C00838EEC /* PictureFormAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormAdd.swift; sourceTree = "<group>"; };
 		0BB8E75A2C65279A00838EEC /* PictureFormEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFormEdit.swift; sourceTree = "<group>"; };
-		0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardGestureModifier.swift; sourceTree = "<group>"; };
+		0BB8E75C2C664A4100838EEC /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		0BB8E7622C677A2800838EEC /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		0BB8E7682C6A2C2700838EEC /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 		0B7C63F12C52499E00798513 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				0B7C63EF2C5241E600798513 /* CameraPermission.swift */,
 				0B7C63F22C5249C100798513 /* UIKitCamera.swift */,
 				0BB8E7722C6BC97500838EEC /* CameraOverlay.swift */,
 			);
@@ -435,7 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				0BB8E7422C5EE3B700838EEC /* ColorMode.swift */,
-				0BB8E75C2C664A4100838EEC /* HideKeyboardGestureModifier.swift */,
+				0BB8E75C2C664A4100838EEC /* HideKeyboard.swift */,
 				0BB8E76A2C6A63A600838EEC /* UIColorExtension.swift */,
 			);
 			path = Extensions;
@@ -598,14 +595,13 @@
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
 				0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */,
 				0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */,
-				0B7C63F02C5241E600798513 /* CameraPermission.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
 				0BB8E7732C6BC97500838EEC /* CameraOverlay.swift in Sources */,
 				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
 				0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */,
 				0B4705C22C32DD30004D1DDB /* History.swift in Sources */,
 				0B6AC35E2C3E967100636AAA /* Category.swift in Sources */,
-				0BB8E75D2C664A4100838EEC /* HideKeyboardGestureModifier.swift in Sources */,
+				0BB8E75D2C664A4100838EEC /* HideKeyboard.swift in Sources */,
 				0B4705B22C2AAFA1004D1DDB /* TabButton.swift in Sources */,
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */,
