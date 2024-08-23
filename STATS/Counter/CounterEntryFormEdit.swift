@@ -44,6 +44,6 @@ struct CounterEntryFormEdit: View {
                     )
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboard()
     }
 }

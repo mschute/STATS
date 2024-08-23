@@ -10,9 +10,8 @@ struct STATSApp: App {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    //TODO: Why is haptics not here?
-    
-    @State private var keyboardIsShown = false
+    //Tracks whether keyboard is currently shown
+    @State private var keyboardIsShown: Bool = false
     @State private var keyboardHideMonitor: AnyCancellable? = nil
     @State private var keyboardShownMonitor: AnyCancellable? = nil
     
@@ -37,19 +36,19 @@ struct STATSApp: App {
             Navbar()
                 .environmentObject(selectedTab)
                 .environmentObject(selectedDetailTab)
-                .environment(\.font, Font.custom("Menlo", size: 17))
-                .tint(.main)
-            // Needed to remove applyColorMode function to preferredColorScheme as was not loading correctly.
                 .environment(\.keyboardIsShown, keyboardIsShown)
-                .onDisappear { dismantleKeyboarMonitors() }
-                .onAppear { 
+                .onDisappear { dismantleKeyboardMonitors() }
+                .onAppear {
                     setupKeyboardMonitors()
                     UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
                 }
+                .tint(.main)
+                .environment(\.font, Font.custom("Menlo", size: 17))
         }
         .modelContainer(sharedModelContainer)
     }
     
+    //Monitor the keyboard visibility and will update keyboardIsShown accordingly
     func setupKeyboardMonitors() {
         keyboardShownMonitor = NotificationCenter.default
             .publisher(for: UIWindow.keyboardWillShowNotification)
@@ -60,7 +59,8 @@ struct STATSApp: App {
             .sink { _ in if keyboardIsShown { keyboardIsShown = false } }
     }
     
-    func dismantleKeyboarMonitors() {
+    //Cancels subscription when no longer needeed
+    func dismantleKeyboardMonitors() {
         keyboardHideMonitor?.cancel()
         keyboardShownMonitor?.cancel()
     }

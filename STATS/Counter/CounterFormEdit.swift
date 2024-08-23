@@ -96,7 +96,7 @@ struct CounterFormEdit: View {
                         }
                 )
             }
-            .dismissKeyboardOnTap()
+            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)

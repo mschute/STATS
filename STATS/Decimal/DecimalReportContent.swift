@@ -17,6 +17,7 @@ struct DecimalReportContent: View {
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>){
         self._startDate = startDate
         self._endDate = endDate
+        
         _decimalEntries = Query(filter: DecimalEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     

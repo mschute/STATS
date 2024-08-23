@@ -61,7 +61,7 @@ struct PictureEntryFormEdit: View {
                     )
             }
         }
-        .dismissKeyboardOnTap()        
+        .dismissKeyboard()        
         .alert("Must add picture", isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         }

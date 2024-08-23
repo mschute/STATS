@@ -89,6 +89,7 @@ struct PictureFormAdd: View {
                         }
                 )
             }
+            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
