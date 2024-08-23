@@ -7,7 +7,6 @@ struct PicturePicker: View {
     @Binding var selectedPhotoData: Data?
     @Binding var cameraImage: UIImage?
     @Binding var showCamera: Bool
-    @State private var cameraError: CameraPermission.CameraError?
     
     //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
     //Source for code/implementation: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
@@ -21,40 +20,29 @@ struct PicturePicker: View {
                     .frame(maxWidth: .infinity, maxHeight: 300)
             }
             
-                Button(action: {
-                    if let error = CameraPermission.checkPermissions() {
-                        cameraError = error
-                    } else {
-                        showCamera.toggle()
-                    }
-                }) {
-                    HStack {
-                        Image(systemName: "camera.fill")
-                        Text("Camera")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                            .fontWeight(.medium)
-                    }
+            Button(action: {
+                showCamera.toggle()
+            }) {
+                HStack {
+                    Image(systemName: "camera.fill")
+                    Text("Camera")
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .fontWeight(.medium)
                 }
-                .alert(isPresented: .constant(cameraError != nil), error: cameraError) { _ in
-                    Button("OK") {
-                        cameraError = nil
-                    }
-                } message: { error in
-                    Text(error.recoverySuggestion ?? "Try again later")
+            }
+            .sheet(isPresented: $showCamera) {
+                UIKitCamera(selectedImage: $cameraImage)
+                    .ignoresSafeArea()
+            }
+            
+            PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
+                HStack {
+                    Image(systemName: "photo.fill")
+                    Text("Add Library Image")
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .fontWeight(.medium)
                 }
-                .sheet(isPresented: $showCamera) {
-                    UIKitCamera(selectedImage: $cameraImage)
-                        .ignoresSafeArea()
-                }
-                
-                PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
-                    HStack {
-                        Image(systemName: "photo.fill")
-                        Text("Add Library Image")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                            .fontWeight(.medium)
-                    }
-                }
+            }
             
             if selectedPhotoData != nil {
                 Button(role: .destructive) {
