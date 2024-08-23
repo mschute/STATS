@@ -10,7 +10,8 @@ struct STATSApp: App {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    @State private var keyboardIsShown = false
+    //Tracks whether keyboard is currently shown
+    @State private var keyboardIsShown: Bool = false
     @State private var keyboardHideMonitor: AnyCancellable? = nil
     @State private var keyboardShownMonitor: AnyCancellable? = nil
     
@@ -36,7 +37,7 @@ struct STATSApp: App {
                 .environmentObject(selectedTab)
                 .environmentObject(selectedDetailTab)
                 .environment(\.keyboardIsShown, keyboardIsShown)
-                .onDisappear { dismantleKeyboarMonitors() }
+                .onDisappear { dismantleKeyboardMonitors() }
                 .onAppear {
                     setupKeyboardMonitors()
                     UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
@@ -47,6 +48,7 @@ struct STATSApp: App {
         .modelContainer(sharedModelContainer)
     }
     
+    //Monitor the keyboard visibility and will update keyboardIsShown accordingly
     func setupKeyboardMonitors() {
         keyboardShownMonitor = NotificationCenter.default
             .publisher(for: UIWindow.keyboardWillShowNotification)
@@ -57,7 +59,8 @@ struct STATSApp: App {
             .sink { _ in if keyboardIsShown { keyboardIsShown = false } }
     }
     
-    func dismantleKeyboarMonitors() {
+    //Cancels subscription when no longer needeed
+    func dismantleKeyboardMonitors() {
         keyboardHideMonitor?.cancel()
         keyboardShownMonitor?.cancel()
     }
