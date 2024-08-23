@@ -8,7 +8,6 @@ struct UIKitCamera: UIViewControllerRepresentable {
     @Environment(\.dismiss) var dismiss
 //https://developer.apple.com/documentation/uikit/uiimagepickercontroller/1619113-cameraoverlayview
     //Allow an overlay over the camera view
-    var overlayView: UIView? = CameraOverlay()
     
     //Customise control: https://developer.apple.com/documentation/uikit/uiimagepickercontroller/customizing_an_image_picker_controller
     //Creates and configures UIImagePickerController
@@ -18,30 +17,7 @@ struct UIKitCamera: UIViewControllerRepresentable {
         imagePicker.sourceType = .camera
         imagePicker.delegate = context.coordinator
         
-        //Assign overlay to preview
-        if imagePicker.sourceType == .camera {
-            if let overlayView = overlayView {
-                overlayView.frame = calculateCameraPreviewFrame(picker: imagePicker)
-                imagePicker.cameraOverlayView = overlayView
-            }
-        }
-        
         return imagePicker
-    }
-    
-    //Calculates the cameras preview for the overlay
-    func calculateCameraPreviewFrame(picker: UIImagePickerController) -> CGRect {
-        //Get screen size: https://designcode.io/swiftui-handbook-detect-screen-size
-        let fullScreenSize = UIScreen.main.bounds.size
-        //Sizing: https://www.youtube.com/watch?v=JmH3uZUubkE
-        let cameraPreviewHeight = (fullScreenSize.width / 3.0) * 4.0
-        //Hardcoded as could not find coordinates of preview / size of controls
-        let offsetY = 48.0
-        let y = (fullScreenSize.height - cameraPreviewHeight) * 0.5 - offsetY
-        
-        let previewFrame = CGRect(x: 0, y: y, width: fullScreenSize.width, height: cameraPreviewHeight)
-        
-        return previewFrame
     }
     
     //Function is required by UiViewControllerRepresentable
