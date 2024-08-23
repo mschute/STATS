@@ -4,13 +4,14 @@ import SwiftUI
 // https://www.youtube.com/watch?v=Saw_sZWa4aQ
 struct History: View {
     var stat: any Stat
-    @State private var startDate: Date = Date()
-    @State private var endDate: Date = Date()
-    @State private var dateRange: (startDate: Date, endDate: Date) = (Date(), Date())
+    @State private var startDate: Date
+    @State private var endDate: Date
+    @State private var dateRange: (startDate: Date, endDate: Date)
     
     init(stat: any Stat) {
         self.stat = stat
-        _dateRange = State(initialValue: AnyStat.getEntryDateRange(entryArray: stat.statEntry))
+        var dateRange = AnyEntry.getEntryDateRange(entryArray: stat.statEntry)
+        _dateRange = State(initialValue: dateRange)
         _startDate = State(initialValue: dateRange.startDate)
         _endDate = State(initialValue: dateRange.endDate)
     }
