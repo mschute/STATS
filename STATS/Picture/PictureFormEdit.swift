@@ -96,7 +96,7 @@ struct PictureFormEdit: View {
                         }
                 )
             }
-            .dismissKeyboardOnTap()
+            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)

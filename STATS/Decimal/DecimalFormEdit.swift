@@ -122,7 +122,7 @@ struct DecimalFormEdit: View {
                         }
                 )
             }
-            .dismissKeyboardOnTap()
+            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
             
         }

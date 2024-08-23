@@ -110,7 +110,7 @@ struct DecimalFormAdd: View {
                         }
                 )
             }
-            .dismissKeyboardOnTap()
+            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)

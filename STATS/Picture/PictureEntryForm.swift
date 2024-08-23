@@ -52,7 +52,7 @@ struct PictureEntryForm: View {
                     )
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboard()
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
                 image = data

@@ -35,6 +35,6 @@ struct CounterEntryForm: View {
                     )
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboard()
     }
 }

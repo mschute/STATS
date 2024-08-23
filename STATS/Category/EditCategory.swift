@@ -43,7 +43,7 @@ struct EditCategory: View {
                 }
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboard()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

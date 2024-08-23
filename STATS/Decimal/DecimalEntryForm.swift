@@ -51,7 +51,7 @@ struct DecimalEntryForm: View {
                     )
             }
         }
-        .dismissKeyboardOnTap()
+        .dismissKeyboard()
         .alert(alertMessage, isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         }
