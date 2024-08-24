@@ -6,8 +6,6 @@ struct UIKitCamera: UIViewControllerRepresentable {
     //Allows the parent view to be notified when a picture is captured
     @Binding var selectedImage: UIImage?
     @Environment(\.dismiss) var dismiss
-//https://developer.apple.com/documentation/uikit/uiimagepickercontroller/1619113-cameraoverlayview
-    //Allow an overlay over the camera view
     
     //Customise control: https://developer.apple.com/documentation/uikit/uiimagepickercontroller/customizing_an_image_picker_controller
     //Creates and configures UIImagePickerController

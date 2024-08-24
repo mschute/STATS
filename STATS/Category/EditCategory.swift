@@ -37,6 +37,7 @@ struct EditCategory: View {
                             TapGesture()
                                 .onEnded { _ in
                                     Category.addCategory(newCategory: newCategory, modelContext: modelContext)
+                                    newCategory = ""
                                     Haptics.shared.play(.light)
                                 }
                         )
