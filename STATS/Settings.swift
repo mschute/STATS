@@ -93,6 +93,5 @@ struct Settings: View {
                 }
             }
         }
-        //Remove list background: https://sarunw.com/posts/swiftui-list-background-color/
     }
 }
