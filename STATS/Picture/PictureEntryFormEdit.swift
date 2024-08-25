@@ -4,7 +4,6 @@ import PhotosUI
 struct PictureEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
-    @Environment(\.colorScheme) var colorScheme
     
     var pictureEntry: PictureEntry
     
@@ -64,9 +63,6 @@ struct PictureEntryFormEdit: View {
         .dismissKeyboard()        
         .alert("Must add picture", isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
-        }
-        .onAppear() {
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
         }
     }
 }

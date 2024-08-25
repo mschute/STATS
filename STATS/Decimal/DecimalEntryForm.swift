@@ -55,9 +55,6 @@ struct DecimalEntryForm: View {
         .alert(alertMessage, isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         }
-        .onAppear() {
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
-        }
     }
 }
 

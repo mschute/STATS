@@ -2,7 +2,6 @@ import SwiftUI
 
 struct DecimalEntryFormEdit: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     
    var decimalEntry: DecimalEntry
@@ -64,9 +63,6 @@ struct DecimalEntryFormEdit: View {
         .dismissKeyboard()
         .alert(alertMessage, isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
-        }
-        .onAppear() {
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
         }
     }
 }

@@ -7,6 +7,7 @@ struct STATSApp: App {
     //https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-environmentobject-to-share-data-between-views
     @StateObject private var selectedTab = NavbarTabs()
     @StateObject private var selectedDetailTab = StatTabs()
+    @Environment(\.colorScheme) var colorScheme
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
@@ -41,6 +42,8 @@ struct STATSApp: App {
                 .onAppear {
                     setupKeyboardMonitors()
                     UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
+                    // Change alert tint color: https://www.hackingwithswift.com/forums/swiftui/alert-button-color-conforming-to-accentcolor/7193#:~:text=There%20is%20no%20way%20to,the%20system%20do%20its%20thing.
+                    UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
                 }
                 .tint(.main)
                 .environment(\.font, Font.custom("Menlo", size: 17))
