@@ -77,16 +77,24 @@ struct DecimalReportContent: View {
                     .padding(.vertical, 10)
                 }
                 
-                Section(header: Text("")) {
-                    Text("Value Sum by Day")
-                        .fontWeight(.semibold)
-                        .font(.custom("Menlo", size: 24))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
-                    DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
-                        .foregroundStyle(.decimal)
+                if decimalEntries.count > 1 {
+                    Section(header: Text("")) {
+                        Text("Value Sum by Day")
+                            .fontWeight(.semibold)
+                            .font(.custom("Menlo", size: 24))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
+                            .foregroundStyle(.decimal)
+                    }
+                } else {
+                    Section(header: Text("")) {
+                        Text("Not enough data for chart")
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
                 }
             }
             
@@ -106,16 +114,24 @@ struct DecimalReportContent: View {
                     .padding(.vertical, 10)
                 }
                 
-                Section(header: Text("")) {
-                    Text("Value Average by Day")
-                        .fontWeight(.semibold)
-                        .font(.custom("Menlo", size: 24))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
-                    DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
-                        .foregroundStyle(.decimal)
+                if decimalEntries.count > 1 {
+                    Section(header: Text("")) {
+                        Text("Value Average by Day")
+                            .fontWeight(.semibold)
+                            .font(.custom("Menlo", size: 24))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
+                            .foregroundStyle(.decimal)
+                    }
+                } else {
+                    Section(header: Text("")) {
+                        Text("Not enough data for chart")
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
                 }
             }
         } else {
