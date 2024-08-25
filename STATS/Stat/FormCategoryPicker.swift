@@ -61,7 +61,9 @@ struct FormCategoryPicker: View {
             }
         }
         .alert(alertMessage, isPresented: $showAlert) {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                Haptics.shared.play(.light)
+            }
         }
     }
 }

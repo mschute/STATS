@@ -64,7 +64,9 @@ struct PictureEntryForm: View {
         }
         //Alerts: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-an-alert
         .alert("Must add picture", isPresented: $showAlert) {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                Haptics.shared.play(.light)
+            }
         }
     }
 }

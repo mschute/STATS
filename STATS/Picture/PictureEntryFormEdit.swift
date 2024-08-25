@@ -62,7 +62,9 @@ struct PictureEntryFormEdit: View {
         }
         .dismissKeyboard()        
         .alert("Must add picture", isPresented: $showAlert) {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                Haptics.shared.play(.light)
+            }
         }
     }
 }
