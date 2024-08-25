@@ -2,7 +2,6 @@ import SwiftData
 import SwiftUI
 
 struct Report: View {
-    @Environment(\.colorScheme) var colorScheme
     var stat: any Stat
     
     @State private var startDate: Date
@@ -11,7 +10,7 @@ struct Report: View {
     init(stat: any Stat) {
         self.stat = stat
         var dateRange = AnyEntry.getEntryDateRange(entryArray: stat.statEntry)
-        _startDate = State(initialValue: dateRange.endDate)
+        _startDate = State(initialValue: dateRange.startDate)
         _endDate = State(initialValue: dateRange.endDate)
     }
 
