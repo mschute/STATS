@@ -9,6 +9,9 @@ struct FormCategoryPicker: View {
     @Binding var chosenCategory: Category?
     @Binding var addNewCategory: Bool
     
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    
     var statColor: Color
     var statHighlightColor: Color
     
@@ -37,10 +40,12 @@ struct FormCategoryPicker: View {
                 TextField("Add new tag", text: $newCategory)
                 HStack(spacing: 10) {
                     Button("Add") {
-                        Category.addCategory(newCategory: newCategory, modelContext: modelContext)
+                        Category.addCategory(newCategory: newCategory, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
                         newCategory = ""
                         addNewCategory = false
-                        Haptics.shared.play(.light)
+                        if !showAlert {
+                            Haptics.shared.play(.light)
+                        }
                     }
                     .buttonStyle(StatButtonStyle(fontSize: 15, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: statColor, statHighlightColor: statHighlightColor))
 
@@ -54,6 +59,9 @@ struct FormCategoryPicker: View {
                 .padding(.vertical)
                 .frame(alignment: .leading)
             }
+        }
+        .alert(alertMessage, isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
         }
     }
 }

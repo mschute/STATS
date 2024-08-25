@@ -5,8 +5,9 @@ struct EditCategory: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \Category.name) var categories: [Category]
     
-    @State private var newCategory = ""
-    @State private var showAlert = false
+    @State private var newCategory: String = ""
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     
     var body: some View {
         VStack {
@@ -36,9 +37,11 @@ struct EditCategory: View {
                         .simultaneousGesture(
                             TapGesture()
                                 .onEnded { _ in
-                                    Category.addCategory(newCategory: newCategory, modelContext: modelContext)
+                                    Category.addCategory(newCategory: newCategory, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
                                     newCategory = ""
-                                    Haptics.shared.play(.light)
+                                    if !showAlert {
+                                        Haptics.shared.play(.light)
+                                    }
                                 }
                         )
                 }
@@ -46,6 +49,9 @@ struct EditCategory: View {
         }
         .dismissKeyboard()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .alert(alertMessage, isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
+        }
     }
 }
 
