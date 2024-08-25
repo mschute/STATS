@@ -28,6 +28,7 @@ struct DecimalEntryList: View {
                                 if let index = entries.firstIndex(of: entry) {
                                     DecimalEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
                                 }
+                                Haptics.shared.play(.light)
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }

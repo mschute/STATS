@@ -28,6 +28,7 @@ struct PictureEntryList: View {
                                 if let index = entries.firstIndex(of: entry) {
                                     PictureEntry.deleteItems(offsets: IndexSet(integer: index), entries: entries, modelContext: modelContext)
                                 }
+                                Haptics.shared.play(.light)
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }

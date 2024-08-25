@@ -35,6 +35,7 @@ struct StatList: View {
                                     if let index = stats.firstIndex(of: item) {
                                         AnyStat.deleteItems(offsets: IndexSet(integer: index), stats: stats, modelContext: modelContext)
                                     }
+                                    Haptics.shared.play(.light)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
