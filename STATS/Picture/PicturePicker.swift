@@ -53,6 +53,7 @@ struct PicturePicker: View {
                 } label: {
                     Label("Remove Picture", systemImage: "trash")
                         .foregroundStyle(.cancel)
+                        .fontWeight(.semibold)
                 }
             }
         }
