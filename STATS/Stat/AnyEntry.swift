@@ -12,7 +12,7 @@ extension AnyEntry {
     static func getEntryDateRange(entryArray: [any Entry]) -> (startDate: Date, endDate: Date) {
         
         guard let firstEntry = entryArray.first else {
-            return (DateUtility.startOfDay(for: Date()), DateUtility.endOfDay(for: Date()))
+            return (DateUtility.startOfDay(date: Date()), DateUtility.endOfDay(date: Date()))
         }
         
         var startDate = firstEntry.timestamp
@@ -26,6 +26,6 @@ extension AnyEntry {
             }
         }
         
-        return (DateUtility.startOfDay(for: startDate), DateUtility.endOfDay(for: endDate))
+        return (DateUtility.startOfDay(date: startDate), DateUtility.endOfDay(date: endDate))
     }
 }
