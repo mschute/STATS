@@ -59,31 +59,20 @@ final class STATSTests: XCTestCase {
         }
     }
     
-    func testCalcTimeOfDay() throws {
-        print("testCalcTimeOfDay()")
+    func testCategoryAlreadyExists() {
         //Arrange
-        var dateComponents = DateComponents()
-        dateComponents.year = 2024
-        dateComponents.month = 8
-        dateComponents.day = 11
-        dateComponents.timeZone =  TimeZone(abbreviation: "BST")
-        dateComponents.hour = 16
-        dateComponents.minute = 32
-        
-        let calendar = Calendar(identifier: .gregorian)
-        let someDateTime = calendar.date(from: dateComponents)
-        
-        let counterEntry1 = CounterEntry(entryId: UUID(), timestamp: someDateTime ?? Date(), note: "Test note")
-        
-        var counterEntryArray: [CounterEntry] = []
-        counterEntryArray.append(counterEntry1)
+        var alertMessage = ""
+        var showAlert = false
+        let category = Category(name: "TestCategory")
+        context.insert(category)
         
         //Act
-        let timeOfDayCount = CounterEntry.calcTimeOfDay(counterEntries: counterEntryArray)
+        let result = Category.validateCategory(category: category.name, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: context)
         
         //Assert
-        XCTAssertEqual(timeOfDayCount.timeOfDay, .afternoon)
-        XCTAssertEqual(timeOfDayCount.count, 1)
+        XCTAssertFalse(result)
+        XCTAssertEqual(alertMessage, "This tag already exists")
+        XCTAssertTrue(showAlert)
     }
     
     func testGetEntryDateRange() throws {
@@ -122,8 +111,8 @@ final class STATSTests: XCTestCase {
         //Act
         var dateRange = AnyEntry.getEntryDateRange(entryArray: counterEntryArray)
         
-        let expectedStartDate = calendar2.date(from: DateComponents(year: 2024, month: 8, day: 1, hour: 10, minute: 54))
-        let expectedEndDate = calendar1.date(from: DateComponents(year: 2024, month: 8, day: 11, hour: 16, minute: 32))
+        let expectedStartDate = DateUtility.startOfDay(date: someDateTime2 ?? Date())
+        let expectedEndDate = DateUtility.endOfDay(date: someDateTime1 ?? Date())
         
         //Assert
         XCTAssertEqual(dateRange.startDate, expectedStartDate)
