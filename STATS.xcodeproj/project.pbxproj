@@ -16,6 +16,7 @@
 		0B08D9B62C7CA15900EFB884 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC35D2C3E967100636AAA /* Category.swift */; };
 		0B08D9B72C7CA15E00EFB884 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3622C418C9600636AAA /* Reminder.swift */; };
 		0B08D9B82C7CA17100EFB884 /* AnyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705BF2C316814004D1DDB /* AnyEntry.swift */; };
+		0B08D9B92C7CDA0E00EFB884 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
 		0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EB2C57A11600E4B7B9 /* Report.swift */; };
 		0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */; };
 		0B1300F22C57F65A00E4B7B9 /* ChartValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */; };
@@ -685,6 +686,7 @@
 			files = (
 				0B08D9B52C7CA15100EFB884 /* Entry.swift in Sources */,
 				0B3821802C171367004F26E3 /* STATSTests.swift in Sources */,
+				0B08D9B92C7CDA0E00EFB884 /* DateUtility.swift in Sources */,
 				0B08D9B12C7CA14300EFB884 /* CounterStat.swift in Sources */,
 				0B08D9B32C7CA14900EFB884 /* TimeOfDay.swift in Sources */,
 				0B08D9B42C7CA14E00EFB884 /* Stat.swift in Sources */,
