@@ -13,6 +13,22 @@ struct Settings: View {
             List {
                 Section {
                     NavigationLink(destination: {
+                        About()
+                            .tint(.main)
+                    }, label: {
+                        Label {
+                            Text("About STATS")
+                                .fontWeight(.semibold)
+                        } icon: {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.main)
+                        }
+                    })
+                }
+                .navigationTitle("")
+                
+                Section {
+                    NavigationLink(destination: {
                         EditCategory()
                     }, label: {
                         Label {

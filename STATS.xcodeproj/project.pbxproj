@@ -17,6 +17,7 @@
 		0B08D9B72C7CA15E00EFB884 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3622C418C9600636AAA /* Reminder.swift */; };
 		0B08D9B82C7CA17100EFB884 /* AnyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705BF2C316814004D1DDB /* AnyEntry.swift */; };
 		0B08D9B92C7CDA0E00EFB884 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7682C6A2C2700838EEC /* DateUtility.swift */; };
+		0B08D9BB2C7DE53900EFB884 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D9BA2C7DE53900EFB884 /* About.swift */; };
 		0B1300EC2C57A11600E4B7B9 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EB2C57A11600E4B7B9 /* Report.swift */; };
 		0B1300F02C57ED6F00E4B7B9 /* DecimalReportCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */; };
 		0B1300F22C57F65A00E4B7B9 /* ChartValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */; };
@@ -121,6 +122,7 @@
 
 /* Begin PBXFileReference section */
 		0B08D9AF2C7CA11D00EFB884 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
+		0B08D9BA2C7DE53900EFB884 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		0B1300EB2C57A11600E4B7B9 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		0B1300EF2C57ED6F00E4B7B9 /* DecimalReportCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReportCharts.swift; sourceTree = "<group>"; };
 		0B1300F12C57F65A00E4B7B9 /* ChartValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueType.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0BB8E7452C5FADC200838EEC /* TopBar.swift */,
 				0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */,
+				0B08D9BA2C7DE53900EFB884 /* About.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 			files = (
 				0B38216F2C171366004F26E3 /* ContentView.swift in Sources */,
 				0BB8E7632C677A2800838EEC /* HapticFeedback.swift in Sources */,
+				0B08D9BB2C7DE53900EFB884 /* About.swift in Sources */,
 				0BB8E7572C65276F00838EEC /* DecimalFormEdit.swift in Sources */,
 				0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */,
 				0B7C63EC2C4D384300798513 /* ValueDayData.swift in Sources */,
