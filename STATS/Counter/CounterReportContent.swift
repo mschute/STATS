@@ -55,6 +55,7 @@ struct CounterReportContent: View {
                             .foregroundColor(.counter)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
+                    
                 }
                 
                 VStack {
@@ -70,14 +71,8 @@ struct CounterReportContent: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
+                .padding(.bottom, 10)
                 
-                Text("Note: Morning is 6am-11:59am, Afternoon is 12pm-5:59pm, Evening is 6pm-11:59pm, Overnight is 12am-5:59am")
-                    .font(.custom("Menlo", size: 10))
-                    .padding()
-                    .background(Color(UIColor.systemGray6))
-                    .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.gray)
             }
             
             if counterEntries.count > 1 {
