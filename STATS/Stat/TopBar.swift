@@ -14,6 +14,7 @@ struct TopBar: View {
                 .padding(.bottom, bottomPadding)
                 .kerning(4)
                 .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
                 .background(Color.background.ignoresSafeArea())
         }
     }
