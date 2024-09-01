@@ -82,6 +82,7 @@ struct CounterFormAdd: View {
                                 //Delaying the call https://www.hackingwithswift.com/example-code/system/how-to-run-code-after-a-delay-using-asyncafter-and-perform
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                     selectedTab.selectedTab = .statList
+                                        
                                 }
                                 Haptics.shared.play(.light)
                             }

@@ -3,16 +3,14 @@ import SwiftData
 import SwiftUI
 
 @Model
-class CounterEntry: Entry, Identifiable {
-    var entryId: UUID
+final class CounterEntry: Entry, Identifiable {
     var timestamp: Date
     var note: String
     //Associated relationship must be optional / does not need @Relationship https://www.youtube.com/watch?v=dAMFgq4tDPM
     //https://stackoverflow.com/questions/46092508/code-134110-validation-error-missing-attribute-values-on-mandatory-destination
     var stat: CounterStat?
     
-    init(entryId: UUID = UUID(), timestamp: Date = Date(), note: String = "") {
-        self.entryId = entryId
+    init(timestamp: Date = Date(), note: String = "") {
         self.timestamp = timestamp
         self.note = note
         self.stat = stat

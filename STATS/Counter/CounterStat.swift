@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class CounterStat: Stat, Identifiable {
+final class CounterStat: Stat, Identifiable {
     var name: String
     var created: Date
     var desc: String

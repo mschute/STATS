@@ -19,7 +19,7 @@ struct STATSApp: App {
     //Does not need StatEntry models because the relationship is inferred
     public var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            CounterStat.self, DecimalStat.self, PictureStat.self, Category.self, Reminder.self
+            CounterStat.self, DecimalStat.self, PictureStat.self, Category.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         

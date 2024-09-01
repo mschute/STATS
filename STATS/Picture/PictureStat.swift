@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class PictureStat: Stat, Identifiable {
+final class PictureStat: Stat, Identifiable {
     var name: String
     var created: Date
     var desc: String

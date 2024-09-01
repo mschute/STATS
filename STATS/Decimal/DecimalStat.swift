@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class DecimalStat: Stat, Identifiable {
+final class DecimalStat: Stat, Identifiable {
     var name: String
     var created: Date
     var desc: String

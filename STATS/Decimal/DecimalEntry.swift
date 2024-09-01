@@ -3,7 +3,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class DecimalEntry: Entry, Identifiable {
+final class DecimalEntry: Entry, Identifiable {
     var entryId: UUID
     var timestamp: Date
     var value: Double

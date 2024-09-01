@@ -3,16 +3,14 @@ import SwiftData
 import SwiftUI
 
 @Model
-class PictureEntry: Entry, Identifiable {
-    var entryId: UUID
+final class PictureEntry: Entry, Identifiable {
     var timestamp: Date
     var note: String
     //Associated relationship must be optional / does not need @Relationship
     var stat: PictureStat?
     @Attribute(.externalStorage) var image: Data?
     
-    init(entryId: UUID = UUID(), timestamp: Date = Date(), note: String = "", image: Data? = nil) {
-        self.entryId = entryId
+    init(timestamp: Date = Date(), note: String = "", image: Data? = nil) {
         self.timestamp = timestamp
         self.note = note
         self.image = image
