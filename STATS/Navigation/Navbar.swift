@@ -2,7 +2,6 @@ import SwiftUI
 
 struct Navbar: View {
     @EnvironmentObject var selectedTab: NavbarTabs
-    @EnvironmentObject var selectedDetailTab: StatTabs
     @Environment (\.colorScheme) var colorScheme
     
     var body: some View {
