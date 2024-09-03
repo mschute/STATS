@@ -83,7 +83,7 @@ struct PictureReportContent: View {
                                             if let counterEntry = statEntry.entry as? CounterEntry {
                                                 if (Calendar.current.isDate(counterEntry.timestamp, equalTo: pictureEntry.timestamp, toGranularity: .day)) {
                                                     VStack {
-                                                        Text("\(PictureEntry.calcDaysBetween(from: counterEntry.stat?.created ?? Date(), to: counterEntry.timestamp)) days since started")
+                                                        Text("\(PictureStat.calcDaysBetween(from: counterEntry.stat?.created ?? Date(), to: counterEntry.timestamp)) days since started")
                                                         Text("\(counterEntry.stat?.statEntry.count ?? 0) entries since started")
                                                     }
                                                     .padding(5)
@@ -109,13 +109,13 @@ struct PictureReportContent: View {
                 PictureEntry.combineStats(stats: &stats, counterStats: counterStats, decimalStats: decimalStats)
             }
             .onChange(of: statSelection) {
-                filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
+                filteredStatData = PictureStat.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
             }
             .onChange(of: startDate) {
-                filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
+                filteredStatData = PictureStat.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
             }
             .onChange(of: endDate) {
-                filteredStatData = PictureEntry.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
+                filteredStatData = PictureStat.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
             }
         } else {
             Section(header: Text("")) {
