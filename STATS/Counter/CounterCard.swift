@@ -31,12 +31,12 @@ struct CounterCard: View {
                         if (stat.statEntry.isEmpty) {
                             Text("No entries")
                                 .font(.custom("Menlo", size: 13))
-                                .fontWeight(.medium)
+                                .fontWeight(.semibold)
                             
                         } else {
                             Text("Latest Entry:")
                                 .font(.custom("Menlo", size: 13))
-                                .fontWeight(.medium)
+                                .fontWeight(.semibold)
                             
                             if let latestEntry = stat.statEntry
                                 .sorted(by: { $0.timestamp > $1.timestamp })

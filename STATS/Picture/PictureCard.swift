@@ -32,7 +32,7 @@ struct PictureCard: View {
                         if (stat.statEntry.isEmpty) {
                             Text("No entries")
                                 .font(.custom("Menlo", size: 13))
-                                .fontWeight(.medium)
+                                .fontWeight(.semibold)
                         } else {
                             if let latestEntry = stat.statEntry
                                 .sorted(by: { $0.timestamp > $1.timestamp })
