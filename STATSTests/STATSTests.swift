@@ -89,7 +89,7 @@ final class STATSTests: XCTestCase {
         let calendar1 = Calendar(identifier: .gregorian)
         let someDateTime1 = calendar1.date(from: dateComponents1)
         
-        let counterEntry1 = CounterEntry(entryId: UUID(), timestamp: someDateTime1 ?? Date(), note: "Test note")
+        let counterEntry1 = CounterEntry(timestamp: someDateTime1 ?? Date(), note: "Test note")
         
         var dateComponents2 = DateComponents()
         dateComponents2.year = 2024
@@ -102,7 +102,7 @@ final class STATSTests: XCTestCase {
         let calendar2 = Calendar(identifier: .gregorian)
         let someDateTime2 = calendar2.date(from: dateComponents2)
         
-        let counterEntry2 = CounterEntry(entryId: UUID(), timestamp: someDateTime2 ?? Date(), note: "Test note")
+        let counterEntry2 = CounterEntry(timestamp: someDateTime2 ?? Date(), note: "Test note")
         
         var counterEntryArray: [any Entry] = []
         counterEntryArray.append(counterEntry1)
