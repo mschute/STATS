@@ -112,25 +112,6 @@ extension AnyStat {
         }
     }
     
-    static func StatAddForm(stat: any Stat, isEditMode: Bool) -> some View {
-        switch stat {
-        case is CounterStat:
-            return AnyView(CounterFormAdd())
-        case is DecimalStat:
-            return AnyView(DecimalFormAdd())
-        case is PictureStat:
-            return AnyView(PictureFormAdd())
-        default:
-            return AnyView(
-                Section(header: Text("")) {
-                    Text("No stat available")
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            )
-        }
-    }
-    
     static func EntryForm(stat: any Stat) -> some View {
         switch stat {
         case let stat as CounterStat:
