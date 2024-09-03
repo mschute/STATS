@@ -7,6 +7,7 @@ struct FormReminder: View {
     @Binding var interval: String
     
     @Environment(\.colorScheme) var colorScheme
+    
     var statColor: Color
     var statHighlightColor: Color
     

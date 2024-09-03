@@ -4,6 +4,7 @@ import PhotosUI
 struct PictureEntryForm: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
+    
     var pictureStat: PictureStat
     
     @State private var timestamp: Date = Date()

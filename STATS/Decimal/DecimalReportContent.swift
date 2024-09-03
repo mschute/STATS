@@ -8,7 +8,7 @@ struct DecimalReportContent: View {
     @Binding var startDate: Date
     @Binding var endDate: Date
     
-    //https://www.hackingwithswift.com/example-code/language/how-to-sum-an-array-of-numbers-using-reduce
+    // Sum array using reduce: https://www.hackingwithswift.com/example-code/language/how-to-sum-an-array-of-numbers-using-reduce
     private var sum: Double { decimalEntries.reduce(0) { $0 + $1.value } }
     private var average: Double {
         decimalEntries.isEmpty ? 0 : sum / Double(decimalEntries.count)

@@ -10,6 +10,7 @@ struct History: View {
     
     init(stat: any Stat) {
         self.stat = stat
+        // dateRange is changed to let, then startDate and endDate will need a value set in the attribute list
         var dateRange = AnyEntry.getEntryDateRange(entryArray: stat.statEntry)
         _dateRange = State(initialValue: dateRange)
         _startDate = State(initialValue: dateRange.startDate)

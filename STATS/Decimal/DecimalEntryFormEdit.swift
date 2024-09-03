@@ -53,6 +53,7 @@ struct DecimalEntryFormEdit: View {
                                 DecimalEntry.saveEntry(decimalEntry: decimalEntry, value: value, timestamp: timestamp, note: note, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
 
                                 Haptics.shared.play(.light)
+                                //Need delay to avoid loading bug
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                     dismiss()
                                 }

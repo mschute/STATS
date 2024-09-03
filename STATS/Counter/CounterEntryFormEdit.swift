@@ -37,6 +37,7 @@ struct CounterEntryFormEdit: View {
                             .onEnded { _ in
                                 CounterEntry.saveEntry(counterEntry: counterEntry, timestamp: timestamp, note: note, modelContext: modelContext)
                                 Haptics.shared.play(.light)
+                                //Need delay to avoid loading bug
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                     dismiss()
                                 }

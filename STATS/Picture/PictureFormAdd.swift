@@ -83,6 +83,7 @@ struct PictureFormAdd: View {
                             PictureStat.addPicture(name: name, created: created, desc: desc, icon: icon, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
                             dismiss()
+                            //Need delay to avoid loading bug
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                 selectedTab.selectedTab = .statList
                             }

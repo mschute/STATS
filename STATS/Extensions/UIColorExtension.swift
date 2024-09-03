@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 
 // Color Extension: https://stackoverflow.com/questions/56487679/how-do-i-easily-support-light-and-dark-mode-with-a-custom-color-used-in-my-app
+//Return colour on color scheme
 extension UIColor {
     static func dynamicMainColor(colorScheme: ColorScheme) -> UIColor {
         

@@ -1,5 +1,6 @@
 import Foundation
 
+// Data usable with Charts
 struct CountDayData: Identifiable {
     var id: UUID
     var day: Date

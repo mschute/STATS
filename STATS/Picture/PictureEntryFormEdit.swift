@@ -53,6 +53,7 @@ struct PictureEntryFormEdit: View {
                                     PictureEntry.saveEntry(pictureEntry: pictureEntry, timestamp: timestamp, note: note, selectedPhotoData: selectedPhotoData, modelContext: modelContext)
                                 }
                                 Haptics.shared.play(.light)
+                                //Need delay to avoid loading bug
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                     dismiss()
                                 }

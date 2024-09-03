@@ -10,14 +10,12 @@ struct CounterEntryForm: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Timestamp").foregroundColor(.counterHeaderText)) {
-//            Section(header: Text("Timestamp").foregroundColor(.counter)) {
+            Section(header: Text("Timestamp").foregroundColor(.counter)) {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .padding(.vertical, 5)
             }
             .fontWeight(.medium)
             
-            //Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
             Section(header: Text("Additional Information").foregroundColor(.counterHeaderText).fontWeight(.medium)) {
                 TextField("Note", text: $note)
             }

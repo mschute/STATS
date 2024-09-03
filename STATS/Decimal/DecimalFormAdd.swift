@@ -104,6 +104,7 @@ struct DecimalFormAdd: View {
                             DecimalStat.addDecimal(name: name, created: created, desc: desc, icon: icon, unitName: unitName, trackAverage: trackAverage, trackTotal: trackTotal, hasReminder: hasReminder, interval: interval, reminders: reminders, chosenCategory: chosenCategory, modelContext: modelContext)
                             Haptics.shared.play(.light)
                             dismiss()
+                            //Need delay to avoid loading bug
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                 selectedTab.selectedTab = .statList
                             }

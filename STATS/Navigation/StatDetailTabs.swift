@@ -3,6 +3,7 @@ import SwiftUI
 struct StatDetailTabs: View {
     @EnvironmentObject var selectedDetailTab: StatTabs
     @Environment(\.colorScheme) var colorScheme
+    
     var stat: any Stat
     
     var body: some View {

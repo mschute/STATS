@@ -68,6 +68,7 @@ extension CounterEntry {
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {
         return #Predicate<CounterEntry> {
+            // Persistent ID identifies stat
             entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
