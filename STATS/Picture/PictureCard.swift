@@ -16,7 +16,7 @@ struct PictureCard: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(stat.name)
                                 .font(.custom("Menlo", size: 16))
-                                .fontWeight(.medium)
+                                .fontWeight(.bold)
                             Text("Picture Stat")
                                 .font(.custom("Menlo", size: 13))
                                 .fontWeight(.regular)

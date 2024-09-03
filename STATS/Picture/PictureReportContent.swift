@@ -106,7 +106,7 @@ struct PictureReportContent: View {
                 }
             }
             .onAppear {
-                PictureEntry.combineStats(stats: &stats, counterStats: counterStats, decimalStats: decimalStats)
+                PictureStat.combineStats(stats: &stats, counterStats: counterStats, decimalStats: decimalStats)
             }
             .onChange(of: statSelection) {
                 filteredStatData = PictureStat.createStatData(anyStat: statSelection ?? nil, startDate: startDate, endDate: endDate)
