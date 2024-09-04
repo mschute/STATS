@@ -58,9 +58,11 @@ struct PictureEntryForm: View {
                 image = data
             }
         }
-        .task(id: selectedPhotoData) {
+        .onChange(of: selectedPhotoData) {
             if let data = selectedPhotoData {
                 image = data
+            } else {
+                image = nil
             }
         }
         //Alerts: https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-an-alert

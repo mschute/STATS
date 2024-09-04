@@ -49,6 +49,8 @@ struct PicturePicker: View {
                     withAnimation {
                         selectedPhoto = nil
                         selectedPhotoData = nil
+                        cameraImage = nil
+                        
                     }
                 } label: {
                     Label("Remove Picture", systemImage: "trash")
