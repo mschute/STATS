@@ -119,4 +119,3 @@ final class STATSTests: XCTestCase {
         XCTAssertEqual(dateRange.endDate, expectedEndDate)
     }
 }
-

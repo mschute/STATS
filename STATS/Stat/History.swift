@@ -32,4 +32,3 @@ struct History: View {
         }
     }
 }
-

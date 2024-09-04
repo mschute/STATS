@@ -19,5 +19,3 @@ struct TopBar: View {
         }
     }
 }
-
-

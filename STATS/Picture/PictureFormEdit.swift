@@ -102,4 +102,3 @@ struct PictureFormEdit: View {
         .frame(maxWidth: .infinity)
     }
 }
-
