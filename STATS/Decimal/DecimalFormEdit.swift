@@ -69,7 +69,7 @@ struct DecimalFormEdit: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
-                Section(header: Text("Basic Information").foregroundColor(.decimal)) {
+                Section(header: Text("Basic Information").foregroundColor(.mint)) {
                     TextField("Name", text: $name)
                         .fontWeight(.regular)
                     
@@ -83,11 +83,11 @@ struct DecimalFormEdit: View {
                             .fontWeight(.regular)
                     }
                     
-                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .decimal)
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .mint)
                 }
                 .fontWeight(.medium)
                 
-                Section(header: Text("Report Configurations").foregroundColor(.decimal)) {
+                Section(header: Text("Report Configurations").foregroundColor(.mint)) {
                     Toggle(isOn: $trackAverage) {
                         Text("Calculate Average")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -99,18 +99,18 @@ struct DecimalFormEdit: View {
                     }
                 }
                 .fontWeight(.medium)
-                .tint(.decimal)
+                .tint(.mint)
                 
-                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .decimal, statHighlightColor: .decimalHighlight)
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .mint, statHighlightColor: .decimalHighlight)
                     .fontWeight(.medium)
                 
                 if isAdvanced {
-                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .decimal, statHighlightColor: .decimalHighlight)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .mint, statHighlightColor: .decimalHighlight)
                 }
                 
                 Button("Update") {
                 }
-                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .mint, statHighlightColor: .decimalHighlight))
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .simultaneousGesture(

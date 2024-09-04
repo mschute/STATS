@@ -21,7 +21,7 @@ struct PictureEntryForm: View {
     
     var body: some View {
         Form {
-            Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
+            Section(header: Text("TimeStamp").foregroundColor(.teal).fontWeight(.medium)) {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .fontWeight(.medium)
                     .padding(.vertical, 5)
@@ -29,13 +29,13 @@ struct PictureEntryForm: View {
             
             PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
             
-            Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
+            Section(header: Text("Additional Information").foregroundColor(.teal).fontWeight(.medium)) {
                 TextField("Note", text: $note)
             }
             
             Section {
                 Button("Add") {}
-                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .teal, statHighlightColor: .pictureHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .simultaneousGesture(

@@ -29,7 +29,7 @@ struct CounterFormAdd: View {
         
     var body: some View {
             VStack {
-                TopBar(title: "ADD COUNTER STAT", topPadding: 0, bottomPadding: 20)
+                TopBar(title: "ADD COUNTER STAT", topPadding: 20, bottomPadding: 20)
                 Form {
                     Section {
                         VStack {
@@ -48,7 +48,7 @@ struct CounterFormAdd: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                     }
                     
-                    Section(header: Text("Basic Information").foregroundColor(.counter)) {
+                    Section(header: Text("Basic Information").foregroundColor(.cyan)) {
                         TextField("Name", text: $name)
                             .fontWeight(.regular)
                         
@@ -59,19 +59,19 @@ struct CounterFormAdd: View {
                                 .fontWeight(.regular)
                         }
                         
-                        FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .counter)
+                        FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .cyan)
                     }
                     .fontWeight(.medium)
                     
-                    FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .counter, statHighlightColor: .counterHighlight)
+                    FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .cyan, statHighlightColor: .counterHighlight)
                         .fontWeight(.medium)
                     
                     if isAdvanced {
-                        FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .counter, statHighlightColor: .counterHighlight)
+                        FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .cyan, statHighlightColor: .counterHighlight)
                     }
                     
                     Button("Add Counter") {}
-                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter, statHighlightColor: .counterHighlight))
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .cyan, statHighlightColor: .counterHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .simultaneousGesture(
@@ -88,9 +88,11 @@ struct CounterFormAdd: View {
                             }
                     )
                 }
-                .dismissKeyboard()
+                
                 .navigationBarTitleDisplayMode(.inline)
             }
+            .dismissKeyboard()
+            .globalBackground()
             .frame(maxWidth: .infinity)
     }
 }

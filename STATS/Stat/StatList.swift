@@ -16,7 +16,7 @@ struct StatList: View {
     
     var body: some View {
         VStack {
-            TopBar(title: "STAT LIST", topPadding: 0, bottomPadding: 20)
+            TopBar(title: "STAT LIST", topPadding: 20, bottomPadding: 20)
             List {
                 if stats.isEmpty {
                     Text("No current stats")
@@ -97,5 +97,6 @@ struct StatList: View {
                 }
             }
         }
+        .globalBackground()
     }
 }

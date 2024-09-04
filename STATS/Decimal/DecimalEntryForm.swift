@@ -16,13 +16,13 @@ struct DecimalEntryForm: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Timestamp").foregroundColor(.decimal)) {
+            Section(header: Text("Timestamp").foregroundColor(.mint)) {
                 DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
                     .padding(.vertical, 5)
             }
             .fontWeight(.medium)
             
-            Section(header: Text("Value").foregroundColor(.decimal).fontWeight(.medium)) {
+            Section(header: Text("Value").foregroundColor(.mint).fontWeight(.medium)) {
                 HStack {
                     TextField("Value", text: $value)
                         .keyboardType(.decimalPad)
@@ -31,13 +31,13 @@ struct DecimalEntryForm: View {
                 }
             }
 
-            Section(header: Text("Additional Information").foregroundColor(.decimal).fontWeight(.medium)) {
+            Section(header: Text("Additional Information").foregroundColor(.mint).fontWeight(.medium)) {
                 TextField("Note", text: $note)
             }
 
             Section {
                 Button("Add"){}
-                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight))
+                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .mint, statHighlightColor: .decimalHighlight))
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .simultaneousGesture(

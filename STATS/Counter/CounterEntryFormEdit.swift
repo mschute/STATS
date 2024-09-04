@@ -15,36 +15,40 @@ struct CounterEntryFormEdit: View {
     }
     
     var body: some View {
-        TopBar(title: "EDIT ENTRY", topPadding: 0, bottomPadding: 20)
-        Form {
-            Section(header: Text("Timestamp").foregroundColor(.counter)) {
-                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-                    .padding(.vertical, 5)
-            }
-            .fontWeight(.medium)
-            
-            Section(header: Text("Additional Information").foregroundColor(.counter).fontWeight(.medium)) {
-                TextField("Note", text: $note)
-            }
+        VStack {
+            TopBar(title: "EDIT ENTRY", topPadding: 20, bottomPadding: 20)
+            Form {
+                Section(header: Text("Timestamp").foregroundColor(.cyan)) {
+                    DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                        .padding(.vertical, 5)
+                }
+                .fontWeight(.medium)
+                
+                Section(header: Text("Additional Information").foregroundColor(.cyan).fontWeight(.medium)) {
+                    TextField("Note", text: $note)
+                }
 
-            Section {
-                Button("Update") {}
-                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter, statHighlightColor: .counterHighlight))
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .simultaneousGesture(
-                        TapGesture()
-                            .onEnded { _ in
-                                CounterEntry.saveEntry(counterEntry: counterEntry, timestamp: timestamp, note: note, modelContext: modelContext)
-                                Haptics.shared.play(.light)
-                                //Need delay to avoid loading bug
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                                    dismiss()
+                Section {
+                    Button("Update") {}
+                        .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .cyan, statHighlightColor: .counterHighlight))
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded { _ in
+                                    CounterEntry.saveEntry(counterEntry: counterEntry, timestamp: timestamp, note: note, modelContext: modelContext)
+                                    Haptics.shared.play(.light)
+                                    //Need delay to avoid loading bug
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                        dismiss()
+                                    }
                                 }
-                            }
-                    )
+                        )
+                }
             }
+            
         }
         .dismissKeyboard()
+        .globalBackground()
     }
 }

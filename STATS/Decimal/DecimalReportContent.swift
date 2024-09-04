@@ -31,7 +31,7 @@ struct DecimalReportContent: View {
                     Text("\(decimalEntries.count)")
                         .font(.custom("Menlo", size: 32))
                         .fontWeight(.bold)
-                        .foregroundColor(.decimal)
+                        .foregroundColor(.mint)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -43,7 +43,7 @@ struct DecimalReportContent: View {
                     Text(String(format: "%.2f", decimalEntries.max(by: {$0.value < $1.value} )?.value ?? 0.0))
                         .font(.custom("Menlo", size: 28))
                         .fontWeight(.bold)
-                        .foregroundColor(.decimal)
+                        .foregroundColor(.mint)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -55,7 +55,7 @@ struct DecimalReportContent: View {
                     Text(String(format: "%.2f", decimalEntries.min(by: {$0.value < $1.value} )?.value ?? 0.0))
                         .font(.custom("Menlo", size: 28))
                         .fontWeight(.bold)
-                        .foregroundColor(.decimal)
+                        .foregroundColor(.mint)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -71,7 +71,7 @@ struct DecimalReportContent: View {
                         Text(String(format: "%.2f", sum))
                             .font(.custom("Menlo", size: 28))
                             .fontWeight(.bold)
-                            .foregroundColor(.decimal)
+                            .foregroundColor(.mint)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .padding(.vertical, 10)
@@ -87,7 +87,7 @@ struct DecimalReportContent: View {
                             .padding()
                         
                         DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .total)
-                            .foregroundStyle(.decimal)
+                            .foregroundStyle(.mint)
                     }
                 } else {
                     Section(header: Text("")) {
@@ -108,7 +108,7 @@ struct DecimalReportContent: View {
                         Text(String(format: "%.2f", average))
                             .font(.custom("Menlo", size: 28))
                             .fontWeight(.bold)
-                            .foregroundColor(.decimal)
+                            .foregroundColor(.mint)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .padding(.vertical, 10)
@@ -124,7 +124,7 @@ struct DecimalReportContent: View {
                             .padding()
                         
                         DecimalReportCharts(decimalEntries: decimalEntries, chartValueType: .average)
-                            .foregroundStyle(.decimal)
+                            .foregroundStyle(.mint)
                     }
                 } else {
                     Section(header: Text("")) {

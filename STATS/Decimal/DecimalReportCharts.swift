@@ -37,12 +37,12 @@ struct DecimalReportCharts: View {
                             x: .value("Date", entry.day),
                             y: .value("\(decimalEntries[0].stat?.unitName ?? "")", entry.value)
                         )
-                        .foregroundStyle(.decimal)
+                        .foregroundStyle(.mint)
                         .interpolationMethod(.catmullRom)
                         .lineStyle(.init(lineWidth: 2))
                         .symbol {
                             Circle()
-                                .fill(.decimal)
+                                .fill(.mint)
                                 .frame(width: 12, height: 12)
                                 .overlay {
                                     Text(String(format: "%0.2f", entry.value))

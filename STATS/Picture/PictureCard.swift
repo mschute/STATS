@@ -61,10 +61,11 @@ struct PictureCard: View {
                     .frame(maxWidth: 100)
                 }
             }
-            .font(.custom("Menlo", size: 13))
             .padding()
+            .padding(.vertical, 10)
+            .font(.custom("Menlo", size: 13))
             .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: .picture, gradientHighlight: .pictureHighlight, cornerRadius: 12)
+            .gradientFilter(gradientColor: .teal, gradientHighlight: .pictureHighlight, cornerRadius: 12)
             
             NavigationLink(destination: PictureDetail(stat: stat)) {
                 EmptyView()

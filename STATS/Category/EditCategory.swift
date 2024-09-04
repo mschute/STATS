@@ -11,7 +11,7 @@ struct EditCategory: View {
     
     var body: some View {
         VStack {
-            TopBar(title: "MANAGE TAGS", topPadding: 0, bottomPadding: 20)
+            TopBar(title: "MANAGE TAGS", topPadding: 20, bottomPadding: 20)
             List {
                 ForEach(categories) { category in
                     Text("\(category.name)")
@@ -32,7 +32,7 @@ struct EditCategory: View {
                     TextField("New category", text: $newCategory)
                     
                     Button("Add") {}
-                        .buttonStyle(StatButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight))
+                        .buttonStyle(StatButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight, customTextColor: .white))
                         .padding(.vertical, 5)
                         .simultaneousGesture(
                             TapGesture()
@@ -48,6 +48,7 @@ struct EditCategory: View {
             }
         }
         .dismissKeyboard()
+        .globalBackground()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .alert(alertMessage, isPresented: $showAlert) {
             Button("OK", role: .cancel) {
@@ -56,4 +57,3 @@ struct EditCategory: View {
         }
     }
 }
-

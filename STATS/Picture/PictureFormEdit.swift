@@ -60,7 +60,7 @@ struct PictureFormEdit: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
-                Section(header: Text("Basic Information").foregroundColor(.picture)) {
+                Section(header: Text("Basic Information").foregroundColor(.teal)) {
                     TextField("Name", text: $name)
                         .fontWeight(.regular)
                     
@@ -71,20 +71,20 @@ struct PictureFormEdit: View {
                             .fontWeight(.regular)
                     }
                     
-                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .picture)
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .teal)
                 }
                 .fontWeight(.medium)
                 
-                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .picture, statHighlightColor: .pictureHighlight)
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .teal, statHighlightColor: .pictureHighlight)
                     .fontWeight(.medium)
                 
                 if isAdvanced {
-                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .picture, statHighlightColor: .pictureHighlight)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .teal, statHighlightColor: .pictureHighlight)
                 }
                 
                 Button("Update") {
                 }
-                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .teal, statHighlightColor: .pictureHighlight))
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .simultaneousGesture(
@@ -96,9 +96,9 @@ struct PictureFormEdit: View {
                         }
                 )
             }
-            .dismissKeyboard()
             .navigationBarTitleDisplayMode(.inline)
         }
+        .dismissKeyboard()
         .frame(maxWidth: .infinity)
     }
 }

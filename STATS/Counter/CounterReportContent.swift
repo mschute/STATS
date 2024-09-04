@@ -38,7 +38,7 @@ struct CounterReportContent: View {
                         Text("\(counterEntries.count)")
                             .font(.custom("Menlo", size: 28))
                             .fontWeight(.bold)
-                            .foregroundColor(.counter)
+                            .foregroundColor(.cyan)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
@@ -52,7 +52,7 @@ struct CounterReportContent: View {
                         Text("\(timeOfDay.rawValue)")
                             .font(.custom("Menlo", size: 28))
                             .fontWeight(.bold)
-                            .foregroundColor(.counter)
+                            .foregroundColor(.cyan)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     
@@ -67,7 +67,7 @@ struct CounterReportContent: View {
                         Text("\(timeOfDayCount)")
                             .font(.custom("Menlo", size: 32))
                             .fontWeight(.bold)
-                            .foregroundColor(.counter)
+                            .foregroundColor(.cyan)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
@@ -107,7 +107,7 @@ struct CounterReportContent: View {
                     }
                     .frame(height: 200)
                     .padding(.vertical, 15)
-                    .foregroundStyle(.counter)
+                    .foregroundStyle(.cyan)
                 }
             } else {
                 Section(header: Text("")) {

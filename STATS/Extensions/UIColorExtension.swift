@@ -6,8 +6,8 @@ import SwiftUI
 extension UIColor {
     static func dynamicMainColor(colorScheme: ColorScheme) -> UIColor {
         
-        let lightColor = UIColor(red: 181/255.0, green: 131/255.0, blue: 255/255.0, alpha: 1.0)
-        let darkColor = UIColor(red: 155/255.0, green: 81/255.0, blue: 224/255.0, alpha: 1.0)
+        let lightColor = UIColor(red: 170/255.0, green: 168/255.0, blue: 255/255.0, alpha: 1.0)
+        let darkColor = UIColor(red: 54/255.0, green: 52/255.0, blue: 163/255.0, alpha: 1.0)
         
         return colorScheme == .dark ? darkColor : lightColor
     }

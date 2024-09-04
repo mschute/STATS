@@ -12,7 +12,7 @@ struct PicturePicker: View {
     //Source for code/implementation: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
     
     var body: some View {
-        Section(header: Text("Photo").foregroundColor(.picture).fontWeight(.medium)) {
+        Section(header: Text("Photo").foregroundColor(.teal).fontWeight(.medium)) {
             if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
                 Image(uiImage: uiImage)
                     .resizable()

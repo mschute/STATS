@@ -25,47 +25,51 @@ struct PictureEntryFormEdit: View {
     }
     
     var body: some View {
-        TopBar(title: "EDIT ENTRY", topPadding: 0, bottomPadding: 20)
-        Form {
-            Section(header: Text("TimeStamp").foregroundColor(.picture).fontWeight(.medium)) {
-                DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
-                    .fontWeight(.medium)
-                    .padding(.vertical, 5)
-            }
-            
-            PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
+        VStack {
+            TopBar(title: "EDIT ENTRY", topPadding: 20, bottomPadding: 20)
+            Form {
+                Section(header: Text("TimeStamp").foregroundColor(.teal).fontWeight(.medium)) {
+                    DatePicker("Timestamp", selection: $timestamp, displayedComponents: [.date, .hourAndMinute])
+                        .fontWeight(.medium)
+                        .padding(.vertical, 5)
+                }
+                
+                PicturePicker(selectedPhoto: $selectedPhoto, selectedPhotoData: $selectedPhotoData, cameraImage: $cameraImage, showCamera: $showCamera)
 
-            Section(header: Text("Additional Information").foregroundColor(.picture).fontWeight(.medium)) {
-                TextField("Note", text: $note)
+                Section(header: Text("Additional Information").foregroundColor(.teal).fontWeight(.medium)) {
+                    TextField("Note", text: $note)
+                }
+                
+                Section {
+                    Button("Update") {}
+                        .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .teal, statHighlightColor: .pictureHighlight))
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .simultaneousGesture(
+                            TapGesture()
+                                .onEnded { _ in
+                                    if selectedPhotoData == nil {
+                                        showAlert = true
+                                    } else {
+                                        PictureEntry.saveEntry(pictureEntry: pictureEntry, timestamp: timestamp, note: note, selectedPhotoData: selectedPhotoData, modelContext: modelContext)
+                                    }
+                                    Haptics.shared.play(.light)
+                                    //Need delay to avoid loading bug
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                        dismiss()
+                                    }
+                                }
+                        )
+                }
             }
             
-            Section {
-                Button("Update") {}
-                    .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
-                    .padding(.vertical, 20)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .simultaneousGesture(
-                        TapGesture()
-                            .onEnded { _ in
-                                if selectedPhotoData == nil {
-                                    showAlert = true
-                                } else {
-                                    PictureEntry.saveEntry(pictureEntry: pictureEntry, timestamp: timestamp, note: note, selectedPhotoData: selectedPhotoData, modelContext: modelContext)
-                                }
-                                Haptics.shared.play(.light)
-                                //Need delay to avoid loading bug
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                                    dismiss()
-                                }
-                            }
-                    )
+            .alert("Must add picture", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {
+                    Haptics.shared.play(.light)
+                }
             }
         }
-        .dismissKeyboard()        
-        .alert("Must add picture", isPresented: $showAlert) {
-            Button("OK", role: .cancel) {
-                Haptics.shared.play(.light)
-            }
-        }
+        .dismissKeyboard()
+        .globalBackground()
     }
 }

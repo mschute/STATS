@@ -45,8 +45,9 @@ struct CounterEntryCard: View {
             }
             .font(.custom("Menlo", size: 13))
             .padding()
+            .padding(.vertical, 10)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: .counter, gradientHighlight: .counterHighlight, cornerRadius: 12)
+            .gradientFilter(gradientColor: .cyan, gradientHighlight: .counterHighlight, cornerRadius: 12)
             
             NavigationLink(destination: CounterEntryFormEdit(counterEntry: counterEntry)) {
                 EmptyView()

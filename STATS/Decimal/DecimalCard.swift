@@ -50,10 +50,11 @@ struct DecimalCard: View {
                     .frame(maxWidth: 105)
                 }
             }
-            .font(.custom("Menlo", size: 13))
             .padding()
+            .padding(.vertical, 10)
+            .font(.custom("Menlo", size: 13))
             .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: .decimal, gradientHighlight: .decimalHighlight, cornerRadius: 12)
+            .gradientFilter(gradientColor: .mint, gradientHighlight: .decimalHighlight, cornerRadius: 12)
             
             NavigationLink(destination: DecimalDetail(stat: stat)) {
                 EmptyView()

@@ -9,7 +9,7 @@ struct Settings: View {
     
     var body: some View {
         VStack {
-            TopBar(title: "SETTINGS", topPadding: 40, bottomPadding: 20)
+            TopBar(title: "SETTINGS", topPadding: 60, bottomPadding: 20)
             List {
                 Section {
                     NavigationLink(destination: {
@@ -109,5 +109,6 @@ struct Settings: View {
                 }
             }
         }
+        .globalBackground()
     }
 }

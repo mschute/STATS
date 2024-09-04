@@ -61,7 +61,7 @@ struct CounterFormEdit: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
-                Section(header: Text("Basic Information").foregroundColor(.counter)) {
+                Section(header: Text("Basic Information").foregroundColor(.cyan)) {
                     TextField("Name", text: $name)
                         .fontWeight(.regular)
                     
@@ -72,19 +72,19 @@ struct CounterFormEdit: View {
                             .fontWeight(.regular)
                     }
                     
-                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .counter)
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .cyan)
                 }
                 .fontWeight(.medium)
                 
-                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .counter, statHighlightColor: .counterHighlight)
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .cyan, statHighlightColor: .counterHighlight)
                     .fontWeight(.medium)
                 
                 if isAdvanced {
-                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .counter, statHighlightColor: .counterHighlight)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .cyan, statHighlightColor: .counterHighlight)
                 }
                 
                 Button("Update") {}
-                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .counter, statHighlightColor: .counterHighlight))
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .cyan, statHighlightColor: .counterHighlight))
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .simultaneousGesture(

@@ -56,8 +56,9 @@ struct DecimalEntryCard: View {
             }
             .font(.custom("Menlo", size: 13))
             .padding()
+            .padding(.vertical, 10)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: .decimal, gradientHighlight: .decimalHighlight, cornerRadius: 12)
+            .gradientFilter(gradientColor: .mint, gradientHighlight: .decimalHighlight, cornerRadius: 12)
             
             NavigationLink(destination: DecimalEntryFormEdit(decimalEntry: decimalEntry))
             {

@@ -5,7 +5,8 @@ struct PictureDetail: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            TopBar(title: "\(stat.name)", topPadding: 0, bottomPadding: 20)
+            TopBar(title: "\(stat.name)", topPadding: 20, bottomPadding: 40)
+                .dismissKeyboard()
             StatDetailTabs(stat: stat as any Stat)
         }
     }

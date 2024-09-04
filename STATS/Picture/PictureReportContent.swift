@@ -33,7 +33,7 @@ struct PictureReportContent: View {
                         Text("\(pictureEntries.count)")
                             .font(.custom("Menlo", size: 28))
                             .fontWeight(.bold)
-                            .foregroundColor(.picture)
+                            .foregroundColor(.teal)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .padding(.horizontal)

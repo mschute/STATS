@@ -5,14 +5,14 @@ struct ChooseStatType: View {
     
     var body: some View {
         VStack {
-            TopBar(title: "NEW STAT", topPadding: 40, bottomPadding: 20)
+            TopBar(title: "NEW STAT", topPadding: 60, bottomPadding: 20)
             Spacer()
             VStack(spacing: 40) {
                 NavigationLink {
                     CounterFormAdd()
                 } label: {
                     Text("Counter")
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .counter, statHighlightColor: .counterHighlight)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .cyan, statHighlightColor: .counterHighlight)
                 }
                 .simultaneousGesture(
                     TapGesture()
@@ -25,7 +25,7 @@ struct ChooseStatType: View {
                     DecimalFormAdd()
                 } label: {
                     Text("Decimal")
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .decimal, statHighlightColor: .decimalHighlight)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .mint, statHighlightColor: .decimalHighlight)
                 }
                 .simultaneousGesture(
                     TapGesture()
@@ -39,7 +39,7 @@ struct ChooseStatType: View {
                 } label: {
                     Text("Picture")
                         .font(.custom("Menlo", size: 20))
-                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight)
+                        .textButtonStyle(fontSize: 20, verticalPadding: 20, horizontalPadding: 50, align: .center, statColor: .teal, statHighlightColor: .pictureHighlight)
                 }
                 .simultaneousGesture(
                     TapGesture()
@@ -52,5 +52,6 @@ struct ChooseStatType: View {
             .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color.clear)
         }
         .navigationTitle("")
+        .globalBackground()
     }
 }

@@ -8,9 +8,10 @@ struct StatButtonStyle: ButtonStyle {
     var align: Alignment
     var statColor: Color
     var statHighlightColor: Color
+    var customTextColor: Color? = nil
 
     private var textColor: Color {
-        colorScheme == .dark ? .white : .black
+        customTextColor ?? (colorScheme == .dark ? .white : .black)
     }
     
     func makeBody(configuration: Configuration) -> some View {

@@ -47,6 +47,7 @@ struct STATSApp: App {
                 }
                 .tint(.main)
                 .environment(\.font, Font.custom("Menlo", size: 17))
+                .globalBackground()
         }
         .modelContainer(sharedModelContainer)
     }

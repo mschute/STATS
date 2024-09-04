@@ -28,7 +28,7 @@ struct PictureFormAdd: View {
     
     var body: some View {
         VStack {
-            TopBar(title: "ADD PICTURE STAT", topPadding: 0, bottomPadding: 20)
+            TopBar(title: "ADD PICTURE STAT", topPadding: 20, bottomPadding: 20)
             
             Form {
                 Section {
@@ -50,7 +50,7 @@ struct PictureFormAdd: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
-                Section(header: Text("Basic Information").foregroundColor(.picture)) {
+                Section(header: Text("Basic Information").foregroundColor(.teal)) {
                     TextField("Name", text: $name)
                         .fontWeight(.regular)
                     
@@ -61,20 +61,20 @@ struct PictureFormAdd: View {
                             .fontWeight(.regular)
                     }
                     
-                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .picture)
+                    FormIconPicker(iconPickerPresented: $iconPickerPresented, icon: $icon, statColor: .teal)
                 }
                 .fontWeight(.medium)
                 
-                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .picture, statHighlightColor: .pictureHighlight)
+                FormReminder(hasReminder: $hasReminder, reminders: $reminders, newReminder: $newReminder, interval: $interval, statColor: .teal, statHighlightColor: .pictureHighlight)
                     .fontWeight(.medium)
                 
                 if isAdvanced {
-                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .picture, statHighlightColor: .pictureHighlight)
+                    FormCategoryPicker(newCategory: $newCategory, chosenCategory: $chosenCategory, addNewCategory: $addNewCategory, statColor: .teal, statHighlightColor: .pictureHighlight)
                 }
                 
                 Button("Add Picture") {
                 }
-                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .picture, statHighlightColor: .pictureHighlight))
+                .buttonStyle(StatButtonStyle(fontSize: 18, verticalPadding: 15, horizontalPadding: 25, align: .center, statColor: .teal, statHighlightColor: .pictureHighlight))
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .simultaneousGesture(
@@ -90,9 +90,11 @@ struct PictureFormAdd: View {
                         }
                 )
             }
-            .dismissKeyboard()
+            
             .navigationBarTitleDisplayMode(.inline)
         }
+        .dismissKeyboard()
+        .globalBackground()
         .frame(maxWidth: .infinity)
     }
 }
