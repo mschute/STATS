@@ -29,7 +29,7 @@ struct EditCategory: View {
                 }
                 
                 Section {
-                    TextField("New category", text: $newCategory)
+                    TextField("New tag", text: $newCategory)
                     
                     Button("Add") {}
                         .buttonStyle(StatButtonStyle(fontSize: 16, verticalPadding: 10, horizontalPadding: 20, align: .leading, statColor: .main, statHighlightColor: .mainHighlight, customTextColor: .white))

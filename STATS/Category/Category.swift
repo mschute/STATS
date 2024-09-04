@@ -34,7 +34,7 @@ extension Category {
 extension Category {
     static func validateCategory(category: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) -> Bool {
         if(category.isEmpty) {
-            alertMessage = "Must add a category name"
+            alertMessage = "Must add a tag name"
             showAlert = true
             return false
         } else if(categoryExists(categoryName: category, modelContext: modelContext)) {
