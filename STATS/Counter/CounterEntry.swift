@@ -65,6 +65,20 @@ extension CounterEntry {
         return dateCounts
     }
     
+    static func entryCountTill(entries: [AnyEntry], photoTimestamp: Date) -> Int {
+        let calendar = Calendar.current
+        var count = 0
+        
+        for entry in entries {
+            if let counterEntry = entry.entry as? CounterEntry {
+                if calendar.compare(counterEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedDescending {
+                    count += 1
+                }
+            }
+        }
+        return count
+    }
+    
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {
         return #Predicate<CounterEntry> {

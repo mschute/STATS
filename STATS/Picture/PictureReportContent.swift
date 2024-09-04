@@ -71,12 +71,33 @@ struct PictureReportContent: View {
                                             //Compare timestamps https://www.hackingwithswift.com/example-code/system/how-to-check-whether-one-date-is-similar-to-another
                                             if let decimalEntry = statEntry.entry as? DecimalEntry {
                                                 if (Calendar.current.isDate(decimalEntry.timestamp, equalTo: pictureEntry.timestamp, toGranularity: .day)) {
-                                                    Text("\(String(format: "%.2f", decimalEntry.value)) \(decimalEntry.stat?.unitName ?? "")")
-                                                        .padding(5)
-                                                        .background(Color.black.opacity(0.7))
-                                                        .foregroundColor(.white)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
-                                                        .padding([.bottom, .trailing], 5)
+                                                    
+                                                    VStack {
+                                                        Text("Today: \(String(format: "%.2f", decimalEntry.value)) \(decimalEntry.stat?.unitName ?? "")")
+                                                            .padding(5)
+                                                            .background(Color.black.opacity(0.7))
+                                                            .foregroundColor(.white)
+                                                            .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
+                                                            .padding([.bottom, .trailing], 5)
+                                                        
+                                                        if (decimalEntry.stat?.trackTotal == true) {
+                                                            Text("Total: \(String(format: "%.2f", DecimalEntry.calculateTotalForDateRange(filteredDecimals: filteredStatData, photoTimestamp: pictureEntry.timestamp)))")
+                                                                .padding(5)
+                                                                .background(Color.black.opacity(0.7))
+                                                                .foregroundColor(.white)
+                                                                .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
+                                                                .padding([.bottom, .trailing], 5)
+                                                        }
+                                                        
+                                                        if (decimalEntry.stat?.trackAverage == true) {
+                                                            Text("Average: \(String(format: "%.2f", DecimalEntry.calculateAverageForDateRange(filteredDecimals: filteredStatData, photoTimestamp: pictureEntry.timestamp)))")
+                                                                .padding(5)
+                                                                .background(Color.black.opacity(0.7))
+                                                                .foregroundColor(.white)
+                                                                .clipShape(RoundedRectangle(cornerRadius: 5.0, style: .continuous))
+                                                                .padding([.bottom, .trailing], 5)
+                                                        }
+                                                    }
                                                 }
                                             }
                                             
@@ -84,7 +105,7 @@ struct PictureReportContent: View {
                                                 if (Calendar.current.isDate(counterEntry.timestamp, equalTo: pictureEntry.timestamp, toGranularity: .day)) {
                                                     VStack {
                                                         Text("\(PictureStat.calcDaysBetween(from: counterEntry.stat?.created ?? Date(), to: counterEntry.timestamp)) days since started")
-                                                        Text("\(counterEntry.stat?.statEntry.count ?? 0) entries since started")
+                                                        Text("\(CounterEntry.entryCountTill(entries: filteredStatData, photoTimestamp: pictureEntry.timestamp)) entries since started")
                                                     }
                                                     .padding(5)
                                                     .background(Color.black.opacity(0.7))

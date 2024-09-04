@@ -128,4 +128,34 @@ extension DecimalEntry {
         let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
         return data.sorted(by: { $0.day < $1.day })
     }
+    
+    static func calculateTotalForDateRange(filteredDecimals: [AnyEntry], photoTimestamp: Date) -> Double {
+        var total = 0.0
+        
+        for decimalEntry in filteredDecimals {
+            if let decimalEntry = decimalEntry.entry as? DecimalEntry {
+                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedDescending {
+                    total += decimalEntry.value
+                }
+            }
+        }
+        
+        return total
+    }
+    
+    static func calculateAverageForDateRange(filteredDecimals: [AnyEntry], photoTimestamp: Date) -> Double {
+        var total = 0.0
+        var count = 0.0
+        
+        for decimalEntry in filteredDecimals {
+            if let decimalEntry = decimalEntry.entry as? DecimalEntry {
+                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedDescending {
+                    total += decimalEntry.value
+                    count += 1
+                }
+            }
+        }
+        
+        return total / count
+    }
 }
