@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct PictureDetail: View {
-    var stat: PictureStat
+struct StatDetail: View {
+    var stat: any Stat
     
     var body: some View {
         VStack(spacing: 0) {

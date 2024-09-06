@@ -35,7 +35,7 @@ struct StatCard: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .gradientFilter(gradientColor: stat.stat.statColor, gradientHighlight: stat.stat.gradientHighlight, cornerRadius: 12)
             
-            NavigationLink(destination: AnyStat.StatDetail(stat: stat.stat)) {
+            NavigationLink(destination: StatDetail(stat: stat.stat)) {
                 EmptyView()
             }
             .opacity(0.0)
