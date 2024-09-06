@@ -24,7 +24,7 @@ struct StatList: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else {
                     ForEach(stats, id: \.self) { item in
-                        AnyStat.Card(stat: item.stat)
+                        StatCard(stat: item)
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                         //Custom swipe action: https://useyourloaf.com/blog/swiftui-swipe-actions/#:~:text=The%20destructive%20button%20role%20gives,method.

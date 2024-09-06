@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 final class CounterStat: Stat, Identifiable {
@@ -9,6 +10,7 @@ final class CounterStat: Stat, Identifiable {
     var icon: String
     @Relationship(deleteRule: .cascade) var reminder: Reminder?
     var category: Category?
+    static var modelName: String = "Counter Stat"
     //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [CounterEntry]()
     
@@ -20,6 +22,20 @@ final class CounterStat: Stat, Identifiable {
         self.reminder = reminder
         self.category = category
         self.statEntry = statEntry
+    }
+}
+
+extension CounterStat {
+    var modelName: String {
+        return "Counter Stat"
+    }
+    
+    var statColor: Color {
+        return .teal
+    }
+    
+    var gradientHighlight: Color {
+        return .counterHighlight
     }
 }
 
