@@ -78,7 +78,9 @@ extension CounterEntry {
         }
         return count
     }
-    
+}
+
+extension CounterEntry {
     //https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
     static func predicate(id: PersistentIdentifier, startDate: Date, endDate: Date) -> Predicate<CounterEntry> {
         return #Predicate<CounterEntry> {
@@ -86,9 +88,7 @@ extension CounterEntry {
             entry in entry.stat?.persistentModelID == id && (entry.timestamp >= startDate && entry.timestamp <= endDate)
         }
     }
-}
-
-extension CounterEntry {
+    
     //Use append for inserting child objects into the model https://forums.swift.org/t/append-behaviour-in-swiftdata-arrays/72969/4
     static func addEntry(counterStat: CounterStat, timestamp: Date, note: String, modelContext: ModelContext) {
         let newEntry = CounterEntry(
