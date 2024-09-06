@@ -22,7 +22,6 @@ struct Navbar: View {
                 }
                 .tabItem {
                         Image(systemName: "plus.circle.fill")
-                        .imageScale(.large)
                         Text("New Stat")
                 }
                 .tag(Tab.addStat)
@@ -32,7 +31,6 @@ struct Navbar: View {
                 }
                 .tabItem {
                         Image(systemName: "gearshape.circle.fill")
-                        .imageScale(.large)
                         Text("Settings")
                 }
                 .tag(Tab.settings)
