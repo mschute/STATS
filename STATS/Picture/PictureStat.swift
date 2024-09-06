@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 final class PictureStat: Stat, Identifiable {
@@ -9,6 +10,7 @@ final class PictureStat: Stat, Identifiable {
     var icon: String
     @Relationship(deleteRule: .cascade) var reminder: Reminder?
     var category: Category?
+
     //If want this on CloudKit - this must be null rather than setting to empty array
     @Relationship(deleteRule: .cascade) var statEntry = [PictureEntry]()
     
@@ -20,6 +22,20 @@ final class PictureStat: Stat, Identifiable {
         self.reminder = reminder
         self.category = category
         self.statEntry = statEntry
+    }
+}
+
+extension PictureStat {
+    var modelName: String {
+        return "Picture Stat"
+    }
+    
+    var statColor: Color {
+        return .cyan
+    }
+    
+    var gradientHighlight: Color {
+        return .pictureHighlight
     }
 }
 

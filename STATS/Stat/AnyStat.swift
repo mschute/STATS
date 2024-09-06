@@ -73,15 +73,35 @@ extension AnyStat {
 }
 
 extension AnyStat {
-    static func Card(stat: any Stat) -> some View {
+    static func CardLatestEntryContent(stat: any Stat) -> some View {
         //https://sarunw.com/posts/optional-binding-switch-case/#:~:text=When%20you%20want%20to%20unwrap,let%20or%20guard%20let%20syntax.&text=print(%22Hello%2C%20%5C(name)!%22)&text=print(%22Hello%2C%20World!%22)
         switch stat {
         case let stat as CounterStat:
-            return AnyView(CounterCard(stat: stat))
+            return AnyView(CounterCardLatestEntry(stat: stat))
         case let stat as DecimalStat:
-            return AnyView(DecimalCard(stat: stat))
+            return AnyView(DecimalCardLatestEntry(stat: stat))
         case let stat as PictureStat:
-            return AnyView(PictureCard(stat: stat))
+            return AnyView(PictureCardLatestEntry(stat: stat))
+        default:
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No entry data")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
+        }
+    }
+    
+    static func StatDetail(stat: any Stat) -> some View {
+        //https://sarunw.com/posts/optional-binding-switch-case/#:~:text=When%20you%20want%20to%20unwrap,let%20or%20guard%20let%20syntax.&text=print(%22Hello%2C%20%5C(name)!%22)&text=print(%22Hello%2C%20World!%22)
+        switch stat {
+        case let stat as CounterStat:
+            return AnyView(CounterDetail(stat: stat))
+        case let stat as DecimalStat:
+            return AnyView(DecimalDetail(stat: stat))
+        case let stat as PictureStat:
+            return AnyView(PictureDetail(stat: stat))
         default:
             return AnyView(
                 Section(header: Text("")) {
