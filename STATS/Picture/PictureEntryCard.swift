@@ -19,6 +19,7 @@ struct PictureEntryCard: View {
                 Divider()
                 
                 HStack {
+                    //May refactor if displaying an image becomes a reusable view
                     if let imageData = pictureEntry.image,
                        let uiImage = UIImage(data: imageData) {
                         Image(uiImage: uiImage)

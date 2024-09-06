@@ -24,6 +24,7 @@ struct UIKitCamera: UIViewControllerRepresentable {
     }
     
     //Handles delegate methods of UIImagePickerController
+    //Required by the UIViewControllerRepresentable protocol
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
@@ -31,11 +32,13 @@ struct UIKitCamera: UIViewControllerRepresentable {
     //Acts as a delegate for UIImagePickerController, handles user interactions when image is selected or camera is dismissed
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         var parent: UIKitCamera
+        
         init(parent: UIKitCamera) {
             self.parent = parent
         }
         
         //Called when user picks an image
+        //didFinishPickingMediaWithInfo delegate method called when user captures image
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image

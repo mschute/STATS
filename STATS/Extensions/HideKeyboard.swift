@@ -25,7 +25,7 @@ extension View {
 
 //Will add environment value to SwiftUI environment - so it can check if the keyboard is visible
 extension EnvironmentValues {
-    //Computed proerpty to read or write to the keyboardIsShown EV
+    //Computed property to read or write to the keyboardIsShown EV
     var keyboardIsShown: Bool {
         get { return self[KeyboardIsShownEVK.self] }
         set { self[KeyboardIsShownEVK.self] = newValue }
