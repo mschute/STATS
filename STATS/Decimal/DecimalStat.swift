@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 final class DecimalStat: Stat, Identifiable {
@@ -26,6 +27,20 @@ final class DecimalStat: Stat, Identifiable {
         self.reminder = reminder
         self.category = category
         self.statEntry = statEntry
+    }
+}
+
+extension DecimalStat {
+    var modelName: String {
+        return "Decimal Stat"
+    }
+    
+    var statColor: Color {
+        return .mint
+    }
+    
+    var gradientHighlight: Color {
+        return .decimalHighlight
     }
 }
 
