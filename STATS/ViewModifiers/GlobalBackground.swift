@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+// Added to get rid of background spacing between header and form in light mode
 struct GlobalBackground: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     
@@ -10,11 +11,7 @@ struct GlobalBackground: ViewModifier {
     }
     
     private func globalBackgroundColor() -> Color {
-        if colorScheme == .light {
-            Color(UIColor.systemGray6)
-        } else {
-            Color(UIColor.systemGroupedBackground)
-        }
+        Color(colorScheme == .light ? UIColor.systemGray6 : UIColor.systemGroupedBackground)
     }
 }
 
