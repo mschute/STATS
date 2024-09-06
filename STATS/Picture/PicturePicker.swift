@@ -7,12 +7,16 @@ struct PicturePicker: View {
     @Binding var selectedPhotoData: Data?
     @Binding var cameraImage: UIImage?
     @Binding var showCamera: Bool
+    private var buttonTextColor: Color {
+        colorScheme == .dark ? .white : .black
+    }
     
     //Source for code/implementation: https://www.youtube.com/watch?v=y3LofRLPUM8
     //Source for code/implementation: https://www.youtube.com/watch?v=1ZYE5FcUN4Y&list=PLBn01m5Vbs4DLU9Yiff2V8oyslCdB-pnj&index=3
     
     var body: some View {
         Section(header: Text("Photo").foregroundColor(.teal).fontWeight(.medium)) {
+            //TODO: Extract this out into a reusable component? Picture card renders an image too
             if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -26,7 +30,7 @@ struct PicturePicker: View {
                 HStack {
                     Image(systemName: "camera.fill")
                     Text("Camera")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .foregroundColor(buttonTextColor)
                         .fontWeight(.medium)
                 }
             }
@@ -39,7 +43,7 @@ struct PicturePicker: View {
                 HStack {
                     Image(systemName: "photo.fill")
                     Text("Add Library Image")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .foregroundColor(buttonTextColor)
                         .fontWeight(.medium)
                 }
             }
@@ -59,6 +63,7 @@ struct PicturePicker: View {
                 }
             }
         }
+        //TODO: Refactor this into a separate function? Repeated in entry
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self){
                 selectedPhotoData = data
