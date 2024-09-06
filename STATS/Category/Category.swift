@@ -3,7 +3,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Category: Identifiable {
+final class Category: Identifiable {
     var name: String
     
     init(name: String) {
@@ -47,15 +47,13 @@ extension Category {
     
     static func categoryExists(categoryName: String, modelContext: ModelContext) -> Bool {
         let lowercasedCategoryName = categoryName.lowercased()
-        
         let fetchDescriptor = FetchDescriptor<Category>()
         
         do {
             let results = try modelContext.fetch(fetchDescriptor)
-            return results.contains { $0.name.lowercased() == lowercasedCategoryName}
+            return results.contains { $0.name.lowercased() == lowercasedCategoryName }
         } catch {
             return false
         }
-        
     }
 }
