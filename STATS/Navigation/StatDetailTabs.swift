@@ -14,10 +14,10 @@ struct StatDetailTabs: View {
                 TabButton(title: "Report", icon: "chart.xyaxis.line", tag: .report)
                 TabButton(title: "History", icon: "clock.arrow.circlepath", tag: .history)
             }
-            .padding(.vertical, 10)  // Add vertical padding to the tab bar
+            .padding(.vertical, 10)
             .padding(.horizontal, 10)
-            .background(colorScheme == .dark ? Color(UIColor.secondarySystemGroupedBackground) : Color(UIColor.systemBackground)) // Sleek background color
-            .clipShape(RoundedRectangle(cornerRadius: 10))  // Rounded tab bar for sleek appearance
+            .background(colorScheme == .dark ? Color(UIColor.secondarySystemGroupedBackground) : Color(UIColor.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         
         }
         .frame(maxWidth: .infinity)
