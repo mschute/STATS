@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B04E7352C8B5A120020BFAD /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B04E7342C8B5A120020BFAD /* StatCard.swift */; };
 		0B08D9B02C7CA11D00EFB884 /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08D9AF2C7CA11D00EFB884 /* MockContainer.swift */; };
 		0B08D9B12C7CA14300EFB884 /* CounterStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821982C1836DB004F26E3 /* CounterStat.swift */; };
 		0B08D9B22C7CA14500EFB884 /* CounterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821A02C184638004F26E3 /* CounterEntry.swift */; };
@@ -38,13 +39,13 @@
 		0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */; };
 		0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3821B92C1C2510004F26E3 /* AnyStat.swift */; };
 		0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822002C1F0F68004F26E3 /* Entry.swift */; };
-		0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822022C1F59EA004F26E3 /* CounterCard.swift */; };
+		0B3822032C1F59EA004F26E3 /* CounterCardLatestEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822022C1F59EA004F26E3 /* CounterCardLatestEntry.swift */; };
 		0B3822052C1F5DA1004F26E3 /* CounterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */; };
 		0B3822072C1F5F66004F26E3 /* DecimalDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */; };
 		0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822112C22E4B9004F26E3 /* Navbar.swift */; };
 		0B3822142C22E7A9004F26E3 /* ChooseStatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822132C22E7A9004F26E3 /* ChooseStatType.swift */; };
 		0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822152C22E8FE004F26E3 /* Settings.swift */; };
-		0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38221B2C2488E7004F26E3 /* DecimalCard.swift */; };
+		0B38221C2C2488E7004F26E3 /* DecimalCardLatestEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38221B2C2488E7004F26E3 /* DecimalCardLatestEntry.swift */; };
 		0B4705AA2C297986004D1DDB /* StatDetailTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705A92C297986004D1DDB /* StatDetailTabs.swift */; };
 		0B4705AC2C297CA6004D1DDB /* CounterReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */; };
 		0B4705B02C29C9A8004D1DDB /* DecimalReportContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */; };
@@ -74,7 +75,7 @@
 		0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */; };
 		0B7C63D42C4ABF4000798513 /* PictureStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D32C4ABF4000798513 /* PictureStat.swift */; };
 		0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D52C4ABFDD00798513 /* PictureEntry.swift */; };
-		0B7C63D82C4AC08600798513 /* PictureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D72C4AC08600798513 /* PictureCard.swift */; };
+		0B7C63D82C4AC08600798513 /* PictureCardLatestEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D72C4AC08600798513 /* PictureCardLatestEntry.swift */; };
 		0B7C63DA2C4AC0F500798513 /* PictureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63D92C4AC0F500798513 /* PictureDetail.swift */; };
 		0B7C63DC2C4AC15100798513 /* PictureEntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63DB2C4AC15100798513 /* PictureEntryCard.swift */; };
 		0B7C63DE2C4AC1CE00798513 /* PictureEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63DD2C4AC1CE00798513 /* PictureEntryForm.swift */; };
@@ -122,6 +123,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B04E7342C8B5A120020BFAD /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
 		0B08D9AF2C7CA11D00EFB884 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
 		0B08D9BA2C7DE53900EFB884 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		0B1300EB2C57A11600E4B7B9 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -147,13 +149,13 @@
 		0B3821B62C1B2F95004F26E3 /* DecimalEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalEntryForm.swift; sourceTree = "<group>"; };
 		0B3821B92C1C2510004F26E3 /* AnyStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStat.swift; sourceTree = "<group>"; };
 		0B3822002C1F0F68004F26E3 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		0B3822022C1F59EA004F26E3 /* CounterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterCard.swift; sourceTree = "<group>"; };
+		0B3822022C1F59EA004F26E3 /* CounterCardLatestEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterCardLatestEntry.swift; sourceTree = "<group>"; };
 		0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetail.swift; sourceTree = "<group>"; };
 		0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalDetail.swift; sourceTree = "<group>"; };
 		0B3822112C22E4B9004F26E3 /* Navbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navbar.swift; sourceTree = "<group>"; };
 		0B3822132C22E7A9004F26E3 /* ChooseStatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStatType.swift; sourceTree = "<group>"; };
 		0B3822152C22E8FE004F26E3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		0B38221B2C2488E7004F26E3 /* DecimalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCard.swift; sourceTree = "<group>"; };
+		0B38221B2C2488E7004F26E3 /* DecimalCardLatestEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalCardLatestEntry.swift; sourceTree = "<group>"; };
 		0B4705A92C297986004D1DDB /* StatDetailTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailTabs.swift; sourceTree = "<group>"; };
 		0B4705AB2C297CA6004D1DDB /* CounterReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReportContent.swift; sourceTree = "<group>"; };
 		0B4705AF2C29C9A8004D1DDB /* DecimalReportContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalReportContent.swift; sourceTree = "<group>"; };
@@ -182,7 +184,7 @@
 		0B6AC3772C456C4D00636AAA /* FormCategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCategoryPicker.swift; sourceTree = "<group>"; };
 		0B7C63D32C4ABF4000798513 /* PictureStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureStat.swift; sourceTree = "<group>"; };
 		0B7C63D52C4ABFDD00798513 /* PictureEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntry.swift; sourceTree = "<group>"; };
-		0B7C63D72C4AC08600798513 /* PictureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCard.swift; sourceTree = "<group>"; };
+		0B7C63D72C4AC08600798513 /* PictureCardLatestEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCardLatestEntry.swift; sourceTree = "<group>"; };
 		0B7C63D92C4AC0F500798513 /* PictureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetail.swift; sourceTree = "<group>"; };
 		0B7C63DB2C4AC15100798513 /* PictureEntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryCard.swift; sourceTree = "<group>"; };
 		0B7C63DD2C4AC1CE00798513 /* PictureEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntryForm.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				0B6AC3622C418C9600636AAA /* Reminder.swift */,
 				0B1300EB2C57A11600E4B7B9 /* Report.swift */,
 				0B3821B22C19E14A004F26E3 /* Stat.swift */,
+				0B04E7342C8B5A120020BFAD /* StatCard.swift */,
 				0B3821AA2C199D9E004F26E3 /* StatList.swift */,
 				0BB8E7452C5FADC200838EEC /* TopBar.swift */,
 				0BB8E76E2C6A7F4300838EEC /* ValidationUtility.swift */,
@@ -350,7 +353,7 @@
 		0B3821FE2C1EF9BB004F26E3 /* Counter */ = {
 			isa = PBXGroup;
 			children = (
-				0B3822022C1F59EA004F26E3 /* CounterCard.swift */,
+				0B3822022C1F59EA004F26E3 /* CounterCardLatestEntry.swift */,
 				0B3822042C1F5DA1004F26E3 /* CounterDetail.swift */,
 				0B3821A02C184638004F26E3 /* CounterEntry.swift */,
 				0B4705B32C2C44C3004D1DDB /* CounterEntryCard.swift */,
@@ -368,7 +371,7 @@
 		0B3821FF2C1EFA0F004F26E3 /* Decimal */ = {
 			isa = PBXGroup;
 			children = (
-				0B38221B2C2488E7004F26E3 /* DecimalCard.swift */,
+				0B38221B2C2488E7004F26E3 /* DecimalCardLatestEntry.swift */,
 				0B3822062C1F5F66004F26E3 /* DecimalDetail.swift */,
 				0B3821B02C19DEF4004F26E3 /* DecimalEntry.swift */,
 				0B4705B52C2C44DA004D1DDB /* DecimalEntryCard.swift */,
@@ -408,7 +411,7 @@
 		0B7C63D22C4ABF1D00798513 /* Picture */ = {
 			isa = PBXGroup;
 			children = (
-				0B7C63D72C4AC08600798513 /* PictureCard.swift */,
+				0B7C63D72C4AC08600798513 /* PictureCardLatestEntry.swift */,
 				0B7C63D92C4AC0F500798513 /* PictureDetail.swift */,
 				0B7C63D52C4ABFDD00798513 /* PictureEntry.swift */,
 				0B7C63DB2C4AC15100798513 /* PictureEntryCard.swift */,
@@ -639,6 +642,7 @@
 				0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */,
 				0B4705B62C2C44DA004D1DDB /* DecimalEntryCard.swift in Sources */,
 				0B6AC3512C369CF400636AAA /* Tab.swift in Sources */,
+				0B04E7352C8B5A120020BFAD /* StatCard.swift in Sources */,
 				0B3822122C22E4B9004F26E3 /* Navbar.swift in Sources */,
 				0B7C63E22C4AC3D100798513 /* PictureEntryList.swift in Sources */,
 				0B6AC3592C37F49100636AAA /* StatTabs.swift in Sources */,
@@ -652,7 +656,7 @@
 				0B3821B32C19E14A004F26E3 /* Stat.swift in Sources */,
 				0B6AC3552C36AAD200636AAA /* CounterEntryFormEdit.swift in Sources */,
 				0B6AC35B2C3D53A300636AAA /* DecimalEntryFormEdit.swift in Sources */,
-				0B7C63D82C4AC08600798513 /* PictureCard.swift in Sources */,
+				0B7C63D82C4AC08600798513 /* PictureCardLatestEntry.swift in Sources */,
 				0BB8E7592C65278C00838EEC /* PictureFormAdd.swift in Sources */,
 				0B3822012C1F0F68004F26E3 /* Entry.swift in Sources */,
 				0BB8E74A2C63CF7C00838EEC /* GradientFilter.swift in Sources */,
@@ -663,7 +667,7 @@
 				0B7C63E62C4AC5B500798513 /* PictureReportContent.swift in Sources */,
 				0B7C63D42C4ABF4000798513 /* PictureStat.swift in Sources */,
 				0B6AC3672C42E54C00636AAA /* FormReminder.swift in Sources */,
-				0B38221C2C2488E7004F26E3 /* DecimalCard.swift in Sources */,
+				0B38221C2C2488E7004F26E3 /* DecimalCardLatestEntry.swift in Sources */,
 				0B3821BA2C1C2510004F26E3 /* AnyStat.swift in Sources */,
 				0B6AC36F2C43D40C00636AAA /* TimeOfDay.swift in Sources */,
 				0BB8E7462C5FADC200838EEC /* TopBar.swift in Sources */,
@@ -681,7 +685,7 @@
 				0BB8E76B2C6A63A600838EEC /* UIColorExtension.swift in Sources */,
 				0B38216D2C171366004F26E3 /* STATSApp.swift in Sources */,
 				0B3822142C22E7A9004F26E3 /* ChooseStatType.swift in Sources */,
-				0B3822032C1F59EA004F26E3 /* CounterCard.swift in Sources */,
+				0B3822032C1F59EA004F26E3 /* CounterCardLatestEntry.swift in Sources */,
 				0B6AC3532C369CFE00636AAA /* DetailTab.swift in Sources */,
 				0B3821AB2C199D9E004F26E3 /* StatList.swift in Sources */,
 				0B7C63DC2C4AC15100798513 /* PictureEntryCard.swift in Sources */,
