@@ -3,7 +3,6 @@ import SwiftUI
 struct DecimalEntryForm: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
-    @Environment(\.colorScheme) var colorScheme
     
     var decimalStat: DecimalStat
     
