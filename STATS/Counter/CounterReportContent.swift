@@ -18,11 +18,12 @@ struct CounterReportContent: View {
     private var timeOfDayAndCount: (timeOfDay: TimeOfDay, count: Int) { CounterEntry.calcTimeOfDay(counterEntries: counterEntries) }
     private var timeOfDay: TimeOfDay { timeOfDayAndCount.timeOfDay }
     private var timeOfDayCount: Int { timeOfDayAndCount.count }
+    //TODO: Could this mapping be added into the function?
     private var data: [CountDayData] { return CounterEntry.findDayCount(counterEntries: counterEntries, startDate: startDate, endDate: endDate).map{ CountDayData(day: $0.key, count: $0.value) } }
     
     init(id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
-        self._startDate = startDate
-        self._endDate = endDate
+        _startDate = startDate
+        _endDate = endDate
         _counterEntries = Query(filter: CounterEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue))
     }
     
@@ -60,7 +61,7 @@ struct CounterReportContent: View {
                 
                 VStack {
                     HStack {
-                        Text("With a occurence count of:")
+                        Text("With an occurrence count of:")
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
                         
