@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Does this actually need to be Identifiable?
 @Model
 final class DecimalStat: Stat, Identifiable {
     var name: String

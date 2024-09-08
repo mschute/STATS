@@ -8,7 +8,6 @@ struct ContentView: View {
     @Query() private var pictureStats: [PictureStat]
     
     @State private var stats: [AnyStat] = []
-    
     @State private var filter: String? = nil
     
     //https://www.avanderlee.com/swift/computed-property/
@@ -35,6 +34,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            // TODO: Refactor for one more view hierarhcy so the filter can be passed down and manual filtering is not needed.
             StatList(stats: $stats, filter: $filter)
                 .task {
                     AnyStat.combineAllStats(stats: &stats, filteredCounterStats: filteredCounterStats, filteredDecimalStats: filteredDecimalStats, filteredPictureStats: filteredPictureStats)

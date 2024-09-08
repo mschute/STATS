@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Does this actually need to be identifiable?
 @Model
 final class CounterStat: Stat, Identifiable {
     var name: String

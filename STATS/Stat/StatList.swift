@@ -12,8 +12,6 @@ struct StatList: View {
     @State private var isCreatedAscending = false
     @State private var isNameAscending = false
     
-    @State private var newReminder: Date = Date()
-    
     var body: some View {
         VStack {
             TopBar(title: "STAT LIST", topPadding: 20, bottomPadding: 20)
@@ -23,6 +21,7 @@ struct StatList: View {
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else {
+                    //TODO: Change from self to id?
                     ForEach(stats, id: \.self) { item in
                         StatCard(stat: item)
                             .listRowSeparator(.hidden)
@@ -45,6 +44,7 @@ struct StatList: View {
                 }
                 
             }
+            // TODO: Extract filter and sort out to additional hierarchical level
             .toolbar {
                 ToolbarItem {
                     HStack {

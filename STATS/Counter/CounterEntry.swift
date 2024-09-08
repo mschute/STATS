@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Remove Identifiable, it is unncessary
 @Model
 final class CounterEntry: Entry, Identifiable {
     var timestamp: Date
@@ -65,6 +66,7 @@ extension CounterEntry {
         return dateCounts
     }
     
+    //TODO: Is there a similar function in Decimal? Could this be combined so it can be reused?
     static func entryCountTill(entries: [AnyEntry], photoTimestamp: Date) -> Int {
         let calendar = Calendar.current
         var count = 0

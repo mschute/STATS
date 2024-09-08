@@ -10,6 +10,7 @@ final class PictureEntry: Entry, Identifiable {
     var stat: PictureStat?
     @Attribute(.externalStorage) var image: Data?
     
+    //TODO: Remove optional for image data?
     init(timestamp: Date = Date(), note: String = "", image: Data? = nil) {
         self.timestamp = timestamp
         self.note = note

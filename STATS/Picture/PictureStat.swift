@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+//TODO: Is Identifiable necessary?
 @Model
 final class PictureStat: Stat, Identifiable {
     var name: String

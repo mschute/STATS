@@ -18,7 +18,9 @@ extension Reminder {
         sortReminders(reminders: &reminders)
     }
     
-    static func deleteReminder(at offsets: IndexSet, reminders: inout [Date]) {
+    //TODO: Could the reminderTime be deleted off the modelContext?
+    //TODO: Is there a way to sort these without using inout? Is it just using @Query for reminder plus predicate? Then that needs to be a nested view hierarchy
+    static func deleteReminder(offsets: IndexSet, reminders: inout [Date]) {
         reminders.remove(atOffsets: offsets)
         sortReminders(reminders: &reminders)
     }

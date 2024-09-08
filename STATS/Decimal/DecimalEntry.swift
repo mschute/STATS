@@ -61,6 +61,7 @@ extension DecimalEntry {
         }
     }
     
+    //Remove IndexSet because working directly on the model
     static func deleteItems(offsets: IndexSet, entries: [DecimalEntry], modelContext: ModelContext) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
