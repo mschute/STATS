@@ -19,7 +19,7 @@ struct DecimalEntryList: View {
         if !entries.isEmpty {
             List {
                 ForEach(entries) { entry in
-                    DecimalEntryCard(decimalEntry: entry)
+                    EntryCard(statEntry: entry)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                         .padding(.vertical, 5)

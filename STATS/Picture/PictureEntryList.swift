@@ -19,7 +19,7 @@ struct PictureEntryList: View {
         if !entries.isEmpty {
             List {
                 ForEach(entries) { entry in
-                    PictureEntryCard(pictureEntry: entry)
+                    EntryCard(statEntry: entry)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                         .padding(.vertical, 5)

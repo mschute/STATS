@@ -20,8 +20,8 @@ struct CounterEntryList: View {
     var body: some View {
         if !entries.isEmpty {
             List {
-                ForEach(entries, id: \.self) { entry in
-                    CounterEntryCard(counterEntry: entry)
+                ForEach(entries) { entry in
+                    EntryCard(statEntry: entry)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                         .padding(.vertical, 5)
@@ -40,6 +40,7 @@ struct CounterEntryList: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
+            //TODO: Factor out no available entries
             Section(header: Text("")) {
                 Text("No available entries")
                     .padding()
