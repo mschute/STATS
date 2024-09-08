@@ -3,6 +3,7 @@ import SwiftUI
 struct CounterEntryForm: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var selectedDetailTab: StatTabs
+    
     var counterStat: CounterStat
     
     @State private var timestamp: Date = Date()

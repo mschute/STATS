@@ -1,5 +1,7 @@
 import Foundation
 
+//TODO: Can be changed to struct?
+//TODO: Does this need Identifiable?
 class AnyEntry: Identifiable {
     var entry: any Entry
     
@@ -21,7 +23,7 @@ extension AnyEntry {
         for entry in entryArray {
             if(startDate > entry.timestamp) {
                 startDate = entry.timestamp
-            } else if(endDate < entry.timestamp ) {
+            } else if(endDate < entry.timestamp) {
                 endDate = entry.timestamp
             }
         }

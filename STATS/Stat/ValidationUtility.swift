@@ -2,7 +2,7 @@ import Foundation
 
 struct ValidationUtility {
     static func moreThanOneDecimalPoint(value: String) -> Bool {
-        return value.filter { $0 == "."}.count > 1
+        return value.filter { $0 == "." }.count > 1
     }
     
     static func decimalNumberTooBig(value: String) -> Bool {
