@@ -9,6 +9,7 @@ class AnyStat: Identifiable, Hashable {
         self.stat = stat
     }
     
+    //Could this be removed if I change the ForEach in StatList to identify by id?
     //Conform to hashable https://www.hackingwithswift.com/forums/swift/form-picker-error-requires-that-x-conform-to-hashable/19961
     static func == (lhs: AnyStat, rhs: AnyStat) -> Bool {
         return lhs.id == rhs.id
@@ -28,10 +29,23 @@ extension AnyStat {
 }
 
 extension AnyStat {
+    //Index set and offsets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
     static func deleteItems(offsets: IndexSet, stats: [AnyStat], modelContext: ModelContext) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
-            remove(offsets: offsets, statItems: stats, modelContext: modelContext)
+            for index in offsets {
+                remove(stat: stats[index].stat, modelContext: modelContext)
+            }
+        }
+    }
+    
+    static func remove(stat: any Stat, modelContext: ModelContext) {
+        if let stat = stat as? CounterStat {
+            modelContext.delete(stat)
+        } else if let stat = stat as? DecimalStat {
+            modelContext.delete(stat)
+        } else if let stat = stat as? PictureStat {
+            modelContext.delete(stat)
         }
     }
     
@@ -52,24 +66,6 @@ extension AnyStat {
             isNameAscending = false
         }
     }
-    
-    static func remove(stat: any Stat, modelContext: ModelContext) {
-        if let stat = stat as? CounterStat {
-            modelContext.delete(stat)
-        } else if let stat = stat as? DecimalStat {
-            modelContext.delete(stat)
-        } else if let stat = stat as? PictureStat {
-            modelContext.delete(stat)
-        }
-    }
-    
-    //Index set and offsets for deleting https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-delete-rows-from-a-list
-    //Used IndexSet rather than Index for scalability
-    static func remove(offsets: IndexSet, statItems: [AnyStat], modelContext: ModelContext) {
-        for index in offsets {
-            remove(stat: statItems[index].stat, modelContext: modelContext)
-        }
-    }
 }
 
 extension AnyStat {
@@ -82,6 +78,25 @@ extension AnyStat {
             return AnyView(DecimalCardLatestEntry(stat: stat))
         case let stat as PictureStat:
             return AnyView(PictureCardLatestEntry(stat: stat))
+        default:
+            return AnyView(
+                Section(header: Text("")) {
+                    Text("No entry data")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            )
+        }
+    }
+    
+    static func EntryCardDestination(statEntry: any Entry) -> some View {
+        switch statEntry {
+        case let statEntry as CounterEntry:
+            return AnyView(CounterEntryFormEdit(counterEntry: statEntry))
+        case let statEntry as DecimalEntry:
+            return AnyView(DecimalEntryFormEdit(decimalEntry: statEntry))
+        case let statEntry as PictureEntry:
+            return AnyView(PictureEntryFormEdit(pictureEntry: statEntry))
         default:
             return AnyView(
                 Section(header: Text("")) {
