@@ -1,25 +1,39 @@
 import SwiftUI
 
-struct PictureEntryCard: View {
+struct EntryCard: View {
     @Environment (\.colorScheme) var colorScheme
-    var pictureEntry: PictureEntry
+    var statEntry: any Entry
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Image(systemName: "\(pictureEntry.stat?.icon ?? "photo")")
+                    Image(systemName: "\(statEntry.stat?.icon ?? "goforward")")
                         .fontWeight(.bold)
-                    Text("\(pictureEntry.stat?.name ?? "") Entry")
+                    Text("\(statEntry.stat?.name ?? "") Entry")
                         .font(.custom("Menlo", size: 16))
                         .fontWeight(.bold)
                         .shadow(color: colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1), radius: 3, x: 3, y: 2)
                         .lineLimit(1)
                 }
+                
                 Divider()
                 
-                HStack {
-                    //May refactor if displaying an image becomes a reusable view
+                if let decimalEntry = statEntry as? DecimalEntry {
+                    HStack {
+                        Image(systemName: "number.square")
+                            .fontWeight(.bold)
+                        Text("Value:")
+                            .fontWeight(.semibold)
+                            .opacity(0.8)
+                        Text("\(String(format: "%.2f", decimalEntry.value)) \(decimalEntry.stat?.unitName ?? "")")
+                            .fontWeight(.regular)
+                            .opacity(0.8)
+                    }
+                    .lineLimit(1)
+                }
+                
+                if let pictureEntry = statEntry as? PictureEntry {
                     if let imageData = pictureEntry.image,
                        let uiImage = UIImage(data: imageData) {
                         Image(uiImage: uiImage)
@@ -38,7 +52,7 @@ struct PictureEntryCard: View {
                     Text("Timestamp:")
                         .fontWeight(.semibold)
                         .opacity(0.8)
-                    Text(pictureEntry.timestamp.formatted(date: .abbreviated, time: .shortened))
+                    Text(statEntry.timestamp.formatted(date: .abbreviated, time: .shortened))
                         .fontWeight(.regular)
                         .opacity(0.8)
                 }
@@ -50,7 +64,7 @@ struct PictureEntryCard: View {
                     Text("Note:")
                         .fontWeight(.semibold)
                         .opacity(0.8)
-                    Text("\(pictureEntry.note)")
+                    Text("\(statEntry.note)")
                         .fontWeight(.regular)
                         .opacity(0.8)
                 }
@@ -60,14 +74,14 @@ struct PictureEntryCard: View {
             .padding()
             .padding(.vertical, 10)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: .teal, gradientHighlight: .pictureHighlight, cornerRadius: 12)
+            .gradientFilter(gradientColor: statEntry.stat?.statColor ?? .cyan, gradientHighlight: statEntry.stat?.gradientHighlight ?? .counterHighlight, cornerRadius: 12)
             
-            NavigationLink(destination:
-                            PictureEntryFormEdit(pictureEntry: pictureEntry)) {
+            NavigationLink(destination: AnyStat.EntryCardDestination(statEntry: statEntry)) {
                 EmptyView()
             }
-            .navigationTitle("")
             .opacity(0.0)
+            .navigationTitle("")
         }
     }
 }
+
