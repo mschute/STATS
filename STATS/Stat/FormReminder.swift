@@ -6,8 +6,6 @@ struct FormReminder: View {
     @Binding var newReminder: Date
     @Binding var interval: String
     
-    @Environment(\.colorScheme) var colorScheme
-    
     var statColor: Color
     var statHighlightColor: Color
     
@@ -15,7 +13,6 @@ struct FormReminder: View {
             Section(header: Text("Reminder").foregroundColor(statColor)) {
                 Toggle(isOn: $hasReminder) {
                     Text("Reminder")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
                 .tint(statColor)
     
@@ -35,6 +32,7 @@ struct FormReminder: View {
                     }
                     
                     List {
+                    //TODO: Make Reminders identifiable and track by ID instead of self to reduce potential bugs
                         ForEach(reminders, id: \.self) { reminder in
                             Text(reminder, style: .time)
                                 .fontWeight(.regular)
@@ -42,7 +40,7 @@ struct FormReminder: View {
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                     Button(role: .destructive) {
                                         if let index = reminders.firstIndex(of: reminder) {
-                                            Reminder.deleteReminder(at: IndexSet(integer: index), reminders: &reminders)
+                                            Reminder.deleteReminder(offsets: IndexSet(integer: index), reminders: &reminders)
                                         }
                                         Haptics.shared.play(.light)
                                     } label: {
