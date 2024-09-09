@@ -88,8 +88,6 @@ struct CounterFormAdd: View {
                             }
                     )
                 }
-                
-                .navigationBarTitleDisplayMode(.inline)
             }
             .dismissKeyboard()
             .globalBackground()
