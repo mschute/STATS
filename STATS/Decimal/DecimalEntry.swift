@@ -41,7 +41,9 @@ extension DecimalEntry {
     
     static func saveEntry(decimalEntry: DecimalEntry, value: String, timestamp: Date, note: String, alertMessage: inout String, showAlert: inout Bool, modelContext: ModelContext) {
         
-        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {}
+        if !validateValueEntry(value: value, alertMessage: &alertMessage, showAlert: &showAlert) {
+            return
+        }
         
         decimalEntry.value = Double(value) ?? 0.0
         decimalEntry.timestamp = timestamp
@@ -61,7 +63,8 @@ extension DecimalEntry {
         }
     }
     
-    //Remove IndexSet because working directly on the model
+    // TODO: Can remove IndexSet because working directly on the model
+    // TODO: Put delete directly in the views?
     static func deleteItems(offsets: IndexSet, entries: [DecimalEntry], modelContext: ModelContext) {
         withAnimation {
             // Uses IndexSet to remove from [AnyStat] and ModelContext
@@ -106,9 +109,7 @@ extension DecimalEntry {
             dateValues[date, default: 0] += entry.value
         }
         
-        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value) }
-        //Sorting https://stackoverflow.com/questions/25377177/sort-dictionary-by-keys
-        return data.sorted(by: { $0.day < $1.day })
+        return dateValues.map{ ValueDayData(day: $0.key, value: $0.value) }
     }
     
     static func createDayAvgValueData(decimalEntries: [DecimalEntry]) -> [ValueDayData] {
@@ -126,16 +127,16 @@ extension DecimalEntry {
             dateValues[date]?.count += 1
         }
         
-        let data = dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
-        return data.sorted(by: { $0.day < $1.day })
+        return dateValues.map{ ValueDayData(day: $0.key, value: $0.value.total / Double ($0.value.count)) }
     }
     
+    //TODO: Combine this with the one in counter
     static func calculateTotalForDateRange(filteredDecimals: [AnyEntry], photoTimestamp: Date) -> Double {
         var total = 0.0
         
         for decimalEntry in filteredDecimals {
             if let decimalEntry = decimalEntry.entry as? DecimalEntry {
-                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedDescending {
+                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedSame {
                     total += decimalEntry.value
                 }
             }
@@ -150,7 +151,7 @@ extension DecimalEntry {
         
         for decimalEntry in filteredDecimals {
             if let decimalEntry = decimalEntry.entry as? DecimalEntry {
-                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedDescending {
+                if Calendar.current.compare(decimalEntry.timestamp, to: photoTimestamp, toGranularity: .day) != .orderedSame {
                     total += decimalEntry.value
                     count += 1
                 }
