@@ -9,8 +9,8 @@ struct PictureEntryList: View {
     @Binding var endDate: Date
     
     init (id: PersistentIdentifier, startDate: Binding<Date>, endDate: Binding<Date>) {
-        self._startDate = startDate
-        self._endDate = endDate
+        _startDate = startDate
+        _endDate = endDate
         
         _entries = Query(filter: PictureEntry.predicate(id: id, startDate: startDate.wrappedValue, endDate: endDate.wrappedValue), sort: [SortDescriptor(\.timestamp, order: .reverse)])
     }
