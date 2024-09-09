@@ -4,6 +4,7 @@ import SwiftUI
 // https://www.youtube.com/watch?v=Saw_sZWa4aQ
 struct History: View {
     var stat: any Stat
+    
     @State private var startDate: Date
     @State private var endDate: Date
     @State private var dateRange: (startDate: Date, endDate: Date)

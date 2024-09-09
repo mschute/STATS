@@ -45,8 +45,7 @@ struct CounterFormEdit: View {
             Form {
                 Section {
                     VStack {
-                        Button(isAdvanced ? "Basic Form" : "Advanced Form") {
-                        }
+                        Button(isAdvanced ? "Basic Form" : "Advanced Form") {}
                         .underline()
                         .fontWeight(.semibold)
                         .foregroundColor(.main)
@@ -97,7 +96,6 @@ struct CounterFormEdit: View {
                 )
             }
             .dismissKeyboard()
-            .navigationBarTitleDisplayMode(.inline)
         }
         .frame(maxWidth: .infinity)
     }
