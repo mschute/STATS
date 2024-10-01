@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct PicturePicker: View {
-    @Environment (\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     @Binding var selectedPhoto: PhotosPickerItem?
     @Binding var selectedPhotoData: Data?
     @Binding var cameraImage: UIImage?
