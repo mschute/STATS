@@ -82,6 +82,8 @@
 		0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */; };
 		0B7C63F32C5249C100798513 /* UIKitCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F22C5249C100798513 /* UIKitCamera.swift */; };
 		0B7C63F52C53D5A400798513 /* EditCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7C63F42C53D5A400798513 /* EditCategory.swift */; };
+		0B92D2302CAC54ED0052E0FE /* StatCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B92D22F2CAC54EB0052E0FE /* StatCardModifier.swift */; };
+		0B92D2322CAC55120052E0FE /* EntryCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B92D2312CAC550B0052E0FE /* EntryCardModifier.swift */; };
 		0BB8E7172C5C06AB00838EEC /* StatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */; };
 		0BB8E71B2C5C16B100838EEC /* TextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */; };
 		0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8E7422C5EE3B700838EEC /* ColorMode.swift */; };
@@ -187,6 +189,8 @@
 		0B7C63ED2C50ED1B00798513 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		0B7C63F22C5249C100798513 /* UIKitCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCamera.swift; sourceTree = "<group>"; };
 		0B7C63F42C53D5A400798513 /* EditCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategory.swift; sourceTree = "<group>"; };
+		0B92D22F2CAC54EB0052E0FE /* StatCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCardModifier.swift; sourceTree = "<group>"; };
+		0B92D2312CAC550B0052E0FE /* EntryCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCardModifier.swift; sourceTree = "<group>"; };
 		0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonStyle.swift; sourceTree = "<group>"; };
 		0BB8E7422C5EE3B700838EEC /* ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMode.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 		0BB8E7152C5C069400838EEC /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				0B92D2312CAC550B0052E0FE /* EntryCardModifier.swift */,
+				0B92D22F2CAC54EB0052E0FE /* StatCardModifier.swift */,
 				0BB8E7492C63CF7C00838EEC /* GradientFilter.swift */,
 				0BB8E7162C5C06AB00838EEC /* StatButtonStyle.swift */,
 				0BB8E71A2C5C16B100838EEC /* TextButtonStyle.swift */,
@@ -528,7 +534,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					0B3821682C171366004F26E3 = {
 						CreatedOnToolsVersion = 15.2;
@@ -611,6 +617,7 @@
 				0B3822162C22E8FE004F26E3 /* Settings.swift in Sources */,
 				0BB8E7432C5EE3B700838EEC /* ColorMode.swift in Sources */,
 				0B6AC3572C37ED3500636AAA /* NavbarTabs.swift in Sources */,
+				0B92D2322CAC55120052E0FE /* EntryCardModifier.swift in Sources */,
 				0B3821B12C19DEF4004F26E3 /* DecimalEntry.swift in Sources */,
 				0B7C63E02C4AC2BC00798513 /* PictureEntryFormEdit.swift in Sources */,
 				0B6AC3742C4512CC00636AAA /* CountDayData.swift in Sources */,
@@ -624,6 +631,7 @@
 				0B6AC3782C456C4D00636AAA /* FormCategoryPicker.swift in Sources */,
 				0B04E73B2C8E1F130020BFAD /* EntryCard.swift in Sources */,
 				0B3821B72C1B2F95004F26E3 /* DecimalEntryForm.swift in Sources */,
+				0B92D2302CAC54ED0052E0FE /* StatCardModifier.swift in Sources */,
 				0B7C63D62C4ABFDD00798513 /* PictureEntry.swift in Sources */,
 				0B653C7B2C889E1A009B7FF1 /* GlobalBackground.swift in Sources */,
 				0B7C63EE2C50ED1B00798513 /* PicturePicker.swift in Sources */,
@@ -907,7 +915,6 @@
 		0B3821932C171367004F26E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -927,7 +934,6 @@
 		0B3821942C171367004F26E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -947,7 +953,6 @@
 		0B3821962C171367004F26E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 572P869P75;
@@ -965,7 +970,6 @@
 		0B3821972C171367004F26E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 572P869P75;
