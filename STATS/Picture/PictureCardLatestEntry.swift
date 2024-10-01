@@ -12,7 +12,7 @@ struct PictureCardLatestEntry: View {
             } else {
                 if let latestEntry = stat.statEntry
                     .sorted(by: { $0.timestamp > $1.timestamp })
-                    //TODO: Extrat display image
+                    //TODO: Extract display image
                     .first {
                     if let imageData = latestEntry.image,
                        let uiImage = UIImage(data: imageData) {
