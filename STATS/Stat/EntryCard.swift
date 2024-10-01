@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct EntryCard: View {
-    @Environment (\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     var statEntry: any Entry
     
     var body: some View {
@@ -70,11 +70,7 @@ struct EntryCard: View {
                 }
                 .lineLimit(1)
             }
-            .font(.custom("Menlo", size: 13))
-            .padding()
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: statEntry.stat?.statColor ?? .cyan, gradientHighlight: statEntry.stat?.gradientHighlight ?? .counterHighlight, cornerRadius: 12)
+            .entryCardModifier(gradientColor: statEntry.stat?.statColor ?? .cyan, gradientHighlight: statEntry.stat?.gradientHighlight ?? .counterHighlight)
             
             NavigationLink(destination: AnyStat.EntryCardDestination(statEntry: statEntry)) {
                 EmptyView()

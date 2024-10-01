@@ -30,10 +30,7 @@ struct StatCard: View {
                     AnyStat.CardLatestEntryContent(stat: stat.stat)
                 }
             }
-            .padding()
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .gradientFilter(gradientColor: stat.stat.statColor, gradientHighlight: stat.stat.gradientHighlight, cornerRadius: 12)
+            .statCardModifier(gradientColor: stat.stat.statColor, gradientHighlight: stat.stat.gradientHighlight)
             
             NavigationLink(destination: StatDetail(stat: stat.stat)) {
                 EmptyView()

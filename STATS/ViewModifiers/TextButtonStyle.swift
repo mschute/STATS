@@ -21,10 +21,9 @@ struct TextButtonStyle: ViewModifier {
             .foregroundColor(textColor)
             .padding(.vertical, verticalPadding)
             .padding(.horizontal, horizontalPadding)
-        //TODO: Either remove this clip shape or separate the cornerRadius from the gradientFilter
-            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
             .frame(maxHeight: 60, alignment: align)
-            .gradientFilter(gradientColor: statColor, gradientHighlight: statHighlightColor, cornerRadius: 10.0)
+            .gradientFilter(gradientColor: statColor, gradientHighlight: statHighlightColor)
+            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
     }
 }
 
