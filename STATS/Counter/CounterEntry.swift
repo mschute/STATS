@@ -4,7 +4,7 @@ import SwiftUI
 
 //TODO: Remove Identifiable, it is unncessary
 @Model
-final class CounterEntry: Entry, Identifiable {
+final class CounterEntry: Entry {
     var timestamp: Date
     var note: String
     //Associated relationship must be optional / does not need @Relationship https://www.youtube.com/watch?v=dAMFgq4tDPM

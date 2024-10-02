@@ -3,7 +3,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-final class PictureEntry: Entry, Identifiable {
+final class PictureEntry: Entry {
     var timestamp: Date
     var note: String
     //Associated relationship must be optional / does not need @Relationship
