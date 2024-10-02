@@ -44,6 +44,7 @@ struct STATSApp: App {
                     UIApplication.shared.applyColorMode(isDarkMode: isDarkMode)
                     // Change alert tint color: https://www.hackingwithswift.com/forums/swiftui/alert-button-color-conforming-to-accentcolor/7193#:~:text=There%20is%20no%20way%20to,the%20system%20do%20its%20thing.
                     UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.dynamicMainColor(colorScheme: colorScheme)
+                    //TODO: Alert button not changing tint when the colorScheme changes
                 }
                 .tint(.main)
                 .environment(\.font, Font.custom("Menlo", size: 17))
