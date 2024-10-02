@@ -2,7 +2,6 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-//TODO: Remove Identifiable. It is not needed
 @Model
 final class Category: Identifiable {
     var name: String
