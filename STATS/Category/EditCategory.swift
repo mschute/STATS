@@ -17,7 +17,6 @@ struct EditCategory: View {
                     Text("\(category.name)")
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
-                                //TODO: Change to delete directly in the view?
                                 if let index = categories.firstIndex(of: category) {
                                     Category.deleteItems(offsets: IndexSet(integer: index), categories: categories, modelContext: modelContext)
                                 }
@@ -40,9 +39,7 @@ struct EditCategory: View {
                                 .onEnded { _ in
                                     Category.addCategory(newCategory: newCategory, alertMessage: &alertMessage, showAlert: &showAlert, modelContext: modelContext)
                                     newCategory = ""
-                                    if !showAlert {
-                                        Haptics.shared.play(.light)
-                                    }
+                                    Haptics.shared.play(.light)
                                 }
                         )
                 }
